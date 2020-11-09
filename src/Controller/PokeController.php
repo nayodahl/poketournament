@@ -26,7 +26,9 @@ class PokeController extends AbstractController
         $api = new PokeApi;
         $pikachu = $api->pokemonSpecies('pikachu');
         $person = $serializer->deserialize($pikachu, Pokemon::class, 'json');
-        $color = $person->getColor(['name']);
+        $array = $person->getColor();
+        $color = array_column($array, "name");
+
         
         return $this->render('poke/index.html.twig', [
             'controller_name' => 'PokeController',
