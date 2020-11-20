@@ -2,37 +2,26 @@
 
 namespace App\Controller;
 
+use App\Repository\PokemonRepository;
+use App\Service\Populator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use PokePHP\PokeApi;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
-use App\Entity\Pokemon;
 
 class PokeController extends AbstractController
-{
+{   
     /**
      * @Route("/", name="homepage")
      */
-    public function index(): Response
+    public function index(PokemonRepository $pokemonRepo, Populator $populator): Response
     {
-        $encoders = [new JsonEncoder()];
-        $normalizers = [new ObjectNormalizer()];
-        $serializer = new Serializer($normalizers, $encoders);  
-
-        $api = new PokeApi;
-        $pikachu = $api->pokemonSpecies('pikachu');
-        $person = $serializer->deserialize($pikachu, Pokemon::class, 'json');
-        $array = $person->getColor();
-        $color = array_column($array, "name");
-
+        $populator->populate();
         
         return $this->render('poke/index.html.twig', [
-            'controller_name' => 'PokeController',
+            'pokemons' => $pokemonRepo->findAll(),
         ]);
+
+        //return $this->render('task/list.html.twig', ['tasks' => $paginated]);
     }
 
     /**

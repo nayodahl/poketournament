@@ -23,7 +23,7 @@ class Pokemon
     private $name;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string", length=255)
      */
     private $color;
 
@@ -44,12 +44,12 @@ class Pokemon
         return $this;
     }
 
-    public function getColor(): ?array
+    public function getColor(): ?string
     {
         return $this->color;
     }
 
-    public function setColor(array $color): self
+    public function setColor(string $color): self
     {
         $this->color = $color;
 

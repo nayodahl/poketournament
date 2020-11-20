@@ -15,9 +15,11 @@
     Liste des participants :
     <hr>
     <ul>
-        <li>Pikachu</li>
-        <li>Bulbizarre</li>
+        {% for pokemon in pokemons %}
+        <li>{{ pokemon.name }}</li>
+        {% endfor %}
     </ul>
+    <hr>
     <hr>
     <a href="{{ path('tournament') }}" class="btn btn-primary">Lancer le tournoi</a>
 </div>
