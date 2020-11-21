@@ -16,10 +16,9 @@
     <hr>
     <ul>
         {% for pokemon in pokemons %}
-        <li>{{ pokemon.name }}</li>
+        <li>{{ pokemon.name }} <img src='images/{{ pokemon.apiId }}.png' alt=""></li>
         {% endfor %}
     </ul>
-    <hr>
     <hr>
     <a href="{{ path('tournament') }}" class="btn btn-primary">Lancer le tournoi</a>
 </div>

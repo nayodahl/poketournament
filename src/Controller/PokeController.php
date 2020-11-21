@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Repository\PokemonRepository;
-use App\Service\Populator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,9 +12,9 @@ class PokeController extends AbstractController
     /**
      * @Route("/", name="homepage")
      */
-    public function index(PokemonRepository $pokemonRepo, Populator $populator): Response
+    public function index(PokemonRepository $pokemonRepo): Response
     {
-        $populator->populate();
+
         
         return $this->render('poke/index.html.twig', [
             'pokemons' => $pokemonRepo->findAll(),
