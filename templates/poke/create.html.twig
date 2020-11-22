@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Grand Tournoi Pokémon{% endblock %}
+
+{% block body %}
+
+        <section>
+            <div class="container section-inner">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        {{ form_start(tournamentForm) }}
+                            {{ form_row(tournamentForm.name) }}
+                            {{ form_row(tournamentForm.numberPokemons) }}
+                            <hr>
+                            <p>Choisis les Pokémons qui participeront : </p>
+                            {{ form_row(tournamentForm.pokemons) }}
+                            <hr>
+                            <a class="btn btn-primary" href="{{ path('app_homepage') }}">Annuler</a>
+                            <button type="submit" class="btn btn-primary pull-right">Enregistrer</button>
+                        {{ form_end(tournamentForm) }}
+                    </div>            
+                </div>
+            </div>
+        </section>    
+
+{% endblock %}

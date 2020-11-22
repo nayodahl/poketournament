@@ -9,17 +9,20 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Grand Tournoi Pokémon ✅</h1>
-    <h2>Bienvenue au plus grand tournoi de combats de Pokémons, organisé  par Arthur</h2>
+    <h1>{{ tournament.name }}</h1>
+    <h2>Bienvenue au tournoi de combats de Pokémons, organisé  par Arthur</h2>
 
-    Liste des participants :
-    <hr>
+    <a href="{{ path('app_create') }}" class="btn btn-primary">Créer un nouveau tournoi</a>
+    <a href="{{ path('app_view') }}" class="btn btn-primary">Voir le tournoi en cours </a>
+    <br><hr>
+    
+    Liste des participants ({{ tournament.numberPokemons }} pokémons) :
     <ul>
-        {% for pokemon in pokemons %}
+        {% for pokemon in tournament.pokemons %}
         <li>{{ pokemon.name }} <img src='images/{{ pokemon.apiId }}.png' alt=""></li>
         {% endfor %}
     </ul>
     <hr>
-    <a href="{{ path('tournament') }}" class="btn btn-primary">Lancer le tournoi</a>
+        
 </div>
 {% endblock %}

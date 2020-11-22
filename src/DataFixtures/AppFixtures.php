@@ -23,7 +23,7 @@ class AppFixtures extends Fixture
 
         $response = $this->client->request(
             'GET',
-            'https://pokeapi.co/api/v2/pokemon?limit=10'
+            'https://pokeapi.co/api/v2/pokemon?limit=100'
         );
         $content = $response->getContent();
         $array=json_decode($content, true);
