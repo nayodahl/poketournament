@@ -43,6 +43,8 @@ class PokeController extends AbstractController
             $em->persist($tournament);
             $em->flush();
 
+            $this->addFlash('success', 'Tournoi sauvegardé');
+
             return $this->redirectToRoute('app_homepage');
         }
 
