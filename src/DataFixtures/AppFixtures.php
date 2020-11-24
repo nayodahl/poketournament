@@ -29,7 +29,7 @@ class AppFixtures extends Fixture
         $array=json_decode($content, true);
         $arrayResult=$array['results'];
 
-        foreach($arrayResult as $key){
+        foreach ($arrayResult as $key) {
             $pokemonObject = new Pokemon();
 
             $pokemonSpecies = $api->pokemonSpecies($key['name']);
@@ -42,7 +42,7 @@ class AppFixtures extends Fixture
             $pokemonObject->setColor($colorFr);
             
             $nameFr = $array['names'][4]['name'];
-            $pokemonObject->setName($nameFr);            
+            $pokemonObject->setName($nameFr);
 
             $pokemon = $api->pokemon($key['name']);
             $array = json_decode($pokemon, true);
@@ -51,6 +51,6 @@ class AppFixtures extends Fixture
 
             $manager->persist($pokemonObject);
             $manager->flush();
-        }  
+        }
     }
 }

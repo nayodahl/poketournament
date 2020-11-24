@@ -11,7 +11,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PokeController extends AbstractController
-{   
+{
+
     /**
      * @Route("/", name="app_homepage")
      */
@@ -56,7 +57,7 @@ class PokeController extends AbstractController
     /**
      * @Route("/tournoi", name="app_view")
      */
-    public function TournamentView(): Response
+    public function tournamentView(): Response
     {
         return $this->render('poke/tournament.html.twig', [
             'controller_name' => 'PokeController',
