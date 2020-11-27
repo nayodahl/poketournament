@@ -18,11 +18,13 @@ class PokeController extends AbstractController
      */
     public function index(TournamentRepository $tournamentRepo): Response
     {
-        return $this->render('poke/index.html.twig', [
+        //sleep(5);
+        
+        $response = $this->render('poke/index.html.twig', [
             'tournament' => $tournamentRepo->findLatest(),
         ]);
-
-        //return $this->render('task/list.html.twig', ['tasks' => $paginated]);
+        
+        return $response;
     }
 
     /**
@@ -37,8 +39,40 @@ class PokeController extends AbstractController
      
         if ($form->isSubmitted() && $form->isValid()) {
             $tournament = $form->getData();
-
             $tournament->setDate(new DateTime());
+
+            $pokemon = $form['pokemon1']->getData();
+            if ($pokemon) {
+                $tournament->addPokemon($pokemon);
+            }
+            $pokemon = $form['pokemon2']->getData();
+            if ($pokemon) {
+                $tournament->addPokemon($pokemon);
+            }
+            $pokemon = $form['pokemon3']->getData();
+            if ($pokemon) {
+                $tournament->addPokemon($pokemon);
+            }
+            $pokemon = $form['pokemon4']->getData();
+            if ($pokemon) {
+                $tournament->addPokemon($pokemon);
+            }
+            $pokemon = $form['pokemon5']->getData();
+            if ($pokemon) {
+                $tournament->addPokemon($pokemon);
+            }
+            $pokemon = $form['pokemon6']->getData();
+            if ($pokemon) {
+                $tournament->addPokemon($pokemon);
+            }
+            $pokemon = $form['pokemon7']->getData();
+            if ($pokemon) {
+                $tournament->addPokemon($pokemon);
+            }
+            $pokemon = $form['pokemon8']->getData();
+            if ($pokemon) {
+                $tournament->addPokemon($pokemon);
+            }
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($tournament);

@@ -48,6 +48,8 @@ class AppFixtures extends Fixture
             $array = json_decode($pokemon, true);
             $apiId = $array['id'];
             $pokemonObject->setApiId($apiId);
+            $image=$array['sprites']['front_default'];
+            $pokemonObject->setImage($image);
 
             $manager->persist($pokemonObject);
             $manager->flush();
