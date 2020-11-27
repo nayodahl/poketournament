@@ -42,36 +42,52 @@ class TournamentType extends AbstractType
             ])
             */
             ->add('pokemon1', PokemonSelectTextType::class, [
+                'label' => false,
                 'mapped' => false,
                 'required' => true,
+                'attr' => ['class' => 'js-pokemon-autocomplete'],
             ])
             ->add('pokemon2', PokemonSelectTextType::class, [
+                'label' => false,
                 'mapped' => false,
                 'required' => true,
+                'attr' => ['class' => 'js-pokemon-autocomplete'],
             ])
             ->add('pokemon3', PokemonSelectTextType::class, [
+                'label' => false,
                 'mapped' => false,
                 'required' => true,
+                'attr' => ['class' => 'js-pokemon-autocomplete'],
             ])
             ->add('pokemon4', PokemonSelectTextType::class, [
+                'label' => false,
                 'mapped' => false,
                 'required' => true,
+                'attr' => ['class' => 'js-pokemon-autocomplete'],
             ])
             ->add('pokemon5', PokemonSelectTextType::class, [
+                'label' => false,
                 'mapped' => false,
                 'required' => true,
+                'attr' => ['class' => 'js-pokemon-autocomplete'],
             ])
             ->add('pokemon6', PokemonSelectTextType::class, [
+                'label' => false,
                 'mapped' => false,
                 'required' => true,
+                'attr' => ['class' => 'js-pokemon-autocomplete'],
             ])
             ->add('pokemon7', PokemonSelectTextType::class, [
+                'label' => false,
                 'mapped' => false,
                 'required' => true,
+                'attr' => ['class' => 'js-pokemon-autocomplete'],
             ])
             ->add('pokemon8', PokemonSelectTextType::class, [
+                'label' => false,
                 'mapped' => false,
                 'required' => true,
+                'attr' => ['class' => 'js-pokemon-autocomplete'],
             ])
             ;
     }

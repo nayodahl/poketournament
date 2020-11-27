@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=PokemonRepository::class)
@@ -23,6 +24,7 @@ class Pokemon
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull(message="Merci d'entrer un nom")
+     * @Groups({"list_pokemon"})
      */
     private $name;
 
