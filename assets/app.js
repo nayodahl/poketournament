@@ -20,16 +20,21 @@ import autocomplete from 'autocomplete.js';
 console.log('Hello Webpack Encore! Edit me in assets/app.js');
 
 $(document).ready(function() {
-    $('.js-pokemon-autocomplete').autocomplete({hint: false}, [
-        {
-            source: function(query, cb) {
-                cb([
-                    {value: 'foo'},
-                    {value: 'bar'}
-                ])
+    $('.js-pokemon-autocomplete').each(function() {
+        var autocompleteUrl = $(this).data('autocomplete-url');
+
+        $(this).autocomplete({hint: false}, [
+            {
+                source: function(query, cb) {
+                    $.ajax({
+                        url: autocompleteUrl+'?query='+query
+                    }).then(function(data) {
+                        cb(data.pokemons);
+                    });
+                },
+                displayKey: 'name',
+                debounce: 100 // only request every 100ms
             }
-        }
-    ]);
+        ])
+    });
 });
-
-

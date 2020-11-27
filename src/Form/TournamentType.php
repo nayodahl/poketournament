@@ -2,20 +2,23 @@
 
 namespace App\Form;
 
-use App\Entity\Pokemon;
 use App\Entity\Tournament;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\EntityRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Routing\RouterInterface;
 
 class TournamentType extends AbstractType
 {
+    private $router;
+
+    public function __construct(RouterInterface $router)
+    {
+        $this->router = $router;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -45,50 +48,67 @@ class TournamentType extends AbstractType
                 'label' => false,
                 'mapped' => false,
                 'required' => true,
-                'attr' => ['class' => 'js-pokemon-autocomplete'],
+                'attr' => [
+                    'class' => 'js-pokemon-autocomplete',
+                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                ],
             ])
             ->add('pokemon2', PokemonSelectTextType::class, [
                 'label' => false,
                 'mapped' => false,
                 'required' => true,
-                'attr' => ['class' => 'js-pokemon-autocomplete'],
-            ])
+                'attr' => [
+                    'class' => 'js-pokemon-autocomplete',
+                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                ],            ])
             ->add('pokemon3', PokemonSelectTextType::class, [
                 'label' => false,
                 'mapped' => false,
                 'required' => true,
-                'attr' => ['class' => 'js-pokemon-autocomplete'],
-            ])
+                'attr' => [
+                    'class' => 'js-pokemon-autocomplete',
+                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                ],            ])
             ->add('pokemon4', PokemonSelectTextType::class, [
                 'label' => false,
                 'mapped' => false,
                 'required' => true,
-                'attr' => ['class' => 'js-pokemon-autocomplete'],
-            ])
+                'attr' => [
+                    'class' => 'js-pokemon-autocomplete',
+                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                ],            ])
             ->add('pokemon5', PokemonSelectTextType::class, [
                 'label' => false,
                 'mapped' => false,
                 'required' => true,
-                'attr' => ['class' => 'js-pokemon-autocomplete'],
-            ])
+                'attr' => [
+                    'class' => 'js-pokemon-autocomplete',
+                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                ],            ])
             ->add('pokemon6', PokemonSelectTextType::class, [
                 'label' => false,
                 'mapped' => false,
                 'required' => true,
-                'attr' => ['class' => 'js-pokemon-autocomplete'],
-            ])
+                'attr' => [
+                    'class' => 'js-pokemon-autocomplete',
+                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                ],            ])
             ->add('pokemon7', PokemonSelectTextType::class, [
                 'label' => false,
                 'mapped' => false,
                 'required' => true,
-                'attr' => ['class' => 'js-pokemon-autocomplete'],
-            ])
+                'attr' => [
+                    'class' => 'js-pokemon-autocomplete',
+                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                ],            ])
             ->add('pokemon8', PokemonSelectTextType::class, [
                 'label' => false,
                 'mapped' => false,
                 'required' => true,
-                'attr' => ['class' => 'js-pokemon-autocomplete'],
-            ])
+                'attr' => [
+                    'class' => 'js-pokemon-autocomplete',
+                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                ],            ])
             ;
     }
 
