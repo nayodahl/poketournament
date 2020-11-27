@@ -9,7 +9,8 @@ use PokePHP\PokeApi;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class Populator
-{       
+{
+
     private $client;
     private $em;
 
@@ -31,13 +32,13 @@ class Populator
         $array=json_decode($content, true);
         $arrayResult=$array['results'];
 
-        foreach($arrayResult as $key){
+        foreach ($arrayResult as $key) {
             $pokemonObject = new Pokemon();
 
             $pokemon = $api->pokemonSpecies($key['name']);
             $array = json_decode($pokemon, true);
             $colorName = $array['color']['name'];
-            $color = $api->pokemonColor( $colorName);
+            $color = $api->pokemonColor($colorName);
             $arrayColor = json_decode($color, true);
             $colorFr = $arrayColor['names'][1]['name'];
             $nameFr = $array['names'][4]['name'];
@@ -48,6 +49,6 @@ class Populator
             $entityManager = $this->em;
             $entityManager->persist($pokemonObject);
             $entityManager->flush();
-        }        
+        }
     }
 }

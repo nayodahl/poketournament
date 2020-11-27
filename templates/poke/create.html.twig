@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
+
 {% block title %}Grand Tournoi Pokémon{% endblock %}
 
 {% block body %}
@@ -13,7 +18,15 @@
                             {{ form_row(tournamentForm.numberPokemons) }}
                             <hr>
                             <p>Choisis les Pokémons qui participeront : </p>
-                            {{ form_row(tournamentForm.pokemons) }}
+                            {{ form_row(tournamentForm.pokemon1) }}
+                            {{ form_row(tournamentForm.pokemon2) }}
+                            {{ form_row(tournamentForm.pokemon3) }}
+                            {{ form_row(tournamentForm.pokemon4) }}
+                            {{ form_row(tournamentForm.pokemon5) }}
+                            {{ form_row(tournamentForm.pokemon6) }}
+                            {{ form_row(tournamentForm.pokemon7) }}
+                            {{ form_row(tournamentForm.pokemon8) }}
+                            
                             <hr>
                             <a class="btn btn-primary" href="{{ path('app_homepage') }}">Annuler</a>
                             <button type="submit" class="btn btn-primary pull-right">Enregistrer</button>
@@ -23,4 +36,9 @@
             </div>
         </section>    
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('app') }}
 {% endblock %}
