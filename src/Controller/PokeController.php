@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\TournamentType;
 use App\Repository\TournamentRepository;
+use App\Service\Initializor;
 use App\Service\Populator;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,7 +32,7 @@ class PokeController extends AbstractController
     /**
      * @Route("/create", name="app_create")
      */
-    public function tournamentCreate(Request $request): Response
+    public function tournamentCreate(Request $request, Initializor $initializor): Response
     {
         $form = $this->createForm(TournamentType::class);
 
@@ -75,12 +76,13 @@ class PokeController extends AbstractController
                 $tournament->addPokemon($pokemon);
             }
 
+            $initializor->initTournament($tournament);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($tournament);
             $em->flush();
 
             $this->addFlash('success', 'Tournoi sauvegardé');
-
             return $this->redirectToRoute('app_homepage');
         }
 
@@ -92,12 +94,14 @@ class PokeController extends AbstractController
     /**
      * @Route("/populate", name="app_populate")
      */
+    /*
     public function loadDataFromPokeapi(Populator $populator): Response
     {
-        $populator->populate();
+        $populator->populateColorAndImage();
         
         return $this->redirectToRoute('app_homepage');
     }
+    */
 
     /**
      * @Route("/tournoi", name="app_view")

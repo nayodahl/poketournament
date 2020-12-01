@@ -39,9 +39,15 @@ class Tournament
      */
     private $Pokemons;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Game::class, mappedBy="tournament", orphanRemoval=true)
+     */
+    private $games;
+
     public function __construct()
     {
         $this->Pokemons = new ArrayCollection();
+        $this->games = new ArrayCollection();
     }
 
 
@@ -106,6 +112,36 @@ class Tournament
     public function removePokemon(Pokemon $pokemon): self
     {
         $this->Pokemons->removeElement($pokemon);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Game[]
+     */
+    public function getGames(): Collection
+    {
+        return $this->games;
+    }
+
+    public function addGame(Game $game): self
+    {
+        if (!$this->games->contains($game)) {
+            $this->games[] = $game;
+            $game->setTournament($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGame(Game $game): self
+    {
+        if ($this->games->removeElement($game)) {
+            // set the owning side to null (unless already changed)
+            if ($game->getTournament() === $this) {
+                $game->setTournament(null);
+            }
+        }
 
         return $this;
     }

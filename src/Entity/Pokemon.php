@@ -50,9 +50,15 @@ class Pokemon
      */
     private $tournaments;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Game::class, mappedBy="Pokemon")
+     */
+    private $games;
+
     public function __construct()
     {
         $this->tournaments = new ArrayCollection();
+        $this->games = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -130,6 +136,33 @@ class Pokemon
     {
         if ($this->tournaments->removeElement($tournament)) {
             $tournament->removePokemon($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Game[]
+     */
+    public function getGames(): Collection
+    {
+        return $this->games;
+    }
+
+    public function addGame(Game $game): self
+    {
+        if (!$this->games->contains($game)) {
+            $this->games[] = $game;
+            $game->addPokemon($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGame(Game $game): self
+    {
+        if ($this->games->removeElement($game)) {
+            $game->removePokemon($this);
         }
 
         return $this;

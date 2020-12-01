@@ -3,9 +3,8 @@
 namespace App\Service;
 
 use App\Entity\Pokemon;
+use App\Repository\PokemonRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use PokePHP\PokeApi;
-
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class Populator
@@ -13,11 +12,13 @@ class Populator
 
     private $client;
     private $em;
+    private $pokemonRepo;
 
-    public function __construct(HttpClientInterface $client, EntityManagerInterface $em)
+    public function __construct(HttpClientInterface $client, EntityManagerInterface $em, PokemonRepository $pokemonRepo)
     {
         $this->client = $client;
         $this->em = $em;
+        $this->pokemonRepo = $pokemonRepo;
     }
 
     public function populate()
@@ -67,45 +68,47 @@ class Populator
             $this->em->persist($pokemonObject);
             $this->em->flush();
         }
-        
-        /*
-        $response = $this->client->request(
-            'GET',
-            'https://pokeapi.co/api/v2/pokemon?offset=500&limit=1'
-        );
-        $content = $response->getContent();
-        $array=json_decode($content, true);
-        $arrayResult=$array['results'];
+    }
 
-        foreach ($arrayResult as $key) {
-            $pokemonObject = new Pokemon();
+    public function populateColorAndImage()
+    {
+        for ($i = 808; $i <= 898; $i++) {
+            $pokemonObject = $this->pokemonRepo->findOneBy(['apiId' => $i]);
+            
+            // Image
+            $response = $this->client->request(
+                'GET',
+                'https://pokeapi.co/api/v2/pokemon/'.$i
+            );
+            $content = $response->getContent();
+            $array=json_decode($content, true);    
 
-            $pokemonSpecies = $api->pokemonSpecies($key['name']);
-            $array = json_decode($pokemonSpecies, true);
+            $image=$array['sprites']['front_default'];
+            $pokemonObject->setImage($image);
 
-            if (isset($array['color']['name'])){
-                $colorName = $array['color']['name'];
-                $pokemonColor = $api->pokemonColor($colorName);
-                $arrayColor = json_decode($pokemonColor, true);
+            // Name
+            $response = $this->client->request(
+                'GET',
+                'https://pokeapi.co/api/v2/pokemon-species/'.$i
+            );
+            $content = $response->getContent();
+            $array=json_decode($content, true);
+
+            // Color
+            if (isset($array['color'])){
+                $colorUrl = $array['color']['url'];
+                $response = $this->client->request(
+                    'GET',
+                    $colorUrl
+                );
+                $content = $response->getContent();
+                $arrayColor=json_decode($content, true);
                 $colorFr = $arrayColor['names'][1]['name'];
-                $pokemonObject->setColor($colorFr); 
+                $pokemonObject->setColor($colorFr);
             }
 
-            if (isset($array['names'][4]['name'])){
-                $nameFr = $array['names'][4]['name'];
-                $pokemonObject->setName($nameFr);
-
-                $pokemon = $api->pokemon($key['name']);
-                $array = json_decode($pokemon, true);
-                $apiId = $array['id'];
-                $pokemonObject->setApiId($apiId);
-                $image=$array['sprites']['front_default'];
-                $pokemonObject->setImage($image);
-    
-                $this->em->persist($pokemonObject);
-                $this->em->flush();
-            }
+            $this->em->persist($pokemonObject);
+            $this->em->flush();
         }
-        */
     }
 }

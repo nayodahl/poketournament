@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mar. 01 déc. 2020 à 15:44
+-- Généré le : mar. 01 déc. 2020 à 21:45
 -- Version du serveur :  10.3.25-MariaDB-0ubuntu0.20.04.1
 -- Version de PHP : 7.4.12
 
@@ -848,7 +848,99 @@ INSERT INTO `pokemon` (`id`, `name`, `color`, `api_id`, `image`) VALUES
 (3731, 'Ama-Ama', 'Gris', 805, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/805.png'),
 (3732, 'Pierroteknik', 'Blanc', 806, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/806.png'),
 (3733, 'Zeraora', 'Jaune', 807, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/807.png'),
-(3734, 'Necrozma', 'Noir', 800, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/800.png');
+(3734, 'Necrozma', 'Noir', 800, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/800.png'),
+(3735, 'Meltan', 'Gris', 808, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/808.png'),
+(3736, 'Melmetal', 'Gris', 809, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/809.png'),
+(3737, 'Ouistempo', 'Vert', 810, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/810.png'),
+(3738, 'Badabouin', 'Vert', 811, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/811.png'),
+(3739, 'Gorythmic', 'Vert', 812, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/812.png'),
+(3740, 'Flambino', 'Blanc', 813, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/813.png'),
+(3741, 'Lapyro', 'Gris', 814, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/814.png'),
+(3742, 'Pyrobut', 'Blanc', 815, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/815.png'),
+(3743, 'Larméléon', 'Bleu', 816, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/816.png'),
+(3744, 'Arrozard', 'Bleu', 817, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/817.png'),
+(3745, 'Lézargus', 'Bleu', 818, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/818.png'),
+(3746, 'Rongourmand', 'Brun', 819, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/819.png'),
+(3747, 'Rongrigou', 'Brun', 820, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/820.png'),
+(3748, 'Minisange', 'Bleu', 821, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/821.png'),
+(3749, 'Bleuseille', 'Bleu', 822, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/822.png'),
+(3750, 'Corvaillus', 'Violet', 823, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/823.png'),
+(3751, 'Larvadar', 'Bleu', 824, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/824.png'),
+(3752, 'Coléodôme', 'Jaune', 825, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/825.png'),
+(3753, 'Astronelle', 'Rouge', 826, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/826.png'),
+(3754, 'Goupilou', 'Brun', 827, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/827.png'),
+(3755, 'Roublenard', 'Brun', 828, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/828.png'),
+(3756, 'Tournicoton', 'Vert', 829, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/829.png'),
+(3757, 'Blancoton', 'Vert', 830, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/830.png'),
+(3758, 'Moumouton', 'Blanc', 831, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/831.png'),
+(3759, 'Moumouflon', 'Blanc', 832, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/832.png'),
+(3760, 'Khélocrok', 'Vert', 833, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/833.png'),
+(3761, 'Torgamord', 'Vert', 834, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/834.png'),
+(3762, 'Voltoutou', 'Jaune', 835, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/835.png'),
+(3763, 'Fulgudog', 'Jaune', 836, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/836.png'),
+(3764, 'Charbi', 'Noir', 837, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/837.png'),
+(3765, 'Wagomine', 'Noir', 838, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/838.png'),
+(3766, 'Monthracite', 'Noir', 839, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/839.png'),
+(3767, 'Verpom', 'Vert', 840, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/840.png'),
+(3768, 'Pomdrapi', 'Vert', 841, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/841.png'),
+(3769, 'Dratatin', 'Vert', 842, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/842.png'),
+(3770, 'Dunaja', 'Vert', 843, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/843.png'),
+(3771, 'Dunaconda', 'Vert', 844, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/844.png'),
+(3772, 'Nigosier', 'Bleu', 845, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/845.png'),
+(3773, 'Embrochet', 'Brun', 846, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/846.png'),
+(3774, 'Hastacuda', 'Brun', 847, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/847.png'),
+(3775, 'Toxizap', 'Violet', 848, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/848.png'),
+(3776, 'Salarsen', 'Violet', 849, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/849.png'),
+(3777, 'Grillepattes', 'Rouge', 850, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/850.png'),
+(3778, 'Scolocendre', 'Rouge', 851, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/851.png'),
+(3779, 'Poulpaf', 'Brun', 852, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/852.png'),
+(3780, 'Krakos', 'Bleu', 853, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/853.png'),
+(3781, 'Théffroi', 'Violet', 854, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/854.png'),
+(3782, 'Polthégeist', 'Violet', 855, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/855.png'),
+(3783, 'Bibichut', 'Rose', 856, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/856.png'),
+(3784, 'Chapotus', 'Rose', 857, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/857.png'),
+(3785, 'Sorcilence', 'Rose', 858, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/858.png'),
+(3786, 'Grimalin', 'Rose', 859, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/859.png'),
+(3787, 'Fourbelin', 'Rose', 860, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/860.png'),
+(3788, 'Angoliath', 'Violet', 861, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/861.png'),
+(3789, 'Ixon', 'Gris', 862, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/862.png'),
+(3790, 'Berserkatt', 'Brun', 863, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/863.png'),
+(3791, 'Corayôme', 'Blanc', 864, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/864.png'),
+(3792, 'Palarticho', 'Blanc', 865, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/865.png');
+INSERT INTO `pokemon` (`id`, `name`, `color`, `api_id`, `image`) VALUES
+(3793, 'M. Glaquette', 'Violet', 866, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/866.png'),
+(3794, 'Tutétékri', 'Gris', 867, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/867.png'),
+(3795, 'Crèmy', 'Blanc', 868, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/868.png'),
+(3796, 'Charmilly', 'Blanc', 869, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/869.png'),
+(3797, 'Hexadron', 'Jaune', 870, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/870.png'),
+(3798, 'Wattapik', 'Violet', 871, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/871.png'),
+(3799, 'Frissonille', 'Blanc', 872, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/872.png'),
+(3800, 'Beldeneige', 'Blanc', 873, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/873.png'),
+(3801, 'Dolman', 'Gris', 874, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/874.png'),
+(3802, 'Bekaglaçon', 'Bleu', 875, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/875.png'),
+(3803, 'Wimessir', 'Violet', 876, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/876.png'),
+(3804, 'Morpeko', 'Jaune', 877, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/877.png'),
+(3805, 'Charibari', 'Jaune', 878, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/878.png'),
+(3806, 'Pachyradjah', 'Vert', 879, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/879.png'),
+(3807, 'Galvagon', 'Vert', 880, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/880.png'),
+(3808, 'Galvagla', 'Bleu', 881, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/881.png'),
+(3809, 'Hydragon', 'Vert', 882, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/882.png'),
+(3810, 'Hydragla', 'Bleu', 883, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/883.png'),
+(3811, 'Duralugon', 'Blanc', 884, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/884.png'),
+(3812, 'Fantyrm', 'Vert', 885, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/885.png'),
+(3813, 'Dispareptil', 'Vert', 886, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/886.png'),
+(3814, 'Lanssorien', 'Vert', 887, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/887.png'),
+(3815, 'Zacian', 'Bleu', 888, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/888.png'),
+(3816, 'Zamazenta', 'Rouge', 889, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/889.png'),
+(3817, 'Éthernatos', 'Violet', 890, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/890.png'),
+(3818, 'Wushours', 'Gris', 891, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/891.png'),
+(3819, 'Shifours', 'Gris', 892, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/892.png'),
+(3820, 'Zarude', 'Vert', 893, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/893.png'),
+(3821, 'Regieleki', 'Jaune', 894, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/894.png'),
+(3822, 'Regidrago', 'Vert', 895, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/895.png'),
+(3823, 'Blizzeval', 'Blanc', 896, NULL),
+(3824, 'Spectreval', 'Noir', 897, NULL),
+(3825, 'Sylveroy', 'Vert', 898, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/898.png');
 
 --
 -- Index pour les tables déchargées
@@ -868,7 +960,7 @@ ALTER TABLE `pokemon`
 -- AUTO_INCREMENT pour la table `pokemon`
 --
 ALTER TABLE `pokemon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3735;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4008;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
