@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\TournamentType;
 use App\Repository\TournamentRepository;
+use App\Service\Populator;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -86,6 +87,16 @@ class PokeController extends AbstractController
         return $this->render('poke/create.html.twig', [
             'tournamentForm' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/populate", name="app_populate")
+     */
+    public function loadDataFromPokeapi(Populator $populator): Response
+    {
+        $populator->populate();
+        
+        return $this->redirectToRoute('app_homepage');
     }
 
     /**
