@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Tournament;
 use App\Form\TournamentType;
 use App\Repository\TournamentRepository;
 use App\Service\Initializor;
@@ -19,9 +20,7 @@ class PokeController extends AbstractController
      * @Route("/", name="app_homepage")
      */
     public function index(TournamentRepository $tournamentRepo): Response
-    {
-        //sleep(5);
-        
+    {       
         $response = $this->render('poke/index.html.twig', [
             'tournament' => $tournamentRepo->findLatest(),
         ]);
@@ -106,10 +105,12 @@ class PokeController extends AbstractController
     /**
      * @Route("/tournoi", name="app_view")
      */
-    public function tournamentView(): Response
-    {
+    public function tournamentView(TournamentRepository $tournamentRepo): Response
+    {       
+        $latest = $tournamentRepo->findLatest();
+        // dump($latest);
         return $this->render('poke/tournament.html.twig', [
-            'controller_name' => 'PokeController',
+            'tournament' => $latest,
         ]);
     }
 }

@@ -36,13 +36,13 @@ class Game
     private $loser;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Pokemon::class)
+     * @ORM\ManyToOne(targetEntity=Pokemon::class, fetch="EAGER")
      * @ORM\JoinColumn(nullable=true)
      */
     private $player1;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Pokemon::class)
+     * @ORM\ManyToOne(targetEntity=Pokemon::class, fetch="EAGER")
      * @ORM\JoinColumn(nullable=true)
      */
     private $player2;

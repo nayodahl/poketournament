@@ -45,16 +45,6 @@ class Pokemon
      */
     private $image;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Tournament::class, mappedBy="Pokemons")
-     */
-    private $tournaments;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Game::class, mappedBy="Pokemon")
-     */
-    private $games;
-
     public function __construct()
     {
         $this->tournaments = new ArrayCollection();
@@ -110,60 +100,6 @@ class Pokemon
     public function setImage(?string $image): self
     {
         $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Tournament[]
-     */
-    public function getTournaments(): Collection
-    {
-        return $this->tournaments;
-    }
-
-    public function addTournament(Tournament $tournament): self
-    {
-        if (!$this->tournaments->contains($tournament)) {
-            $this->tournaments[] = $tournament;
-            $tournament->addPokemon($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTournament(Tournament $tournament): self
-    {
-        if ($this->tournaments->removeElement($tournament)) {
-            $tournament->removePokemon($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Game[]
-     */
-    public function getGames(): Collection
-    {
-        return $this->games;
-    }
-
-    public function addGame(Game $game): self
-    {
-        if (!$this->games->contains($game)) {
-            $this->games[] = $game;
-            $game->addPokemon($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGame(Game $game): self
-    {
-        if ($this->games->removeElement($game)) {
-            $game->removePokemon($this);
-        }
 
         return $this;
     }

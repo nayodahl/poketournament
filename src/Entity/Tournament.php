@@ -35,7 +35,7 @@ class Tournament
     private $numberPokemons;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Pokemon::class, inversedBy="tournaments")
+     * @ORM\ManyToMany(targetEntity=Pokemon::class)
      */
     private $Pokemons;
 

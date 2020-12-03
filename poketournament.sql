@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mar. 01 déc. 2020 à 21:45
+-- Généré le : jeu. 03 déc. 2020 à 10:01
 -- Version du serveur :  10.3.25-MariaDB-0ubuntu0.20.04.1
 -- Version de PHP : 7.4.12
 
@@ -21,6 +21,65 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `poketournament`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `doctrine_migration_versions`
+--
+
+CREATE TABLE `doctrine_migration_versions` (
+  `version` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `executed_at` datetime DEFAULT NULL,
+  `execution_time` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `doctrine_migration_versions`
+--
+
+INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
+('DoctrineMigrations\\Version20201121101709', '2020-11-21 11:17:25', 33),
+('DoctrineMigrations\\Version20201121101942', '2020-11-21 11:19:57', 33),
+('DoctrineMigrations\\Version20201122133801', '2020-11-23 10:06:16', 125),
+('DoctrineMigrations\\Version20201201135852', '2020-12-01 14:59:27', 63),
+('DoctrineMigrations\\Version20201201220749', '2020-12-01 23:08:21', 237),
+('DoctrineMigrations\\Version20201201221137', '2020-12-01 23:12:15', 79),
+('DoctrineMigrations\\Version20201201224555', '2020-12-01 23:46:46', 52);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `game`
+--
+
+CREATE TABLE `game` (
+  `id` int(11) NOT NULL,
+  `winner_id` int(11) DEFAULT NULL,
+  `loser_id` int(11) DEFAULT NULL,
+  `player1_id` int(11) DEFAULT NULL,
+  `player2_id` int(11) DEFAULT NULL,
+  `number` int(11) NOT NULL,
+  `score_player1` int(11) DEFAULT NULL,
+  `score_player2` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `tournament_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `game`
+--
+
+INSERT INTO `game` (`id`, `winner_id`, `loser_id`, `player1_id`, `player2_id`, `number`, `score_player1`, `score_player2`, `created_at`, `updated_at`, `tournament_id`) VALUES
+(1, NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-12-01 23:46:52', NULL, 13),
+(2, NULL, NULL, NULL, NULL, 2, NULL, NULL, '2020-12-01 23:46:52', NULL, 13),
+(3, NULL, NULL, NULL, NULL, 3, NULL, NULL, '2020-12-01 23:46:52', NULL, 13),
+(4, NULL, NULL, NULL, NULL, 4, NULL, NULL, '2020-12-01 23:46:52', NULL, 13),
+(5, NULL, NULL, NULL, NULL, 5, NULL, NULL, '2020-12-01 23:46:52', NULL, 13),
+(6, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2020-12-01 23:46:52', NULL, 13),
+(7, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2020-12-01 23:46:52', NULL, 13),
+(8, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2020-12-01 23:46:52', NULL, 13);
 
 -- --------------------------------------------------------
 
@@ -942,9 +1001,91 @@ INSERT INTO `pokemon` (`id`, `name`, `color`, `api_id`, `image`) VALUES
 (3824, 'Spectreval', 'Noir', 897, NULL),
 (3825, 'Sylveroy', 'Vert', 898, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/898.png');
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `tournament`
+--
+
+CREATE TABLE `tournament` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` datetime DEFAULT NULL,
+  `number_pokemons` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `tournament`
+--
+
+INSERT INTO `tournament` (`id`, `name`, `date`, `number_pokemons`) VALUES
+(8, 'test', '2020-12-01 11:35:00', 8),
+(9, 'Test du mardi', '2020-12-01 14:45:44', 8),
+(10, 'test', '2020-12-01 15:46:30', 8),
+(13, 'tretrt', '2020-12-01 23:46:52', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `tournament_pokemon`
+--
+
+CREATE TABLE `tournament_pokemon` (
+  `tournament_id` int(11) NOT NULL,
+  `pokemon_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `tournament_pokemon`
+--
+
+INSERT INTO `tournament_pokemon` (`tournament_id`, `pokemon_id`) VALUES
+(8, 2457),
+(9, 2685),
+(9, 3084),
+(9, 3105),
+(9, 3112),
+(9, 3117),
+(9, 3422),
+(9, 3424),
+(9, 3425),
+(10, 3725),
+(10, 3726),
+(10, 3729),
+(10, 3730),
+(10, 3731),
+(10, 3732),
+(10, 3733),
+(10, 3734),
+(13, 2481),
+(13, 2521),
+(13, 2557),
+(13, 2685),
+(13, 2985),
+(13, 3041),
+(13, 3677),
+(13, 3738);
+
 --
 -- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `doctrine_migration_versions`
+--
+ALTER TABLE `doctrine_migration_versions`
+  ADD PRIMARY KEY (`version`);
+
+--
+-- Index pour la table `game`
+--
+ALTER TABLE `game`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_232B318C5DFCD4B8` (`winner_id`),
+  ADD KEY `IDX_232B318C1BCAA5F6` (`loser_id`),
+  ADD KEY `IDX_232B318CC0990423` (`player1_id`),
+  ADD KEY `IDX_232B318CD22CABCD` (`player2_id`),
+  ADD KEY `IDX_232B318C33D1A3E7` (`tournament_id`);
 
 --
 -- Index pour la table `pokemon`
@@ -953,14 +1094,61 @@ ALTER TABLE `pokemon`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `tournament`
+--
+ALTER TABLE `tournament`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `tournament_pokemon`
+--
+ALTER TABLE `tournament_pokemon`
+  ADD PRIMARY KEY (`tournament_id`,`pokemon_id`),
+  ADD KEY `IDX_9D36BF933D1A3E7` (`tournament_id`),
+  ADD KEY `IDX_9D36BF92FE71C3E` (`pokemon_id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
+
+--
+-- AUTO_INCREMENT pour la table `game`
+--
+ALTER TABLE `game`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `pokemon`
 --
 ALTER TABLE `pokemon`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4008;
+
+--
+-- AUTO_INCREMENT pour la table `tournament`
+--
+ALTER TABLE `tournament`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `game`
+--
+ALTER TABLE `game`
+  ADD CONSTRAINT `FK_232B318C1BCAA5F6` FOREIGN KEY (`loser_id`) REFERENCES `pokemon` (`id`),
+  ADD CONSTRAINT `FK_232B318C33D1A3E7` FOREIGN KEY (`tournament_id`) REFERENCES `tournament` (`id`),
+  ADD CONSTRAINT `FK_232B318C5DFCD4B8` FOREIGN KEY (`winner_id`) REFERENCES `pokemon` (`id`),
+  ADD CONSTRAINT `FK_232B318CC0990423` FOREIGN KEY (`player1_id`) REFERENCES `pokemon` (`id`),
+  ADD CONSTRAINT `FK_232B318CD22CABCD` FOREIGN KEY (`player2_id`) REFERENCES `pokemon` (`id`);
+
+--
+-- Contraintes pour la table `tournament_pokemon`
+--
+ALTER TABLE `tournament_pokemon`
+  ADD CONSTRAINT `FK_9D36BF92FE71C3E` FOREIGN KEY (`pokemon_id`) REFERENCES `pokemon` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_9D36BF933D1A3E7` FOREIGN KEY (`tournament_id`) REFERENCES `tournament` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

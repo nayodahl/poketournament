@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Grand Tournoi Pokémon{% endblock %}
+{% block title %}{{ tournament.name }}{% endblock %}
 
 {% block body %}
 <div class="container">
-  <h1>Grand Tournoi Pokémon</h1>
+  <h1>{{ tournament.name }}</h1>
   <hr>
   <h2>Tableau</h2>
   <div class="tournament-bracket tournament-bracket--rounded">                                                     
@@ -319,5 +319,20 @@
 
 
 <div class="container">
-<h2>Matchs</h2>
+  <h2>Matchs</h2>
+  {% for game in tournament.games %}
+    
+    <h3 class="tournament-bracket__round-title">Match {{ game.number }}</h3>
+    <ul class="tournament-bracket__list">
+
+        {% if game.player1 and game.player2 %}
+          {{ game.player1.name }} - {{ game.player2.name }}        
+        {% else %}
+           Vainqueur Match 1 - Vainqueur Match 2
+        {% endif %}
+        
+    </ul>    
+  {% endfor %}
+</div>
+
 {% endblock %}
