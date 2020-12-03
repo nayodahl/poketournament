@@ -9,13 +9,13 @@
   <h2>Tableau</h2>
   <div class="tournament-bracket tournament-bracket--rounded">                                                     
     <div class="tournament-bracket__round tournament-bracket__round--quarterfinals">
-      <h3 class="tournament-bracket__round-title">Quart de finale</h3>
+      <h3 class="tournament-bracket__round-title">Quarts de finale</h3>
       <ul class="tournament-bracket__list">
         <li class="tournament-bracket__item">
           <div class="tournament-bracket__match" tabindex="0">
             <table class="tournament-bracket__table">
               <caption class="tournament-bracket__caption">
-                <time datetime="1998-02-18">08 novembre 2020</time>
+                <time>{{ tournament.games[0].createdAt | date("d/m/Y") }}</time>
               </caption>
               <thead class="sr-only">
                 <tr>
@@ -26,20 +26,28 @@
               <tbody class="tournament-bracket__content">
                 <tr class="tournament-bracket__team tournament-bracket__team--winner">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Canada">Pikachu</abbr>
+                    <span class="tournament-bracket__code">{{ tournament.games[0].player1.name }}</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">4</span>
+                    {% if tournament.games[0].scorePlayer1 %}
+                      <span class="tournament-bracket__number">{{ tournament.games[0].scorePlayer1 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                   </td>
                 </tr>
                 <tr class="tournament-bracket__team">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Kazakhstan">Persian</abbr>
+                    <span class="tournament-bracket__code">{{ tournament.games[0].player2.name }}</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-kz" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">1</span>
+                    {% if tournament.games[0].scorePlayer2 %}
+                      <span class="tournament-bracket__number">{{ tournament.games[0].scorePlayer2 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                   </td>
                 </tr>
               </tbody>
@@ -51,7 +59,7 @@
           <div class="tournament-bracket__match" tabindex="0">
             <table class="tournament-bracket__table">
               <caption class="tournament-bracket__caption">
-                <time datetime="1998-02-18">08 novembre 2020</time>
+                <time>{{ tournament.games[1].createdAt | date("d/m/Y") }}</time>
               </caption>
               <thead class="sr-only">
                 <tr>
@@ -62,20 +70,28 @@
               <tbody class="tournament-bracket__content">
                 <tr class="tournament-bracket__team tournament-bracket__team--winner">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Czech Republic">Osselait</abbr>
+                    <span class="tournament-bracket__code">{{ tournament.games[1].player1.name }}</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-cz" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">4</span>
+                    {% if tournament.games[1].scorePlayer1 %}
+                      <span class="tournament-bracket__number">{{ tournament.games[1].scorePlayer1 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                   </td>
                 </tr>
                 <tr class="tournament-bracket__team">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Unitede states of America">Krabby</abbr>
+                    <span class="tournament-bracket__code">{{ tournament.games[1].player2.name }}</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-us" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">1</span>
+                    {% if tournament.games[1].scorePlayer2 %}
+                      <span class="tournament-bracket__number">{{ tournament.games[1].scorePlayer2 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                   </td>
                 </tr>
               </tbody>
@@ -86,7 +102,7 @@
           <div class="tournament-bracket__match" tabindex="0">
             <table class="tournament-bracket__table">
               <caption class="tournament-bracket__caption">
-                <time datetime="1998-02-18">18 February 1998</time>
+                <time>{{ tournament.games[2].createdAt | date("d/m/Y") }}</time>
               </caption>
               <thead class="sr-only">
                 <tr>
@@ -97,20 +113,28 @@
               <tbody class="tournament-bracket__content">
                 <tr class="tournament-bracket__team tournament-bracket__team--winner">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Finland">Charibari</abbr>
+                    <span class="tournament-bracket__code">{{ tournament.games[2].player1.name }}</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-fi" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">2</span>
+                    {% if tournament.games[2].scorePlayer1 %}
+                      <span class="tournament-bracket__number">{{ tournament.games[2].scorePlayer1 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                   </td>
                 </tr>
                 <tr class="tournament-bracket__team">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Sweden">Ponchien</abbr>
+                    <span class="tournament-bracket__code">{{ tournament.games[2].player2.name }}</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-se" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">1</span>
+                    {% if tournament.games[2].scorePlayer2 %}
+                      <span class="tournament-bracket__number">{{ tournament.games[2].scorePlayer2 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                   </td>
                 </tr>
               </tbody>
@@ -122,7 +146,7 @@
           <div class="tournament-bracket__match" tabindex="0">
             <table class="tournament-bracket__table">
               <caption class="tournament-bracket__caption">
-                <time datetime="1998-02-18">18 February 1998</time>
+                <time>{{ tournament.games[3].createdAt | date("d/m/Y") }}</time>
               </caption>
               <thead class="sr-only">
                 <tr>
@@ -133,20 +157,28 @@
               <tbody class="tournament-bracket__content">
                 <tr class="tournament-bracket__team tournament-bracket__team--winner">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Russia">Meltan</abbr>
+                    <span class="tournament-bracket__code">{{ tournament.games[3].player1.name }}</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-ru" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">4</span>
+                    {% if tournament.games[3].scorePlayer1 %}
+                      <span class="tournament-bracket__number">{{ tournament.games[3].scorePlayer1 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                   </td>
                 </tr>
                 <tr class="tournament-bracket__team">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Belarus">Nounourson</abbr>
+                    <span class="tournament-bracket__code">{{ tournament.games[3].player2.name }}</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-by" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">1</span>
+                    {% if tournament.games[3].scorePlayer2 %}
+                      <span class="tournament-bracket__number">{{ tournament.games[3].scorePlayer2 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                   </td>
                 </tr>
               </tbody>
@@ -156,13 +188,13 @@
       </ul>
     </div>
     <div class="tournament-bracket__round tournament-bracket__round--semifinals">
-      <h3 class="tournament-bracket__round-title">Semifinals</h3>
+      <h3 class="tournament-bracket__round-title">Demi-finales</h3>
       <ul class="tournament-bracket__list">
         <li class="tournament-bracket__item">
           <div class="tournament-bracket__match" tabindex="0">
             <table class="tournament-bracket__table">
               <caption class="tournament-bracket__caption">
-                <time datetime="1998-02-20">20 February 1998</time>
+                <time datetime="1997-02-20">20 February 1997</time>
               </caption>
               <thead class="sr-only">
                 <tr>
@@ -173,7 +205,7 @@
               <tbody class="tournament-bracket__content">
                 <tr class="tournament-bracket__team">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
+                    <span class="tournament-bracket__code" title="Canada">CAN</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
@@ -182,7 +214,7 @@
                 </tr>
                 <tr class="tournament-bracket__team tournament-bracket__team--winner">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Czech Republic">CZE</abbr>
+                    <span class="tournament-bracket__code" title="Czech Republic">CZE</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-cz" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
@@ -198,7 +230,7 @@
           <div class="tournament-bracket__match" tabindex="0">
             <table class="tournament-bracket__table">
               <caption class="tournament-bracket__caption">
-                <time datetime="1998-02-20">20 February 1998</time>
+                <time datetime="1997-02-20">20 February 1997</time>
               </caption>
               <thead class="sr-only">
                 <tr>
@@ -209,7 +241,7 @@
               <tbody class="tournament-bracket__content">
                 <tr class="tournament-bracket__team">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Finland">FIN</abbr>
+                    <span class="tournament-bracket__code" title="Finland">FIN</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-fi" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
@@ -218,11 +250,11 @@
                 </tr>
                 <tr class="tournament-bracket__team tournament-bracket__team--winner">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Russia">RUS</abbr>
+                    <span class="tournament-bracket__code" title="Russia">RUS</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-ru" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">7</span>
+                    <span class="tournament-bracket__number">6</span>
                   </td>
                 </tr>
               </tbody>
@@ -232,13 +264,13 @@
       </ul>
     </div>
     <div class="tournament-bracket__round tournament-bracket__round--bronze">
-      <h3 class="tournament-bracket__round-title">Bronze medal game</h3>
+      <h3 class="tournament-bracket__round-title">Match pour la troisième place</h3>
       <ul class="tournament-bracket__list">
         <li class="tournament-bracket__item">
           <div class="tournament-bracket__match" tabindex="0">
             <table class="tournament-bracket__table">
               <caption class="tournament-bracket__caption">
-                <time datetime="1998-02-21">21 February 1998</time>
+                <time datetime="1997-02-21">21 February 1997</time>
               </caption>
               <thead class="sr-only">
                 <tr>
@@ -249,7 +281,7 @@
               <tbody class="tournament-bracket__content">
                 <tr class="tournament-bracket__team tournament-bracket__team--winner">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Finland">FIN</abbr>
+                    <span class="tournament-bracket__code" title="Finland">FIN</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-fi" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
@@ -259,7 +291,7 @@
                 </tr>
                 <tr class="tournament-bracket__team">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
+                    <span class="tournament-bracket__code" title="Canada">CAN</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
@@ -273,13 +305,13 @@
       </ul>
     </div>
     <div class="tournament-bracket__round tournament-bracket__round--gold">
-      <h3 class="tournament-bracket__round-title">Gold medal game</h3>
+      <h3 class="tournament-bracket__round-title">Grande Finale</h3>
       <ul class="tournament-bracket__list">
         <li class="tournament-bracket__item">
           <div class="tournament-bracket__match" tabindex="0">
             <table class="tournament-bracket__table">
               <caption class="tournament-bracket__caption">
-                <time datetime="1998-02-22">22 February 1998</time>
+                <time datetime="1997-02-22">22 February 1997</time>
               </caption>
               <thead class="sr-only">
                 <tr>
@@ -290,7 +322,7 @@
               <tbody class="tournament-bracket__content">
                 <tr class="tournament-bracket__team tournament-bracket__team--winner">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Czech Republic">CZE</abbr>
+                    <span class="tournament-bracket__code" title="Czech Republic">CZE</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-cz" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
@@ -300,7 +332,7 @@
                 </tr>
                 <tr class="tournament-bracket__team">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Russia">RUS</abbr>
+                    <span class="tournament-bracket__code" title="Russia">RUS</span>
                     <span class="tournament-bracket__flag flag-icon flag-icon-ru" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
@@ -319,20 +351,78 @@
 
 
 <div class="container">
-  <h2>Matchs</h2>
-  {% for game in tournament.games %}
-    
-    <h3 class="tournament-bracket__round-title">Match {{ game.number }}</h3>
-    <ul class="tournament-bracket__list">
+  <h2>Matchs</h2>    
+    <hr>
+    <h3 class="tournament-bracket__round-title">Quarts de finale</h3>
+    <hr>
 
-        {% if game.player1 and game.player2 %}
-          {{ game.player1.name }} - {{ game.player2.name }}        
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[0].number }}</h3>
+    <ul class="tournament-bracket__list">
+          {{ tournament.games[0].player1.name }} - {{ tournament.games[0].player2.name }}        
+    </ul>   
+
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[1].number }}</h3>
+    <ul class="tournament-bracket__list">
+          {{ tournament.games[1].player1.name }} - {{ tournament.games[1].player2.name }}        
+    </ul> 
+
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[2].number }}</h3>
+    <ul class="tournament-bracket__list">
+          {{ tournament.games[2].player1.name }} - {{ tournament.games[2].player2.name }}        
+    </ul> 
+
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[3].number }}</h3>
+    <ul class="tournament-bracket__list">
+          {{ tournament.games[3].player1.name }} - {{ tournament.games[3].player2.name }}            
+    </ul> 
+
+    <hr>
+    <h3 class="tournament-bracket__round-title">Demi-finales</h3>
+    <hr>
+
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[4].number }}</h3>
+    <ul class="tournament-bracket__list">
+        {% if tournament.games[4].player1 and tournament.games[4].player2 %}
+          {{ tournament.games[4].player1.name }} - {{ tournament.games[4].player2.name }}        
         {% else %}
            Vainqueur Match 1 - Vainqueur Match 2
-        {% endif %}
-        
-    </ul>    
-  {% endfor %}
+        {% endif %}        
+    </ul>
+
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[5].number }}</h3>
+    <ul class="tournament-bracket__list">
+        {% if tournament.games[5].player1 and tournament.games[5].player2 %}
+          {{ tournament.games[5].player1.name }} - {{ tournament.games[5].player2.name }}        
+        {% else %}
+           Vainqueur Match 3 - Vainqueur Match 4
+        {% endif %}        
+    </ul>
+
+    <hr>
+    <h3 class="tournament-bracket__round-title">Match pour la troisième place</h3>
+    <hr>
+
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[6].number }}</h3>
+    <ul class="tournament-bracket__list">
+        {% if tournament.games[6].player1 and tournament.games[6].player2 %}
+          {{ tournament.games[6].player1.name }} - {{ tournament.games[6].player2.name }}        
+        {% else %}
+           Perdant Match 5 - Perdant Match 6
+        {% endif %}        
+    </ul>
+
+    <hr>
+    <h3 class="tournament-bracket__round-title">Grande Finale</h3>
+    <hr>
+
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[7].number }}</h3>
+    <ul class="tournament-bracket__list">
+        {% if tournament.games[7].player1 and tournament.games[7].player2 %}
+          {{ tournament.games[7].player1.name }} - {{ tournament.games[7].player2.name }}        
+        {% else %}
+           Vainqueur Match 5 - Vainqueur Match 6
+        {% endif %}        
+    </ul>
 </div>
 
 {% endblock %}
