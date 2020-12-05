@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Game;
 use App\Entity\Tournament;
+use App\Form\GameType;
 use App\Form\TournamentType;
+use App\Repository\GameRepository;
 use App\Repository\TournamentRepository;
 use App\Service\Initializor;
 use App\Service\Populator;
@@ -105,12 +108,51 @@ class PokeController extends AbstractController
     /**
      * @Route("/tournoi", name="app_view")
      */
-    public function tournamentView(TournamentRepository $tournamentRepo): Response
+    public function tournamentView(TournamentRepository $tournamentRepo, Request $request): Response
     {       
         $latest = $tournamentRepo->findLatest();
-        // dump($latest);
+
         return $this->render('poke/tournament.html.twig', [
-            'tournament' => $latest,
+            'tournament' => $latest
+        ]);
+    }
+
+    /**
+     * @Route("/game/{gameId}", name="app_edit_game", requirements={"trickId"="\d+"})
+     */
+    public function GameEdit(int $gameId, Request $request, GameRepository $gameRepo): Response
+    {       
+        $game = $gameRepo->find($gameId);
+        $form = $this->createForm(GameType::class, $game);
+
+        // handling comment form POST request if any
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $game = $form->getData();
+            $game->setUpdatedAt(new DateTime());
+            // set winner and loser
+            if ($game->getScorePlayer1() > $game->getScorePlayer2()){
+                $game->setWinner($game->getPlayer1());
+                $game->setLoser($game->getPlayer2());
+            }
+            if ($game->getScorePlayer1() < $game->getScorePlayer2()){
+                $game->setWinner($game->getPlayer2());
+                $game->setLoser($game->getPlayer1());
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($game);
+            $em->flush();
+
+            $this->addFlash('success', 'Match sauvegardé');
+
+            return $this->redirectToRoute('app_view');
+        }
+
+        return $this->render('poke/game.html.twig', [
+            'gameForm' => $form->createView(),
         ]);
     }
 }
