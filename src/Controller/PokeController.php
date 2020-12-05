@@ -153,6 +153,7 @@ class PokeController extends AbstractController
 
         return $this->render('poke/game.html.twig', [
             'gameForm' => $form->createView(),
+            'game' => $game,
         ]);
     }
 }

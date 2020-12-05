@@ -2,7 +2,6 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('create_form') }}
 {% endblock %}
 
 {% block title %}Grand Tournoi Pokémon{% endblock %}
@@ -13,12 +12,25 @@
             <div class="container section-inner">
                 <div class="row">
                     <div class="col-lg-10 mx-auto">
+
+                        <h3 class="tournament-bracket__round-title">Match {{ game.number }} </h3>
+                        <ul class="tournament-bracket__code tournament-bracket__country tournament-bracket__team tournament-bracket__team--winner">
+                            {{ game.player1.name }} - {{ game.player2.name }}    
+                        </ul>   
                         {{ form_start(gameForm) }}
-                            {{ form_row(gameForm.scorePlayer1) }}
-                            {{ form_row(gameForm.scorePlayer2) }}
+                            <p class="tournament-bracket__code  tournament-bracket__team">{{ game.player1.name }} :<p>
+                            {{ form_row(gameForm.scorePlayer1, {
+                                label: false,
+                            }) }}
+                            <br>
+                            <p class="tournament-bracket__code  tournament-bracket__team">{{ game.player2.name }} :<p>
+                            {{ form_row(gameForm.scorePlayer2, {
+                                label: false,
+                            }) }}
+
+                            <a class="btn btn-primary" href="{{ path('app_view') }}">Annuler</a>
+                            <button type="submit" class="btn btn-primary pull-right">Valider</button>
                         {{ form_end(gameForm) }} 
-                            
-                        <a class="btn btn-primary" href="{{ path('app_view') }}">Annuler</a>
                     </div>            
                 </div>
             </div>
@@ -28,5 +40,4 @@
 
 {% block javascripts %}
     {{ parent() }}
-    {{ encore_entry_script_tags('create_form') }}
 {% endblock %}

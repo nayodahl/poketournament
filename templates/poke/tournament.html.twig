@@ -356,23 +356,22 @@
     <h3 class="tournament-bracket__round-title">Quarts de finale</h3>
     <hr>
 
-    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[0].number }}</h3>
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[0].number }} <a href="{{ path('app_edit_game', {gameId: tournament.games[0].id }) }}" class="pull-right">Indiquer Score</a></h3>
     <ul class="tournament-bracket__code tournament-bracket__country tournament-bracket__team tournament-bracket__team--winner">
           {{ tournament.games[0].player1.name }} - {{ tournament.games[0].player2.name }}    
-          <a href="{{ path('app_edit_game', {gameId: tournament.games[0].id }) }}" class="btn btn-primary pull-right">Indiquer Score</a>                               
     </ul>   
 
-    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[1].number }}</h3>
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[1].number }} <a href="{{ path('app_edit_game', {gameId: tournament.games[1].id }) }}" class="pull-right">Indiquer Score</a></h3>
     <ul class="tournament-bracket__code tournament-bracket__country tournament-bracket__team tournament-bracket__team--winner">
           {{ tournament.games[1].player1.name }} - {{ tournament.games[1].player2.name }}        
     </ul> 
 
-    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[2].number }}</h3>
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[2].number }} <a href="{{ path('app_edit_game', {gameId: tournament.games[2].id }) }}" class="pull-right">Indiquer Score</a></h3>
     <ul class="tournament-bracket__code tournament-bracket__country tournament-bracket__team tournament-bracket__team--winner">
           {{ tournament.games[2].player1.name }} - {{ tournament.games[2].player2.name }}        
     </ul> 
 
-    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[3].number }}</h3>
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[3].number }} <a href="{{ path('app_edit_game', {gameId: tournament.games[3].id }) }}" class="pull-right">Indiquer Score</a></h3>
     <ul class="tournament-bracket__code tournament-bracket__country tournament-bracket__team tournament-bracket__team--winner">
           {{ tournament.games[3].player1.name }} - {{ tournament.games[3].player2.name }}            
     </ul> 
@@ -381,7 +380,7 @@
     <h3 class="tournament-bracket__round-title">Demi-finales</h3>
     <hr>
 
-    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[4].number }}</h3>
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[4].number }} <a href="{{ path('app_edit_game', {gameId: tournament.games[4].id }) }}" class="pull-right">Indiquer Score</a></h3>
     <ul class="tournament-bracket__code tournament-bracket__country tournament-bracket__team tournament-bracket__team--winner">
         {% if tournament.games[4].player1 and tournament.games[4].player2 %}
           {{ tournament.games[4].player1.name }} - {{ tournament.games[4].player2.name }}        
@@ -390,7 +389,7 @@
         {% endif %}        
     </ul>
 
-    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[5].number }}</h3>
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[5].number }} <a href="{{ path('app_edit_game', {gameId: tournament.games[5].id }) }}" class="pull-right">Indiquer Score</a></h3>
     <ul class="tournament-bracket__code tournament-bracket__country tournament-bracket__team tournament-bracket__team--winner">
         {% if tournament.games[5].player1 and tournament.games[5].player2 %}
           {{ tournament.games[5].player1.name }} - {{ tournament.games[5].player2.name }}        
@@ -403,7 +402,7 @@
     <h3 class="tournament-bracket__round-title">Match pour la troisième place</h3>
     <hr>
 
-    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[6].number }}</h3>
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[6].number }} <a href="{{ path('app_edit_game', {gameId: tournament.games[6].id }) }}" class="pull-right">Indiquer Score</a></h3>
     <ul class="tournament-bracket__code tournament-bracket__country tournament-bracket__team tournament-bracket__team--winner">
         {% if tournament.games[6].player1 and tournament.games[6].player2 %}
           {{ tournament.games[6].player1.name }} - {{ tournament.games[6].player2.name }}        
@@ -416,7 +415,7 @@
     <h3 class="tournament-bracket__round-title">Grande Finale</h3>
     <hr>
 
-    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[7].number }}</h3>
+    <h3 class="tournament-bracket__round-title">Match {{ tournament.games[7].number }} <a href="{{ path('app_edit_game', {gameId: tournament.games[7].id }) }}" class="pull-right">Indiquer Score</a></h3>
     <ul class="tournament-bracket__code tournament-bracket__country tournament-bracket__team tournament-bracket__team--winner">
         {% if tournament.games[7].player1 and tournament.games[7].player2 %}
           {{ tournament.games[7].player1.name }} - {{ tournament.games[7].player2.name }}        
