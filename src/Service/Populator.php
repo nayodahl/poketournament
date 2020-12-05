@@ -33,7 +33,7 @@ class Populator
                 'https://pokeapi.co/api/v2/pokemon/'.$i
             );
             $content = $response->getContent();
-            $array=json_decode($content, true);    
+            $array=json_decode($content, true);
 
             $image=$array['sprites']['front_default'];
             $pokemonObject->setImage($image);
@@ -48,7 +48,7 @@ class Populator
             $names=$array['names'];
             foreach ($names as $key) {
                 $languageName=$key['language']['name'];
-                if ($languageName === 'fr'){
+                if ($languageName === 'fr') {
                     $namefr=$key['name'];
                     $pokemonObject->setName($namefr);
                 }
@@ -81,7 +81,7 @@ class Populator
                 'https://pokeapi.co/api/v2/pokemon/'.$i
             );
             $content = $response->getContent();
-            $array=json_decode($content, true);    
+            $array=json_decode($content, true);
 
             $image=$array['sprites']['front_default'];
             $pokemonObject->setImage($image);
@@ -95,7 +95,7 @@ class Populator
             $array=json_decode($content, true);
 
             // Color
-            if (isset($array['color'])){
+            if (isset($array['color'])) {
                 $colorUrl = $array['color']['url'];
                 $response = $this->client->request(
                     'GET',

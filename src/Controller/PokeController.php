@@ -2,14 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\Game;
-use App\Entity\Tournament;
 use App\Form\GameType;
 use App\Form\TournamentType;
 use App\Repository\GameRepository;
 use App\Repository\TournamentRepository;
 use App\Service\Initializor;
-use App\Service\Populator;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +20,7 @@ class PokeController extends AbstractController
      * @Route("/", name="app_homepage")
      */
     public function index(TournamentRepository $tournamentRepo): Response
-    {       
+    {
         $response = $this->render('poke/index.html.twig', [
             'tournament' => $tournamentRepo->findLatest(),
         ]);
@@ -100,7 +97,7 @@ class PokeController extends AbstractController
     public function loadDataFromPokeapi(Populator $populator): Response
     {
         $populator->populateColorAndImage();
-        
+
         return $this->redirectToRoute('app_homepage');
     }
     */
@@ -108,9 +105,11 @@ class PokeController extends AbstractController
     /**
      * @Route("/tournoi", name="app_view")
      */
-    public function tournamentView(TournamentRepository $tournamentRepo, Request $request): Response
-    {       
+    public function tournamentView(TournamentRepository $tournamentRepo, Initializor $initializor): Response
+    {
         $latest = $tournamentRepo->findLatest();
+
+        $initializor->setSemi($latest);
 
         return $this->render('poke/tournament.html.twig', [
             'tournament' => $latest
@@ -120,8 +119,8 @@ class PokeController extends AbstractController
     /**
      * @Route("/game/{gameId}", name="app_edit_game", requirements={"trickId"="\d+"})
      */
-    public function GameEdit(int $gameId, Request $request, GameRepository $gameRepo): Response
-    {       
+    public function gameEdit(int $gameId, Request $request, GameRepository $gameRepo): Response
+    {
         $game = $gameRepo->find($gameId);
         $form = $this->createForm(GameType::class, $game);
 
@@ -129,15 +128,14 @@ class PokeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $game = $form->getData();
             $game->setUpdatedAt(new DateTime());
             // set winner and loser
-            if ($game->getScorePlayer1() > $game->getScorePlayer2()){
+            if ($game->getScorePlayer1() > $game->getScorePlayer2()) {
                 $game->setWinner($game->getPlayer1());
                 $game->setLoser($game->getPlayer2());
             }
-            if ($game->getScorePlayer1() < $game->getScorePlayer2()){
+            if ($game->getScorePlayer1() < $game->getScorePlayer2()) {
                 $game->setWinner($game->getPlayer2());
                 $game->setLoser($game->getPlayer1());
             }

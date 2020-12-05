@@ -30,7 +30,7 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[0].scorePlayer1 %}
+                    {% if tournament.games[0].scorePlayer1 is defined %}
                       <span class="tournament-bracket__number">{{ tournament.games[0].scorePlayer1 }}</span>
                     {% else %}
                       <span class="tournament-bracket__number">-</span>                      
@@ -43,7 +43,7 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-kz" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[0].scorePlayer2 %}
+                    {% if tournament.games[0].scorePlayer2 is defined %}
                       <span class="tournament-bracket__number">{{ tournament.games[0].scorePlayer2 }}</span>
                     {% else %}
                       <span class="tournament-bracket__number">-</span>                      
@@ -74,7 +74,7 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-cz" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[1].scorePlayer1 %}
+                    {% if tournament.games[1].scorePlayer1 is defined %}
                       <span class="tournament-bracket__number">{{ tournament.games[1].scorePlayer1 }}</span>
                     {% else %}
                       <span class="tournament-bracket__number">-</span>                      
@@ -87,7 +87,7 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-us" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[1].scorePlayer2 %}
+                    {% if tournament.games[1].scorePlayer2 is defined %}
                       <span class="tournament-bracket__number">{{ tournament.games[1].scorePlayer2 }}</span>
                     {% else %}
                       <span class="tournament-bracket__number">-</span>                      
@@ -117,7 +117,7 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-fi" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[2].scorePlayer1 %}
+                    {% if tournament.games[2].scorePlayer1 is defined %}
                       <span class="tournament-bracket__number">{{ tournament.games[2].scorePlayer1 }}</span>
                     {% else %}
                       <span class="tournament-bracket__number">-</span>                      
@@ -130,7 +130,7 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-se" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[2].scorePlayer2 %}
+                    {% if tournament.games[2].scorePlayer2 is defined %}
                       <span class="tournament-bracket__number">{{ tournament.games[2].scorePlayer2 }}</span>
                     {% else %}
                       <span class="tournament-bracket__number">-</span>                      
@@ -161,7 +161,7 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-ru" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[3].scorePlayer1 %}
+                    {% if tournament.games[3].scorePlayer1 is defined %}
                       <span class="tournament-bracket__number">{{ tournament.games[3].scorePlayer1 }}</span>
                     {% else %}
                       <span class="tournament-bracket__number">-</span>                      
@@ -174,7 +174,7 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-by" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[3].scorePlayer2 %}
+                    {% if tournament.games[3].scorePlayer2 is defined %}
                       <span class="tournament-bracket__number">{{ tournament.games[3].scorePlayer2 }}</span>
                     {% else %}
                       <span class="tournament-bracket__number">-</span>                      
