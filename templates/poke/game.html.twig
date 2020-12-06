@@ -11,12 +11,17 @@
         <section>
             <div class="container section-inner">
                 <div class="row">
-                    <div class="col-lg-10 mx-auto">
+                    <div class="col-lg-4 mx-auto">
 
                         <h3 class="tournament-bracket__round-title">Match {{ game.number }} </h3>
                         <ul class="tournament-bracket__code tournament-bracket__country tournament-bracket__team tournament-bracket__team--winner">
-                            {{ game.player1.name }} - {{ game.player2.name }}    
+                            {{ game.player1.name }} - {{ game.player2.name }}
                         </ul>   
+                        <div class="row justify-content-center">
+                            <img src='../../images/{{ game.player1.apiId }}.png' alt="photo du pokémon 1">
+                            <img src='../../images/{{ game.player2.apiId }}.png' alt="photo du pokémon 2">    
+                        </div>
+                        <hr>
                         {{ form_start(gameForm) }}
                             <p class="tournament-bracket__code  tournament-bracket__team">{{ game.player1.name }} :<p>
                             {{ form_row(gameForm.scorePlayer1, {
@@ -27,7 +32,7 @@
                             {{ form_row(gameForm.scorePlayer2, {
                                 label: false,
                             }) }}
-
+                            <br>
                             <a class="btn btn-primary" href="{{ path('app_view') }}">Annuler</a>
                             <button type="submit" class="btn btn-primary pull-right">Valider</button>
                         {{ form_end(gameForm) }} 

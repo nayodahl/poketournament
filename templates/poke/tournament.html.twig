@@ -5,6 +5,7 @@
 {% block body %}
 <div class="container">
   <h1>{{ tournament.name }}</h1>
+      <a href="{{ path('app_homepage') }}" class="btn btn-primary pull-left">Accueil</a>
   <hr>
   {% for message in app.flashes('success') %}
       <div class="alert alert-success alert-dismissible" role="alert">
@@ -19,7 +20,7 @@
       </div>    
   {% endfor %}
 
-  <h2>Tableau Test</h2>
+  <h2>Tableau</h2>
   <div class="tournament-bracket tournament-bracket--rounded">                                                     
     <div class="tournament-bracket__round tournament-bracket__round--quarterfinals">
       <h3 class="tournament-bracket__round-title">Quarts de finale</h3>
@@ -46,7 +47,7 @@
                     {% if tournament.games[0].scorePlayer1 is not null %}
                       <span class="tournament-bracket__number">{{ tournament.games[0].scorePlayer1 }}</span>
                     {% else %}
-                      <span class="tournament-bracket__number">--</span>                      
+                      <span class="tournament-bracket__number">-</span>                      
                     {% endif %}
                   </td>
                 </tr>
