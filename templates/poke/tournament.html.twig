@@ -30,10 +30,10 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[0].scorePlayer1 is defined %}
+                    {% if tournament.games[0].scorePlayer1 is not null %}
                       <span class="tournament-bracket__number">{{ tournament.games[0].scorePlayer1 }}</span>
                     {% else %}
-                      <span class="tournament-bracket__number">-</span>                      
+                      <span class="tournament-bracket__number">--</span>                      
                     {% endif %}
                   </td>
                 </tr>
@@ -43,7 +43,7 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-kz" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[0].scorePlayer2 is defined %}
+                    {% if tournament.games[0].scorePlayer2 is not null %}
                       <span class="tournament-bracket__number">{{ tournament.games[0].scorePlayer2 }}</span>
                     {% else %}
                       <span class="tournament-bracket__number">-</span>                      
@@ -74,7 +74,7 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-cz" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[1].scorePlayer1 is defined %}
+                    {% if tournament.games[1].scorePlayer1 is not null %}
                       <span class="tournament-bracket__number">{{ tournament.games[1].scorePlayer1 }}</span>
                     {% else %}
                       <span class="tournament-bracket__number">-</span>                      
@@ -87,7 +87,7 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-us" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[1].scorePlayer2 is defined %}
+                    {% if tournament.games[1].scorePlayer2 is not null %}
                       <span class="tournament-bracket__number">{{ tournament.games[1].scorePlayer2 }}</span>
                     {% else %}
                       <span class="tournament-bracket__number">-</span>                      
@@ -117,7 +117,7 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-fi" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[2].scorePlayer1 is defined %}
+                    {% if tournament.games[2].scorePlayer1 is not null %}
                       <span class="tournament-bracket__number">{{ tournament.games[2].scorePlayer1 }}</span>
                     {% else %}
                       <span class="tournament-bracket__number">-</span>                      
@@ -130,7 +130,7 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-se" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[2].scorePlayer2 is defined %}
+                    {% if tournament.games[2].scorePlayer2 is not null %}
                       <span class="tournament-bracket__number">{{ tournament.games[2].scorePlayer2 }}</span>
                     {% else %}
                       <span class="tournament-bracket__number">-</span>                      
@@ -161,7 +161,7 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-ru" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[3].scorePlayer1 is defined %}
+                    {% if tournament.games[3].scorePlayer1 is not null %}
                       <span class="tournament-bracket__number">{{ tournament.games[3].scorePlayer1 }}</span>
                     {% else %}
                       <span class="tournament-bracket__number">-</span>                      
@@ -174,7 +174,7 @@
                     <span class="tournament-bracket__flag flag-icon flag-icon-by" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    {% if tournament.games[3].scorePlayer2 is defined %}
+                    {% if tournament.games[3].scorePlayer2 is not null %}
                       <span class="tournament-bracket__number">{{ tournament.games[3].scorePlayer2 }}</span>
                     {% else %}
                       <span class="tournament-bracket__number">-</span>                      
@@ -194,7 +194,7 @@
           <div class="tournament-bracket__match" tabindex="0">
             <table class="tournament-bracket__table">
               <caption class="tournament-bracket__caption">
-                <time datetime="1997-02-20">20 February 1997</time>
+                <time>{{ tournament.games[3].createdAt | date("d/m/Y") }}</time>
               </caption>
               <thead class="sr-only">
                 <tr>
@@ -205,20 +205,36 @@
               <tbody class="tournament-bracket__content">
                 <tr class="tournament-bracket__team">
                   <td class="tournament-bracket__country">
-                    <span class="tournament-bracket__code" title="Canada">CAN</span>
+                    {% if tournament.games[4].player1.name is defined and tournament.games[4].player1.name is not null %}
+                      <span class="tournament-bracket__code">{{ tournament.games[4].player1.name }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__code">-</span>
+                    {% endif %}
                     <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">1</span>
+                    {% if tournament.games[4].scorePlayer1 is not null %}
+                      <span class="tournament-bracket__number">{{ tournament.games[4].scorePlayer1 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                   </td>
                 </tr>
                 <tr class="tournament-bracket__team tournament-bracket__team--winner">
                   <td class="tournament-bracket__country">
-                    <span class="tournament-bracket__code" title="Czech Republic">CZE</span>
+                    {% if tournament.games[4].player2.name is defined and tournament.games[4].player2.name is not null %}
+                      <span class="tournament-bracket__code">{{ tournament.games[4].player2.name }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__code">-</span>
+                    {% endif %}
                     <span class="tournament-bracket__flag flag-icon flag-icon-cz" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">2</span>
+                    {% if tournament.games[4].scorePlayer2 is not null %}
+                      <span class="tournament-bracket__number">{{ tournament.games[4].scorePlayer2 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                   </td>
                 </tr>
               </tbody>
@@ -230,7 +246,7 @@
           <div class="tournament-bracket__match" tabindex="0">
             <table class="tournament-bracket__table">
               <caption class="tournament-bracket__caption">
-                <time datetime="1997-02-20">20 February 1997</time>
+                <time>{{ tournament.games[3].createdAt | date("d/m/Y") }}</time>
               </caption>
               <thead class="sr-only">
                 <tr>
@@ -241,20 +257,36 @@
               <tbody class="tournament-bracket__content">
                 <tr class="tournament-bracket__team">
                   <td class="tournament-bracket__country">
-                    <span class="tournament-bracket__code" title="Finland">FIN</span>
+                    {% if tournament.games[5].player1.name is defined and tournament.games[5].player1.name is not null %}
+                      <span class="tournament-bracket__code">{{ tournament.games[5].player1.name }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__code">-</span>
+                    {% endif %}
                     <span class="tournament-bracket__flag flag-icon flag-icon-fi" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">4</span>
+                    {% if tournament.games[5].scorePlayer1 is not null %}
+                      <span class="tournament-bracket__number">{{ tournament.games[5].scorePlayer1 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                   </td>
                 </tr>
                 <tr class="tournament-bracket__team tournament-bracket__team--winner">
                   <td class="tournament-bracket__country">
-                    <span class="tournament-bracket__code" title="Russia">RUS</span>
+                    {% if tournament.games[5].player2.name is defined and tournament.games[5].player2.name is not null %}
+                      <span class="tournament-bracket__code">{{ tournament.games[5].player2.name }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__code">-</span>
+                    {% endif %}
                     <span class="tournament-bracket__flag flag-icon flag-icon-ru" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">6</span>
+                    {% if tournament.games[5].scorePlayer2 is not null %}
+                      <span class="tournament-bracket__number">{{ tournament.games[5].scorePlayer2 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                   </td>
                 </tr>
               </tbody>
@@ -270,7 +302,7 @@
           <div class="tournament-bracket__match" tabindex="0">
             <table class="tournament-bracket__table">
               <caption class="tournament-bracket__caption">
-                <time datetime="1997-02-21">21 February 1997</time>
+                <time>{{ tournament.games[6].createdAt | date("d/m/Y") }}</time>
               </caption>
               <thead class="sr-only">
                 <tr>
@@ -281,21 +313,37 @@
               <tbody class="tournament-bracket__content">
                 <tr class="tournament-bracket__team tournament-bracket__team--winner">
                   <td class="tournament-bracket__country">
-                    <span class="tournament-bracket__code" title="Finland">FIN</span>
+                    {% if tournament.games[6].player1.name is defined and tournament.games[6].player1.name is not null %}
+                      <span class="tournament-bracket__code">{{ tournament.games[6].player1.name }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__code">-</span>
+                    {% endif %}
                     <span class="tournament-bracket__flag flag-icon flag-icon-fi" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">3</span>
+                    {% if tournament.games[6].scorePlayer1 is not null %}
+                      <span class="tournament-bracket__number">{{ tournament.games[6].scorePlayer1 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                     <span class="tournament-bracket__medal tournament-bracket__medal--bronze fa fa-trophy" aria-label="Bronze medal"></span>
                   </td>
                 </tr>
                 <tr class="tournament-bracket__team">
                   <td class="tournament-bracket__country">
-                    <span class="tournament-bracket__code" title="Canada">CAN</span>
+                    {% if tournament.games[6].player2.name is defined and tournament.games[6].player2.name is not null %}
+                      <span class="tournament-bracket__code">{{ tournament.games[6].player2.name }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__code">-</span>
+                    {% endif %}
                     <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">2</span>
+                    {% if tournament.games[6].scorePlayer2 is not null %}
+                      <span class="tournament-bracket__number">{{ tournament.games[6].scorePlayer2 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                   </td>
                 </tr>
               </tbody>
@@ -311,7 +359,7 @@
           <div class="tournament-bracket__match" tabindex="0">
             <table class="tournament-bracket__table">
               <caption class="tournament-bracket__caption">
-                <time datetime="1997-02-22">22 February 1997</time>
+                <time>{{ tournament.games[6].createdAt | date("d/m/Y") }}</time>
               </caption>
               <thead class="sr-only">
                 <tr>
@@ -322,21 +370,37 @@
               <tbody class="tournament-bracket__content">
                 <tr class="tournament-bracket__team tournament-bracket__team--winner">
                   <td class="tournament-bracket__country">
-                    <span class="tournament-bracket__code" title="Czech Republic">CZE</span>
+                    {% if tournament.games[7].player1.name is defined and tournament.games[7].player1.name is not null %}
+                      <span class="tournament-bracket__code">{{ tournament.games[7].player1.name }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__code">-</span>
+                    {% endif %}
                     <span class="tournament-bracket__flag flag-icon flag-icon-cz" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">1</span>
+                    {% if tournament.games[7].scorePlayer1 is not null %}
+                      <span class="tournament-bracket__number">{{ tournament.games[7].scorePlayer1 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                     <span class="tournament-bracket__medal tournament-bracket__medal--gold fa fa-trophy" aria-label="Gold medal"></span>
                   </td>
                 </tr>
                 <tr class="tournament-bracket__team">
                   <td class="tournament-bracket__country">
-                    <span class="tournament-bracket__code" title="Russia">RUS</span>
+                    {% if tournament.games[7].player2.name is defined and tournament.games[7].player2.name is not null %}
+                      <span class="tournament-bracket__code">{{ tournament.games[7].player2.name }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__code">-</span>
+                    {% endif %}
                     <span class="tournament-bracket__flag flag-icon flag-icon-ru" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
-                    <span class="tournament-bracket__number">0</span>
+                    {% if tournament.games[7].scorePlayer2 is not null %}
+                      <span class="tournament-bracket__number">{{ tournament.games[7].scorePlayer2 }}</span>
+                    {% else %}
+                      <span class="tournament-bracket__number">-</span>                      
+                    {% endif %}
                     <span class="tournament-bracket__medal tournament-bracket__medal--silver fa fa-trophy" aria-label="Silver medal"></span>
                   </td>
                 </tr>

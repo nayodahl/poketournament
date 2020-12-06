@@ -109,7 +109,7 @@ class PokeController extends AbstractController
     {
         $latest = $tournamentRepo->findLatest();
 
-        $initializor->setSemi($latest);
+        $initializor->updateBracket($latest);
 
         return $this->render('poke/tournament.html.twig', [
             'tournament' => $latest
