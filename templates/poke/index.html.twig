@@ -14,6 +14,8 @@
 
     <a href="{{ path('app_create') }}" class="btn btn-primary">Créer un nouveau tournoi</a>
     <a href="{{ path('app_view') }}" class="btn btn-primary">Voir le tournoi en cours </a>
+    <div class="btn btn-primary" data-controller="counter"></div>
+
     <br><hr>
 
     {% for message in app.flashes('success') %}
@@ -36,6 +38,7 @@
         {% endfor %}
     </ul>
     <hr>
-        
+    <a href="{{ path('app_admin') }}" class="btn btn-primary">Admin</a>        
+    <div class="btn btn-primary" data-controller="counter"></div>
 </div>
 {% endblock %}

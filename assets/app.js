@@ -10,6 +10,5 @@ import './styles/app.css';
 import './styles/app.less';
 import './styles/app.scss';
 
-require('bootstrap');
-
-// Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
+// start the Stimulus application
+import './bootstrap';
