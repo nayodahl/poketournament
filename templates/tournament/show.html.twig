@@ -1,11 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block title %}{{ tournament.name }}{% endblock %}
 
 {% block body %}
 <div class="container">
   <h1>{{ tournament.name }}</h1>
-      <a href="{{ path('app_homepage') }}" class="btn btn-primary pull-left">Accueil</a>
   <hr>
   {% for message in app.flashes('success') %}
       <div class="alert alert-success alert-dismissible" role="alert">

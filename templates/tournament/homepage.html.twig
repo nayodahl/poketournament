@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+<main>
+    <div class="section d-flex">
+        <div class="container section-inner my-auto">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1>{{ tournament.name }}</h1>
+                    <h2>Bienvenue au tournoi de combats de Pokémons</h2>
+
+                    <div class="action-buttons">
+                        <a href="{{ path('app_create') }}" class="btn btn-primary">Créer un nouveau tournoi</a>
+                        <a href="{{ path('app_view') }}" class="btn btn-primary">Voir le tournoi en cours </a>
+                        <div class="btn btn-primary" data-controller="counter"><i class="fa fa-thumbs-up"></i></div>
+                    </div>
+
+                    <br><hr>
+
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{ message }}
+                        </div>    
+                    {% endfor %}
+                    {% for message in app.flashes('error') %}
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{ message }}
+                        </div>    
+                    {% endfor %}
+                    
+                    Liste des participants du tournoi en cours ({{ tournament.numberPokemons }} pokémons) :
+                    <ul>
+                        {% for pokemon in tournament.pokemons %}
+                        <li>{{ pokemon.name }} <img src='images/{{ pokemon.apiId }}.png' alt=""></li>
+                        {% endfor %}
+                    </ul>
+                    <hr>
+                    <div class="btn btn-primary" data-controller="counter"></div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</main>
+
+{% endblock %}

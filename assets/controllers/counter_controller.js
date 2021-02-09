@@ -6,7 +6,7 @@ export default class extends Controller {
 
         var hello = () => {
             this.count++;
-            this.element.innerHTML = this.count;
+            this.element.innerHTML = '<i class="fa fa-thumbs-up"></i> ' + this.count;
         }
 
         this.element.addEventListener("click", hello);

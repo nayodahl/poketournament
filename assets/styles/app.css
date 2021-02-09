@@ -1,3 +1,11 @@
 body {
     background-color: lightgray;
 }
+
+.section-inner {
+    padding: 60px 10px 0 0
+}
+
+.action-buttons {
+    padding: 50px 10px 0 0
+}

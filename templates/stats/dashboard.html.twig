@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+<main>
+    <div class="section d-flex">
+        <div class="container section-inner my-auto">
+            <div class="row">
+                <div class="col">
+                    <h1>Hello {{ controller_name }}! ✅</h1>
+
+                    This friendly message is coming from:
+                    <ul>
+                        <li>Your controller at <code><a href="{{ '/home/anthony/poketournament/src/Controller/StatsController.php'|file_link(0) }}">src/Controller/StatsController.php</a></code></li>
+                        <li>Your template at <code><a href="{{ '/home/anthony/poketournament/templates/stats/index.html.twig'|file_link(0) }}">templates/stats/index.html.twig</a></code></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>   
+</main>
+
+{% endblock %}
