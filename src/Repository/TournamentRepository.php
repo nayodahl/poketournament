@@ -28,4 +28,26 @@ class TournamentRepository extends ServiceEntityRepository
             ->getSingleResult()
         ;
     }
+
+    
+    /**
+     * Get the total number of participations of a pokemon to Tournaments
+     *
+     * @param int|null the id of the pokemon
+     *
+     * @return int the number of participations of a pokemon.
+     *
+     */
+    
+    public function getNumberOfParticipation(int $pokemonId): int
+    {
+      
+        return $this->createQueryBuilder('t')
+            ->join('t.Pokemons', 'p')
+            ->where('p.id = :pokemon_id')
+            ->setParameter('pokemon_id', $pokemonId)
+            ->select('COUNT(t.id) as participations')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

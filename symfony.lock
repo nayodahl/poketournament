@@ -1,4 +1,7 @@
 {
+    "symfony/ux-chartjs": {
+        "version": "v1.2.0"
+    },
     "symfony/webpack-encore-bundle": {
         "version": "1.9",
         "recipe": {

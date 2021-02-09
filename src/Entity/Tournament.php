@@ -36,6 +36,7 @@ class Tournament
 
     /**
      * @ORM\ManyToMany(targetEntity=Pokemon::class)
+     * @ORM\JoinTable(name="tournaments_pokemons")
      */
     private $Pokemons;
 

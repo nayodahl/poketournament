@@ -3,7 +3,7 @@
 {% block body %}
 <main>
     <div class="section d-flex">
-        <div class="container section-inner my-auto">
+        <div class="container-fluid section-inner my-auto">
             <div class="row">
                 <div class="col-12 text-center">
                     <h1>{{ tournament.name }}</h1>
@@ -30,14 +30,21 @@
                         </div>    
                     {% endfor %}
                     
-                    Liste des participants du tournoi en cours ({{ tournament.numberPokemons }} pokémons) :
-                    <ul>
+                    Participants du tournoi en cours ({{ tournament.numberPokemons }} pokémons) :
+
+                    <div class="card-deck">
                         {% for pokemon in tournament.pokemons %}
-                        <li>{{ pokemon.name }} <img src='images/{{ pokemon.apiId }}.png' alt=""></li>
+                            <div class="card">
+                                <img class="card-img-top" src='images/{{ pokemon.apiId }}.png' alt="pokemon avatar">
+                                <div class="card-body">
+                                </div>
+                                <div class="card-footer">
+                                    <h5>{{ pokemon.name }}</h5>
+                                </div>
+                            </div>
                         {% endfor %}
-                    </ul>
+                    </div>
                     <hr>
-                    <div class="btn btn-primary" data-controller="counter"></div>
                 </div>
             </div>
         </div>
