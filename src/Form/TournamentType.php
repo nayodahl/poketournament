@@ -36,6 +36,9 @@ class TournamentType extends AbstractType
                     '8' => 8,
                     '16' => 16,
                 ],
+                'attr' => [
+                    'disabled' => true,
+                ],  
             ])
             /*
             ->add('pokemons', CollectionType::class, [

@@ -26,12 +26,15 @@ class StatsController extends AbstractController
                 $data[$pokemon->getName()] = $numberOfParticipation;
             }
         }
-
+        // Sort Array (Descending Order), According to Value - arsort()
+        arsort($data);
+        // get only 10 first results 
+        $data = array_slice($data, 0, 10);
         $names = array_keys($data);
         $values = array_values($data);
         
         //setup of the chart
-        $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
+        $chart = $chartBuilder->createChart(Chart::TYPE_BAR);
         $chart->setData([
             'labels' => $names,
             'datasets' => [
