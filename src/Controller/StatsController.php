@@ -37,8 +37,8 @@ class StatsController extends AbstractController
             'datasets' => [
                 [
                     'label' => 'Participations',
-                    'backgroundColor' => 'rgb(255, 99, 132)',
-                    'borderColor' => 'rgb(255, 99, 132)',
+                    'backgroundColor' => 'rgb(23, 162, 184)',
+                    'borderColor' => 'rgb(23, 162, 184)',
                     'data' => $values,
                 ],
             ],

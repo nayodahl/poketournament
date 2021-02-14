@@ -33,7 +33,7 @@ class TournamentRepository extends ServiceEntityRepository
     /**
      * Get the total number of participations of a pokemon to Tournaments
      *
-     * @param int|null the id of the pokemon
+     * @param int the id of the pokemon
      *
      * @return int the number of participations of a pokemon.
      *

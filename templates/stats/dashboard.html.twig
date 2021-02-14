@@ -3,15 +3,33 @@
 {% block body %}
 <main>
     <div class="section d-flex">
-        <div class="container section-inner my-auto">
+        <div class="container-fluid section-inner my-auto">
+            <h1>Statistiques</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Statistiques</li>
+            </ol>
             <div class="row">
-                <div class="col">
-                    <h1>Statistiques </h1>
-                    <br>
-
-                    <h4>Principaux pokémons sélectionnés : </h4>
-
-                    {{ render_chart(chart) }}
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-chart-area mr-1"></i>
+                            Principaux pokémons sélectionnés
+                        </div>
+                        <div class="card-body">
+                            {{ render_chart(chart) }}
+                        </div>
+                    </div>                                        
+                </div>
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-chart-bar mr-1"></i>
+                            Bar Chart Example
+                        </div>
+                        <div class="card-body">
+                            {{ render_chart(chart) }}
+                        </div>
+                    </div>                                        
                 </div>
             </div>
         </div>
