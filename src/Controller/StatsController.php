@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\PokemonRepository;
-use App\Repository\TournamentRepository;
-use PHP_CodeSniffer\Standards\Squiz\Sniffs\ControlStructures\ForEachLoopDeclarationSniff;
+use App\Service\StatsCalculator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,29 +11,16 @@ use Symfony\UX\Chartjs\Model\Chart;
 class StatsController extends AbstractController
 {
     #[Route('/stats', name: 'app_stats')]
-    public function dashboard(ChartBuilderInterface $chartBuilder, PokemonRepository $pokemonRepository, TournamentRepository $tournamentRepository): Response
+    public function dashboard(ChartBuilderInterface $chartBuilder, StatsCalculator $statsCalculator): Response
     {
-        // select all tournaments
-        $tournaments = $tournamentRepository->findAll();     
-
-        $data=[];
-        // get number of participations for each pokemon
-        foreach ($tournaments as $tournament){
-            foreach ($tournament->getPokemons() as $pokemon){
-                $numberOfParticipation = $tournamentRepository->getNumberOfParticipation($pokemon->getId());
-                $data[$pokemon->getName()] = $numberOfParticipation;
-            }
-        }
-        // Sort Array (Descending Order), According to Value - arsort()
-        arsort($data);
-        // get only 10 first results 
-        $data = array_slice($data, 0, 10);
+        ////// chart 1 /////
+        $data = $statsCalculator->getMostUsedPokemons();
         $names = array_keys($data);
         $values = array_values($data);
         
-        //setup of the chart
-        $chart = $chartBuilder->createChart(Chart::TYPE_BAR);
-        $chart->setData([
+        //setup of the chart for most used Pokemons
+        $chartMostUsedPokemons = $chartBuilder->createChart(Chart::TYPE_BAR);
+        $chartMostUsedPokemons->setData([
             'labels' => $names,
             'datasets' => [
                 [
@@ -47,7 +32,34 @@ class StatsController extends AbstractController
             ],
         ]);
 
-        $chart->setOptions([
+        $chartMostUsedPokemons->setOptions([
+            'scales' => [
+                'yAxes' => [
+                    ['ticks' => ['min' => 0, 'max' => 10]],
+                ],
+            ],
+        ]);
+
+        ////// chart 2 /////
+        $data = $statsCalculator->getMostUsedPokemons();
+        $names = array_keys($data);
+        $values = array_values($data);
+        
+        //setup of the chart for most matchs won
+        $chartMostWonGamesPokemons = $chartBuilder->createChart(Chart::TYPE_BAR);
+        $chartMostWonGamesPokemons->setData([
+            'labels' => $names,
+            'datasets' => [
+                [
+                    'label' => 'Participations',
+                    'backgroundColor' => 'rgb(23, 162, 184)',
+                    'borderColor' => 'rgb(23, 162, 184)',
+                    'data' => $values,
+                ],
+            ],
+        ]);
+
+        $chartMostWonGamesPokemons->setOptions([
             'scales' => [
                 'yAxes' => [
                     ['ticks' => ['min' => 0, 'max' => 10]],
@@ -56,7 +68,8 @@ class StatsController extends AbstractController
         ]);
 
         return $this->render('stats/dashboard.html.twig', [
-            'chart' => $chart,
+            'chartMostUsedPokemons' => $chartMostUsedPokemons,
+            'chartMostWonGamesPokemons' => $chartMostWonGamesPokemons
         ]);
     }
 }
