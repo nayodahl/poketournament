@@ -30,4 +30,26 @@ class PokemonRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function getAllDistinctColors(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p.color')
+            ->distinct()
+            ->orderBy('p.color', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function getNumberOfPokemonByColor(string $color): int
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.color = :color')
+            ->setParameter('color', $color)
+            ->select('COUNT(p.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+        ;
+    }
 }

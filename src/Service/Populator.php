@@ -9,17 +9,11 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class Populator
 {
-
-    private $client;
-    private $em;
-    private $pokemonRepo;
-
-    public function __construct(HttpClientInterface $client, EntityManagerInterface $em, PokemonRepository $pokemonRepo)
-    {
-        $this->client = $client;
-        $this->em = $em;
-        $this->pokemonRepo = $pokemonRepo;
-    }
+    public function __construct(
+        private HttpClientInterface $client, 
+        private EntityManagerInterface $em, 
+        private PokemonRepository $pokemonRepo
+    ){}
 
     public function populate()
     {

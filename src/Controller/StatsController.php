@@ -41,7 +41,7 @@ class StatsController extends AbstractController
         ]);
 
         ////// chart 2 /////
-        $data = $statsCalculator->getMostUsedPokemons();
+        $data = $statsCalculator->getMostWonGamesByPokemon();
         $names = array_keys($data);
         $values = array_values($data);
         
@@ -51,7 +51,7 @@ class StatsController extends AbstractController
             'labels' => $names,
             'datasets' => [
                 [
-                    'label' => 'Participations',
+                    'label' => 'Victoires',
                     'backgroundColor' => 'rgb(23, 162, 184)',
                     'borderColor' => 'rgb(23, 162, 184)',
                     'data' => $values,
@@ -67,9 +67,73 @@ class StatsController extends AbstractController
             ],
         ]);
 
+        ////// chart 3 /////
+        $data = $statsCalculator->getPointsByTournament();
+        $names = array_keys($data);
+        $values = array_values($data);
+        
+        //setup of the chart for most matchs won
+        $chartPointsByTournament = $chartBuilder->createChart(Chart::TYPE_LINE);
+        $chartPointsByTournament->setData([
+            'labels' => $names,
+            'datasets' => [
+                [
+                    'label' => 'Points',
+                    'backgroundColor' => 'rgb(159, 227, 237)',
+                    'borderColor' => 'rgb(23, 162, 184)',
+                    'data' => $values,
+                ],
+            ],
+        ]);
+
+        $chartPointsByTournament->setOptions([
+            'scales' => [
+                'yAxes' => [
+                    ['ticks' => ['min' => 0]],
+                ],
+            ],
+        ]);
+
+        ////// chart 4 /////
+        $data = $statsCalculator->getPokemonByColor();
+        $names = array_keys($data);
+        $values = array_values($data);
+        
+        //setup of the chart for most matchs won
+        $chartPokemonColors = $chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
+        $chartPokemonColors->setData([
+            'labels' => $names,
+            'datasets' => [
+                [
+                    'label' => 'Points',
+                    'backgroundColor' => [
+                        'rgba(255, 255, 255)',
+                        'rgba(54, 162, 235)',
+                        'brown',
+                        'rgba(128, 128, 128)',
+                        'rgba(255, 255, 0)',
+                        'rgba(0, 0, 0)',
+                        'rgba(255, 192, 203)',
+                        'red',
+                        'green',
+                        'violet',
+                    ],
+                    'data' => $values,
+                ],
+            ],
+        ]);
+
+        $chartPokemonColors->setOptions([
+            'legend' => [
+                'display' => false,
+            ],
+        ]);
+
         return $this->render('stats/dashboard.html.twig', [
             'chartMostUsedPokemons' => $chartMostUsedPokemons,
-            'chartMostWonGamesPokemons' => $chartMostWonGamesPokemons
+            'chartMostWonGamesPokemons' => $chartMostWonGamesPokemons,
+            'chartPointsByTournament' => $chartPointsByTournament,
+            'chartPokemonColors' => $chartPokemonColors
         ]);
     }
 }

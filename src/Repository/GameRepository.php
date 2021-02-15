@@ -18,25 +18,7 @@ class GameRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Game::class);
     }
-
-    // /**
-    //  * @return Game[] Returns an array of Game objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('g')
-            ->andWhere('g.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('g.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    
+  
     public function findOneByNumberAndTournament($value, int $tournamentId): ?Game
     {
         return $this->createQueryBuilder('g')
@@ -47,5 +29,16 @@ class GameRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult()
         ;
+    }
+
+    public function getNumberOfWonGames(int $pokemonId): int
+    {
+        return $this->createQueryBuilder('g')
+        ->join('g.winner', 'p')
+        ->where('p.id = :pokemon_id')
+        ->setParameter('pokemon_id', $pokemonId)
+        ->select('COUNT(g.winner) as wins')
+        ->getQuery()
+        ->getSingleScalarResult();
     }
 }
