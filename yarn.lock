@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@animxyz/core@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@animxyz/core/-/core-0.5.0.tgz#b7b0da9ab083f67a2927650e37452b0d7d7ef317"
+  integrity sha512-sqVhE7LfCt8o94ToMP+JYXFGiGjvb+dgL8288a9La2EXH3YxZS8pdBeevlp9XX/WLT138YMD4vTXI0bDJjDSKg==
+
 "@babel/code-frame@^7.12.13":
   version "7.12.13"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.12.13.tgz#dcfc826beef65e75c50e21d3837d7d95798dd658"

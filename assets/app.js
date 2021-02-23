@@ -14,3 +14,13 @@ import './styles/app.scss';
 import './bootstrap';
 
 require('@fortawesome/fontawesome-free/css/all.min.css');
+
+// squares animation
+const squares = document.querySelectorAll(".square");
+
+setInterval(() => {
+  squares.forEach((square) => {
+    square.classList.toggle("xyz-in");
+    square.classList.toggle("xyz-out");
+  });
+}, 1200);

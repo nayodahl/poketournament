@@ -29,13 +29,14 @@
                             {{ message }}
                         </div>    
                     {% endfor %}
-                    
+
+                   
                     Participants du tournoi en cours ({{ tournament.numberPokemons }} pokémons) :
 
                     <div class="card-deck">
                         {% for pokemon in tournament.pokemons %}
                             <div class="card">
-                                <img class="card-img-top" src='images/{{ pokemon.apiId }}.png' alt="pokemon avatar">
+                                <img class="card-img-top mx-auto" src='images/{{ pokemon.apiId }}.png' alt="pokemon avatar">
                                 <div class="card-body">
                                 </div>
                                 <div class="card-footer">
@@ -44,6 +45,13 @@
                             </div>
                         {% endfor %}
                     </div>
+
+                    <div class="square-group" xyz="tall-2 duration-6 ease-out-back stagger-1 skew-left-2 big-25% fade-100% right-5">
+                        <div class="square xyz-in"></div>
+                        <div class="square xyz-in"></div>
+                        <div class="square xyz-in"></div>
+                    </div>
+                    
                     <hr>
                 </div>
             </div>

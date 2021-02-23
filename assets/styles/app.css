@@ -14,6 +14,12 @@ body {
     padding: 30px 30px 0 0;
 }
 
+
+.card-img-top {
+    max-height: 96px;
+    max-width: 96px;
+}
+
 .logo-pokemon img{
     width: auto;
     height: 45px;
