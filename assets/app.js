@@ -23,4 +23,4 @@ setInterval(() => {
     square.classList.toggle("xyz-in");
     square.classList.toggle("xyz-out");
   });
-}, 1200);
+}, 3000);
