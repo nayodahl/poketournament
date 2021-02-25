@@ -17,7 +17,15 @@ require('@fortawesome/fontawesome-free/css/all.min.css');
 
 // swup page transitions
 import Swup from 'swup';
-const swup = new Swup();
+import SwupOverlayTheme from '@swup/overlay-theme';
+const swup = new Swup({
+  plugins: [
+    new SwupOverlayTheme({
+      color: '#17a2b8',    
+      duration: 500,
+    }),
+  ]
+});
 
 // squares animation
 const squares = document.querySelectorAll(".square");

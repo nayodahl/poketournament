@@ -892,6 +892,18 @@
   resolved "https://registry.yarnpkg.com/@stimulus/webpack-helpers/-/webpack-helpers-2.0.0.tgz"
   integrity sha512-D6tJWsAC024MwGEIKlUVYU8Ln87mlrmiwHvYAjipg+s8H4eLxUMQ3PZkWyPevfipH+oR3leuHsjYsK1gN5ViQA==
 
+"@swup/overlay-theme@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@swup/overlay-theme/-/overlay-theme-1.1.1.tgz#59a434075cf369e95ce55f1f6f1caad5884d960d"
+  integrity sha512-6LvTOcpwPvKvaGkzDR7sB9moSwM1hp+7vzT7M8hnTzUaZQ4yRo1y+ZnALZy13McUbsxqDX1Xn3CTJf34rs1sDA==
+  dependencies:
+    "@swup/theme" "^1.0.7"
+
+"@swup/theme@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@swup/theme/-/theme-1.0.7.tgz#e276fa769af0d800a8df16cbaf71efb665bee297"
+  integrity sha512-OINEaf34fYs90l7/YUUKfOf+paY7/FDhOBLwYxrD0w1OjBiItZpw3N+ATA/QklJwmoUu3KkDFOaQG0zT4KxmmA==
+
 "@symfony/stimulus-bridge@^2.0.0":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@symfony/stimulus-bridge/-/stimulus-bridge-2.0.2.tgz#6108cef42e6d822b0fca26c9e37f80a4fe2f1d2b"
