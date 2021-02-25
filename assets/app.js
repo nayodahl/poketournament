@@ -15,6 +15,10 @@ import './bootstrap';
 
 require('@fortawesome/fontawesome-free/css/all.min.css');
 
+// swup page transitions
+import Swup from 'swup';
+const swup = new Swup();
+
 // squares animation
 const squares = document.querySelectorAll(".square");
 

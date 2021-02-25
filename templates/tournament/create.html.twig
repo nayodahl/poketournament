@@ -9,32 +9,32 @@
 
 {% block body %}
 
-        <section>
-            <div class="container section-inner">
-                <div class="row">
-                    <div class="col-lg-10 mx-auto">
-                        {{ form_start(tournamentForm) }}
-                            {{ form_row(tournamentForm.name) }}
-                            {{ form_row(tournamentForm.numberPokemons) }}
-                            <hr>
-                            <p>Choisis les Pokémons qui participeront : </p>
-                            {{ form_row(tournamentForm.pokemon1) }}
-                            {{ form_row(tournamentForm.pokemon2) }}
-                            {{ form_row(tournamentForm.pokemon3) }}
-                            {{ form_row(tournamentForm.pokemon4) }}
-                            {{ form_row(tournamentForm.pokemon5) }}
-                            {{ form_row(tournamentForm.pokemon6) }}
-                            {{ form_row(tournamentForm.pokemon7) }}
-                            {{ form_row(tournamentForm.pokemon8) }}
-                            
-                            <hr>
-                            <a class="btn btn-info" href="{{ path('app_homepage') }}">Annuler</a>
-                            <button type="submit" class="btn btn-info pull-right">Enregistrer</button>
-                        {{ form_end(tournamentForm) }}
-                    </div>            
-                </div>
+    <main id="swup" class="transition-fade">
+        <div class="container section-inner">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    {{ form_start(tournamentForm) }}
+                        {{ form_row(tournamentForm.name) }}
+                        {{ form_row(tournamentForm.numberPokemons) }}
+                        <hr>
+                        <p>Choisis les Pokémons qui participeront : </p>
+                        {{ form_row(tournamentForm.pokemon1) }}
+                        {{ form_row(tournamentForm.pokemon2) }}
+                        {{ form_row(tournamentForm.pokemon3) }}
+                        {{ form_row(tournamentForm.pokemon4) }}
+                        {{ form_row(tournamentForm.pokemon5) }}
+                        {{ form_row(tournamentForm.pokemon6) }}
+                        {{ form_row(tournamentForm.pokemon7) }}
+                        {{ form_row(tournamentForm.pokemon8) }}
+                        
+                        <hr>
+                        <a class="btn btn-info" href="{{ path('app_homepage') }}">Annuler</a>
+                        <button type="submit" class="btn btn-info pull-right">Enregistrer</button>
+                    {{ form_end(tournamentForm) }}
+                </div>            
             </div>
-        </section>    
+        </div>
+    </main>    
 
 {% endblock %}
 

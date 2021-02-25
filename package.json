@@ -29,6 +29,7 @@
         "jquery": "^3.5.1",
         "jquery-autocomplete": "^1.2.8",
         "less": "^4.1.1",
-        "popper": "^1.0.1"
+        "popper": "^1.0.1",
+        "swup": "^2.0.14"
     }
 }
