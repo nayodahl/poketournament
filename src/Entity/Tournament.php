@@ -35,10 +35,10 @@ class Tournament
     private $numberPokemons;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Pokemon::class)
+     * @ORM\ManyToMany(targetEntity=Pokemon::class, inversedBy="tournaments")
      * @ORM\JoinTable(name="tournaments_pokemons")
      */
-    private $Pokemons;
+    private $pokemons;
 
     /**
      * @ORM\OneToMany(targetEntity=Game::class, mappedBy="tournament", orphanRemoval=true)
@@ -47,7 +47,7 @@ class Tournament
 
     public function __construct()
     {
-        $this->Pokemons = new ArrayCollection();
+        $this->pokemons = new ArrayCollection();
         $this->games = new ArrayCollection();
     }
 
@@ -98,13 +98,13 @@ class Tournament
      */
     public function getPokemons(): Collection
     {
-        return $this->Pokemons;
+        return $this->pokemons;
     }
 
     public function addPokemon(Pokemon $pokemon): self
     {
-        if (!$this->Pokemons->contains($pokemon)) {
-            $this->Pokemons[] = $pokemon;
+        if (!$this->pokemons->contains($pokemon)) {
+            $this->pokemons[] = $pokemon;
         }
 
         return $this;
@@ -112,7 +112,7 @@ class Tournament
 
     public function removePokemon(Pokemon $pokemon): self
     {
-        $this->Pokemons->removeElement($pokemon);
+        $this->pokemons->removeElement($pokemon);
 
         return $this;
     }

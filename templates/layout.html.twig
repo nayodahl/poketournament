@@ -49,16 +49,13 @@
                               {{ app.user.username }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="{{ path('app_profile') }}">Profil</a>
-                                <a class="dropdown-item" href="{{ path('app_logout') }}">Se déconnecter</a>
+                                <a class="dropdown-item" href="">Profil</a>
+                                <a class="dropdown-item" href="">Se déconnecter</a>
                             </div>
                         </li>
                         {% else %}                        
                         <li class="nav-item">
-                            <a href="" class="nav-link">Se Connecter <span class="pe-7s-angle-down"></span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">Inscription <span class="pe-7s-angle-down"></span></a>
+                            <a href="{{ path('app_login') }}" class="nav-link">Se Connecter <span class="pe-7s-angle-down"></span></a>
                         </li>
                         {% endif %}
                     </ul>
