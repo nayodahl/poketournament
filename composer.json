@@ -1,5 +1,7 @@
 {
+    "name": "nayodahl/poketournament",
     "type": "project",
+    "description": "A sandbox project to organize pokemon cards tournaments.",
     "license": "proprietary",
     "require": {
         "php": ">=7.2.5",
