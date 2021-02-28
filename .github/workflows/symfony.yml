@@ -37,7 +37,7 @@ jobs:
       with:
         php-version: ${{ matrix.php-versions }}
         extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, dom, filter, gd, iconv, json, mbstring, pdo
-        tools: cs2pr, php-cs-fixer
+        tools: php-cs-fixer
       env:
         update: true
 
@@ -83,7 +83,7 @@ jobs:
 
     ## —— Code Style ✅ ———————————————————————————————————————————————————————————
     - name: Run phpcsfixer
-      run: phpcsfixer fix --format=checkstyle src | cs2pr
+      run: phpcsfixer fix --format=checkstyle
 
     ## —— Tests ✅ ———————————————————————————————————————————————————————————
     - name: Run functionnal and unit tests
