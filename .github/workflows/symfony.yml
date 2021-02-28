@@ -84,4 +84,4 @@ jobs:
 
     ## —— Tests ✅ ———————————————————————————————————————————————————————————
     - name: Run functionnal and unit tests
-      uses: php bin/phpunit
+      run: php bin/phpunit
