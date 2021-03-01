@@ -73,7 +73,7 @@ jobs:
       with:
         node-version: '15'
         registry-url: npm.fontawesome.com
-    - run: Yarn install
+    - run: yarn install
       env:
         NODE_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
 
@@ -81,17 +81,12 @@ jobs:
       run: yarn run encore production
 
     ## —— Doctrine 🐱 ————————————————————————————————————————————————————————————
-    - name: Run Doctrine migrations
+    - name: Run Doctrine migrations and load fixtures
       run: |
         php bin/console doctrine:migrations:migrate || echo "No migrations found or migration failed"
-      env:
-        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/poketournament
-
-    - name: Run Datafixtures
-      run: |
         php bin/console doctrine:fixtures:load --append -n || echo "No fixtures found or fixtures load failed"
       env:
-        DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
+        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/poketournament
 
     ## —— Tests ✅ ———————————————————————————————————————————————————————————
     - name: Run functionnal and unit tests
