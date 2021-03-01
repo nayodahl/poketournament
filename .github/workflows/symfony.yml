@@ -87,12 +87,11 @@ jobs:
       env:
         DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/poketournament
 
-    ## —— DataFixtures 🐱 ————————————————————————————————————————————————————————————
-      - name: Run Datafixtures
-        run: |
-          php bin/console doctrine:fixtures:load --append -n || echo "No fixtures found or fixtures load failed"
-        env:
-          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
+    - name: Run Datafixtures
+      run: |
+        php bin/console doctrine:fixtures:load --append -n || echo "No fixtures found or fixtures load failed"
+      env:
+        DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
 
     ## —— Tests ✅ ———————————————————————————————————————————————————————————
     - name: Run functionnal and unit tests
