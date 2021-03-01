@@ -30,4 +30,9 @@ final class Version20210209142907 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('DROP TABLE tournaments_pokemons');
     }
+
+    public function isTransactional(): bool
+    {
+        return false;
+    }
 }

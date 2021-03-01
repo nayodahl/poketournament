@@ -33,4 +33,9 @@ final class Version20201122133801 extends AbstractMigration
         $this->addSql('DROP TABLE tournament');
         $this->addSql('DROP TABLE tournament_pokemon');
     }
+
+    public function isTransactional(): bool
+    {
+        return false;
+    }
 }

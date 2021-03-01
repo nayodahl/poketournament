@@ -32,4 +32,9 @@ final class Version20201201221137 extends AbstractMigration
         $this->addSql('DROP INDEX IDX_232B318C33D1A3E7 ON game');
         $this->addSql('ALTER TABLE game DROP tournament_id');
     }
+
+    public function isTransactional(): bool
+    {
+        return false;
+    }
 }
