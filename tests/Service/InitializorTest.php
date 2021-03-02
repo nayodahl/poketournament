@@ -26,7 +26,7 @@ class InitializorTest extends KernelTestCase
     
     public function testInitTournament()
     {
-        // load a created tournament and init it
+        // load a created tournament and init it, it was created by datafixtures
         $tournament = $this->entityManager
         ->getRepository(Tournament::class)
         ->findOneBy(['name' => 'Test Tournament'])
@@ -34,10 +34,11 @@ class InitializorTest extends KernelTestCase
        
         $this->initializor->initTournament($tournament);
 
-        // load a created game
+        // load the most recently created game
         $gameRepository = static::$container->get(GameRepository::class);
         $game = $gameRepository->findOneBy([], ['id'=>'DESC'], 1, 0);
         
+        // check that it is now linked to correct tournament
         $this->assertEquals($tournament->getId(), $game->getTournament()->getId());
     }
 
