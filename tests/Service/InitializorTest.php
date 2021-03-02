@@ -4,16 +4,10 @@ namespace App\Tests\Service;
 
 use App\Entity\Tournament;
 use App\Repository\GameRepository;
-use App\Repository\PokemonRepository;
-use App\Repository\TournamentRepository;
-use App\Service\Initializor;
-use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\Translation\Dumper\IniFileDumper;
 
 class InitializorTest extends KernelTestCase
-{  
+{
     /**
      * @var \Doctrine\ORM\EntityManager
      */
