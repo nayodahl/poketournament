@@ -90,4 +90,6 @@ jobs:
 
     ## —— Tests ✅ ———————————————————————————————————————————————————————————
     - name: Run functionnal and unit tests
-      run: APP_ENV=test php bin/phpunit
+      env:
+        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/poketournament-test
+      run: php bin/phpunit
