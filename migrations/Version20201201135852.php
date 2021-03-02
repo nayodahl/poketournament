@@ -28,4 +28,9 @@ final class Version20201201135852 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE pokemon CHANGE name name VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_unicode_ci`');
     }
+
+    public function isTransactional(): bool
+    {
+        return false;
+    }
 }

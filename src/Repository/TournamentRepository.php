@@ -37,9 +37,9 @@ class TournamentRepository extends ServiceEntityRepository
      *
      * @return int the number of participations of a pokemon.
      *
-     */    
+     */
     public function getNumberOfParticipation(int $pokemonId): int
-    {      
+    {
         return $this->createQueryBuilder('t')
             ->join('t.pokemons', 'p')
             ->where('p.id = :pokemon_id')

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : jeu. 03 déc. 2020 à 10:01
--- Version du serveur :  10.3.25-MariaDB-0ubuntu0.20.04.1
--- Version de PHP : 7.4.12
+-- Généré le : sam. 27 fév. 2021 à 08:03
+-- Version du serveur :  10.3.27-MariaDB-0+deb10u1
+-- Version de PHP : 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -45,7 +44,9 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 ('DoctrineMigrations\\Version20201201135852', '2020-12-01 14:59:27', 63),
 ('DoctrineMigrations\\Version20201201220749', '2020-12-01 23:08:21', 237),
 ('DoctrineMigrations\\Version20201201221137', '2020-12-01 23:12:15', 79),
-('DoctrineMigrations\\Version20201201224555', '2020-12-01 23:46:46', 52);
+('DoctrineMigrations\\Version20201201224555', '2020-12-01 23:46:46', 52),
+('DoctrineMigrations\\Version20210209142907', '2021-02-09 15:29:41', 156),
+('DoctrineMigrations\\Version20210226063304', '2021-02-26 07:33:25', 22);
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,71 @@ INSERT INTO `game` (`id`, `winner_id`, `loser_id`, `player1_id`, `player2_id`, `
 (5, NULL, NULL, NULL, NULL, 5, NULL, NULL, '2020-12-01 23:46:52', NULL, 13),
 (6, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2020-12-01 23:46:52', NULL, 13),
 (7, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2020-12-01 23:46:52', NULL, 13),
-(8, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2020-12-01 23:46:52', NULL, 13);
+(8, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2020-12-01 23:46:52', NULL, 13),
+(9, NULL, NULL, 3083, 3744, 1, NULL, NULL, '2021-02-08 17:02:34', NULL, 14),
+(10, NULL, NULL, 3749, 2483, 2, NULL, NULL, '2021-02-08 17:02:34', NULL, 14),
+(11, NULL, NULL, 2662, 2606, 3, NULL, NULL, '2021-02-08 17:02:34', NULL, 14),
+(12, NULL, NULL, 3652, 2604, 4, NULL, NULL, '2021-02-08 17:02:34', NULL, 14),
+(13, NULL, NULL, NULL, NULL, 5, NULL, NULL, '2021-02-08 17:02:34', NULL, 14),
+(14, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2021-02-08 17:02:34', NULL, 14),
+(15, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2021-02-08 17:02:34', NULL, 14),
+(16, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-02-08 17:02:34', NULL, 14),
+(17, NULL, NULL, 2481, 2521, 1, NULL, NULL, '2021-02-09 15:36:10', NULL, 15),
+(18, NULL, NULL, 2483, 2502, 2, NULL, NULL, '2021-02-09 15:36:11', NULL, 15),
+(19, NULL, NULL, 3723, 3057, 3, NULL, NULL, '2021-02-09 15:36:11', NULL, 15),
+(20, NULL, NULL, 2517, 3494, 4, NULL, NULL, '2021-02-09 15:36:11', NULL, 15),
+(21, NULL, NULL, NULL, NULL, 5, NULL, NULL, '2021-02-09 15:36:11', NULL, 15),
+(22, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2021-02-09 15:36:11', NULL, 15),
+(23, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2021-02-09 15:36:11', NULL, 15),
+(24, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-02-09 15:36:11', NULL, 15),
+(25, NULL, NULL, 2483, 2602, 1, NULL, NULL, '2021-02-09 15:40:01', NULL, 16),
+(26, NULL, NULL, 3116, 3529, 2, NULL, NULL, '2021-02-09 15:40:01', NULL, 16),
+(27, NULL, NULL, 2557, 3041, 3, NULL, NULL, '2021-02-09 15:40:01', NULL, 16),
+(28, NULL, NULL, 3494, 3461, 4, NULL, NULL, '2021-02-09 15:40:01', NULL, 16),
+(29, NULL, NULL, NULL, NULL, 5, NULL, NULL, '2021-02-09 15:40:01', NULL, 16),
+(30, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2021-02-09 15:40:01', NULL, 16),
+(31, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2021-02-09 15:40:01', NULL, 16),
+(32, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-02-09 15:40:01', NULL, 16),
+(33, NULL, NULL, 2483, 2642, 1, NULL, NULL, '2021-02-09 17:25:38', NULL, 17),
+(34, NULL, NULL, 2523, 3744, 2, NULL, NULL, '2021-02-09 17:25:38', NULL, 17),
+(35, NULL, NULL, 2685, 2464, 3, NULL, NULL, '2021-02-09 17:25:38', NULL, 17),
+(36, NULL, NULL, 2607, 3625, 4, NULL, NULL, '2021-02-09 17:25:38', NULL, 17),
+(37, NULL, NULL, NULL, NULL, 5, NULL, NULL, '2021-02-09 17:25:38', NULL, 17),
+(38, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2021-02-09 17:25:38', NULL, 17),
+(39, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2021-02-09 17:25:38', NULL, 17),
+(40, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-02-09 17:25:38', NULL, 17),
+(41, NULL, NULL, 2464, 3672, 1, NULL, NULL, '2021-02-09 18:39:31', NULL, 18),
+(42, NULL, NULL, 2484, 3652, 2, NULL, NULL, '2021-02-09 18:39:31', NULL, 18),
+(43, NULL, NULL, 2535, 3580, 3, NULL, NULL, '2021-02-09 18:39:31', NULL, 18),
+(44, NULL, NULL, 3689, 3705, 4, NULL, NULL, '2021-02-09 18:39:31', NULL, 18),
+(45, NULL, NULL, NULL, NULL, 5, NULL, NULL, '2021-02-09 18:39:31', NULL, 18),
+(46, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2021-02-09 18:39:31', NULL, 18),
+(47, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2021-02-09 18:39:31', NULL, 18),
+(48, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-02-09 18:39:31', NULL, 18),
+(49, 3096, 3627, 3096, 3627, 1, 2, 1, '2021-02-09 18:43:08', '2021-02-14 15:17:01', 19),
+(50, 2591, 2592, 2591, 2592, 2, 3, 0, '2021-02-09 18:43:08', '2021-02-14 15:22:36', 19),
+(51, NULL, NULL, 2655, 2594, 3, NULL, NULL, '2021-02-09 18:43:08', NULL, 19),
+(52, NULL, NULL, 2654, 2593, 4, NULL, NULL, '2021-02-09 18:43:08', NULL, 19),
+(53, NULL, NULL, 3096, 2591, 5, NULL, NULL, '2021-02-09 18:43:08', '2021-02-14 15:24:04', 19),
+(54, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2021-02-09 18:43:08', NULL, 19),
+(55, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2021-02-09 18:43:08', NULL, 19),
+(56, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-02-09 18:43:08', NULL, 19),
+(57, 2592, 2593, 2592, 2593, 1, 2, 1, '2021-02-14 15:25:53', '2021-02-14 21:27:53', 20),
+(58, 2654, 2594, 2594, 2654, 2, 4, 5, '2021-02-14 15:25:53', '2021-02-15 08:25:44', 20),
+(59, 2655, 3095, 2655, 3095, 3, 2, 1, '2021-02-14 15:25:53', '2021-02-15 11:56:32', 20),
+(60, 3096, 3627, 3096, 3627, 4, 1, 0, '2021-02-14 15:25:53', '2021-02-15 11:56:39', 20),
+(61, 2592, 2654, 2592, 2654, 5, 2, 1, '2021-02-14 15:25:53', '2021-02-15 11:57:29', 20),
+(62, 3096, 2655, 2655, 3096, 6, 2, 6, '2021-02-14 15:25:53', '2021-02-15 11:57:29', 20),
+(63, 2655, 2654, 2654, 2655, 7, 1, 4, '2021-02-14 15:25:53', '2021-02-15 11:57:29', 20),
+(64, 2592, 3096, 2592, 3096, 8, 4, 3, '2021-02-14 15:25:53', '2021-02-15 11:57:29', 20),
+(65, 2592, 2483, 2483, 2592, 1, 2, 3, '2021-02-15 11:58:24', '2021-02-15 11:58:48', 21),
+(66, 3438, 3770, 3438, 3770, 2, 2, 1, '2021-02-15 11:58:24', '2021-02-25 11:54:45', 21),
+(67, 2685, 3011, 3011, 2685, 3, 3, 4, '2021-02-15 11:58:24', '2021-02-26 07:49:42', 21),
+(68, NULL, NULL, 3098, 2601, 4, NULL, NULL, '2021-02-15 11:58:24', NULL, 21),
+(69, NULL, NULL, 2592, 3438, 5, NULL, NULL, '2021-02-15 11:58:24', '2021-02-26 08:24:40', 21),
+(70, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2021-02-15 11:58:24', NULL, 21),
+(71, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2021-02-15 11:58:24', NULL, 21),
+(72, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-02-15 11:58:24', NULL, 21);
 
 -- --------------------------------------------------------
 
@@ -1022,49 +1087,108 @@ INSERT INTO `tournament` (`id`, `name`, `date`, `number_pokemons`) VALUES
 (8, 'test', '2020-12-01 11:35:00', 8),
 (9, 'Test du mardi', '2020-12-01 14:45:44', 8),
 (10, 'test', '2020-12-01 15:46:30', 8),
-(13, 'tretrt', '2020-12-01 23:46:52', 8);
+(13, 'tretrt', '2020-12-01 23:46:52', 8),
+(14, 'tournoi du lundi', '2021-02-08 17:02:34', 8),
+(15, 'Tournoi du lundi aprem', '2021-02-09 15:36:10', 8),
+(16, 'Tournoi du lundi aprem2', '2021-02-09 15:40:01', 8),
+(17, 'Tournoi 3 du lundi aprem', '2021-02-09 17:25:38', 8),
+(18, 'Tournoi 4 du lundi aprem', '2021-02-09 18:39:31', 8),
+(19, 'Tournoi des evoli', '2021-02-09 18:43:08', 8),
+(20, 'Tournoi des Evoli', '2021-02-14 15:25:53', 8),
+(21, 'Tournoi du lundi', '2021-02-15 11:58:24', 8);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tournament_pokemon`
+-- Structure de la table `tournaments_pokemons`
 --
 
-CREATE TABLE `tournament_pokemon` (
+CREATE TABLE `tournaments_pokemons` (
   `tournament_id` int(11) NOT NULL,
   `pokemon_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `tournament_pokemon`
+-- Déchargement des données de la table `tournaments_pokemons`
 --
 
-INSERT INTO `tournament_pokemon` (`tournament_id`, `pokemon_id`) VALUES
-(8, 2457),
-(9, 2685),
-(9, 3084),
-(9, 3105),
-(9, 3112),
-(9, 3117),
-(9, 3422),
-(9, 3424),
-(9, 3425),
-(10, 3725),
-(10, 3726),
-(10, 3729),
-(10, 3730),
-(10, 3731),
-(10, 3732),
-(10, 3733),
-(10, 3734),
-(13, 2481),
-(13, 2521),
-(13, 2557),
-(13, 2685),
-(13, 2985),
-(13, 3041),
-(13, 3677),
-(13, 3738);
+INSERT INTO `tournaments_pokemons` (`tournament_id`, `pokemon_id`) VALUES
+(15, 2481),
+(15, 2483),
+(15, 2502),
+(15, 2517),
+(15, 2521),
+(15, 3057),
+(15, 3494),
+(15, 3723),
+(16, 2483),
+(16, 2557),
+(16, 2602),
+(16, 3041),
+(16, 3116),
+(16, 3461),
+(16, 3494),
+(16, 3529),
+(17, 2464),
+(17, 2483),
+(17, 2523),
+(17, 2607),
+(17, 2642),
+(17, 2685),
+(17, 3625),
+(17, 3744),
+(18, 2464),
+(18, 2484),
+(18, 2535),
+(18, 3580),
+(18, 3652),
+(18, 3672),
+(18, 3689),
+(18, 3705),
+(19, 2591),
+(19, 2592),
+(19, 2593),
+(19, 2594),
+(19, 2654),
+(19, 2655),
+(19, 3096),
+(19, 3627),
+(20, 2592),
+(20, 2593),
+(20, 2594),
+(20, 2654),
+(20, 2655),
+(20, 3095),
+(20, 3096),
+(20, 3627),
+(21, 2483),
+(21, 2592),
+(21, 2601),
+(21, 2685),
+(21, 3011),
+(21, 3098),
+(21, 3438),
+(21, 3770);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `roles` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json)',
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `roles`, `password`) VALUES
+(4, 'anthony', '[\"ROLE_ADMIN\"]', '$argon2id$v=19$m=65536,t=4,p=1$o3qrwWucz/VzKK9z1s67/g$NBzgU4gAPlR6mqfMmQzO+X/2llIePkW9CrZvqO8HJG0');
 
 --
 -- Index pour les tables déchargées
@@ -1100,12 +1224,19 @@ ALTER TABLE `tournament`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `tournament_pokemon`
+-- Index pour la table `tournaments_pokemons`
 --
-ALTER TABLE `tournament_pokemon`
+ALTER TABLE `tournaments_pokemons`
   ADD PRIMARY KEY (`tournament_id`,`pokemon_id`),
-  ADD KEY `IDX_9D36BF933D1A3E7` (`tournament_id`),
-  ADD KEY `IDX_9D36BF92FE71C3E` (`pokemon_id`);
+  ADD KEY `IDX_94F9BE1233D1A3E7` (`tournament_id`),
+  ADD KEY `IDX_94F9BE122FE71C3E` (`pokemon_id`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UNIQ_8D93D649F85E0677` (`username`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -1115,7 +1246,7 @@ ALTER TABLE `tournament_pokemon`
 -- AUTO_INCREMENT pour la table `game`
 --
 ALTER TABLE `game`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT pour la table `pokemon`
@@ -1127,7 +1258,13 @@ ALTER TABLE `pokemon`
 -- AUTO_INCREMENT pour la table `tournament`
 --
 ALTER TABLE `tournament`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées
@@ -1144,11 +1281,11 @@ ALTER TABLE `game`
   ADD CONSTRAINT `FK_232B318CD22CABCD` FOREIGN KEY (`player2_id`) REFERENCES `pokemon` (`id`);
 
 --
--- Contraintes pour la table `tournament_pokemon`
+-- Contraintes pour la table `tournaments_pokemons`
 --
-ALTER TABLE `tournament_pokemon`
-  ADD CONSTRAINT `FK_9D36BF92FE71C3E` FOREIGN KEY (`pokemon_id`) REFERENCES `pokemon` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_9D36BF933D1A3E7` FOREIGN KEY (`tournament_id`) REFERENCES `tournament` (`id`) ON DELETE CASCADE;
+ALTER TABLE `tournaments_pokemons`
+  ADD CONSTRAINT `FK_94F9BE122FE71C3E` FOREIGN KEY (`pokemon_id`) REFERENCES `pokemon` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_94F9BE1233D1A3E7` FOREIGN KEY (`tournament_id`) REFERENCES `tournament` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

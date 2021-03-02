@@ -28,4 +28,9 @@ final class Version20201201224555 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE game CHANGE player1_id player1_id INT NOT NULL, CHANGE player2_id player2_id INT NOT NULL');
     }
+
+    public function isTransactional(): bool
+    {
+        return false;
+    }
 }

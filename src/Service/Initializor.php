@@ -8,13 +8,15 @@ use App\Repository\GameRepository;
 use App\Repository\PokemonRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+
 class Initializor
 {
     public function __construct(
-        private EntityManagerInterface $em, 
-        private PokemonRepository $pokemonRepo, 
-        private GameRepository $gameRepo
-    ){}
+    private EntityManagerInterface $em,
+    private PokemonRepository $pokemonRepo,
+    private GameRepository $gameRepo
+    ) {
+    }
 
     // init all 8 games, but assign players to only 4 first games
     public function initTournament(Tournament $tournament)

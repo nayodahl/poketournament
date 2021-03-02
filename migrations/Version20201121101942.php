@@ -28,4 +28,9 @@ final class Version20201121101942 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE pokemon DROP image');
     }
+
+    public function isTransactional(): bool
+    {
+        return false;
+    }
 }
