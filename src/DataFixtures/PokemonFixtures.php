@@ -4,14 +4,16 @@ namespace App\DataFixtures;
 
 use App\Entity\Pokemon;
 use App\Entity\Tournament;
+use App\Service\Initializor;
 use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
 class PokemonFixtures extends Fixture
 {
-    public function __construct()
-    {
+    public function __construct(
+        private Initializor $initializor
+    ) {
     }
     
     public function load(ObjectManager $manager)
@@ -80,6 +82,10 @@ class PokemonFixtures extends Fixture
         $tournament->addPokemon($pokemon6);
         $tournament->addPokemon($pokemon7);
         $tournament->addPokemon($pokemon8);
+
+        //init tournament
+        $this->initializor->initTournament($tournament);
+
         $manager->persist($tournament);
 
         $manager->flush();

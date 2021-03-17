@@ -32,8 +32,6 @@ class InitializorTest extends KernelTestCase
         ->findOneBy(['name' => 'Test Tournament'])
         ;
        
-        $this->initializor->initTournament($tournament);
-
         // load the most recently created game
         $gameRepository = static::$container->get(GameRepository::class);
         $game = $gameRepository->findOneBy([], ['id'=>'DESC'], 1, 0);

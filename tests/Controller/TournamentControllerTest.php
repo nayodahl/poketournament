@@ -9,7 +9,6 @@ class TournamentControllerTest extends WebTestCase
     public function testHomepage()
     {
         $client = static::createClient();
-        
         $client->request('GET', '/');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
@@ -20,10 +19,19 @@ class TournamentControllerTest extends WebTestCase
     public function testTournamentCreate()
     {
         $client = static::createClient();
-        
         $client->request('GET', '/create');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertStringContainsString('Choisis un nom pour ton tournoi', $client->getResponse()->getContent());
+    }
+
+    public function testTournamentShow()
+    {
+        $client = static::createClient();
+        $client->request('GET', '/show');
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertStringContainsString('Test Tournament', $client->getResponse()->getContent());
+        $this->assertStringContainsString('Tableau', $client->getResponse()->getContent());
     }
 }

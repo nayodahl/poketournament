@@ -26,7 +26,7 @@ class TournamentController extends AbstractController
     }
     
     /**
-     * @Route("/tournoi", name="app_view")
+     * @Route("/show", name="app_view")
      */
     public function tournamentShow(TournamentRepository $tournamentRepo, Initializor $initializor): Response
     {
