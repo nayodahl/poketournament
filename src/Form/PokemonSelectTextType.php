@@ -32,7 +32,7 @@ class PokemonSelectTextType extends AbstractType
         $resolver->setDefaults([
             'invalid_message' => 'Hmm, ce pokémon n\'existe pas !',
             'attr' => [
-                'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                'data-autocomplete-url' => $this->router->generate('app_utility_pokemons')
             ]
         ]);
     }

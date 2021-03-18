@@ -1,0 +1,17 @@
+parameters:
+    level: max
+
+    paths:
+        - config
+        - src
+        - tests
+        - public
+    
+    symfony:
+        container_xml_path: var/cache/dev/App_KernelDevDebugContainer.xml
+
+    bootstrapFiles:
+        - bin/.phpunit/phpunit-8.5-0/vendor/autoload.php
+
+    doctrine:
+        objectManagerLoader: config/phpstan/doctrine-orm-bootstrap.php

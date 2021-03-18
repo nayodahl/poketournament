@@ -21,39 +21,39 @@ class Pokemon
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull(message="Merci d'entrer un nom")
      * @Groups({"list_pokemon"})
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $color;
+    private ?string $color;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $apiId;
+    private int $apiId;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $image;
+    private ?string $image;
 
     /**
      * @ORM\ManyToMany(targetEntity=Tournament::class, mappedBy="pokemons")
+     * @var Collection<int, Tournament>
      */
-    private $tournaments;
+    private Collection $tournaments;
 
     public function __construct()
     {
         $this->tournaments = new ArrayCollection();
-        $this->games = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -110,7 +110,7 @@ class Pokemon
     }
 
     /**
-     * @return Collection|Tournament[]
+     * @return Collection<int, Tournament>|Tournament[]
      */
     public function getTournaments(): Collection
     {

@@ -53,7 +53,7 @@ class TournamentType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'class' => 'js-pokemon-autocomplete',
-                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                    'data-autocomplete-url' => $this->router->generate('app_utility_pokemons')
                 ],
             ])
             ->add('pokemon2', PokemonSelectTextType::class, [
@@ -62,7 +62,7 @@ class TournamentType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'class' => 'js-pokemon-autocomplete',
-                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                    'data-autocomplete-url' => $this->router->generate('app_utility_pokemons')
                 ],            ])
             ->add('pokemon3', PokemonSelectTextType::class, [
                 'label' => false,
@@ -70,7 +70,7 @@ class TournamentType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'class' => 'js-pokemon-autocomplete',
-                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                    'data-autocomplete-url' => $this->router->generate('app_utility_pokemons')
                 ],            ])
             ->add('pokemon4', PokemonSelectTextType::class, [
                 'label' => false,
@@ -78,7 +78,7 @@ class TournamentType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'class' => 'js-pokemon-autocomplete',
-                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                    'data-autocomplete-url' => $this->router->generate('app_utility_pokemons')
                 ],            ])
             ->add('pokemon5', PokemonSelectTextType::class, [
                 'label' => false,
@@ -86,7 +86,7 @@ class TournamentType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'class' => 'js-pokemon-autocomplete',
-                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                    'data-autocomplete-url' => $this->router->generate('app_utility_pokemons')
                 ],            ])
             ->add('pokemon6', PokemonSelectTextType::class, [
                 'label' => false,
@@ -94,7 +94,7 @@ class TournamentType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'class' => 'js-pokemon-autocomplete',
-                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                    'data-autocomplete-url' => $this->router->generate('app_utility_pokemons')
                 ],            ])
             ->add('pokemon7', PokemonSelectTextType::class, [
                 'label' => false,
@@ -102,7 +102,7 @@ class TournamentType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'class' => 'js-pokemon-autocomplete',
-                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                    'data-autocomplete-url' => $this->router->generate('app_utility_pokemons')
                 ],            ])
             ->add('pokemon8', PokemonSelectTextType::class, [
                 'label' => false,
@@ -110,7 +110,7 @@ class TournamentType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'class' => 'js-pokemon-autocomplete',
-                    'data-autocomplete-url' => $this->router->generate('admin_utility_pokemons')
+                    'data-autocomplete-url' => $this->router->generate('app_utility_pokemons')
                 ],            ])
             ;
     }

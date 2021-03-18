@@ -12,9 +12,9 @@ use Doctrine\ORM\EntityManagerInterface;
 class Initializor
 {
     public function __construct(
-    private EntityManagerInterface $em,
-    private PokemonRepository $pokemonRepo,
-    private GameRepository $gameRepo
+        private EntityManagerInterface $entityManager,
+        private PokemonRepository $pokemonRepo,
+        private GameRepository $gameRepo
     ) {
     }
 
@@ -37,14 +37,16 @@ class Initializor
 
             $tournament->addGame($game);
 
-            $this->em->persist($game);
-            $this->em->flush();
+            $this->entityManager->persist($game);
+            $this->entityManager->flush();
         }
     }
 
+    // check if 2 parents games are set, then we can set the child game, for exemple 2 quarters final leading to a semi final)
     public function updateBracket(Tournament $tournament)
     {
         $games = $tournament->getGames();
+        $winner1=$winner2=$winner3=$winner4=$winner5=$winner6=$loser5=$loser6=null;
 
         foreach ($games as $key) {
             $number=$key->getNumber();
@@ -108,7 +110,7 @@ class Initializor
             $game5->setPlayer2($winner2);
             $game5->setUpdatedAt(new DateTime());
 
-            $this->em->persist($game5);
+            $this->entityManager->persist($game5);
         }
 
         if (isset($winner3IsSet) && isset($winner4IsSet)) {
@@ -117,7 +119,7 @@ class Initializor
             $game6->setPlayer2($winner4);
             $game6->setUpdatedAt(new DateTime());
 
-            $this->em->persist($game6);
+            $this->entityManager->persist($game6);
         }
 
         if (isset($winner5IsSet) && isset($winner6IsSet)) {
@@ -126,16 +128,16 @@ class Initializor
             $game8->setPlayer2($winner6);
             $game8->setUpdatedAt(new DateTime());
 
-            $this->em->persist($game8);
+            $this->entityManager->persist($game8);
 
             $game7=$this->gameRepo->findOneByNumberAndTournament(7, $tournament->getId());
             $game7->setPlayer1($loser5);
             $game7->setPlayer2($loser6);
             $game7->setUpdatedAt(new DateTime());
 
-            $this->em->persist($game7);
+            $this->entityManager->persist($game7);
         }
 
-        $this->em->flush();
+        $this->entityManager->flush();
     }
 }

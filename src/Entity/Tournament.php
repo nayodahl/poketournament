@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\TournamentRepository;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -17,33 +18,35 @@ class Tournament
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $date;
+    private ?DateTimeInterface $date;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $numberPokemons;
+    private int $numberPokemons;
 
     /**
      * @ORM\ManyToMany(targetEntity=Pokemon::class, inversedBy="tournaments")
      * @ORM\JoinTable(name="tournaments_pokemons")
+     * @var Collection<int, Pokemon>
      */
-    private $pokemons;
+    private Collection $pokemons;
 
     /**
      * @ORM\OneToMany(targetEntity=Game::class, mappedBy="tournament", orphanRemoval=true)
+     * @var Collection<int, Game>
      */
-    private $games;
+    private Collection $games;
 
     public function __construct()
     {
@@ -94,7 +97,7 @@ class Tournament
     }
 
     /**
-     * @return Collection|Pokemon[]
+     * @return Collection<int, Pokemon>|Pokemon[]
      */
     public function getPokemons(): Collection
     {
@@ -118,7 +121,7 @@ class Tournament
     }
 
     /**
-     * @return Collection|Game[]
+     * @return Collection<int, Game>|Game[]
      */
     public function getGames(): Collection
     {
