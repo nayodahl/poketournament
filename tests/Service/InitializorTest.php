@@ -5,13 +5,14 @@ namespace App\Tests\Service;
 use App\Entity\Tournament;
 use App\Repository\GameRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Doctrine\Persistence\ObjectManager;
 
 class InitializorTest extends KernelTestCase
 {
     /**
-     * @var \Doctrine\ORM\EntityManager
+     * @var \Doctrine\Persistence\ObjectManager
      */
-    private $entityManager;
+    private ObjectManager $entityManager;
 
     protected function setUp(): void
     {
@@ -20,20 +21,16 @@ class InitializorTest extends KernelTestCase
         $this->entityManager = $kernel->getContainer()
             ->get('doctrine')
             ->getManager();
-
     }
     
     public function testInitTournament()
     {
         // load a created tournament and init it, it was created by datafixtures
-        $tournament = $this->entityManager
-        ->getRepository(Tournament::class)
-        ->findOneBy(['name' => 'Test Tournament'])
-        ;
+        $tournament = $this->entityManager->getRepository(Tournament::class)->findOneBy(['name' => 'Test Tournament']);
        
         // load the most recently created game
         $gameRepository = static::$container->get(GameRepository::class);
-        $game = $gameRepository->findOneBy([], ['id'=>'DESC'], 1, 0);
+        $game = $gameRepository->findOneBy([], ['id'=>'DESC']);
         
         // check that it is now linked to correct tournament
         $this->assertEquals($tournament->getId(), $game->getTournament()->getId());
@@ -42,9 +39,5 @@ class InitializorTest extends KernelTestCase
     protected function tearDown(): void
     {
         parent::tearDown();
-
-        // doing this is recommended to avoid memory leaks
-        $this->entityManager->close();
-        $this->entityManager = null;
     }
 }

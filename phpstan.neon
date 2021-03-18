@@ -12,3 +12,6 @@ parameters:
 
     bootstrapFiles:
         - bin/.phpunit/phpunit-8.5-0/vendor/autoload.php
+
+    doctrine:
+        objectManagerLoader: config/phpstan/doctrine-orm-bootstrap.php

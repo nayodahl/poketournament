@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\GameRepository;
 use DateTime;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -18,62 +19,62 @@ class Game
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $number;
+    private int $number;
 
     /**
      * @ORM\ManyToOne(targetEntity=Pokemon::class)
      */
-    private $winner;
+    private ?Pokemon $winner;
 
     /**
      * @ORM\ManyToOne(targetEntity=Pokemon::class)
      */
-    private $loser;
+    private ?Pokemon $loser;
 
     /**
      * @ORM\ManyToOne(targetEntity=Pokemon::class, fetch="EAGER")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $player1;
+    private ?Pokemon $player1;
 
     /**
      * @ORM\ManyToOne(targetEntity=Pokemon::class, fetch="EAGER")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $player2;
+    private ?Pokemon $player2;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      * @Assert\PositiveOrZero
      */
-    private $scorePlayer1;
+    private ?int $scorePlayer1;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      * @Assert\PositiveOrZero
      */
-    private $scorePlayer2;
+    private ?int $scorePlayer2;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $createdAt;
+    private DateTimeInterface $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $updatedAt;
+    private ?DateTimeInterface $updatedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity=Tournament::class, inversedBy="games", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $tournament;
+    private Tournament $tournament;
 
     public function __construct()
     {
