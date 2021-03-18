@@ -53,7 +53,6 @@ class Pokemon
     public function __construct()
     {
         $this->tournaments = new ArrayCollection();
-        $this->games = new ArrayCollection();
     }
 
     public function getId(): ?int

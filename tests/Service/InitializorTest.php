@@ -21,7 +21,6 @@ class InitializorTest extends KernelTestCase
             ->get('doctrine')
             ->getManager();
 
-        $this->initializor = self::$container->get('App\Service\Initializor');
     }
     
     public function testInitTournament()

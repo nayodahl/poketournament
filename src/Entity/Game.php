@@ -77,7 +77,6 @@ class Game
 
     public function __construct()
     {
-        $this->Pokemon = new ArrayCollection();
         $this->createdAt= new DateTime();
     }
 
