@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class TournamentControllerTest extends WebTestCase
 {
-    public function testHomepage()
+    public function testHomepage(): void
     {
         $client = static::createClient();
         $client->request('GET', '/');
@@ -16,7 +16,7 @@ class TournamentControllerTest extends WebTestCase
         $this->assertStringContainsString('Test Tournament', $client->getResponse()->getContent());
     }
 
-    public function testTournamentCreate()
+    public function testTournamentCreate(): void
     {
         $client = static::createClient();
         $client->request('GET', '/create');
@@ -25,7 +25,7 @@ class TournamentControllerTest extends WebTestCase
         $this->assertStringContainsString('Choisis un nom pour ton tournoi', $client->getResponse()->getContent());
     }
 
-    public function testTournamentShow()
+    public function testTournamentShow(): void
     {
         $client = static::createClient();
         $client->request('GET', '/show');

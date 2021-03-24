@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : sam. 27 fév. 2021 à 08:03
+-- Généré le : jeu. 18 mars 2021 à 21:00
 -- Version du serveur :  10.3.27-MariaDB-0+deb10u1
 -- Version de PHP : 8.0.1
 
@@ -141,10 +141,26 @@ INSERT INTO `game` (`id`, `winner_id`, `loser_id`, `player1_id`, `player2_id`, `
 (66, 3438, 3770, 3438, 3770, 2, 2, 1, '2021-02-15 11:58:24', '2021-02-25 11:54:45', 21),
 (67, 2685, 3011, 3011, 2685, 3, 3, 4, '2021-02-15 11:58:24', '2021-02-26 07:49:42', 21),
 (68, NULL, NULL, 3098, 2601, 4, NULL, NULL, '2021-02-15 11:58:24', NULL, 21),
-(69, NULL, NULL, 2592, 3438, 5, NULL, NULL, '2021-02-15 11:58:24', '2021-02-26 08:24:40', 21),
+(69, NULL, NULL, 2592, 3438, 5, NULL, NULL, '2021-02-15 11:58:24', '2021-03-17 10:55:40', 21),
 (70, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2021-02-15 11:58:24', NULL, 21),
 (71, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2021-02-15 11:58:24', NULL, 21),
-(72, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-02-15 11:58:24', NULL, 21);
+(72, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-02-15 11:58:24', NULL, 21),
+(73, NULL, NULL, NULL, NULL, 1, NULL, NULL, '2021-03-02 08:09:53', NULL, 14),
+(74, NULL, NULL, NULL, NULL, 2, NULL, NULL, '2021-03-02 08:09:53', NULL, 14),
+(75, NULL, NULL, NULL, NULL, 3, NULL, NULL, '2021-03-02 08:09:53', NULL, 14),
+(76, NULL, NULL, NULL, NULL, 4, NULL, NULL, '2021-03-02 08:09:53', NULL, 14),
+(77, NULL, NULL, NULL, NULL, 5, NULL, NULL, '2021-03-02 08:09:53', NULL, 14),
+(78, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2021-03-02 08:09:53', NULL, 14),
+(79, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2021-03-02 08:09:53', NULL, 14),
+(80, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-03-02 08:09:53', NULL, 14),
+(81, NULL, NULL, 3666, 3678, 1, NULL, NULL, '2021-03-17 11:13:59', NULL, 23),
+(82, NULL, NULL, 3116, 3494, 2, NULL, NULL, '2021-03-17 11:13:59', NULL, 23),
+(83, NULL, NULL, 3442, 2606, 3, NULL, NULL, '2021-03-17 11:13:59', NULL, 23),
+(84, NULL, NULL, 2483, 2685, 4, NULL, NULL, '2021-03-17 11:13:59', NULL, 23),
+(85, NULL, NULL, NULL, NULL, 5, NULL, NULL, '2021-03-17 11:13:59', NULL, 23),
+(86, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2021-03-17 11:13:59', NULL, 23),
+(87, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2021-03-17 11:13:59', NULL, 23),
+(88, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-03-17 11:13:59', NULL, 23);
 
 -- --------------------------------------------------------
 
@@ -1095,7 +1111,9 @@ INSERT INTO `tournament` (`id`, `name`, `date`, `number_pokemons`) VALUES
 (18, 'Tournoi 4 du lundi aprem', '2021-02-09 18:39:31', 8),
 (19, 'Tournoi des evoli', '2021-02-09 18:43:08', 8),
 (20, 'Tournoi des Evoli', '2021-02-14 15:25:53', 8),
-(21, 'Tournoi du lundi', '2021-02-15 11:58:24', 8);
+(21, 'Tournoi du lundi', '2021-02-15 11:58:24', 8),
+(22, 'test', '2021-03-17 11:01:17', 8),
+(23, 'Tournoi du mercredi', '2021-03-17 11:13:59', 8);
 
 -- --------------------------------------------------------
 
@@ -1168,7 +1186,23 @@ INSERT INTO `tournaments_pokemons` (`tournament_id`, `pokemon_id`) VALUES
 (21, 3011),
 (21, 3098),
 (21, 3438),
-(21, 3770);
+(21, 3770),
+(22, 2483),
+(22, 2597),
+(22, 2741),
+(22, 2960),
+(22, 3494),
+(22, 3529),
+(22, 3625),
+(22, 3744),
+(23, 2483),
+(23, 2606),
+(23, 2685),
+(23, 3116),
+(23, 3442),
+(23, 3494),
+(23, 3666),
+(23, 3678);
 
 -- --------------------------------------------------------
 
@@ -1246,7 +1280,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `game`
 --
 ALTER TABLE `game`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT pour la table `pokemon`
@@ -1258,13 +1292,13 @@ ALTER TABLE `pokemon`
 -- AUTO_INCREMENT pour la table `tournament`
 --
 ALTER TABLE `tournament`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Contraintes pour les tables déchargées

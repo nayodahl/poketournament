@@ -10,7 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class GameType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('scorePlayer1', IntegerType::class, [
@@ -22,7 +22,7 @@ class GameType extends AbstractType
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Game::class,

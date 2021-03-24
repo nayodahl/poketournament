@@ -12,8 +12,8 @@ use Symfony\Component\Routing\RouterInterface;
 
 class PokemonSelectTextType extends AbstractType
 {
-    private $pokemonRepository;
-    private $router;
+    private PokemonRepository $pokemonRepository;
+    private RouterInterface $router;
 
     public function __construct(PokemonRepository $pokemonRepository, RouterInterface $router)
     {
@@ -21,13 +21,13 @@ class PokemonSelectTextType extends AbstractType
         $this->router = $router;
     }
     
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->addModelTransformer(new NameToPokemonTransformer($this->pokemonRepository));
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'invalid_message' => 'Hmm, ce pokémon n\'existe pas !',

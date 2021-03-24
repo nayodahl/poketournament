@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class NameToPokemonTransformer implements DataTransformerInterface
 {
-    private $pokemonRepository;
+    private PokemonRepository $pokemonRepository;
 
     public function __construct(PokemonRepository $pokemonRepository)
     {

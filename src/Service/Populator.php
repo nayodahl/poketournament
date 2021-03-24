@@ -16,7 +16,7 @@ class Populator
     ) {
     }
 
-    public function populate()
+    public function populate(): void
     {
         for ($i = 800; $i <= 800; $i++) {
             $pokemonObject = new Pokemon();
@@ -65,7 +65,7 @@ class Populator
         }
     }
 
-    public function populateColorAndImage()
+    public function populateColorAndImage(): void
     {
         for ($i = 808; $i <= 898; $i++) {
             $pokemonObject = $this->pokemonRepo->findOneBy(['apiId' => $i]);
