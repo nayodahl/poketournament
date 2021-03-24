@@ -81,7 +81,7 @@ class Game
         $this->createdAt= new DateTime();
     }
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -194,13 +194,14 @@ class Game
         return $this;
     }
 
-    public function getTournament(): ?Tournament
+    public function getTournament(): Tournament
     {
         return $this->tournament;
     }
 
     public function setTournament(?Tournament $tournament): self
     {
+        // @phpstan-ignore-next-line
         $this->tournament = $tournament;
 
         return $this;

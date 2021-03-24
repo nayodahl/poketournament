@@ -16,7 +16,7 @@ class Populator
     ) {
     }
 
-    public function populate()
+    public function populate(): void
     {
         for ($i = 800; $i <= 800; $i++) {
             $pokemonObject = new Pokemon();
@@ -65,7 +65,7 @@ class Populator
         }
     }
 
-    public function populateColorAndImage()
+    public function populateColorAndImage(): void
     {
         for ($i = 808; $i <= 898; $i++) {
             $pokemonObject = $this->pokemonRepo->findOneBy(['apiId' => $i]);
@@ -79,7 +79,7 @@ class Populator
             $array=json_decode($content, true);
 
             $image=$array['sprites']['front_default'];
-            $pokemonObject->setImage($image);
+            $pokemonObject?->setImage($image);
 
             // Name
             $response = $this->client->request(
@@ -99,10 +99,10 @@ class Populator
                 $content = $response->getContent();
                 $arrayColor=json_decode($content, true);
                 $colorFr = $arrayColor['names'][1]['name'];
-                $pokemonObject->setColor($colorFr);
+                $pokemonObject?->setColor($colorFr);
             }
 
-            $this->em->persist($pokemonObject);
+            $pokemonObject?->$this->em->persist($pokemonObject);
             $this->em->flush();
         }
     }

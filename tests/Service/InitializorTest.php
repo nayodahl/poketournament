@@ -23,7 +23,7 @@ class InitializorTest extends KernelTestCase
             ->getManager();
     }
     
-    public function testInitTournament()
+    public function testInitTournament(): void
     {
         // load a created tournament and init it, it was created by datafixtures
         $tournament = $this->entityManager->getRepository(Tournament::class)->findOneBy(['name' => 'Test Tournament']);

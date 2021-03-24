@@ -11,6 +11,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Game|null findOneBy(array $criteria, array $orderBy = null)
  * @method Game[]    findAll()
  * @method Game[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @extends \Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository<Game>
  */
 class GameRepository extends ServiceEntityRepository
 {
@@ -19,7 +20,7 @@ class GameRepository extends ServiceEntityRepository
         parent::__construct($registry, Game::class);
     }
   
-    public function findOneByNumberAndTournament($value, int $tournamentId): ?Game
+    public function findOneByNumberAndTournament(int $value, int $tournamentId): ?Game
     {
         return $this->createQueryBuilder('g')
             ->andWhere('g.number = :val')

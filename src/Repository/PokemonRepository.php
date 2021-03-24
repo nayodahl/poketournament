@@ -11,6 +11,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Pokemon|null findOneBy(array $criteria, array $orderBy = null)
  * @method Pokemon[]    findAll()
  * @method Pokemon[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @extends \Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository<Pokemon>
  */
 class PokemonRepository extends ServiceEntityRepository
 {
@@ -19,7 +20,10 @@ class PokemonRepository extends ServiceEntityRepository
         parent::__construct($registry, Pokemon::class);
     }
 
-    public function findAllAlphabeticalMatching(string $query, int $limit = 5)
+    /**
+     * @return array<int, Pokemon>
+     */
+    public function findAllAlphabeticalMatching(?string $query, int $limit = 5): array
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.name LIKE :query')
@@ -31,6 +35,9 @@ class PokemonRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+     * @return array<int, array>
+     */
     public function getAllDistinctColors(): array
     {
         return $this->createQueryBuilder('p')

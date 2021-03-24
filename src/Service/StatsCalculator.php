@@ -15,6 +15,9 @@ class StatsCalculator
     ) {
     }
 
+    /**
+     * @return array<string, int> $data
+     */
     public function getMostUsedPokemons(): array
     {
         $tournaments = $this->tournamentRepository->findAll();
@@ -35,6 +38,9 @@ class StatsCalculator
         return $data;
     }
 
+    /**
+     * @return array<string, int> $data
+     */
     public function getMostWonGamesByPokemon(): array
     {
         $tournaments = $this->tournamentRepository->findAll();
@@ -55,6 +61,9 @@ class StatsCalculator
         return $data;
     }
 
+    /**
+     * @return array<string, int> $data
+     */
     public function getPointsByTournament(): array
     {
         $tournaments = $this->tournamentRepository->findAll();
@@ -71,6 +80,9 @@ class StatsCalculator
         return $data;
     }
 
+    /**
+     * @return array<int|string, int> $data
+     */
     public function getPokemonByColor(): array
     {
         $result = $this->pokemonRepository->getAllDistinctColors();

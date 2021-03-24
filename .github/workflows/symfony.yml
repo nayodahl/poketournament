@@ -80,6 +80,10 @@ jobs:
     - name: Yarn build
       run: yarn run encore production
 
+    ## —— PHPStan ✅ ———————————————————————————————————————————————————————————
+    - name: Run static analysis with PHPStan
+      run: ./vendor/bin/phpstan analyse -c phpstan.neon
+
     ## —— Doctrine 🐱 ————————————————————————————————————————————————————————————
     - name: Run Doctrine migrations and load fixtures
       run: |
@@ -93,3 +97,5 @@ jobs:
       env:
         DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/poketournament-test
       run: php bin/phpunit
+
+

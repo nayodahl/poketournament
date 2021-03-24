@@ -11,6 +11,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Tournament|null findOneBy(array $criteria, array $orderBy = null)
  * @method Tournament[]    findAll()
  * @method Tournament[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @extends \Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository<Tournament>
  */
 class TournamentRepository extends ServiceEntityRepository
 {
@@ -19,7 +20,12 @@ class TournamentRepository extends ServiceEntityRepository
         parent::__construct($registry, Tournament::class);
     }
 
-    public function findLatest()
+    /**
+     * Get the latest created Tournament
+     *
+     * @return Tournament
+     */
+    public function findLatest(): Tournament
     {
         return $this->createQueryBuilder('t')
             ->orderBy('t.date', 'DESC')

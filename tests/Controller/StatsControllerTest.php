@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class StatsControllerTest extends WebTestCase
 {
-    public function testDashboardShow()
+    public function testDashboardShow(): void
     {
         $client = static::createClient();
         $client->request('GET', '/stats');
