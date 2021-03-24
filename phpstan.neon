@@ -9,8 +9,5 @@ parameters:
     symfony:
         container_xml_path: var/cache/dev/App_KernelDevDebugContainer.xml
 
-    bootstrapFiles:
-        - ./bin/.phpunit/phpunit/vendor/autoload.php
-
     doctrine:
         objectManagerLoader: config/phpstan/doctrine-orm-bootstrap.php
