@@ -82,7 +82,11 @@ jobs:
 
     ## —— PHPStan ✅ ———————————————————————————————————————————————————————————
     - name: Static Analysis with PHPStan
-      run: ./vendor/bin/phpstan analyse -c phpstan.neon
+      uses: docker://oskarstark/phpstan-ga
+      env:
+        REQUIRE_DEV: true
+      with:
+        args: analyse src/
 
     ## —— Doctrine 🐱 ————————————————————————————————————————————————————————————
     - name: Run Doctrine migrations and load fixtures
