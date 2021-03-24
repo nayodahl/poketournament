@@ -93,3 +93,7 @@ jobs:
       env:
         DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/poketournament-test
       run: php bin/phpunit
+
+    ## —— PHPStan ✅ ———————————————————————————————————————————————————————————
+    - name: OSKAR-phpstan
+      uses: OskarStark/phpstan-ga@0.12.82
