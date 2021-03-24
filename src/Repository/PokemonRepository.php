@@ -23,7 +23,7 @@ class PokemonRepository extends ServiceEntityRepository
     /**
      * @return array<int, Pokemon>
      */
-    public function findAllAlphabeticalMatching(string $query, int $limit = 5): array
+    public function findAllAlphabeticalMatching(?string $query, int $limit = 5): array
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.name LIKE :query')

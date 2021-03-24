@@ -35,7 +35,7 @@ class User implements UserInterface
      */
     private $password;
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }

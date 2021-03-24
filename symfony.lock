@@ -11,6 +11,15 @@
             "config/packages/test/dama_doctrine_test_bundle.yaml"
         ]
     },
+    "phpdocumentor/reflection-common": {
+        "version": "2.2.0"
+    },
+    "phpdocumentor/reflection-docblock": {
+        "version": "5.2.2"
+    },
+    "phpdocumentor/type-resolver": {
+        "version": "1.4.0"
+    },
     "phpstan/extension-installer": {
         "version": "1.1.0"
     },
@@ -68,5 +77,8 @@
             "package.json",
             "webpack.config.js"
         ]
+    },
+    "webmozart/assert": {
+        "version": "1.10.0"
     }
 }
