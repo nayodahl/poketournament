@@ -81,7 +81,7 @@ class StatsCalculator
     }
 
     /**
-     * @return array<string, int> $data
+     * @return array<int|string, int> $data
      */
     public function getPokemonByColor(): array
     {
