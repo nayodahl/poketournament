@@ -81,12 +81,8 @@ jobs:
       run: yarn run encore production
 
     ## —— PHPStan ✅ ———————————————————————————————————————————————————————————
-    - name: Static Analysis with PHPStan
-      uses: docker://oskarstark/phpstan-ga
-      env:
-        REQUIRE_DEV: true
-      with:
-        args: analyse src/
+    - name: Run static analysis with PHPStan
+    run: ./vendor/bin/phpstan analyse -c phpstan.neon
 
     ## —— Doctrine 🐱 ————————————————————————————————————————————————————————————
     - name: Run Doctrine migrations and load fixtures
