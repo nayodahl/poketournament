@@ -4944,7 +4944,7 @@ jquery-autocomplete@^1.2.8:
   resolved "https://registry.yarnpkg.com/jquery-autocomplete/-/jquery-autocomplete-1.2.8.tgz#9927c5d752cf73fc5b6c707431197e16997cc653"
   integrity sha512-dbpkpEglcOnNH6NJPe8NUm4cTBsuyf33xk2Rr69o1ki93XxnKph3HNjEOff/oo+SLKMJQyxO7pQ6ACL2ZrA4JQ==
 
-jquery@^3.5.1:
+jquery@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
   integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==

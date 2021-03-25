@@ -42,7 +42,8 @@ class Initializor
         }
     }
 
-    // check if 2 parents games are set, then we can set the child game, for exemple 2 quarters final leading to a semi final)
+    // check if 2 parents games are set, then we can set the child game,
+    // for exemple 2 quarters final leading to a semi final
     public function updateBracket(Tournament $tournament): void
     {
         $games = $tournament->getGames();

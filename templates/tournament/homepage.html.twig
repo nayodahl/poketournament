@@ -14,22 +14,25 @@
                         <a href="{{ path('app_view') }}" class="btn btn-info">Voir le tournoi en cours </a>
                         <div class="btn btn-info" data-controller="counter"><i class="fa fa-thumbs-up"></i></div>
                     </div>
-
-                    <br><hr>
+                    <br>
+                    <hr>
 
                     {% for message in app.flashes('success') %}
-                        <div class="alert alert-success alert-dismissible" role="alert">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>    
                     {% endfor %}
                     {% for message in app.flashes('error') %}
-                        <div class="alert alert-danger alert-dismissible" role="alert">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>                            
                         </div>    
                     {% endfor %}
-
                    
                     Participants du tournoi en cours ({{ tournament.numberPokemons }} pokémons) :
 
