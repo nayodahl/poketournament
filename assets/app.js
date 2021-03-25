@@ -10,6 +10,10 @@ import './styles/app.css';
 import './styles/app.less';
 import './styles/app.scss';
 
+// Importing bootsrap Javascript
+const $ = require('jquery');
+require('bootstrap');
+
 // start the Stimulus application
 import './bootstrap';
 

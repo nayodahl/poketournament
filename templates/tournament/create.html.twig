@@ -13,6 +13,8 @@
         <div class="container section-inner">
             <div class="row">
                 <div class="col-lg-10 mx-auto">
+                    {{ form_errors(tournamentForm) }}
+                    
                     {{ form_start(tournamentForm) }}
                         {{ form_row(tournamentForm.name) }}
                         {{ form_row(tournamentForm.numberPokemons) }}

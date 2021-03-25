@@ -36,9 +36,9 @@ class GameController extends AbstractController
                 $game->setLoser($game->getPlayer1());
             }
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($game);
-            $em->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($game);
+            $entityManager->flush();
 
             $this->addFlash('success', 'Match sauvegardé');
 

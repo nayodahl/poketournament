@@ -11,6 +11,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=GameRepository::class)
+ * @Assert\Expression(
+ *     "this.getScorePlayer1() !== this.getScorePlayer2()",
+ *     message="There can not be a draw ! One player must win"
+ * )
  */
 class Game
 {

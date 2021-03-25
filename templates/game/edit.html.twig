@@ -22,6 +22,9 @@
                         <img src='../../images/{{ game.player2.apiId }}.png' alt="photo du pokémon 2">    
                     </div>
                     <hr>
+
+                    {{ form_errors(gameForm) }}
+
                     {{ form_start(gameForm) }}
                         <p class="tournament-bracket__code  tournament-bracket__team">{{ game.player1.name }} :<p>
                         {{ form_row(gameForm.scorePlayer1, {
