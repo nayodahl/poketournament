@@ -3,11 +3,19 @@
 # pokeTournament 
 
 Simple sandbox project to test everything I want.
-This is currently a Pokemon cards Tournament generator for my son.
+This is currently a Pokemon cards Tournament generator for my kid.
 
-It uses this RESTful Pokémon API https://pokeapi.co/,  Symfony 5.2 new features (experimental Security, Login Throttling), Symfony UX (ChartJS), PHP 8 etc...
+It uses  : 
+- this RESTful Pokémon API https://pokeapi.co/
+- Symfony 5.2 new features (experimental Security, Login Throttling)
+- Symfony UX (ChartJS)
+- PHP 8 new features
+- CI with Github Actions (code quality with CodeSniffer, Static Analysis with PHPStan, PhpUnit)
+- EasyAdminBundle https://symfony.com/doc/current/bundles/EasyAdminBundle/index.html
+
+Current WIP version is available here : https://poke.nayo.cloud
 
 
 ## Author
 
-**Anthony Fachaux** - Openclassrooms Student - Dev PHP/Symfony
+**Anthony Fachaux** - Dev PHP/Symfony

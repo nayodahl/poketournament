@@ -31,13 +31,16 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Poketournament');
+            ->setTitle('Poketournament')
+            ->setFaviconPath('build/img/ico/favicon.ico')
+            ;
     }
 
     public function configureMenuItems(): iterable
     {
         return [
             MenuItem::linktoDashboard('Dashboard', 'fa fa-home'),
+            MenuItem::linkToRoute('Exit', 'fa fa-window-close-o', 'app_homepage'),
 
             MenuItem::section('Pokemons'),
             MenuItem::linkToCrud('Pokemons', 'fa fa-tags', Pokemon::class),
