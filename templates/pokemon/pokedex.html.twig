@@ -1,5 +1,10 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('pokedex') }}
+{% endblock %}
+
 {% block body %}
 <main id="swup" class="transition-fade">
     <div class="section d-flex">
@@ -29,17 +34,23 @@
                             </button>                            
                         </div>    
                     {% endfor %}
-
-                    <a href="#" class="btn btn-info py-1 filterBtn" data-toggle="modal" data-target="#filtersModal"><span class="fas fa-search"></span><span> Filtrer</span></a>
-                    <a href="#" class="btn btn-warning py-1 filterBtn" id="resetFilterBtn" style="display: none">Réinitialiser les filtres</a>
-                   
-                    <table class="table table-hover">
+                  
+                    <table 
+                        class="table table-hover" 
+                        data-toggle="table"
+                        data-pagination="true"
+                        data-pagination-class="info"
+                        data-search="true"
+                        data-showColumns="true"
+                        data-show-columns="true"
+                        data-buttons-class="info"
+                        >
                         <thead>
                             <tr>
-                                <th scope="col">Numéro national</th>
-                                <th scope="col">Nom</th>
-                                <th scope="col">Couleur</th>
-                                <th scope="col">Image</th>
+                                <th scope="col-1" data-sortable="true">Numéro national</th>
+                                <th scope="col-3" data-sortable="true">Nom</th>
+                                <th scope="col-3">Couleur</th>
+                                <th scope="col-3">Image</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,4 +75,9 @@
     </div>   
 </main>
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('pokedex') }}
 {% endblock %}
