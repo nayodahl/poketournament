@@ -1,0 +1,67 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+<main id="swup" class="transition-fade">
+    <div class="section d-flex">
+        <div class="container-fluid section-inner my-auto">
+            <div class="row">
+                <div class="col-8 mx-auto">
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" role="navigation" aria-current="page">Pokédex</li>
+                        </ol>
+                    </nav>
+
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>    
+                    {% endfor %}
+                    {% for message in app.flashes('error') %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>                            
+                        </div>    
+                    {% endfor %}
+
+                    <a href="#" class="btn btn-info py-1 filterBtn" data-toggle="modal" data-target="#filtersModal"><span class="fas fa-search"></span><span> Filtrer</span></a>
+                    <a href="#" class="btn btn-warning py-1 filterBtn" id="resetFilterBtn" style="display: none">Réinitialiser les filtres</a>
+                   
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Numéro national</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Couleur</th>
+                                <th scope="col">Image</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% if pokemons|length > 0 %} 
+                            {% for pokemon in pokemons %}
+                            <tr>
+                                <th class="align-middle" scope="row">{{ pokemon.apiId }}</th>
+                                <td class="align-middle">{{ pokemon.name }}</td>
+                                <td class="align-middle">{{ pokemon.color }}</td>
+                                <td class="align-middle"><img class="card-img-top mx-auto" src='images/{{ pokemon.apiId }}.png' alt="pokemon avatar"></td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr><td colspan="4">Pas de pokémons, vérifiez vos filtres</td></tr>
+                        {% endif %}
+                        </tbody>
+                    </table>                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>   
+</main>
+
+{% endblock %}

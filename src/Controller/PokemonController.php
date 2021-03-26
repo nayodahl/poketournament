@@ -19,6 +19,16 @@ class PokemonController extends AbstractController
     }
 
     /**
+     * @Route("/pokedex", name="app_pokedex")
+     */
+    public function pokedexShow(PokemonRepository $pokemonRepo): Response
+    {
+        return $this->render('pokemon/pokedex.html.twig', [
+            'pokemons' => $pokemonRepo->findAll(),
+        ]);
+    }
+
+    /**
      * @Route("/utility/pokemons", methods="GET", name="app_utility_pokemons")
      */
     public function getPokemonsApi(PokemonRepository $pokemonRepo, Request $request): Response
