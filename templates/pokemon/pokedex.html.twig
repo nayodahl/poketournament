@@ -1,0 +1,76 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('pokedex') }}
+{% endblock %}
+
+{% block body %}
+<main id="swup" class="transition-fade">
+    <div class="section d-flex">
+        <div class="container-fluid section-inner my-auto">
+            <div class="row">
+                <div class="col-8 mx-auto">
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" role="navigation" aria-current="page">Pokédex</li>
+                        </ol>
+                    </nav>
+
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>    
+                    {% endfor %}
+                    {% for message in app.flashes('error') %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>                            
+                        </div>    
+                    {% endfor %}
+                  
+                    <table 
+                        class="table table-hover pokedex" 
+                        id="table"      
+                        data-toggle="table"                  
+                        data-buttons-class="info"     
+                        data-pagination="true"
+                        data-url="/utility/pokedex"  
+                        data-search="true"                 
+                        >  
+                        <thead>
+                            <tr>
+                            <th data-field="apiId" data-sortable="true">N° national</th>
+                            <th data-field="name" data-sortable="true">Nom</th>
+                            <th data-field="color">Couleur</th>
+                            <th data-field="image" data-formatter="imageFormatter">Image</th>
+                            </tr>
+                        </thead>                      
+                    </table>                 
+                    
+                </div>
+            </div>
+        </div>
+    </div>   
+</main>
+<script>
+    function imageFormatter(value) {
+    
+        return '<img class="card-img-top mx-auto" src=' +
+        value +
+        ' alt="pokemon avatar">'
+    }
+</script>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('pokedex') }}
+{% endblock %}

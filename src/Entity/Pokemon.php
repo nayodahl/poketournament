@@ -26,22 +26,25 @@ class Pokemon
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull(message="Merci d'entrer un nom")
-     * @Groups({"list_pokemon"})
+     * @Groups({"list_pokemon", "pokedex"})
      */
     private string $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"pokedex"})
      */
     private ?string $color;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"pokedex"})
      */
     private int $apiId;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"pokedex"})
      */
     private ?string $image;
 

@@ -33,3 +33,8 @@ body {
 html.is-animating .transition-fade {
     opacity: 0;
 }
+
+.pokedex img{
+    max-height: 48px;
+    max-width: 48px;
+}   
