@@ -4,7 +4,7 @@
     "description": "A sandbox project to organize pokemon cards tournaments.",
     "license": "proprietary",
     "require": {
-        "php": ">=7.2.5",
+        "php": "^8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "composer/package-versions-deprecated": "^1.11",
@@ -55,7 +55,10 @@
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "8.0.1"
+        }
     },
     "autoload": {
         "psr-4": {

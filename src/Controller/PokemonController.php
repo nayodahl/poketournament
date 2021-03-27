@@ -36,7 +36,7 @@ class PokemonController extends AbstractController
         $list = $pokemonRepo->findAllAlphabeticalMatching($request->query->get('query'));
         
         return $this->json(['pokemons' => $list], 200, [], ['groups' => ['list_pokemon']]);
-    }        
+    }
 
     /**
      * @Route("/utility/pokedex", methods="GET", name="app_utility_pokedex")
