@@ -22,6 +22,7 @@ require('@fortawesome/fontawesome-free/css/all.min.css');
 // swup page transitions
 import Swup from 'swup';
 import SwupOverlayTheme from '@swup/overlay-theme';
+
 const swup = new Swup({
   plugins: [
     new SwupOverlayTheme({
@@ -31,12 +32,60 @@ const swup = new Swup({
   ]
 });
 
-// squares animation
-const squares = document.querySelectorAll(".square");
+// bootstrap-table for pokedex page
+import 'bootstrap-table/dist/bootstrap-table.min.css';
+import 'bootstrap-table';
 
-setInterval(() => {
-  squares.forEach((square) => {
-    square.classList.toggle("xyz-in");
-    square.classList.toggle("xyz-out");
-  });
-}, 3000);
+// autocompletion for create tournament form
+import './styles/create_form.css';
+import 'autocomplete.js/dist/autocomplete.jquery';
+
+
+function init(){
+
+  // squares animation
+  const squares = document.querySelectorAll(".square");
+
+  setInterval(() => {
+    squares.forEach((square) => {
+      square.classList.toggle("xyz-in");
+      square.classList.toggle("xyz-out");
+    });
+  }, 3000);
+
+  // bootstrap-table for pokedex page
+  $('#table').bootstrapTable({
+  })
+
+  function imageFormatter(value) {
+    
+    return '<img class="card-img-top mx-auto" src=' +
+    value +
+    ' alt="pokemon avatar">'
+  }
+
+  // autocompletion for create tournament form
+  $('.js-pokemon-autocomplete').each(function() {
+    var autocompleteUrl = $(this).data('autocomplete-url');
+
+    $(this).autocomplete({hint: true}, [
+        {
+            source: function(query, cb) {
+                $.ajax({
+                    url: autocompleteUrl+'?query='+query
+                }).then(function(data) {
+                    cb(data.pokemons);
+                });
+            },
+            displayKey: 'name',
+            debounce: 100 // only request every 100ms
+        }
+    ])
+}); 
+}
+
+init();
+
+// once swup transition is used to replace content, this event is triggered, launch init function so that other JS code of the page is executed
+document.addEventListener('swup:contentReplaced', init);
+
