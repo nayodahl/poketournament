@@ -4,6 +4,10 @@
     {{ parent() }}
     {{ encore_entry_link_tags('create_form') }}
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('create_form') }}
+{% endblock %}
 
 {% block title %}Grand Tournoi Pokémon{% endblock %}
 
@@ -38,9 +42,4 @@
         </div>
     </main>    
 
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('create_form') }}
 {% endblock %}

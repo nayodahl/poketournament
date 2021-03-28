@@ -3,6 +3,9 @@
 {% block stylesheets %}
     {{ parent() }}
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
 
 {% block title %}Grand Tournoi Pokémon{% endblock %}
 
@@ -44,8 +47,4 @@
         </div>
     </main>    
 
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
 {% endblock %}

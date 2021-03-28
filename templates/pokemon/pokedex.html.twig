@@ -4,6 +4,10 @@
     {{ parent() }}
     {{ encore_entry_link_tags('pokedex') }}
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('pokedex') }}
+{% endblock %}
 
 {% block body %}
 <main id="swup" class="transition-fade">
@@ -68,9 +72,4 @@
     }
 </script>
 
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('pokedex') }}
 {% endblock %}

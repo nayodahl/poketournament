@@ -3,6 +3,9 @@
 {% block stylesheets %}
     {{ parent() }}
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
 
 {% block title %}Log in!{% endblock %}
 
@@ -56,8 +59,4 @@
         </div>
     </main>  
 
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
 {% endblock %}
