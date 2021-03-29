@@ -36,6 +36,9 @@ const swup = new Swup({
 import 'bootstrap-table/dist/bootstrap-table.min.css';
 import 'bootstrap-table';
 import 'bootstrap-table/dist/locale/bootstrap-table-fr-FR';
+import 'bootstrap-table/dist/extensions/export/bootstrap-table-export';
+import './libs/tableExport.min.js';
+import './libs/FileSaver.min.js';
 
 // autocompletion for create tournament form
 import './styles/create_form.css';
@@ -60,10 +63,12 @@ function init(){
     url: 'utility/pokedex',
     pagination: true,
     search: true,
+    exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel'],
     columns: [{
       field: 'apiId',
       title: 'N° national',
       sortable: true,
+      width: 80,
     },
     {
       field: 'name',
