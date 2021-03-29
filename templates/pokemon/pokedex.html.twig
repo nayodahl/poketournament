@@ -1,10 +1,5 @@
 {% extends 'layout.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    {{ encore_entry_link_tags('pokedex') }}
-{% endblock %}
-
 {% block body %}
 <main id="swup" class="transition-fade">
     <div class="section d-flex">
@@ -36,22 +31,16 @@
                     {% endfor %}
                   
                     <table 
-                        class="table table-hover pokedex" 
+                        class="table table-hover pokedex text-center" 
                         id="table"      
-                        data-toggle="table"                  
-                        data-buttons-class="info"     
-                        data-pagination="true"
-                        data-url="/utility/pokedex"  
-                        data-search="true"                 
-                        >  
-                        <thead>
-                            <tr>
-                            <th data-field="apiId" data-sortable="true">N° national</th>
-                            <th data-field="name" data-sortable="true">Nom</th>
-                            <th data-field="color">Couleur</th>
-                            <th data-field="image" data-formatter="imageFormatter">Image</th>
-                            </tr>
-                        </thead>                      
+                        data-toggle="table"  
+                        data-locale="fr-FR"  
+                        data-show-export="true"  
+                        data-click-to-select="true"            
+                        data-buttons-class="info"
+                        data-show-columns="true"
+                        data-show-columns-toggle-all="true"    
+                        >                     
                     </table>                 
                     
                 </div>
@@ -59,18 +48,5 @@
         </div>
     </div>   
 </main>
-<script>
-    function imageFormatter(value) {
-    
-        return '<img class="card-img-top mx-auto" src=' +
-        value +
-        ' alt="pokemon avatar">'
-    }
-</script>
 
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('pokedex') }}
 {% endblock %}
