@@ -35,6 +35,7 @@ const swup = new Swup({
 // bootstrap-table for pokedex page
 import 'bootstrap-table/dist/bootstrap-table.min.css';
 import 'bootstrap-table';
+import 'bootstrap-table/dist/locale/bootstrap-table-fr-FR';
 
 // autocompletion for create tournament form
 import './styles/create_form.css';
@@ -55,14 +56,33 @@ function init(){
 
   // bootstrap-table for pokedex page
   $('#table').bootstrapTable({
+    locale: 'fr-FR',
+    url: 'utility/pokedex',
+    pagination: true,
+    search: true,
+    columns: [{
+      field: 'apiId',
+      title: 'N° national',
+      sortable: true,
+    },
+    {
+      field: 'name',
+      title: 'Nom', 
+      sortable: true,
+    },
+    {
+      field: 'color',
+      title: 'Couleur'
+    },
+    {
+      field: 'image',
+      title: 'Image',
+      formatter: (value, row) => {
+        return '<img class="card-img-top mx-auto" src=\'images/' + row.apiId + '.png\' alt="pokemon avatar">'
+      },
+    }]
   })
 
-  function imageFormatter(value) {
-    
-    return '<img class="card-img-top mx-auto" src=' +
-    value +
-    ' alt="pokemon avatar">'
-  }
 
   // autocompletion for create tournament form
   $('.js-pokemon-autocomplete').each(function() {
@@ -81,7 +101,7 @@ function init(){
             debounce: 100 // only request every 100ms
         }
     ])
-}); 
+  }); 
 }
 
 init();
