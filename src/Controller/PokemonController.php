@@ -39,7 +39,7 @@ class PokemonController extends AbstractController
     public function pokemonShow(PokemonRepository $pokemonRepo, string $slug): Response
     {
         return $this->render('pokemon/pokemon.html.twig', [
-            'pokemon' => $pokemonRepo->findOneBy([ 'slug' => $slug]),
+            'pokemon' => $pokemonRepo->findOneBy([ 'slug' => $slug ]),
         ]);
     }
 
