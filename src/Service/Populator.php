@@ -12,7 +12,8 @@ class Populator
     public function __construct(
         private HttpClientInterface $client,
         private EntityManagerInterface $em,
-        private PokemonRepository $pokemonRepo
+        private PokemonRepository $pokemonRepo,
+        private Slugger $slugger
     ) {
     }
 
@@ -60,6 +61,9 @@ class Populator
             $colorFr = $arrayColor['names'][1]['name'];
             $pokemonObject->setColor($colorFr);
 
+            //slug
+            $pokemonObject->setSlug($this->slugger->slugIt($pokemonObject->getName()));
+
             $this->em->persist($pokemonObject);
             $this->em->flush();
         }
@@ -103,6 +107,17 @@ class Populator
             }
 
             $pokemonObject?->$this->em->persist($pokemonObject);
+            $this->em->flush();
+        }
+    }
+
+    public function populateSlug(): void
+    {
+        $pokemons = $this->pokemonRepo->findAll();
+        foreach ($pokemons as $pokemon) {
+            $pokemon->setSlug($this->slugger->slugIt($pokemon->getName()));
+
+            $this->em->persist($pokemon);
             $this->em->flush();
         }
     }

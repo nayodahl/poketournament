@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+<main id="swup" class="transition-fade">
+    <div class="section d-flex">
+        <div class="container-fluid section-inner my-auto">
+            <div class="row">
+                <div class="col-8 mx-auto">
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" role="navigation" aria-current="page">{{ pokemon.name }}</li>
+                        </ol>
+                    </nav>
+                 
+                    <h2>{{ pokemon.name }}</h2>
+                    
+                </div>
+            </div>
+        </div>
+    </div>   
+</main>
+
+{% endblock %}

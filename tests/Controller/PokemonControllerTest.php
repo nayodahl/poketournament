@@ -14,4 +14,13 @@ class PokemonControllerTest extends WebTestCase
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertStringContainsString('Pokédex', $client->getResponse()->getContent());
     }
+
+    public function testPokemonShow(): void
+    {
+        $client = static::createClient();
+        $client->request('GET', '/pokedex/salameche');
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertStringContainsString('Salamèche', $client->getResponse()->getContent());
+    }
 }

@@ -13,6 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass=PokemonRepository::class)
  * @UniqueEntity("apiId")
+ * @UniqueEntity("slug")
  */
 class Pokemon
 {
@@ -26,27 +27,29 @@ class Pokemon
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull(message="Merci d'entrer un nom")
-     * @Groups({"list_pokemon", "pokedex"})
+     * @Groups({"list_pokemon"})
      */
     private string $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"pokedex"})
      */
     private ?string $color;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"pokedex"})
      */
     private int $apiId;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"pokedex"})
      */
     private ?string $image;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $slug;
 
     /**
      * @ORM\ManyToMany(targetEntity=Tournament::class, mappedBy="pokemons")
@@ -64,7 +67,7 @@ class Pokemon
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -108,6 +111,18 @@ class Pokemon
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

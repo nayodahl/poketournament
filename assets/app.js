@@ -77,14 +77,15 @@ function init(){
     },
     {
       field: 'color',
-      title: 'Couleur'
+      title: 'Couleur',
+      width: 100,
     },
     {
       field: 'image',
       title: 'Image',
       formatter: (value, row) => {
-        return '<img class="card-img-top mx-auto" src=\'images/' + row.apiId + '.png\' alt="pokemon avatar">'
-      },
+        return '<a href="/pokedex/' + row.slug +'"><img class="card-img-top mx-auto" src=\'images/' + row.apiId + '.png\' alt="pokemon avatar"></a>'
+    },
     }]
   })
 
