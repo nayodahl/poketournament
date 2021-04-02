@@ -33,6 +33,7 @@ class PokemonFixtures extends Fixture
         $pokemon2->setApiId(2);
         $pokemon2->setColor('blue');
         $pokemon2->setSlug($this->slugger->slugIt($pokemon2->getName()));
+        $pokemon2->setParent($pokemon1);
         $manager->persist($pokemon2);
 
         $pokemon3 = new Pokemon();
@@ -40,6 +41,7 @@ class PokemonFixtures extends Fixture
         $pokemon3->setApiId(3);
         $pokemon3->setColor('blue');
         $pokemon3->setSlug($this->slugger->slugIt($pokemon3->getName()));
+        $pokemon3->setParent($pokemon2);
         $manager->persist($pokemon3);
 
         $pokemon4 = new Pokemon();
@@ -54,6 +56,7 @@ class PokemonFixtures extends Fixture
         $pokemon5->setApiId(5);
         $pokemon5->setColor('blue');
         $pokemon5->setSlug($this->slugger->slugIt($pokemon5->getName()));
+        $pokemon5->setParent($pokemon4);
         $manager->persist($pokemon5);
 
         $pokemon6 = new Pokemon();
@@ -61,6 +64,7 @@ class PokemonFixtures extends Fixture
         $pokemon6->setApiId(6);
         $pokemon6->setColor('blue');
         $pokemon6->setSlug($this->slugger->slugIt($pokemon6->getName()));
+        $pokemon6->setParent($pokemon5);
         $manager->persist($pokemon6);
 
         $pokemon7 = new Pokemon();
@@ -75,6 +79,7 @@ class PokemonFixtures extends Fixture
         $pokemon8->setApiId(8);
         $pokemon8->setColor('blue');
         $pokemon8->setSlug($this->slugger->slugIt($pokemon8->getName()));
+        $pokemon8->setParent($pokemon7);
         $manager->persist($pokemon8);
 
         $manager->flush();
