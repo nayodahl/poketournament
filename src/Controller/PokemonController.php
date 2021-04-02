@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Pokemon;
 use App\Repository\PokemonRepository;
 use App\Service\Populator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,7 +15,7 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
 class PokemonController extends AbstractController
-{
+{   
     #[Route('/pokemon', name: 'pokemon')]
     public function index(): Response
     {
@@ -37,7 +38,22 @@ class PokemonController extends AbstractController
      * @Route("/pokedex/{slug}", name="app_pokemon")
      */
     public function pokemonShow(PokemonRepository $pokemonRepo, string $slug): Response
-    {
+    {       
+        $pokemon = $pokemonRepo->findOneBy([ 'apiId' => 1000 ]);
+        
+        dump($pokemon);
+
+        $repo = $pokemonRepo;
+
+        dump($repo->childCount($pokemon));
+        dump( $repo->childCount($pokemon, true));
+
+        $child = $repo->getChildren($pokemon, true, null, 'ASC', false);
+        dump( $child);
+
+        $leaf = $repo->getLeafs($pokemon->getRoot());
+        dd($leaf);
+
         return $this->render('pokemon/pokemon.html.twig', [
             'pokemon' => $pokemonRepo->findOneBy([ 'slug' => $slug ]),
         ]);
