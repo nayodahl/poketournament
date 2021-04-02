@@ -82,20 +82,21 @@ class Pokemon
      * @ORM\ManyToOne(targetEntity="Pokemon")
      * @ORM\JoinColumn(name="tree_root", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $root;
+    private ?Pokemon $root;
 
     /**
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="Pokemon", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $parent;
+    private ?Pokemon $parent;
 
     /**
      * @ORM\OneToMany(targetEntity="Pokemon", mappedBy="parent")
      * @ORM\OrderBy({"lft" = "ASC"})
+     * @var Collection<int, Pokemon>
      */
-    private $children;
+    private Collection $children;
 
     /**
      * @var \DateTime $updated_at
@@ -199,17 +200,17 @@ class Pokemon
         return $this;
     }
 
-    public function getRoot()
+    public function getRoot(): ?Pokemon
     {
         return $this->root;
     }
 
-    public function setParent(Pokemon $parent = null)
+    public function setParent(Pokemon $parent = null): void
     {
         $this->parent = $parent;
     }
 
-    public function getParent()
+    public function getParent(): ?Pokemon
     {
         return $this->parent;
     }
