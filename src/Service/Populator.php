@@ -10,9 +10,10 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class Populator
 {
     public function __construct(
-        private HttpClientInterface $client,
-        private EntityManagerInterface $em,
-        private PokemonRepository $pokemonRepo
+    private HttpClientInterface $client,
+    private EntityManagerInterface $em,
+    private PokemonRepository $pokemonRepo,
+    private Slugger $slugger
     ) {
     }
 
@@ -59,6 +60,9 @@ class Populator
             $arrayColor=json_decode($content, true);
             $colorFr = $arrayColor['names'][1]['name'];
             $pokemonObject->setColor($colorFr);
+
+            //slug
+            $pokemonObject->setSlug($this->slugger->slugIt($pokemonObject->getName()));
 
             $this->em->persist($pokemonObject);
             $this->em->flush();

@@ -5,19 +5,22 @@ namespace App\Repository;
 use App\Entity\Pokemon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 /**
  * @method Pokemon|null find($id, $lockMode = null, $lockVersion = null)
  * @method Pokemon|null findOneBy(array $criteria, array $orderBy = null)
  * @method Pokemon[]    findAll()
  * @method Pokemon[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- * @extends \Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository<Pokemon>
  */
-class PokemonRepository extends ServiceEntityRepository
+class PokemonRepository extends NestedTreeRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Pokemon::class);
+        $manager = $registry->getManagerForClass(Pokemon::class);
+        
+        /* @phpstan-ignore-next-line */
+        parent::__construct($manager, $manager->getClassMetadata(Pokemon::class));
     }
 
     /**

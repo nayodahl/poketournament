@@ -38,14 +38,14 @@
 
                     <div class="card-deck">
                         {% for pokemon in tournament.pokemons %}
-                            <div class="card">
+                            <a href="{{ path('app_pokemon', {slug: pokemon.slug}) }}" class="card">
                                 <img src='images/{{ pokemon.apiId }}.png' alt="pokemon avatar">
                                 <div class="card-body">
                                 </div>
                                 <div class="card-footer">
                                     <h5>{{ pokemon.name }}</h5>
                                 </div>
-                            </div>
+                            </a>
                         {% endfor %}
                     </div>
 

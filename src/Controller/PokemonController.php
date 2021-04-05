@@ -2,11 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\Pokemon;
 use App\Repository\PokemonRepository;
+use App\Service\Populator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
 class PokemonController extends AbstractController
 {
@@ -29,12 +35,44 @@ class PokemonController extends AbstractController
     }
 
     /**
+     * @Route("/pokedex/{slug}", name="app_pokemon")
+     */
+    public function pokemonShow(PokemonRepository $pokemonRepo, string $slug): Response
+    {
+        $pokemon = $pokemonRepo->findOneBy([ 'slug' => $slug ]);
+        $options = [
+            'decorate' => true,
+            'rootOpen' => '<ul>',
+            'rootClose' => '</ul>',
+            'childOpen' => '<li>',
+            'childClose' => '</li>',
+            'nodeDecorator' => function($node) {
+                return '<a href="/pokedex/'.$node['slug'].'">'
+                        .'<div class="title" >'.$node['name'].' #'.$node['apiId'].'</div>'
+                        .'<img class="image" src="/images/'.$node['apiId'].'.png"></img>'
+                        .'</a>';
+            }
+        ];
+        $evolutionChain = $pokemonRepo->childrenHierarchy(
+            $pokemon?->getRoot(),
+            false,
+            $options,
+            true
+        );
+       
+        return $this->render('pokemon/pokemon.html.twig', [
+            'pokemon' => $pokemon,
+            'evolutionChain' => $evolutionChain
+            ]);
+    }
+
+    /**
      * @Route("/utility/pokemons", methods="GET", name="app_utility_pokemons")
      */
     public function findPokemonsApi(PokemonRepository $pokemonRepo, Request $request): Response
     {
         $list = $pokemonRepo->findAllAlphabeticalMatching($request->query->get('query'));
-        
+       
         return $this->json(['pokemons' => $list], 200, [], ['groups' => ['list_pokemon']]);
     }
 
@@ -44,8 +82,20 @@ class PokemonController extends AbstractController
     public function findAllPokemonsApi(PokemonRepository $pokemonRepo): Response
     {
         $list = $pokemonRepo->findAll();
-        
-        return $this->json($list, 200, [], ['groups' => ['pokedex']]);
+   
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $json = $serializer->serialize($list, 'json', [AbstractNormalizer::IGNORED_ATTRIBUTES => [
+            'tournaments',
+            'root',
+            'parent',
+            'children'
+            ]]);
+        $response = new Response($json, 200, ['Content-Type' => 'application/json']);
+
+        return $response;
     }
 
     /**
@@ -54,7 +104,7 @@ class PokemonController extends AbstractController
     /*
     public function loadDataFromPokeapi(Populator $populator): Response
     {
-        $populator->populateColorAndImage();
+        $populator->populateSlug();
 
         return $this->redirectToRoute('app_homepage');
     }

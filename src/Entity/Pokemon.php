@@ -6,13 +6,16 @@ use App\Repository\PokemonRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
+ * @Gedmo\Tree(type="nested")
  * @ORM\Entity(repositoryClass=PokemonRepository::class)
  * @UniqueEntity("apiId")
+ * @UniqueEntity("slug")
  */
 class Pokemon
 {
@@ -26,33 +29,82 @@ class Pokemon
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull(message="Merci d'entrer un nom")
-     * @Groups({"list_pokemon", "pokedex"})
+     * @Groups({"list_pokemon"})
      */
     private string $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"pokedex"})
      */
     private ?string $color;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"pokedex"})
      */
     private int $apiId;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"pokedex"})
      */
     private ?string $image;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $slug;
 
     /**
      * @ORM\ManyToMany(targetEntity=Tournament::class, mappedBy="pokemons")
      * @var Collection<int, Tournament>
      */
     private Collection $tournaments;
+
+    /**
+     * @Gedmo\TreeLeft
+     * @ORM\Column(name="lft", type="integer")
+     */
+    private int $lft;
+
+    /**
+     * @Gedmo\TreeLevel
+     * @ORM\Column(name="lvl", type="integer")
+     */
+    private int $lvl;
+
+    /**
+     * @Gedmo\TreeRight
+     * @ORM\Column(name="rgt", type="integer")
+     */
+    private int $rgt;
+
+    /**
+     * @Gedmo\TreeRoot
+     * @ORM\ManyToOne(targetEntity="Pokemon")
+     * @ORM\JoinColumn(name="tree_root", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private ?Pokemon $root;
+
+    /**
+     * @Gedmo\TreeParent
+     * @ORM\ManyToOne(targetEntity="Pokemon", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private ?Pokemon $parent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Pokemon", mappedBy="parent")
+     * @ORM\OrderBy({"lft" = "ASC"})
+     * @var Collection<int, Pokemon>
+     */
+    private Collection $children;
+
+    /**
+     * @var \DateTime $updated_at
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+    */
+    private $updated_at;
 
     public function __construct()
     {
@@ -64,7 +116,7 @@ class Pokemon
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -112,6 +164,18 @@ class Pokemon
         return $this;
     }
 
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
     /**
      * @return Collection<int, Tournament>|Tournament[]
      */
@@ -134,5 +198,20 @@ class Pokemon
         $this->tournaments->removeElement($tournament);
 
         return $this;
+    }
+
+    public function getRoot(): ?Pokemon
+    {
+        return $this->root;
+    }
+
+    public function setParent(Pokemon $parent = null): void
+    {
+        $this->parent = $parent;
+    }
+
+    public function getParent(): ?Pokemon
+    {
+        return $this->parent;
     }
 }
