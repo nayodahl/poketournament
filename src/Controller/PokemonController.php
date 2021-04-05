@@ -39,9 +39,22 @@ class PokemonController extends AbstractController
      */
     public function pokemonShow(PokemonRepository $pokemonRepo, string $slug): Response
     {
+        $pokemon = $pokemonRepo->findOneBy([ 'slug' => $slug ]);
+        $arrayTree = $pokemonRepo->childrenHierarchy(
+            $pokemon?->getRoot(),
+            false,
+            [
+                'decorate' => true,
+                'representationField' => 'slug',
+                'html' => true
+            ],
+            true
+        );
+       
         return $this->render('pokemon/pokemon.html.twig', [
-            'pokemon' => $pokemonRepo->findOneBy([ 'slug' => $slug ]),
-        ]);
+            'pokemon' => $pokemon,
+            'evolutionChain' => $arrayTree
+            ]);
     }
 
     /**
@@ -65,7 +78,12 @@ class PokemonController extends AbstractController
         $normalizers = [new ObjectNormalizer()];
         $serializer = new Serializer($normalizers, $encoders);
 
-        $json = $serializer->serialize($list, 'json', [AbstractNormalizer::IGNORED_ATTRIBUTES => ['tournaments']]);
+        $json = $serializer->serialize($list, 'json', [AbstractNormalizer::IGNORED_ATTRIBUTES => [
+            'tournaments',
+            'root',
+            'parent',
+            'children'
+            ]]);
         $response = new Response($json, 200, ['Content-Type' => 'application/json']);
 
         return $response;

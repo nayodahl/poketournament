@@ -110,15 +110,4 @@ class Populator
             $this->em->flush();
         }
     }
-
-    public function populateSlug(): void
-    {
-        $pokemons = $this->pokemonRepo->findAll();
-        foreach ($pokemons as $pokemon) {
-            $pokemon->setSlug($this->slugger->slugIt($pokemon->getName()));
-
-            $this->em->persist($pokemon);
-            $this->em->flush();
-        }
-    }
 }
