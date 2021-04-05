@@ -40,20 +40,29 @@ class PokemonController extends AbstractController
     public function pokemonShow(PokemonRepository $pokemonRepo, string $slug): Response
     {
         $pokemon = $pokemonRepo->findOneBy([ 'slug' => $slug ]);
-        $arrayTree = $pokemonRepo->childrenHierarchy(
+        $options = [
+            'decorate' => true,
+            'rootOpen' => '<ul>',
+            'rootClose' => '</ul>',
+            'childOpen' => '<li>',
+            'childClose' => '</li>',
+            'nodeDecorator' => function($node) {
+                return '<a href="/pokedex/'.$node['slug'].'">'
+                        .'<div class="title" >'.$node['name'].' #'.$node['apiId'].'</div>'
+                        .'<img class="image" src="/images/'.$node['apiId'].'.png"></img>'
+                        .'</a>';
+            }
+        ];
+        $evolutionChain = $pokemonRepo->childrenHierarchy(
             $pokemon?->getRoot(),
             false,
-            [
-                'decorate' => true,
-                'representationField' => 'slug',
-                'html' => true
-            ],
+            $options,
             true
         );
        
         return $this->render('pokemon/pokemon.html.twig', [
             'pokemon' => $pokemon,
-            'evolutionChain' => $arrayTree
+            'evolutionChain' => $evolutionChain
             ]);
     }
 

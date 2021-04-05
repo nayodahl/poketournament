@@ -17,9 +17,9 @@ class PokemonRefreshSlugCommand extends Command
     protected static $defaultName = 'app:pokemon:refreshSlug';
     
     public function __construct(
-        private PokemonRepository $pokemonRepo,
-        private EntityManagerInterface $entityManager,
-        private Slugger $slugger
+    private PokemonRepository $pokemonRepo,
+    private EntityManagerInterface $entityManager,
+    private Slugger $slugger
     ) {
         parent::__construct();
     }
@@ -57,7 +57,6 @@ class PokemonRefreshSlugCommand extends Command
             };
             $progressBar->finish();
         } else {
-            
             // creates a new progress bar (units = total number of pokemons fetched)
             $progressBar = new ProgressBar($output, $numberOfPokemon);
            

@@ -17,9 +17,9 @@ class PokemonImportEvolutionCommand extends Command
     protected static $defaultName = 'app:pokemon:importEvolution';
 
     public function __construct(
-        private HttpClientInterface $client,
-        private EntityManagerInterface $entityManager,
-        private PokemonRepository $pokemonRepo,
+    private HttpClientInterface $client,
+    private EntityManagerInterface $entityManager,
+    private PokemonRepository $pokemonRepo,
     ) {
         parent::__construct();
     }
@@ -62,7 +62,6 @@ class PokemonImportEvolutionCommand extends Command
             };
             $progressBar->finish();
         } else {
-            
             // creates a new progress bar (units = total number of pokemons fetched)
             $progressBar = new ProgressBar($output, $numberOfPokemon);
 
