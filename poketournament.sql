@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mar. 06 avr. 2021 à 15:43
+-- Généré le : mar. 06 avr. 2021 à 18:55
 -- Version du serveur :  10.3.27-MariaDB-0+deb10u1
 -- Version de PHP : 8.0.1
 
@@ -50,7 +50,8 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 ('DoctrineMigrations\\Version20210331082635', '2021-03-31 10:27:17', 22),
 ('DoctrineMigrations\\Version20210402125136', '2021-04-02 14:52:42', 194),
 ('DoctrineMigrations\\Version20210402141056', '2021-04-02 16:11:12', 11),
-('DoctrineMigrations\\Version20210406120619', '2021-04-06 14:07:01', 10);
+('DoctrineMigrations\\Version20210406120619', '2021-04-06 14:07:01', 10),
+('DoctrineMigrations\\Version20210406152645', '2021-04-06 17:26:55', 142);
 
 -- --------------------------------------------------------
 
@@ -185,7 +186,7 @@ INSERT INTO `game` (`id`, `winner_id`, `loser_id`, `player1_id`, `player2_id`, `
 (106, 2521, 2523, 2523, 2521, 2, 2, 3, '2021-03-25 14:41:50', '2021-03-25 14:42:18', 26),
 (107, NULL, NULL, 2618, 2557, 3, NULL, NULL, '2021-03-25 14:41:50', NULL, 26),
 (108, NULL, NULL, 3739, 3788, 4, NULL, NULL, '2021-03-25 14:41:50', NULL, 26),
-(109, NULL, NULL, 2481, 2521, 5, NULL, NULL, '2021-03-25 14:41:50', '2021-04-06 09:44:36', 26),
+(109, NULL, NULL, 2481, 2521, 5, NULL, NULL, '2021-03-25 14:41:50', '2021-04-06 15:54:33', 26),
 (110, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2021-03-25 14:41:50', NULL, 26),
 (111, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2021-03-25 14:41:50', NULL, 26),
 (112, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-03-25 14:41:50', NULL, 26);
@@ -1273,6 +1274,52 @@ INSERT INTO `tournaments_pokemons` (`tournament_id`, `pokemon_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `type`
+--
+
+CREATE TABLE `type` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `type`
+--
+
+INSERT INTO `type` (`id`, `name`) VALUES
+(1, 'Normal'),
+(2, 'Combat'),
+(3, 'Vol'),
+(4, 'Poison'),
+(5, 'Sol'),
+(6, 'Roche'),
+(7, 'Insecte'),
+(8, 'Spectre'),
+(9, 'Acier'),
+(10, 'Feu'),
+(11, 'Eau'),
+(12, 'Plante'),
+(13, 'Électrik'),
+(14, 'Psy'),
+(15, 'Glace'),
+(16, 'Dragon'),
+(17, 'Ténèbres'),
+(18, 'Fée');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `types_pokemons`
+--
+
+CREATE TABLE `types_pokemons` (
+  `type_id` int(11) NOT NULL,
+  `pokemon_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `user`
 --
 
@@ -1334,6 +1381,20 @@ ALTER TABLE `tournaments_pokemons`
   ADD KEY `IDX_94F9BE122FE71C3E` (`pokemon_id`);
 
 --
+-- Index pour la table `type`
+--
+ALTER TABLE `type`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `types_pokemons`
+--
+ALTER TABLE `types_pokemons`
+  ADD PRIMARY KEY (`type_id`,`pokemon_id`),
+  ADD KEY `IDX_F0BF5713C54C8C93` (`type_id`),
+  ADD KEY `IDX_F0BF57132FE71C3E` (`pokemon_id`);
+
+--
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
@@ -1361,6 +1422,12 @@ ALTER TABLE `pokemon`
 --
 ALTER TABLE `tournament`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT pour la table `type`
+--
+ALTER TABLE `type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT pour la table `user`
@@ -1395,6 +1462,13 @@ ALTER TABLE `pokemon`
 ALTER TABLE `tournaments_pokemons`
   ADD CONSTRAINT `FK_94F9BE122FE71C3E` FOREIGN KEY (`pokemon_id`) REFERENCES `pokemon` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_94F9BE1233D1A3E7` FOREIGN KEY (`tournament_id`) REFERENCES `tournament` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `types_pokemons`
+--
+ALTER TABLE `types_pokemons`
+  ADD CONSTRAINT `FK_F0BF57132FE71C3E` FOREIGN KEY (`pokemon_id`) REFERENCES `pokemon` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_F0BF5713C54C8C93` FOREIGN KEY (`type_id`) REFERENCES `type` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

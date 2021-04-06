@@ -111,9 +111,16 @@ class Pokemon
      */
     private ?string $description;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Type::class, mappedBy="pokemons")
+     * @var Collection<int, Type>
+     */
+    private Collection $types;
+
     public function __construct()
     {
         $this->tournaments = new ArrayCollection();
+        $this->types = new ArrayCollection();
     }
 
     public function getId(): int
@@ -228,6 +235,30 @@ class Pokemon
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Type>|Type[]
+     */
+    public function getTypes(): Collection
+    {
+        return $this->types;
+    }
+
+    public function addType(Type $type): self
+    {
+        if (!$this->types->contains($type)) {
+            $this->types[] = $type;
+        }
+
+        return $this;
+    }
+
+    public function removeType(Type $type): self
+    {
+        $this->types->removeElement($type);
 
         return $this;
     }
