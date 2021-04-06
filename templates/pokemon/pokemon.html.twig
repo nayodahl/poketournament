@@ -7,44 +7,51 @@
             <div class="row">
                 <div class="col-8 mx-auto">
 
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item active" role="navigation" aria-current="page">Pokémon</li>
-                        </ol>
-                    </nav>     
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="card card-pokemon">
-                                <img class="card-img-pokemon card-img-top" src="/images/{{ pokemon.apiId }}.png" alt="pokemon avatar">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ pokemon.name }} n° {{ pokemon.apiId }}</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <section>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active" role="navigation" aria-current="page">Pokémon</li>
+                            </ol>
+                        </nav>     
+                        <div class="row">
+                            <div class="col">
+                                <div class="card card-pokemon">
+                                    <img class="card-img-pokemon card-img-top" src="/images/{{ pokemon.apiId }}.png" alt="pokemon avatar">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ pokemon.name }} n° {{ pokemon.apiId }}</h5>
+                                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">mis à jour le </small>
+                                    </div>
                                 </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">mis à jour le </small>
-                                </div>
-                            </div>
 
-                            <div>
-                                <h5>types</h5>
-                                    <ul></ul>
-                            </div>
-                            <div>
-                                <h5>Faiblesses</h5>
+                                <div>
+                                    <h5>types</h5>
+                                        <ul></ul>
+                                </div>
+                                <div>
+                                    <h5>Faiblesses</h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
                     <br>
-
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item active" role="navigation" aria-current="page">Evolutions</li>
-                        </ol>
-                    </nav>  
-
-                    {{ evolutionChain|raw }}
-                    
+                    <section>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active" role="navigation" aria-current="page">Evolutions</li>
+                            </ol>
+                        </nav>  
+                        <div class="row evolutionchain-row">
+                            <div class="col d-flex justify-content-center">
+                                {{ evolutionChain|raw }}
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a class="btn btn-info" href="{{ path('app_pokedex') }}">Plus de Pokémon</a>
+                        </div>
+                    </section>                    
                 </div>
             </div>
         </div>

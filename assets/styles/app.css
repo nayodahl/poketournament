@@ -52,3 +52,22 @@ a.card, a.card:hover {
     text-decoration: none;
     color: inherit;
 }
+
+.evolutionchain-row {
+    margin: 2rem;
+    padding: 2rem;
+}
+
+.evolutionchain ul {
+    list-style: none;
+}
+
+.evolutionchain li {
+    display: inline-flex;
+}
+
+li a, li a:hover {
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+}

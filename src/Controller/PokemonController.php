@@ -42,14 +42,14 @@ class PokemonController extends AbstractController
         $pokemon = $pokemonRepo->findOneBy([ 'slug' => $slug ]);
         $options = [
             'decorate' => true,
-            'rootOpen' => '<ul>',
+            'rootOpen' => '<ul class="evolutionchain">',
             'rootClose' => '</ul>',
             'childOpen' => '<li>',
             'childClose' => '</li>',
             'nodeDecorator' => function($node) {
                 return '<a href="/pokedex/'.$node['slug'].'">'
-                        .'<div class="title" >'.$node['name'].' #'.$node['apiId'].'</div>'
-                        .'<img class="image" src="/images/'.$node['apiId'].'.png"></img>'
+                        .'<div class="evolutionchain-name">'.$node['name'].' #'.$node['apiId'].'</div>'
+                        .'<img class="evolutionchain-image" src="/images/'.$node['apiId'].'.png"></img>'
                         .'</a>';
             }
         ];
@@ -91,7 +91,7 @@ class PokemonController extends AbstractController
             'tournaments',
             'root',
             'parent',
-            'children'
+            'children',
             ]]);
         $response = new Response($json, 200, ['Content-Type' => 'application/json']);
 
