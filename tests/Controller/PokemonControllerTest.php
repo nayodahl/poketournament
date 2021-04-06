@@ -22,5 +22,8 @@ class PokemonControllerTest extends WebTestCase
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertStringContainsString('Salamèche', $client->getResponse()->getContent());
+        $this->assertStringContainsString('Description de Salamèche', $client->getResponse()->getContent());
+        $this->assertStringContainsString('Reptincel', $client->getResponse()->getContent());
+        $this->assertStringContainsString('Dracaufeu', $client->getResponse()->getContent());
     }
 }

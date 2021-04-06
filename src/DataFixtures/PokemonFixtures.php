@@ -26,6 +26,7 @@ class PokemonFixtures extends Fixture
         $pokemon1->setApiId(1);
         $pokemon1->setColor('blue');
         $pokemon1->setSlug($this->slugger->slugIt($pokemon1->getName()));
+        $pokemon1->setDescription('Description de Bulbizarre');
         $manager->persist($pokemon1);
 
         $pokemon2 = new Pokemon();
@@ -33,6 +34,7 @@ class PokemonFixtures extends Fixture
         $pokemon2->setApiId(2);
         $pokemon2->setColor('blue');
         $pokemon2->setSlug($this->slugger->slugIt($pokemon2->getName()));
+        $pokemon2->setDescription('Description de Herbizarre');
         $pokemon2->setParent($pokemon1);
         $manager->persist($pokemon2);
 
@@ -49,6 +51,7 @@ class PokemonFixtures extends Fixture
         $pokemon4->setApiId(4);
         $pokemon4->setColor('blue');
         $pokemon4->setSlug($this->slugger->slugIt($pokemon4->getName()));
+        $pokemon4->setDescription('Description de Salamèche');
         $manager->persist($pokemon4);
 
         $pokemon5 = new Pokemon();
