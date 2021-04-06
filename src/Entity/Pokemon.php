@@ -106,6 +106,11 @@ class Pokemon
     */
     private $updated_at;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private ?string $description;
+
     public function __construct()
     {
         $this->tournaments = new ArrayCollection();
@@ -213,5 +218,17 @@ class Pokemon
     public function getParent(): ?Pokemon
     {
         return $this->parent;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
     }
 }
