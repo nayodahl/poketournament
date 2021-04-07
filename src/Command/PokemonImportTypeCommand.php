@@ -64,7 +64,7 @@ class PokemonImportTypeCommand extends Command
                     $content = $response->getContent();
                     $arrayType1=json_decode($content, true);
                     $type1 = $this->typeRepo->findOneBy(['name' =>  $arrayType1['names'][2]['name']]);
-                    $pokemon->setType1($type1);
+                    $pokemon?->setType1($type1);
 
                     $numberOfUpdate++;
                 }
@@ -79,7 +79,7 @@ class PokemonImportTypeCommand extends Command
                     $content = $response->getContent();
                     $arrayType2=json_decode($content, true);
                     $type2 = $this->typeRepo->findOneBy(['name' =>  $arrayType2['names'][2]['name']]);
-                    $pokemon->setType2($type2);
+                    $pokemon?->setType2($type2);
 
                     $numberOfUpdate++;
                 }
