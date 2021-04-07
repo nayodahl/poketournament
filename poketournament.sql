@@ -38,20 +38,7 @@ CREATE TABLE `doctrine_migration_versions` (
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20201121101709', '2020-11-21 11:17:25', 33),
-('DoctrineMigrations\\Version20201121101942', '2020-11-21 11:19:57', 33),
-('DoctrineMigrations\\Version20201122133801', '2020-11-23 10:06:16', 125),
-('DoctrineMigrations\\Version20201201135852', '2020-12-01 14:59:27', 63),
-('DoctrineMigrations\\Version20201201220749', '2020-12-01 23:08:21', 237),
-('DoctrineMigrations\\Version20201201221137', '2020-12-01 23:12:15', 79),
-('DoctrineMigrations\\Version20201201224555', '2020-12-01 23:46:46', 52),
-('DoctrineMigrations\\Version20210209142907', '2021-02-09 15:29:41', 156),
-('DoctrineMigrations\\Version20210226063304', '2021-02-26 07:33:25', 22),
-('DoctrineMigrations\\Version20210331082635', '2021-03-31 10:27:17', 22),
-('DoctrineMigrations\\Version20210402125136', '2021-04-02 14:52:42', 194),
-('DoctrineMigrations\\Version20210402141056', '2021-04-02 16:11:12', 11),
-('DoctrineMigrations\\Version20210406120619', '2021-04-06 14:07:01', 10),
-('DoctrineMigrations\\Version20210407071722', '2021-04-07 09:17:57', 260);
+('DoctrineMigrations\\Version20210407121027', '2021-04-07 09:17:57', 260);
 
 -- --------------------------------------------------------
 
