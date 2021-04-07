@@ -111,6 +111,19 @@ class Pokemon
      */
     private ?string $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Type::class, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private ?Type $type1;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Type::class, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private ?Type $type2;
+
+
     public function __construct()
     {
         $this->tournaments = new ArrayCollection();
@@ -228,6 +241,30 @@ class Pokemon
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getType1(): ?Type
+    {
+        return $this->type1;
+    }
+
+    public function setType1(?Type $type1): self
+    {
+        $this->type1 = $type1;
+
+        return $this;
+    }
+
+    public function getType2(): ?Type
+    {
+        return $this->type2;
+    }
+
+    public function setType2(?Type $type2): self
+    {
+        $this->type2 = $type2;
 
         return $this;
     }

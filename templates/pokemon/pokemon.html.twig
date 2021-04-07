@@ -26,12 +26,58 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div>
-                                    <h5>types</h5>
-                                        <ul></ul>
+                                <div class="pokemon-attributes">
+                                    <h5>Type</h5>
+                                    <ul>
+                                        {% if pokemon.type1 %}
+                                            <li 
+                                                {% if pokemon.type1.name is same as('Normal') %} class="pokemon-attributes-normal"{% endif %}
+                                                {% if pokemon.type1.name is same as('Combat') %} class="pokemon-attributes-fighting"{% endif %}
+                                                {% if pokemon.type1.name is same as('Vol') %} class="pokemon-attributes-flying"{% endif %}
+                                                {% if pokemon.type1.name is same as('Poison') %} class="pokemon-attributes-poison"{% endif %}
+                                                {% if pokemon.type1.name is same as('Sol') %} class="pokemon-attributes-ground"{% endif %}
+                                                {% if pokemon.type1.name is same as('Roche') %} class="pokemon-attributes-rock"{% endif %}
+                                                {% if pokemon.type1.name is same as('Insecte') %} class="pokemon-attributes-bug"{% endif %}
+                                                {% if pokemon.type1.name is same as('Spectre') %} class="pokemon-attributes-ghost"{% endif %}
+                                                {% if pokemon.type1.name is same as('Acier') %} class="pokemon-attributes-steel"{% endif %}
+                                                {% if pokemon.type1.name is same as('Feu') %} class="pokemon-attributes-fire"{% endif %}
+                                                {% if pokemon.type1.name is same as('Eau') %} class="pokemon-attributes-water"{% endif %}
+                                                {% if pokemon.type1.name is same as('Plante') %} class="pokemon-attributes-green"{% endif %}
+                                                {% if pokemon.type1.name is same as('Électrik') %} class="pokemon-attributes-electric"{% endif %}
+                                                {% if pokemon.type1.name is same as('Psy') %} class="pokemon-attributes-psy"{% endif %}
+                                                {% if pokemon.type1.name is same as('Glace') %} class="pokemon-attributes-ice"{% endif %}
+                                                {% if pokemon.type1.name is same as('Dragon') %} class="pokemon-attributes-dragon"{% endif %}
+                                                {% if pokemon.type1.name is same as('Ténèbres') %} class="pokemon-attributes-dark"{% endif %}
+                                                {% if pokemon.type1.name is same as('Fée') %} class="pokemon-attributes-fairy"{% endif %}
+                                            >{{ pokemon.type1.name }}</li>
+                                        {% endif %}
+                                        {% if pokemon.type2 %}
+                                            <li
+                                                {% if pokemon.type2.name is same as('Normal') %} class="pokemon-attributes-normal"{% endif %}
+                                                {% if pokemon.type2.name is same as('Combat') %} class="pokemon-attributes-fighting"{% endif %}
+                                                {% if pokemon.type2.name is same as('Vol') %} class="pokemon-attributes-flying"{% endif %}
+                                                {% if pokemon.type2.name is same as('Poison') %} class="pokemon-attributes-poison"{% endif %}
+                                                {% if pokemon.type2.name is same as('Sol') %} class="pokemon-attributes-ground"{% endif %}
+                                                {% if pokemon.type2.name is same as('Roche') %} class="pokemon-attributes-rock"{% endif %}
+                                                {% if pokemon.type2.name is same as('Insecte') %} class="pokemon-attributes-bug"{% endif %}
+                                                {% if pokemon.type2.name is same as('Spectre') %} class="pokemon-attributes-ghost"{% endif %}
+                                                {% if pokemon.type2.name is same as('Acier') %} class="pokemon-attributes-steel"{% endif %}
+                                                {% if pokemon.type2.name is same as('Feu') %} class="pokemon-attributes-fire"{% endif %}
+                                                {% if pokemon.type2.name is same as('Eau') %} class="pokemon-attributes-water"{% endif %}
+                                                {% if pokemon.type2.name is same as('Plante') %} class="pokemon-attributes-green"{% endif %}
+                                                {% if pokemon.type2.name is same as('Électrik') %} class="pokemon-attributes-electric"{% endif %}
+                                                {% if pokemon.type2.name is same as('Psy') %} class="pokemon-attributes-psy"{% endif %}
+                                                {% if pokemon.type2.name is same as('Glace') %} class="pokemon-attributes-ice"{% endif %}
+                                                {% if pokemon.type2.name is same as('Dragon') %} class="pokemon-attributes-dragon"{% endif %}
+                                                {% if pokemon.type2.name is same as('Ténèbres') %} class="pokemon-attributes-dark"{% endif %}
+                                                {% if pokemon.type2.name is same as('Fée') %} class="pokemon-attributes-fairy"{% endif %}                                           
+                                            >{{ pokemon.type2.name }}</li>
+                                        {% endif %}
+                                    </ul>
                                 </div>
-                                <div>
-                                    <h5>Faiblesses</h5>
+                                <br><hr>
+                                <div class="pokemon-attributes">
+                                    <h5>Faiblesse(s)</h5>
                                 </div>
                             </div>
                         </div>
