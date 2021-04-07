@@ -76,6 +76,18 @@ function init(){
       sortable: true,
     },
     {
+      field: 'type1.name',
+      title: 'Type 1', 
+      sortable: true,
+      width: 100,
+    },
+    {
+      field: 'type2.name',
+      title: 'Type 2', 
+      sortable: true,
+      width: 100,
+    },
+    {
       field: 'color',
       title: 'Couleur',
       width: 100,

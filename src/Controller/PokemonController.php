@@ -95,6 +95,7 @@ class PokemonController extends AbstractController
             ]]);
         $response = new Response($json, 200, ['Content-Type' => 'application/json']);
 
+        dump($response);
         return $response;
     }
 
