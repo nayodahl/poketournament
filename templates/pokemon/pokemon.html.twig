@@ -28,7 +28,14 @@
                             <div class="col-6">
                                 <div>
                                     <h5>types</h5>
-                                        <ul></ul>
+                                    <ul>
+                                        {% if pokemon.type1 %}
+                                            <li>{{ pokemon.type1.name }}</li>
+                                        {% endif %}
+                                        {% if pokemon.type2 %}
+                                            <li>{{ pokemon.type2.name }}</li>
+                                        {% endif %}
+                                    </ul>
                                 </div>
                                 <div>
                                     <h5>Faiblesses</h5>
