@@ -89,7 +89,7 @@ class PokemonImportGenerationCommand extends Command
                     $content = $response->getContent();
                     $arrayGeneration=json_decode($content, true);
                     $generation = $this->generationRepo->findOneBy(['apiId' =>  $arrayGeneration['id']]);
-                    $pokemon?->setGeneration($generation);
+                    $pokemon->setGeneration($generation);
                     $numberOfUpdate++;
                 }
 

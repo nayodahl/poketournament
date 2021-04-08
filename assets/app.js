@@ -77,6 +77,14 @@ function init(){
         sortable: true,
       },
       {
+        field: 'image',
+        title: 'Image',
+        width: 200,
+        formatter: (value, row) => {
+          return '<a href="/pokedex/' + row.slug +'"><img class="card-img-top mx-auto" src=\'images/' + row.apiId + '.png\' alt="pokemon avatar"></a>'
+        }
+      },
+      {
         field: 'type1.name',
         title: 'Type 1', 
         sortable: true,
@@ -89,17 +97,15 @@ function init(){
         width: 100,
       },
       {
+        field: 'generation.apiId',
+        title: 'Gén.', 
+        width: 50,
+      },
+      {
         field: 'color',
         title: 'Couleur',
         width: 100,
       },
-      {
-        field: 'image',
-        title: 'Image',
-        formatter: (value, row) => {
-          return '<a href="/pokedex/' + row.slug +'"><img class="card-img-top mx-auto" src=\'images/' + row.apiId + '.png\' alt="pokemon avatar"></a>'
-        }
-      }
     ]
   })
 
