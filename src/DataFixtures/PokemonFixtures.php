@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Generation;
 use App\Entity\Pokemon;
 use App\Entity\Tournament;
 use App\Entity\Type;
@@ -52,6 +53,11 @@ class PokemonFixtures extends Fixture
         $type1->setApiId(10);
         $manager->persist($type1);
 
+        $generation1 = new Generation();
+        $generation1->setApiId(1);
+        $generation1->setRegion('kanto');
+        $manager->persist($generation1);
+
         $pokemon4 = new Pokemon();
         $pokemon4->setName('Salamèche');
         $pokemon4->setApiId(4);
@@ -59,6 +65,7 @@ class PokemonFixtures extends Fixture
         $pokemon4->setSlug($this->slugger->slugIt($pokemon4->getName()));
         $pokemon4->setDescription('Description de Salamèche');
         $pokemon4->setType1($type1);
+        $pokemon4->setGeneration($generation1);
         $manager->persist($pokemon4);
 
         $pokemon5 = new Pokemon();

@@ -123,6 +123,11 @@ class Pokemon
      */
     private ?Type $type2;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Generation::class, inversedBy="pokemon")
+     */
+    private ?Generation $generation;
+
 
     public function __construct()
     {
@@ -265,6 +270,18 @@ class Pokemon
     public function setType2(?Type $type2): self
     {
         $this->type2 = $type2;
+
+        return $this;
+    }
+
+    public function getGeneration(): ?Generation
+    {
+        return $this->generation;
+    }
+
+    public function setGeneration(?Generation $generation): self
+    {
+        $this->generation = $generation;
 
         return $this;
     }

@@ -77,7 +77,10 @@
                                 </div>
                                 <br><hr>
                                 <div class="pokemon-attributes">
-                                    <h5>Faiblesse(s)</h5>
+                                    <h5>Génération</h5>
+                                    {% if pokemon.generation %}
+                                        gen {{ pokemon.generation.apiId }} de {{ pokemon.generation.region }}
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
