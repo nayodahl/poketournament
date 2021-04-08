@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : jeu. 08 avr. 2021 à 09:31
+-- Généré le : jeu. 08 avr. 2021 à 09:50
 -- Version du serveur :  10.3.27-MariaDB-0+deb10u1
 -- Version de PHP : 8.0.1
 
@@ -39,7 +39,8 @@ CREATE TABLE `doctrine_migration_versions` (
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
 ('DoctrineMigrations\\Version20210407121027', '2021-04-07 09:17:57', 260),
-('DoctrineMigrations\\Version20210408072817', '2021-04-08 09:28:35', 10);
+('DoctrineMigrations\\Version20210408072817', '2021-04-08 09:28:35', 10),
+('DoctrineMigrations\\Version20210408073755', '2021-04-08 09:38:26', 51);
 
 -- --------------------------------------------------------
 
@@ -178,6 +179,32 @@ INSERT INTO `game` (`id`, `winner_id`, `loser_id`, `player1_id`, `player2_id`, `
 (110, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2021-03-25 14:41:50', NULL, 26),
 (111, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2021-03-25 14:41:50', NULL, 26),
 (112, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-03-25 14:41:50', NULL, 26);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `generation`
+--
+
+CREATE TABLE `generation` (
+  `id` int(11) NOT NULL,
+  `region` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `api_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `generation`
+--
+
+INSERT INTO `generation` (`id`, `region`, `api_id`) VALUES
+(1, 'kanto', 1),
+(2, 'johto', 2),
+(3, 'hoenn', 3),
+(4, 'sinnoh', 4),
+(5, 'unova', 5),
+(6, 'kalos', 6),
+(7, 'alola', 7),
+(8, 'galar', 8);
 
 -- --------------------------------------------------------
 
@@ -1339,6 +1366,12 @@ ALTER TABLE `game`
   ADD KEY `IDX_232B318C33D1A3E7` (`tournament_id`);
 
 --
+-- Index pour la table `generation`
+--
+ALTER TABLE `generation`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `pokemon`
 --
 ALTER TABLE `pokemon`
@@ -1384,6 +1417,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `game`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+
+--
+-- AUTO_INCREMENT pour la table `generation`
+--
+ALTER TABLE `generation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `pokemon`
