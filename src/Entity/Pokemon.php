@@ -124,7 +124,8 @@ class Pokemon
     private ?Type $type2;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Generation::class, inversedBy="pokemon")
+     * @ORM\ManyToOne(targetEntity=Generation::class, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=true)
      */
     private ?Generation $generation;
 

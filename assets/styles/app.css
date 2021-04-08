@@ -84,6 +84,7 @@ li a, li a:hover {
     line-height: 100%;
 }
 
+/* types */
 .pokemon-attributes-bug {
     background: linear-gradient(180deg, #729f3f 50%, #729f3f 50%);
     background-color: #729f3f;
@@ -172,4 +173,9 @@ li a, li a:hover {
 .pokemon-attributes-water {
     background: linear-gradient(180deg, #4592c4 50%, #4592c4 50%);
     background-color: #4592c4;
+}
+
+/* generation */
+.pokemon-attributes-generation {
+    background: #17a2b8;
 }

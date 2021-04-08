@@ -46,7 +46,7 @@ class PokemonController extends AbstractController
             'rootClose' => '</ul>',
             'childOpen' => '<li>',
             'childClose' => '</li>',
-            'nodeDecorator' => function($node) {
+            'nodeDecorator' => function ($node) {
                 return '<a href="/pokedex/'.$node['slug'].'">'
                         .'<div class="evolutionchain-name">'.$node['name'].' #'.$node['apiId'].'</div>'
                         .'<img class="evolutionchain-image" src="/images/'.$node['apiId'].'.png"></img>'
