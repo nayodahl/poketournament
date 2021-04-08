@@ -24,6 +24,11 @@ class Type
      */
     private string $name;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private int $apiId;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -37,6 +42,18 @@ class Type
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getApiId(): ?int
+    {
+        return $this->apiId;
+    }
+
+    public function setApiId(int $apiId): self
+    {
+        $this->apiId = $apiId;
 
         return $this;
     }

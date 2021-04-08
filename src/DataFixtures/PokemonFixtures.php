@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Pokemon;
 use App\Entity\Tournament;
+use App\Entity\Type;
 use App\Service\Initializor;
 use App\Service\Slugger;
 use DateTime;
@@ -46,12 +47,18 @@ class PokemonFixtures extends Fixture
         $pokemon3->setParent($pokemon2);
         $manager->persist($pokemon3);
 
+        $type1 = new Type();
+        $type1->setName('Feu');
+        $type1->setApiId(10);
+        $manager->persist($type1);
+
         $pokemon4 = new Pokemon();
         $pokemon4->setName('Salamèche');
         $pokemon4->setApiId(4);
         $pokemon4->setColor('blue');
         $pokemon4->setSlug($this->slugger->slugIt($pokemon4->getName()));
         $pokemon4->setDescription('Description de Salamèche');
+        $pokemon4->setType1($type1);
         $manager->persist($pokemon4);
 
         $pokemon5 = new Pokemon();

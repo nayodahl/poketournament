@@ -88,6 +88,8 @@ class PokemonController extends AbstractController
         $serializer = new Serializer($normalizers, $encoders);
 
         $json = $serializer->serialize($list, 'json', [AbstractNormalizer::IGNORED_ATTRIBUTES => [
+            'id',
+            'image',
             'tournaments',
             'root',
             'parent',
@@ -95,7 +97,6 @@ class PokemonController extends AbstractController
             ]]);
         $response = new Response($json, 200, ['Content-Type' => 'application/json']);
 
-        dump($response);
         return $response;
     }
 

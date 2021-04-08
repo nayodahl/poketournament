@@ -64,41 +64,43 @@ function init(){
     pagination: true,
     search: true,
     exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel'],
-    columns: [{
-      field: 'apiId',
-      title: 'N° national',
-      sortable: true,
-      width: 80,
-    },
-    {
-      field: 'name',
-      title: 'Nom', 
-      sortable: true,
-    },
-    {
-      field: 'type1.name',
-      title: 'Type 1', 
-      sortable: true,
-      width: 100,
-    },
-    {
-      field: 'type2.name',
-      title: 'Type 2', 
-      sortable: true,
-      width: 100,
-    },
-    {
-      field: 'color',
-      title: 'Couleur',
-      width: 100,
-    },
-    {
-      field: 'image',
-      title: 'Image',
-      formatter: (value, row) => {
-        return '<a href="/pokedex/' + row.slug +'"><img class="card-img-top mx-auto" src=\'images/' + row.apiId + '.png\' alt="pokemon avatar"></a>'
-    },
-    }]
+    columns: [
+      {
+        field: 'apiId',
+        title: 'N° national',
+        sortable: true,
+        width: 80,
+      },
+      {
+        field: 'name',
+        title: 'Nom', 
+        sortable: true,
+      },
+      {
+        field: 'type1.name',
+        title: 'Type 1', 
+        sortable: true,
+        width: 100,
+      },
+      {
+        field: 'type2.name',
+        title: 'Type 2', 
+        sortable: true,
+        width: 100,
+      },
+      {
+        field: 'color',
+        title: 'Couleur',
+        width: 100,
+      },
+      {
+        field: 'image',
+        title: 'Image',
+        formatter: (value, row) => {
+          return '<a href="/pokedex/' + row.slug +'"><img class="card-img-top mx-auto" src=\'images/' + row.apiId + '.png\' alt="pokemon avatar"></a>'
+        }
+      }
+    ]
   })
 
 

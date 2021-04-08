@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 07 avr. 2021 à 09:47
+-- Généré le : jeu. 08 avr. 2021 à 09:31
 -- Version du serveur :  10.3.27-MariaDB-0+deb10u1
 -- Version de PHP : 8.0.1
 
@@ -38,7 +38,8 @@ CREATE TABLE `doctrine_migration_versions` (
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20210407121027', '2021-04-07 09:17:57', 260);
+('DoctrineMigrations\\Version20210407121027', '2021-04-07 09:17:57', 260),
+('DoctrineMigrations\\Version20210408072817', '2021-04-08 09:28:35', 10);
 
 -- --------------------------------------------------------
 
@@ -173,7 +174,7 @@ INSERT INTO `game` (`id`, `winner_id`, `loser_id`, `player1_id`, `player2_id`, `
 (106, 2521, 2523, 2523, 2521, 2, 2, 3, '2021-03-25 14:41:50', '2021-03-25 14:42:18', 26),
 (107, NULL, NULL, 2618, 2557, 3, NULL, NULL, '2021-03-25 14:41:50', NULL, 26),
 (108, NULL, NULL, 3739, 3788, 4, NULL, NULL, '2021-03-25 14:41:50', NULL, 26),
-(109, NULL, NULL, 2481, 2521, 5, NULL, NULL, '2021-03-25 14:41:50', '2021-04-07 09:41:23', 26),
+(109, NULL, NULL, 2481, 2521, 5, NULL, NULL, '2021-03-25 14:41:50', '2021-04-08 00:25:53', 26),
 (110, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2021-03-25 14:41:50', NULL, 26),
 (111, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2021-03-25 14:41:50', NULL, 26),
 (112, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-03-25 14:41:50', NULL, 26);
@@ -1268,32 +1269,33 @@ INSERT INTO `tournaments_pokemons` (`tournament_id`, `pokemon_id`) VALUES
 
 CREATE TABLE `type` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `api_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `type`
 --
 
-INSERT INTO `type` (`id`, `name`) VALUES
-(1, 'Normal'),
-(2, 'Combat'),
-(3, 'Vol'),
-(4, 'Poison'),
-(5, 'Sol'),
-(6, 'Roche'),
-(7, 'Insecte'),
-(8, 'Spectre'),
-(9, 'Acier'),
-(10, 'Feu'),
-(11, 'Eau'),
-(12, 'Plante'),
-(13, 'Électrik'),
-(14, 'Psy'),
-(15, 'Glace'),
-(16, 'Dragon'),
-(17, 'Ténèbres'),
-(18, 'Fée');
+INSERT INTO `type` (`id`, `name`, `api_id`) VALUES
+(1, 'Normal', 1),
+(2, 'Combat', 2),
+(3, 'Vol', 3),
+(4, 'Poison', 4),
+(5, 'Sol', 5),
+(6, 'Roche', 6),
+(7, 'Insecte', 7),
+(8, 'Spectre', 8),
+(9, 'Acier', 9),
+(10, 'Feu', 10),
+(11, 'Eau', 11),
+(12, 'Plante', 12),
+(13, 'Électrik', 13),
+(14, 'Psy', 14),
+(15, 'Glace', 15),
+(16, 'Dragon', 16),
+(17, 'Ténèbres', 17),
+(18, 'Fée', 18);
 
 -- --------------------------------------------------------
 
