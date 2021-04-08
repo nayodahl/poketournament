@@ -129,6 +129,16 @@ class Pokemon
      */
     private ?Generation $generation;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $isLegendary;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $isMythical;
+
 
     public function __construct()
     {
@@ -283,6 +293,30 @@ class Pokemon
     public function setGeneration(?Generation $generation): self
     {
         $this->generation = $generation;
+
+        return $this;
+    }
+
+    public function isLegendary(): ?bool
+    {
+        return $this->isLegendary;
+    }
+
+    public function setLegendary(bool $isLegendary): self
+    {
+        $this->isLegendary = $isLegendary;
+
+        return $this;
+    }
+
+    public function isMythical(): ?bool
+    {
+        return $this->isMythical;
+    }
+
+    public function setMythical(bool $isMythical): self
+    {
+        $this->isMythical = $isMythical;
 
         return $this;
     }

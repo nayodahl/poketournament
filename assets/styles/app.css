@@ -179,3 +179,14 @@ li a, li a:hover {
 .pokemon-attributes-generation {
     background: #17a2b8;
 }
+
+/* generation */
+.pokemon-attributes-legendary {
+    background: linear-gradient(180deg, #f366b9 50%, #f366b9 50%);
+    background-color: #f366b9;
+}
+
+.pokemon-attributes-mythical {
+    background: linear-gradient(180deg, #f366b9 50%, #f366b9 50%);
+    background-color: #f366b9;
+}

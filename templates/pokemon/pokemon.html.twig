@@ -93,6 +93,21 @@
                                     </div>
                                 </div>
                                 <br>
+                                {% if pokemon.isLegendary or pokemon.isMythical %}
+                                <div class="row">
+                                    <div class="col pokemon-attributes"
+                                        <h5>Rareté</h5>
+                                        <ul>
+                                        {% if pokemon.isLegendary %}
+                                            <li class="pokemon-attributes-legendary">Légendaire</li>
+                                        {% endif %}
+                                        {% if pokemon.isMythical %}
+                                            <li class="pokemon-attributes-mythical">Fabuleux</li>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <br>  
+                                {% endif %}                              
                             </div>
                         </div>
                     </section>
