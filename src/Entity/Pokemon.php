@@ -123,6 +123,22 @@ class Pokemon
      */
     private ?Type $type2;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Generation::class, fetch="EAGER")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private ?Generation $generation;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $isLegendary;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $isMythical;
+
 
     public function __construct()
     {
@@ -265,6 +281,42 @@ class Pokemon
     public function setType2(?Type $type2): self
     {
         $this->type2 = $type2;
+
+        return $this;
+    }
+
+    public function getGeneration(): ?Generation
+    {
+        return $this->generation;
+    }
+
+    public function setGeneration(?Generation $generation): self
+    {
+        $this->generation = $generation;
+
+        return $this;
+    }
+
+    public function isLegendary(): ?bool
+    {
+        return $this->isLegendary;
+    }
+
+    public function setLegendary(bool $isLegendary): self
+    {
+        $this->isLegendary = $isLegendary;
+
+        return $this;
+    }
+
+    public function isMythical(): ?bool
+    {
+        return $this->isMythical;
+    }
+
+    public function setMythical(bool $isMythical): self
+    {
+        $this->isMythical = $isMythical;
 
         return $this;
     }

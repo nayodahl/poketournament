@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Entity\Generation;
 use App\Entity\Type;
 use App\Repository\PokemonRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -13,9 +14,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class TypeImportNameCommand extends Command
+class GenerationImportRegionCommand extends Command
 {
-    protected static $defaultName = 'app:type:importName';
+    protected static $defaultName = 'app:generation:importRegion';
     
     public function __construct(
         private HttpClientInterface $client,
@@ -28,7 +29,7 @@ class TypeImportNameCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setDescription('import name property of Types and store them')
+            ->setDescription('import region property of Generation and store them')
             ->addOption('dry-run', null, InputOption::VALUE_NONE, 'Dry run')
         ;
     }
@@ -37,7 +38,7 @@ class TypeImportNameCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
         $numberOfUpdate=0;
-        $numberOfType = 18;
+        $numberOfType = 8;
 
         if ($input->getOption('dry-run')) {
             $io->note('Dry run mode enabled');
@@ -46,18 +47,18 @@ class TypeImportNameCommand extends Command
             for ($i = 1; $i <= $numberOfType; $i++) {
                 $response = $this->client->request(
                     'GET',
-                    'https://pokeapi.co/api/v2/type/'.$i
+                    'https://pokeapi.co/api/v2/generation/'.$i
                 );
                 $content = $response->getContent();
                 $array=json_decode($content, true);
 
-                if (isset($array['names'])) {
+                if (isset($array['main_region'])) {
                     $numberOfUpdate++;
-                    $typeName = $array['names'][2]['name'];
-                    $type = new Type();
-                    $type->setName($typeName);
-                    //$this->entityManager->persist($type);
-                    //$this->entityManager->flush;
+                    $generationName = $array['main_region']['name'];
+                    $generation = new Generation();
+                    $generation->setRegion($generationName);
+                    $generationApiId = $array['id'];
+                    $generation->setApiId($generationApiId);
                 }
                 $progressBar->advance();
             };
@@ -69,17 +70,19 @@ class TypeImportNameCommand extends Command
             for ($i = 1; $i <= $numberOfType; $i++) {
                 $response = $this->client->request(
                     'GET',
-                    'https://pokeapi.co/api/v2/type/'.$i
+                    'https://pokeapi.co/api/v2/generation/'.$i
                 );
                 $content = $response->getContent();
                 $array=json_decode($content, true);
 
-                if (isset($array['names'])) {
+                if (isset($array['main_region'])) {
                     $numberOfUpdate++;
-                    $typeName = $array['names'][2]['name'];
-                    $type = new Type();
-                    $type->setName($typeName);
-                    $this->entityManager->persist($type);
+                    $generationName = $array['main_region']['name'];
+                    $generation = new Generation();
+                    $generation->setRegion($generationName);
+                    $generationApiId = $array['id'];
+                    $generation->setApiId($generationApiId);
+                    $this->entityManager->persist($generation);
                     $this->entityManager->flush();
                 }
                 $progressBar->advance();
@@ -87,7 +90,7 @@ class TypeImportNameCommand extends Command
             $progressBar->finish();
         }
 
-        $io->success(sprintf('Updated %d types name for %d types.', $numberOfUpdate, $numberOfType));
+        $io->success(sprintf('Imported %d region names and apiId for %d generation.', $numberOfUpdate, $numberOfType));
 
         return Command::SUCCESS;
     }

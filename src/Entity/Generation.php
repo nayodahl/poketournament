@@ -2,15 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\TypeRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Repository\GenerationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=TypeRepository::class)
+ * @ORM\Entity(repositoryClass=GenerationRepository::class)
  */
-class Type
+class Generation
 {
     /**
      * @ORM\Id
@@ -22,7 +20,7 @@ class Type
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $name;
+    private string $region;
 
     /**
      * @ORM\Column(type="integer")
@@ -34,14 +32,14 @@ class Type
         return $this->id;
     }
 
-    public function getName(): string
+    public function getRegion(): ?string
     {
-        return $this->name;
+        return $this->region;
     }
 
-    public function setName(string $name): self
+    public function setRegion(string $region): self
     {
-        $this->name = $name;
+        $this->region = $region;
 
         return $this;
     }

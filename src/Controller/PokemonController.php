@@ -46,7 +46,7 @@ class PokemonController extends AbstractController
             'rootClose' => '</ul>',
             'childOpen' => '<li>',
             'childClose' => '</li>',
-            'nodeDecorator' => function($node) {
+            'nodeDecorator' => function ($node) {
                 return '<a href="/pokedex/'.$node['slug'].'">'
                         .'<div class="evolutionchain-name">'.$node['name'].' #'.$node['apiId'].'</div>'
                         .'<img class="evolutionchain-image" src="/images/'.$node['apiId'].'.png"></img>'
@@ -88,6 +88,8 @@ class PokemonController extends AbstractController
         $serializer = new Serializer($normalizers, $encoders);
 
         $json = $serializer->serialize($list, 'json', [AbstractNormalizer::IGNORED_ATTRIBUTES => [
+            'id',
+            'image',
             'tournaments',
             'root',
             'parent',
@@ -95,7 +97,6 @@ class PokemonController extends AbstractController
             ]]);
         $response = new Response($json, 200, ['Content-Type' => 'application/json']);
 
-        dump($response);
         return $response;
     }
 
