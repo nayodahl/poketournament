@@ -95,7 +95,7 @@ class PokemonImportLegendaryMythicalCommand extends Command
             $progressBar->finish();
         }
 
-        $io->success(sprintf('Imported %d legendary and mythical informations for %d pokemons.', $numberOfUpdate, $numberOfPokemon));
+        $io->success(sprintf('Imported %d legendary infos for %d pokemons.', $numberOfUpdate, $numberOfPokemon));
 
         return Command::SUCCESS;
     }

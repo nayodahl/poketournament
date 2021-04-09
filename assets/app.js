@@ -70,11 +70,17 @@ function init(){
         title: 'N° national',
         sortable: true,
         width: 80,
+        formatter: (value, row) => {
+          return '<a style="text-decoration: none; color: inherit;" href="/pokedex/' + row.slug +'">' + row.apiId + '</a>'
+        }
       },
       {
         field: 'name',
         title: 'Nom', 
         sortable: true,
+        formatter: (value, row) => {
+          return '<a style="text-decoration: none; color: inherit;" href="/pokedex/' + row.slug +'">' + row.name + '</a>'
+        }
       },
       {
         field: 'image',

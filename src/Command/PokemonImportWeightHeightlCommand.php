@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Repository\GenerationRepository;
 use App\Repository\PokemonRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
@@ -12,14 +13,15 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class PokemonImportEvolutionCommand extends Command
+class PokemonImportWeightHeightlCommand extends Command
 {
-    protected static $defaultName = 'app:pokemon:importEvolution';
+    protected static $defaultName = 'app:pokemon:importWeightHeight';
 
     public function __construct(
         private HttpClientInterface $client,
         private EntityManagerInterface $entityManager,
         private PokemonRepository $pokemonRepo,
+        private GenerationRepository $generationRepo
     ) {
         parent::__construct();
     }
@@ -27,7 +29,7 @@ class PokemonImportEvolutionCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setDescription('import evolutions of Pokemon from API pokeAPI and store them')
+            ->setDescription('import weight and height property of Pokemon from API pokeAPI and store them')
             ->addOption('dry-run', null, InputOption::VALUE_NONE, 'Dry run')
         ;
     }
@@ -41,60 +43,59 @@ class PokemonImportEvolutionCommand extends Command
 
         if ($input->getOption('dry-run')) {
             $io->note('Dry run mode enabled');
-
-            // creates a new progress bar (units = total number of pokemons fetched)
             $progressBar = new ProgressBar($output, $numberOfPokemon);
 
-            for ($i = 1; $i < 10; $i++) {
+            for ($i = 1; $i < 4; $i++) {
                 $pokemon = $this->pokemonRepo->findOneBy(['apiId' => $i]);
                 $response = $this->client->request(
                     'GET',
-                    'https://pokeapi.co/api/v2/pokemon-species/'.$i
+                    'https://pokeapi.co/api/v2/pokemon/'.$i
                 );
                 $content = $response->getContent();
                 $array=json_decode($content, true);
 
-                if (isset($array['evolves_from_species'])) {
+                if (isset($array['height'])) {
+                    $height = $array['height'];
+                    $pokemon?->setHeight($height);
                     $numberOfUpdate++;
                 }
-
+                if (isset($array['weight'])) {
+                    $weight = $array['weight'];
+                    $pokemon?->setWeight($weight);
+                    $numberOfUpdate++;
+                }
                 $progressBar->advance();
             };
             $progressBar->finish();
         } else {
-            // creates a new progress bar (units = total number of pokemons fetched)
             $progressBar = new ProgressBar($output, $numberOfPokemon);
 
             foreach ($pokemons as $pokemon) {
                 $response = $this->client->request(
                     'GET',
-                    'https://pokeapi.co/api/v2/pokemon-species/'.$pokemon->getApiId()
+                    'https://pokeapi.co/api/v2/pokemon/'.$pokemon->getApiId()
                 );
                 $content = $response->getContent();
                 $array=json_decode($content, true);
 
-                // if evolves_from_species is not null, then it shows its parent
-                if (isset($array['evolves_from_species'])) {
-                    $parentUrl = $array['evolves_from_species']['url'];
-                    $response = $this->client->request(
-                        'GET',
-                        $parentUrl
-                    );
-                    $content = $response->getContent();
-                    $arrayParent=json_decode($content, true);
-                    $parentApiId=$arrayParent['id'];
-                    $parent = $this->pokemonRepo->findOneBy(['apiId' => $parentApiId]);
-                    $pokemon->setParent($parent);
-                    $this->entityManager->flush();
+                if (isset($array['height'])) {
+                    $height = $array['height'];
+                    $pokemon->setHeight($height);
+                    $numberOfUpdate++;
+                }
+                if (isset($array['weight'])) {
+                    $weight = $array['weight'];
+                    $pokemon->setWeight($weight);
                     $numberOfUpdate++;
                 }
 
+                $this->entityManager->flush();
                 $progressBar->advance();
             };
             $progressBar->finish();
         }
 
-        $io->success(sprintf('Imported %d evolutions from %d pokemons.', $numberOfUpdate, $numberOfPokemon));
+        $io->success(sprintf('Imported %d weight and height for %d pokemons.', $numberOfUpdate, $numberOfPokemon));
 
         return Command::SUCCESS;
     }
