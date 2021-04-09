@@ -83,10 +83,9 @@
                                         {% if pokemon.generation %}
                                             <h5>Génération</h5>
                                             <ul>
-                                            {% if pokemon.generation %}
-                                                <li class="pokemon-attributes-generation">{{ pokemon.generation.apiId }}</li>
-                                                <li class="pokemon-attributes-generation">{{ pokemon.generation.region }}</li>
-                                            {% endif %}
+                                                <li class="pokemon-attributes-infos">{{ pokemon.generation.apiId }}</li>
+                                                <li class="pokemon-attributes-infos">{{ pokemon.generation.region }}</li>
+                                            </ul>
                                         {% else %}
                                             <small>pas d'info sur sa génération</small>
                                         {% endif %}
@@ -107,7 +106,22 @@
                                     </div>
                                 </div>
                                 <br>  
-                                {% endif %}                              
+                                {% endif %}    
+                                {% if pokemon.weight or pokemon.height %}
+                                <div class="row">
+                                    <div class="col pokemon-attributes"
+                                        <h5>Taille / Poids </h5>
+                                        <ul>
+                                        {% if pokemon.height %}
+                                            <li class="pokemon-attributes-infos">{{ pokemon.height /10 }} m</li>
+                                        {% endif %}
+                                        {% if pokemon.weight %}
+                                            <li class="pokemon-attributes-infos">{{ pokemon.weight /10 }} kg</li>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <br>  
+                                {% endif %}                            
                             </div>
                         </div>
                     </section>

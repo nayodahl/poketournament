@@ -139,6 +139,16 @@ class Pokemon
      */
     private bool $isMythical;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private int $height;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private int $weight;
+
 
     public function __construct()
     {
@@ -317,6 +327,30 @@ class Pokemon
     public function setMythical(bool $isMythical): self
     {
         $this->isMythical = $isMythical;
+
+        return $this;
+    }
+
+    public function getHeight(): ?int
+    {
+        return $this->height;
+    }
+
+    public function setHeight(int $height): self
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    public function getWeight(): ?int
+    {
+        return $this->weight;
+    }
+
+    public function setWeight(int $weight): self
+    {
+        $this->weight = $weight;
 
         return $this;
     }

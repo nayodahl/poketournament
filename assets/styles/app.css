@@ -175,12 +175,12 @@ li a, li a:hover {
     background-color: #4592c4;
 }
 
-/* generation */
-.pokemon-attributes-generation {
+/* generation, weight, height */
+.pokemon-attributes-infos {
     background: #17a2b8;
 }
 
-/* generation */
+/* legend and mythical */
 .pokemon-attributes-legendary {
     background: linear-gradient(180deg, #f366b9 50%, #f366b9 50%);
     background-color: #f366b9;

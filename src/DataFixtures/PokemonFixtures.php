@@ -31,6 +31,8 @@ class PokemonFixtures extends Fixture
         $pokemon1->setDescription('Description de Bulbizarre');
         $pokemon1->setLegendary(true);
         $pokemon1->setMythical(true);
+        $pokemon1->setHeight(10);
+        $pokemon1->setWeight(50);
         $manager->persist($pokemon1);
 
         $pokemon2 = new Pokemon();
@@ -42,6 +44,8 @@ class PokemonFixtures extends Fixture
         $pokemon2->setParent($pokemon1);
         $pokemon2->setLegendary(true);
         $pokemon2->setMythical(true);
+        $pokemon2->setHeight(10);
+        $pokemon2->setWeight(50);
         $manager->persist($pokemon2);
 
         $pokemon3 = new Pokemon();
@@ -52,6 +56,8 @@ class PokemonFixtures extends Fixture
         $pokemon3->setParent($pokemon2);
         $pokemon3->setLegendary(true);
         $pokemon3->setMythical(true);
+        $pokemon3->setHeight(10);
+        $pokemon3->setWeight(50);
         $manager->persist($pokemon3);
 
         $type1 = new Type();
@@ -74,6 +80,8 @@ class PokemonFixtures extends Fixture
         $pokemon4->setGeneration($generation1);
         $pokemon4->setLegendary(true);
         $pokemon4->setMythical(true);
+        $pokemon4->setHeight(90);
+        $pokemon4->setWeight(80);
         $manager->persist($pokemon4);
 
         $pokemon5 = new Pokemon();
@@ -84,6 +92,8 @@ class PokemonFixtures extends Fixture
         $pokemon5->setParent($pokemon4);
         $pokemon5->setLegendary(true);
         $pokemon5->setMythical(true);
+        $pokemon5->setHeight(10);
+        $pokemon5->setWeight(50);
         $manager->persist($pokemon5);
 
         $pokemon6 = new Pokemon();
@@ -94,6 +104,8 @@ class PokemonFixtures extends Fixture
         $pokemon6->setParent($pokemon5);
         $pokemon6->setLegendary(true);
         $pokemon6->setMythical(true);
+        $pokemon6->setHeight(10);
+        $pokemon6->setWeight(50);
         $manager->persist($pokemon6);
 
         $pokemon7 = new Pokemon();
@@ -103,6 +115,8 @@ class PokemonFixtures extends Fixture
         $pokemon7->setSlug($this->slugger->slugIt($pokemon7->getName()));
         $pokemon7->setLegendary(true);
         $pokemon7->setMythical(true);
+        $pokemon7->setHeight(10);
+        $pokemon7->setWeight(50);
         $manager->persist($pokemon7);
 
         $pokemon8 = new Pokemon();
@@ -113,6 +127,8 @@ class PokemonFixtures extends Fixture
         $pokemon8->setParent($pokemon7);
         $pokemon8->setLegendary(true);
         $pokemon8->setMythical(true);
+        $pokemon8->setHeight(10);
+        $pokemon8->setWeight(50);
         $manager->persist($pokemon8);
 
         $manager->flush();
