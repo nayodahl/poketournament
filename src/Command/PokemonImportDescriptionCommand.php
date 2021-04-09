@@ -55,12 +55,12 @@ class PokemonImportDescriptionCommand extends Command
                 $array=json_decode($content, true);
 
                 if (isset($array['flavor_text_entries'])) {
-                    
                     // we read entries of $array['flavor_text_entries'] backward,
                     // so we have the most recent entry (most likely from pokemon sword/shield)
                     // and we stop at first french entry we read
                     $keyNumber = count($array['flavor_text_entries']) - 1;
-                    while (($keyNumber > 0) && ($array['flavor_text_entries'][$keyNumber]['language']['name'] !== 'fr')) {
+                    while (($keyNumber > 0) &&
+                        ($array['flavor_text_entries'][$keyNumber]['language']['name'] !== 'fr')) {
                         $keyNumber--;
                     }
                     $description = $array['flavor_text_entries'][$keyNumber]['flavor_text'];
@@ -86,12 +86,12 @@ class PokemonImportDescriptionCommand extends Command
                 $array=json_decode($content, true);
 
                 if (isset($array['flavor_text_entries'])) {
-                    
                     // we read entries of $array['flavor_text_entries'] backward,
                     // so we have the most recent entry (most likely from pokemon sword/shield)
                     // and we stop at first french entry we read
                     $keyNumber = count($array['flavor_text_entries']) - 1;
-                    while (($keyNumber > 0) && ($array['flavor_text_entries'][$keyNumber]['language']['name'] !== 'fr')) {
+                    while (($keyNumber > 0) &&
+                        ($array['flavor_text_entries'][$keyNumber]['language']['name'] !== 'fr')) {
                         $keyNumber--;
                     }
                     $description = $array['flavor_text_entries'][$keyNumber]['flavor_text'];

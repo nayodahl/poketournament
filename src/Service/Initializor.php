@@ -12,9 +12,9 @@ use Doctrine\ORM\EntityManagerInterface;
 class Initializor
 {
     public function __construct(
-    private EntityManagerInterface $entityManager,
-    private PokemonRepository $pokemonRepo,
-    private GameRepository $gameRepo
+        private EntityManagerInterface $entityManager,
+        private PokemonRepository $pokemonRepo,
+        private GameRepository $gameRepo
     ) {
     }
 

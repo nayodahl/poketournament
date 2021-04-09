@@ -17,9 +17,9 @@ class PokemonImportEvolutionCommand extends Command
     protected static $defaultName = 'app:pokemon:importEvolution';
 
     public function __construct(
-    private HttpClientInterface $client,
-    private EntityManagerInterface $entityManager,
-    private PokemonRepository $pokemonRepo,
+        private HttpClientInterface $client,
+        private EntityManagerInterface $entityManager,
+        private PokemonRepository $pokemonRepo,
     ) {
         parent::__construct();
     }
