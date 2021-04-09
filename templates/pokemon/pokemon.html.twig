@@ -7,20 +7,20 @@
             <div class="row">
                 <div class="col mx-auto">
                     <nav class="pokemon-navigation">
-                            <a href="/fr/pokedex/spectreval" class="previous">
-                                <div class="pokedex-pokemon-pagination-wrapper">
-                                    <i class="fas fa-arrow-circle-left"></i>
-                                    <span class="pokemon-number">897</span>
-                                    <span class="pokemon-name">Spectreval</span>
-                                </div>
-                            </a>
-                            <a href="/fr/pokedex/spectreval" class="next">
-                                <div class="pokedex-pokemon-pagination-wrapper">
-                                    <span class="pokemon-number">897</span>
-                                    <span class="pokemon-name">Spectreval</span>
-                                    <i class="fas fa-arrow-circle-right"></i>
-                                </div>
-                            </a>
+                        <a href="/pokedex/{{ previous.slug }}" class="previous">
+                            <div class="pokedex-pokemon-pagination-wrapper">
+                                <i class="fas fa-arrow-circle-left"></i>
+                                <span class="pokemon-number">#{{ previous.apiId }}</span>
+                                <span class="pokemon-name">{{ previous.name }}</span>
+                            </div>
+                        </a>
+                        <a href="/pokedex/{{ next.slug }}" class="next">
+                            <div class="pokedex-pokemon-pagination-wrapper">
+                                <span class="pokemon-number">#{{ next.apiId }}</span>
+                                <span class="pokemon-name">{{ next.name }}</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </div>
+                        </a>
                     </nav>
                     <br>
                     <section>    

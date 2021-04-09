@@ -40,6 +40,9 @@ class PokemonController extends AbstractController
     public function pokemonShow(PokemonRepository $pokemonRepo, string $slug): Response
     {
         $pokemon = $pokemonRepo->findOneBy([ 'slug' => $slug ]);
+        $previous = $pokemonRepo->findPreviousByApiId($pokemon);
+        $next = $pokemonRepo->findNextByApiId($pokemon);
+
         $options = [
             'decorate' => true,
             'rootOpen' => '<ul class="evolutionchain">',
@@ -62,7 +65,9 @@ class PokemonController extends AbstractController
        
         return $this->render('pokemon/pokemon.html.twig', [
             'pokemon' => $pokemon,
-            'evolutionChain' => $evolutionChain
+            'evolutionChain' => $evolutionChain,
+            'previous' => $previous,
+            'next' => $next
             ]);
     }
 
