@@ -38,6 +38,44 @@ class PokemonRepository extends NestedTreeRepository
         ;
     }
 
+    public function findPreviousByApiId(Pokemon $pokemon): ?Pokemon
+    {
+        $apiId = $pokemon->getApiId();
+        
+        // previous of number one should be the last one of all pokemons
+        if ($apiId === 1) {
+            $totalNumberOfPokemon = count($this->findAll());
+            $apiId = $totalNumberOfPokemon + 1;
+        }
+
+        $query = $this->createQueryBuilder('p')
+        ->where('p.apiId = :query')
+        ->setParameter('query', $apiId - 1)
+        ->getQuery()
+        ;
+
+        return $query->setMaxResults(1)->getOneOrNullResult();
+    }
+
+    public function findNextByApiId(Pokemon $pokemon): ?Pokemon
+    {
+        $apiId = $pokemon->getApiId();
+        $totalNumberOfPokemon = count($this->findAll());
+
+        // next of last pokemon should be the number one
+        if ($apiId === $totalNumberOfPokemon) {
+            $apiId = 0;
+        }
+
+        $query = $this->createQueryBuilder('p')
+        ->where('p.apiId = :query')
+        ->setParameter('query', $apiId + 1)
+        ->getQuery()
+        ;
+
+        return $query->setMaxResults(1)->getOneOrNullResult();
+    }
+
     /**
      * @return array<int, array>
      */

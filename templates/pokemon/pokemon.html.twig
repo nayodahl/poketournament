@@ -3,16 +3,27 @@
 {% block body %}
 <main id="swup" class="transition-fade">
     <div class="section d-flex">
-        <div class="container-fluid section-inner my-auto">
+        <div class="container section-inner my-auto">
             <div class="row">
-                <div class="col-8 mx-auto">
-
-                    <section>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item active" role="navigation" aria-current="page">Pokémon</li>
-                            </ol>
-                        </nav>     
+                <div class="col mx-auto">
+                    <nav class="pokemon-navigation">
+                        <a href="/pokedex/{{ previous.slug }}" class="previous">
+                            <div class="pokedex-pokemon-pagination-wrapper">
+                                <i class="fas fa-arrow-circle-left"></i>
+                                <span class="pokemon-number">#{{ previous.apiId }}</span>
+                                <span class="pokemon-name">{{ previous.name }}</span>
+                            </div>
+                        </a>
+                        <a href="/pokedex/{{ next.slug }}" class="next">
+                            <div class="pokedex-pokemon-pagination-wrapper">
+                                <span class="pokemon-number">#{{ next.apiId }}</span>
+                                <span class="pokemon-name">{{ next.name }}</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </div>
+                        </a>
+                    </nav>
+                    <br>
+                    <section>    
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
                                 <div class="card card-pokemon">
@@ -26,102 +37,104 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-xs-12">
-                                <div class="row">
-                                    <div class="col pokemon-attributes"
-                                        <h5>Type</h5>
-                                        <ul>
-                                            {% if pokemon.type1 %}
-                                                <li 
-                                                    {% if pokemon.type1.name is same as('Normal') %} class="pokemon-attributes-normal"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Combat') %} class="pokemon-attributes-fighting"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Vol') %} class="pokemon-attributes-flying"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Poison') %} class="pokemon-attributes-poison"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Sol') %} class="pokemon-attributes-ground"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Roche') %} class="pokemon-attributes-rock"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Insecte') %} class="pokemon-attributes-bug"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Spectre') %} class="pokemon-attributes-ghost"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Acier') %} class="pokemon-attributes-steel"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Feu') %} class="pokemon-attributes-fire"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Eau') %} class="pokemon-attributes-water"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Plante') %} class="pokemon-attributes-green"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Électrik') %} class="pokemon-attributes-electric"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Psy') %} class="pokemon-attributes-psy"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Glace') %} class="pokemon-attributes-ice"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Dragon') %} class="pokemon-attributes-dragon"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Ténèbres') %} class="pokemon-attributes-dark"{% endif %}
-                                                    {% if pokemon.type1.name is same as('Fée') %} class="pokemon-attributes-fairy"{% endif %}
-                                                >{{ pokemon.type1.name }}</li>
+                                <div class="right-panel">
+                                    <div class="row">
+                                        <div class="col pokemon-attributes"
+                                            {% if pokemon.generation %}
+                                                <h5>Génération</h5>
+                                                <ul>
+                                                    <li class="pokemon-attributes-infos">{{ pokemon.generation.apiId }}</li>
+                                                    <li class="pokemon-attributes-infos">{{ pokemon.generation.region }}</li>
+                                                </ul>
+                                            {% else %}
+                                                <small>pas d'info sur sa génération</small>
                                             {% endif %}
-                                            {% if pokemon.type2 %}
-                                                <li
-                                                    {% if pokemon.type2.name is same as('Normal') %} class="pokemon-attributes-normal"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Combat') %} class="pokemon-attributes-fighting"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Vol') %} class="pokemon-attributes-flying"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Poison') %} class="pokemon-attributes-poison"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Sol') %} class="pokemon-attributes-ground"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Roche') %} class="pokemon-attributes-rock"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Insecte') %} class="pokemon-attributes-bug"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Spectre') %} class="pokemon-attributes-ghost"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Acier') %} class="pokemon-attributes-steel"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Feu') %} class="pokemon-attributes-fire"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Eau') %} class="pokemon-attributes-water"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Plante') %} class="pokemon-attributes-green"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Électrik') %} class="pokemon-attributes-electric"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Psy') %} class="pokemon-attributes-psy"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Glace') %} class="pokemon-attributes-ice"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Dragon') %} class="pokemon-attributes-dragon"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Ténèbres') %} class="pokemon-attributes-dark"{% endif %}
-                                                    {% if pokemon.type2.name is same as('Fée') %} class="pokemon-attributes-fairy"{% endif %}                                           
-                                                >{{ pokemon.type2.name }}</li>
-                                            {% endif %}
-                                        </ul>
+                                        </div>
                                     </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col pokemon-attributes"
-                                        {% if pokemon.generation %}
-                                            <h5>Génération</h5>
+                                    <br>                                
+                                    <div class="row">
+                                        <div class="col pokemon-attributes"
+                                            <h5>Type</h5>
                                             <ul>
-                                                <li class="pokemon-attributes-infos">{{ pokemon.generation.apiId }}</li>
-                                                <li class="pokemon-attributes-infos">{{ pokemon.generation.region }}</li>
+                                                {% if pokemon.type1 %}
+                                                    <li 
+                                                        {% if pokemon.type1.name is same as('Normal') %} class="pokemon-attributes-normal"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Combat') %} class="pokemon-attributes-fighting"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Vol') %} class="pokemon-attributes-flying"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Poison') %} class="pokemon-attributes-poison"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Sol') %} class="pokemon-attributes-ground"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Roche') %} class="pokemon-attributes-rock"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Insecte') %} class="pokemon-attributes-bug"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Spectre') %} class="pokemon-attributes-ghost"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Acier') %} class="pokemon-attributes-steel"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Feu') %} class="pokemon-attributes-fire"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Eau') %} class="pokemon-attributes-water"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Plante') %} class="pokemon-attributes-green"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Électrik') %} class="pokemon-attributes-electric"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Psy') %} class="pokemon-attributes-psy"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Glace') %} class="pokemon-attributes-ice"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Dragon') %} class="pokemon-attributes-dragon"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Ténèbres') %} class="pokemon-attributes-dark"{% endif %}
+                                                        {% if pokemon.type1.name is same as('Fée') %} class="pokemon-attributes-fairy"{% endif %}
+                                                    >{{ pokemon.type1.name }}</li>
+                                                {% endif %}
+                                                {% if pokemon.type2 %}
+                                                    <li
+                                                        {% if pokemon.type2.name is same as('Normal') %} class="pokemon-attributes-normal"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Combat') %} class="pokemon-attributes-fighting"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Vol') %} class="pokemon-attributes-flying"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Poison') %} class="pokemon-attributes-poison"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Sol') %} class="pokemon-attributes-ground"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Roche') %} class="pokemon-attributes-rock"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Insecte') %} class="pokemon-attributes-bug"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Spectre') %} class="pokemon-attributes-ghost"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Acier') %} class="pokemon-attributes-steel"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Feu') %} class="pokemon-attributes-fire"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Eau') %} class="pokemon-attributes-water"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Plante') %} class="pokemon-attributes-green"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Électrik') %} class="pokemon-attributes-electric"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Psy') %} class="pokemon-attributes-psy"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Glace') %} class="pokemon-attributes-ice"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Dragon') %} class="pokemon-attributes-dragon"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Ténèbres') %} class="pokemon-attributes-dark"{% endif %}
+                                                        {% if pokemon.type2.name is same as('Fée') %} class="pokemon-attributes-fairy"{% endif %}                                           
+                                                    >{{ pokemon.type2.name }}</li>
+                                                {% endif %}
                                             </ul>
-                                        {% else %}
-                                            <small>pas d'info sur sa génération</small>
-                                        {% endif %}
+                                        </div>
                                     </div>
-                                </div>
-                                <br>
-                                {% if pokemon.isLegendary or pokemon.isMythical %}
-                                <div class="row">
-                                    <div class="col pokemon-attributes"
-                                        <h5>Rareté</h5>
-                                        <ul>
-                                        {% if pokemon.isLegendary %}
-                                            <li class="pokemon-attributes-legendary">Légendaire</li>
-                                        {% endif %}
-                                        {% if pokemon.isMythical %}
-                                            <li class="pokemon-attributes-mythical">Fabuleux</li>
-                                        {% endif %}
+                                    <br>   
+                                    {% if pokemon.weight or pokemon.height %}
+                                    <div class="row">
+                                        <div class="col pokemon-attributes"
+                                            <h5>Taille / Poids </h5>
+                                            <ul>
+                                            {% if pokemon.height %}
+                                                <li class="pokemon-attributes-infos">{{ pokemon.height /10 }} m</li>
+                                            {% endif %}
+                                            {% if pokemon.weight %}
+                                                <li class="pokemon-attributes-infos">{{ pokemon.weight /10 }} kg</li>
+                                            {% endif %}
+                                        </div>
                                     </div>
-                                </div>
-                                <br>  
-                                {% endif %}    
-                                {% if pokemon.weight or pokemon.height %}
-                                <div class="row">
-                                    <div class="col pokemon-attributes"
-                                        <h5>Taille / Poids </h5>
-                                        <ul>
-                                        {% if pokemon.height %}
-                                            <li class="pokemon-attributes-infos">{{ pokemon.height /10 }} m</li>
-                                        {% endif %}
-                                        {% if pokemon.weight %}
-                                            <li class="pokemon-attributes-infos">{{ pokemon.weight /10 }} kg</li>
-                                        {% endif %}
+                                    <br>  
+                                    {% endif %}    
+                                    {% if pokemon.isLegendary or pokemon.isMythical %}
+                                    <div class="row">
+                                        <div class="col pokemon-attributes"
+                                            <h5>Rareté</h5>
+                                            <ul>
+                                            {% if pokemon.isLegendary %}
+                                                <li class="pokemon-attributes-legendary">Légendaire</li>
+                                            {% endif %}
+                                            {% if pokemon.isMythical %}
+                                                <li class="pokemon-attributes-mythical">Fabuleux</li>
+                                            {% endif %}
+                                        </div>
                                     </div>
-                                </div>
-                                <br>  
-                                {% endif %}                            
+                                    <br>  
+                                    {% endif %}   
+                                </div>                                                     
                             </div>
                         </div>
                     </section>

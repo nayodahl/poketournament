@@ -76,7 +76,7 @@ li a, li a:hover {
     float: left;
     width: 10rem;
     border-radius: 5px;
-    margin: 0.5em 0 0 0.4em;
+    margin: 0.5em 0 0 0.3em;
     padding: 0.5em 0;
     text-align: center;
     color: white;
@@ -189,4 +189,37 @@ li a, li a:hover {
 .pokemon-attributes-mythical {
     background: linear-gradient(180deg, #f366b9 50%, #f366b9 50%);
     background-color: #f366b9;
+}
+
+@media only screen and (min-width: 768px) {
+    .right-panel {
+        background-color: rgba(0, 0, 0, 0.03);
+        border-radius: 0.25rem;
+        padding: 1rem 1rem 0rem 1rem;
+    }
+}
+
+.pokemon-navigation {
+    display: block;
+    padding-top: 1rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+}
+
+.pokemon-navigation a, .pokemon-navigation a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.previous {
+    float: left;
+}
+
+.next {
+    float: right;
 }
