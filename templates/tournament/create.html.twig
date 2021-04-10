@@ -5,7 +5,13 @@
 {% block body %}
 
     <main id="swup" class="transition-fade">
-        <div class="container section-inner">
+        <div class="container px-lg-5">
+        <!-- Heading -->
+        <div class="position-relative d-flex text-center mb-5">
+            <h2 class="text-24 text-light opacity-4 text-uppercase font-weight-600 w-100 mb-0">Tournoi</h2>
+            <p class="text-9 text-dark font-weight-600 position-absolute w-100 align-self-center line-height-4 mb-0">Créer un nouveau tournoi<span class="heading-separator-line border-bottom border-3 border-primary position-abolute d-block mx-auto"></span> </p>
+        </div>
+        <!-- Heading end-->
             <div class="row">
                 <div class="col-lg-10 mx-auto">
                     {{ form_errors(tournamentForm) }}
@@ -25,8 +31,8 @@
                         {{ form_row(tournamentForm.pokemon8) }}
                         
                         <hr>
-                        <a class="btn btn-info" href="{{ path('app_homepage') }}">Annuler</a>
-                        <button type="submit" class="btn btn-info pull-right">Enregistrer</button>
+                        <a class="btn btn-primary" href="{{ path('app_homepage') }}">Annuler</a>
+                        <button type="submit" class="btn btn-primary pull-right">Enregistrer</button>
                     {{ form_end(tournamentForm) }}
                 </div>            
             </div>

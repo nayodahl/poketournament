@@ -1591,6 +1591,229 @@ h1, h2, h3, h4, h5, h6 {
     color: #20c997;
   }
 
+/* =================================== */
+/*  6. Footer
+/* =================================== */
+#footer {
+    background: #fff;
+    color: #252b33;
+    padding: 66px 0px;
+    padding: 4.125rem 0;
+  }
+  #footer .nav .nav-item {
+    display: inline-block;
+    line-height: 12px;
+    margin: 0;
+  }
+  #footer .nav .nav-item .nav-link {
+    color: #252b33;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  #footer .nav .nav-item .nav-link:focus {
+    color: #20c997;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  #footer .nav .nav-item:first-child .nav-link {
+    padding-left: 0px;
+  }
+  #footer .nav .nav-item:last-child .nav-link {
+    padding-right: 0px;
+  }
+  #footer .nav .nav-link:hover {
+    color: #20c997;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  #footer .footer-copyright {
+    border-top: 1px solid #e2e8ea;
+    padding: 0px 0px;
+    color: #67727c;
+  }
+  #footer .footer-copyright .nav .nav-item .nav-link {
+    color: #67727c;
+  }
+  #footer .footer-copyright .nav .nav-link:hover {
+    color: #20c997;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  #footer .nav.flex-column .nav-item {
+    padding: 0px;
+  }
+  #footer .nav.flex-column .nav-item .nav-link {
+    margin: 0.7rem 0px;
+  }
+  #footer.footer-text-light {
+    color: rgba(250, 250, 250, 0.8);
+  }
+  #footer.footer-text-light .nav .nav-item .nav-link {
+    color: rgba(250, 250, 250, 0.8);
+  }
+  #footer.footer-text-light .nav .nav-item .nav-link:hover {
+    color: #fafafa;
+  }
+  #footer.footer-text-light .footer-copyright {
+    border-color: rgba(250, 250, 250, 0.15);
+    color: rgba(250, 250, 250, 0.5);
+  }
+  #footer.footer-text-light:not(.bg-primary) .social-icons-light.social-icons li a {
+    color: rgba(250, 250, 250, 0.8);
+  }
+  #footer.footer-text-light:not(.bg-primary) .social-icons-light.social-icons li a:hover {
+    color: #fafafa;
+  }
+  #footer.footer-text-light.bg-primary {
+    color: #fff;
+  }
+  #footer.footer-text-light.bg-primary .nav .nav-item .nav-link {
+    color: #fff;
+  }
+  #footer.footer-text-light.bg-primary .nav .nav-item .nav-link:hover {
+    color: rgba(250, 250, 250, 0.7);
+  }
+  #footer.footer-text-light.bg-primary .footer-copyright {
+    border-color: rgba(250, 250, 250, 0.15);
+    color: rgba(250, 250, 250, 0.9);
+  }
+  #footer.footer-text-light.bg-primary :not(.social-icons) a {
+    color: #fff;
+  }
+  #footer.footer-text-light.bg-primary :not(.social-icons) a:hover {
+    color: rgba(250, 250, 250, 0.7);
+  }
+  
+  /*=== 6.1 Social Icons ===*/
+  .social-icons {
+    margin: 0;
+    padding: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+  .social-icons li {
+    margin: 0px 6px 4px;
+    padding: 0;
+    overflow: visible;
+  }
+  .social-icons li a {
+    display: block;
+    height: 26px;
+    line-height: 26px;
+    width: 26px;
+    font-size: 18px;
+    text-align: center;
+    color: #4d555a;
+    text-decoration: none;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  .social-icons li i {
+    line-height: inherit;
+  }
+  .social-icons.social-icons-sm li {
+    margin: 0px 4px 4px;
+  }
+  .social-icons.social-icons-sm li a {
+    font-size: 14px;
+  }
+  .social-icons.social-icons-lg li a {
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    font-size: 22px;
+  }
+  .social-icons.social-icons-light li a {
+    color: #eee;
+  }
+  .social-icons.social-icons-muted li a {
+    color: #aab1b8;
+  }
+  .social-icons li:hover a {
+    color: #999;
+  }
+  .social-icons li:hover.social-icons-twitter a, .social-icons.social-icons-colored li.social-icons-twitter a {
+    color: #00ACEE;
+  }
+  .social-icons li:hover.social-icons-facebook a, .social-icons.social-icons-colored li.social-icons-facebook a {
+    color: #3B5998;
+  }
+  .social-icons li:hover.social-icons-linkedin a, .social-icons.social-icons-colored li.social-icons-linkedin a {
+    color: #0E76A8;
+  }
+  .social-icons li:hover.social-icons-rss a, .social-icons.social-icons-colored li.social-icons-rss a {
+    color: #EE802F;
+  }
+  .social-icons li:hover.social-icons-dribbble a, .social-icons.social-icons-colored li.social-icons-dribbble a {
+    color: #ea4c89;
+  }
+  .social-icons li:hover.social-icons-github a, .social-icons.social-icons-colored li.social-icons-github a {
+    color: #333333;
+  }
+  .social-icons li:hover.social-icons-behance a, .social-icons.social-icons-colored li.social-icons-behance a {
+    color: #053eff;
+  }
+  .social-icons li:hover.social-icons-google a, .social-icons.social-icons-colored li.social-icons-google a {
+    color: #DD4B39;
+  }
+  .social-icons li:hover.social-icons-pinterest a, .social-icons.social-icons-colored li.social-icons-pinterest a {
+    color: #cc2127;
+  }
+  .social-icons li:hover.social-icons-youtube a, .social-icons.social-icons-colored li.social-icons-youtube a {
+    color: #C4302B;
+  }
+  .social-icons li:hover.social-icons-instagram a, .social-icons.social-icons-colored li.social-icons-instagram a {
+    color: #3F729B;
+  }
+  .social-icons li:hover.social-icons-skype a, .social-icons.social-icons-colored li.social-icons-skype a {
+    color: #00AFF0;
+  }
+  .social-icons li:hover.social-icons-email a, .social-icons.social-icons-colored li.social-icons-email a {
+    color: #6567A5;
+  }
+  .social-icons li:hover.social-icons-vk a, .social-icons.social-icons-colored li.social-icons-vk a {
+    color: #2B587A;
+  }
+  .social-icons li:hover.social-icons-xing a, .social-icons.social-icons-colored li.social-icons-xing a {
+    color: #126567;
+  }
+  .social-icons li:hover.social-icons-tumblr a, .social-icons.social-icons-colored li.social-icons-tumblr a {
+    color: #34526F;
+  }
+  .social-icons li:hover.social-icons-reddit a, .social-icons.social-icons-colored li.social-icons-reddit a {
+    color: #C6C6C6;
+  }
+  .social-icons li:hover.social-icons-delicious a, .social-icons.social-icons-colored li.social-icons-delicious a {
+    color: #205CC0;
+  }
+  .social-icons li:hover.social-icons-stumbleupon a, .social-icons.social-icons-colored li.social-icons-stumbleupon a {
+    color: #F74425;
+  }
+  .social-icons li:hover.social-icons-digg a, .social-icons.social-icons-colored li.social-icons-digg a {
+    color: #191919;
+  }
+  .social-icons li:hover.social-icons-blogger a, .social-icons.social-icons-colored li.social-icons-blogger a {
+    color: #FC4F08;
+  }
+  .social-icons li:hover.social-icons-flickr a, .social-icons.social-icons-colored li.social-icons-flickr a {
+    color: #FF0084;
+  }
+  .social-icons li:hover.social-icons-vimeo a, .social-icons.social-icons-colored li.social-icons-vimeo a {
+    color: #86C9EF;
+  }
+  .social-icons li:hover.social-icons-yahoo a, .social-icons.social-icons-colored li.social-icons-yahoo a {
+    color: #720E9E;
+  }
+  .social-icons li:hover.social-icons-apple a, .social-icons.social-icons-colored li.social-icons-apple a {
+    color: #000;
+  }
+  .social-icons.social-icons-colored li:hover a {
+    color: #999;
+  }
+
 /*------------------*/
 .section-inner {
     padding: 60px 10px 0 0
@@ -1767,7 +1990,7 @@ li a, li a:hover {
 
 /* generation, weight, height */
 .pokemon-attributes-infos {
-    background: #17a2b8;
+    background: #007bff;
 }
 
 /* legend and mythical */
