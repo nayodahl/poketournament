@@ -2,73 +2,92 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
         <meta name="description" content="Gestionnaire de tournoi pokemon">
         <meta name="author" content="Anthony Fachaux">
+        <title>{% block title %}PokeTournament{% endblock %}</title>
+
         <link rel="shortcut icon" href="{{ asset('build/img/ico/favicon.ico') }}">
 
-        <title>{% block title %}PokeTournament{% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('cyan') }}
         {% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body class="side-header" data-spy="scroll" data-target=".navbar" data-offset="1">
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-md navbar-dark bg-info">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#main-navigation">
-                    Menu
-                    <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand smoothie logo logo-light logo-pokemon" href="{{ path('app_homepage') }}"><img src="{{ asset('build/img/logo/pokemon_logo.png') }}" alt="PokeTournament"></a>
+        <!-- Document Wrapper   
+        =============================== -->
+        <div id="main-wrapper"> 
+            <!-- Header
+            ============================ -->
+            <header id="header" class="sticky-top"> 
+                <!-- Navigation -->
+                <nav class="primary-menu navbar navbar-expand-lg bg-dark-2 navbar-text-light border-bottom-0">
+                    <div class="container-fluid position-relative h-100 flex-lg-column pl-3 px-lg-3 pt-lg-3 pb-lg-2">
+                        <!-- Logo --> 
+                        <a href="{{ path('app_homepage') }}" class="mb-lg-auto mt-lg-4">
+                            <span class="bg-dark-2 rounded-pill p-2 mb-lg-1 d-none d-lg-inline-block">
+                                <img class="img-fluid rounded-pill d-block" src="{{ asset('build/img/logo/pokemon_logo.png') }}" title="pokeTournament" alt="PokeTournament">
+                            </span>
+                        </a> 
+                        <!-- Logo End -->                        
+                        <div id="header-nav" class="collapse navbar-collapse w-100 my-lg-auto">
+                            <ul class="navbar-nav text-lg-center my-lg-auto py-lg-3">
+                                <li class="nav-item">
+                                    <a href="{{ path('app_homepage') }}" class="nav-link smooth-scroll active">Accueil <span class="pe-7s-angle-down"></span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ path('app_stats') }}" class="nav-link smooth-scroll">Stats <span class="pe-7s-angle-down"></span></a>
+                                </li>
+                                <li class="nav-item" >
+                                    <a href="{{ path('app_view') }}" class="nav-link smooth-scroll">Tournoi <span class="pe-7s-angle-down"></span></a>
+                                </li>
+                                <li class="nav-item" >
+                                    <a href="{{ path('app_pokedex') }}" class="nav-link smooth-scroll">Pokédex <span class="pe-7s-angle-down"></span></a>
+                                </li>
+                                <li class="nav-item" >
+                                    <a href="{{ path('app_admin') }}" class="nav-link smooth-scroll">Admin <span class="pe-7s-angle-down"></span></a>
+                                </li>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="main-navigation">
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="{{ path('app_homepage') }}" class="nav-link">Accueil <span class="pe-7s-angle-down"></span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ path('app_stats') }}" class="nav-link">Stats <span class="pe-7s-angle-down"></span></a>
-                        </li>
-                        <li class="nav-item" >
-                            <a href="{{ path('app_view') }}" class="nav-link">Tournoi <span class="pe-7s-angle-down"></span></a>
-                        </li>
-                        <li class="nav-item" >
-                            <a href="{{ path('app_pokedex') }}" class="nav-link">Pokédex <span class="pe-7s-angle-down"></span></a>
-                        </li>
-                        <li class="nav-item" >
-                            <a href="{{ path('app_admin') }}" class="nav-link">Admin <span class="pe-7s-angle-down"></span></a>
-                        </li>
+                                {% if is_granted('ROLE_USER') %}
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ app.user.username }}
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" href="">Profil</a>
+                                        <a class="dropdown-item" href="">Se déconnecter</a>
+                                    </div>
+                                </li>
+                                {% else %}                        
+                                <li class="nav-item">
+                                    <a href="{{ path('app_login') }}" class="nav-link">Se Connecter <span class="pe-7s-angle-down"></span></a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <ul class="social-icons social-icons-muted social-icons-sm mt-lg-auto ml-auto ml-lg-0 mb-n1 d-flex">
+                            <li class="social-icons-github"><a data-toggle="tooltip" href="https://github.com/nayodahl/poketournament" target="_blank" title="" data-original-title="GitHub"><i class="fab fa-github"></i></a></li>
+                        </ul>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-nav"><span></span><span></span><span></span></button>                       
+                    </div>
+                </nav>
+                <!-- Navigation end -->
 
-                        {% if is_granted('ROLE_USER') %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              {{ app.user.username }}
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="">Profil</a>
-                                <a class="dropdown-item" href="">Se déconnecter</a>
-                            </div>
-                        </li>
-                        {% else %}                        
-                        <li class="nav-item">
-                            <a href="{{ path('app_login') }}" class="nav-link">Se Connecter <span class="pe-7s-angle-down"></span></a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
+
+            </header>
+            <!-- Header End --> 
+
+            <!-- Content
+            ============================================= -->
+            <div id="content" role="main"> 
+                {% block body %}
+                {% endblock %}
             </div>
-        </nav>
-        <!-- Navigation end -->
-
-        {% block body %}
-        {% endblock %}
+        </div>
     </body>
 </html>

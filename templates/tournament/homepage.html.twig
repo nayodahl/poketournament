@@ -1,65 +1,70 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-<main id="swup" class="transition-fade">
-    <div class="section d-flex">
-        <div class="container-fluid section-inner my-auto">
-            <div class="row">
-                <div class="col text-center">
-                    <h1>{{ tournament.name }}</h1>
-                    <h2>Bienvenue au tournoi de combats de Pokémons</h2>
+<main id="swup" class="transition-fade section">
+    <div class="container-fluid px-lg-5">
+        <!-- Heading -->
+        <div class="position-relative d-flex text-center mb-5">
+          <h2 class="text-24 text-light opacity-4 text-uppercase font-weight-600 w-100 mb-0">Tournoi Pokémons</h2>
+          <p class="text-9 text-dark font-weight-600 position-absolute w-100 align-self-center line-height-4 mb-0">{{ tournament.name }}<span class="heading-separator-line border-bottom border-3 border-primary position-abolute d-block mx-auto"></span> </p>
+        </div>
+        <!-- Heading end-->
+        
+        <div class="row">
+            <div class="col text-center">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>    
+                {% endfor %}
+                {% for message in app.flashes('error') %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>                            
+                    </div>    
+                {% endfor %}
+                
+                <h2 class="text-7 font-weight-600 mb-3">Participants du tournoi en cours (<span class="text-primary">{{ tournament.numberPokemons }} pokémons</span>)</h2>
 
-                    <div class="action-buttons">
-                        <a href="{{ path('app_create') }}" class="btn btn-info">Créer un nouveau tournoi</a>
-                        <a href="{{ path('app_view') }}" class="btn btn-info">Voir le tournoi en cours </a>
-                        <div class="btn btn-info" data-controller="counter"><i class="fa fa-thumbs-up"></i></div>
-                    </div>
-                    <br>
-                    <hr>
-
-                    {% for message in app.flashes('success') %}
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ message }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>    
+                <div class="card-deck">
+                    {% for pokemon in tournament.pokemons %}
+                        <a href="{{ path('app_pokemon', {slug: pokemon.slug}) }}" class="card">
+                            <img src='images/{{ pokemon.apiId }}.png' alt="pokemon avatar">
+                            <div class="card-body">
+                            </div>
+                            <div class="card-footer">
+                                <h5>{{ pokemon.name }}</h5>
+                            </div>
+                        </a>
                     {% endfor %}
-                    {% for message in app.flashes('error') %}
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            {{ message }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>                            
-                        </div>    
-                    {% endfor %}
-                   
-                    Participants du tournoi en cours ({{ tournament.numberPokemons }} pokémons) :
-
-                    <div class="card-deck">
-                        {% for pokemon in tournament.pokemons %}
-                            <a href="{{ path('app_pokemon', {slug: pokemon.slug}) }}" class="card">
-                                <img src='images/{{ pokemon.apiId }}.png' alt="pokemon avatar">
-                                <div class="card-body">
-                                </div>
-                                <div class="card-footer">
-                                    <h5>{{ pokemon.name }}</h5>
-                                </div>
-                            </a>
-                        {% endfor %}
-                    </div>
-
-                    <div class="square-group" xyz="tall-2 duration-6 ease-out-back stagger-1 skew-left-2 big-25% fade-100% right-5">
-                        <div class="square xyz-in"></div>
-                        <div class="square xyz-in"></div>
-                        <div class="square xyz-in"></div>
-                    </div>
-                    
-                    <hr>
                 </div>
+
+                <div class="action-buttons">
+                    <a href="{{ path('app_create') }}" class="btn btn-primary rounded-pill smooth-scroll mt-2">Créer un nouveau tournoi</a>
+                    <div class="btn btn-outline-primary rounded-pill smooth-scroll mt-2" data-controller="counter"><i class="fa fa-thumbs-up"></i></div>
+                    <a href="{{ path('app_view') }}" class="btn btn-primary rounded-pill smooth-scroll mt-2">Voir le tournoi en cours </a>
+                </div>
+                <br>
+
+              
             </div>
         </div>
-    </div>   
+    </div>
+
+    <!-- Square Animation start -->
+    <div class="container-fluid bg-light"> 
+        <div class="square-group position-relative d-flex text-center mb-5" xyz="tall-2 duration-6 ease-out-back stagger-1 skew-left-2 big-25% fade-100% right-5">
+            <div class="square xyz-in"></div>
+            <div class="square xyz-in"></div>
+            <div class="square xyz-in"></div>
+        </div>  
+    </div>
+    <!-- Square Animation end -->
 </main>
 
 {% endblock %}

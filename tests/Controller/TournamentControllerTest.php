@@ -12,7 +12,6 @@ class TournamentControllerTest extends WebTestCase
         $client->request('GET', '/');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertStringContainsString('Bienvenue', $client->getResponse()->getContent());
         $this->assertStringContainsString('Test Tournament', $client->getResponse()->getContent());
     }
 
