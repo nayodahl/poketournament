@@ -499,7 +499,7 @@
 
       <h3 class="tournament-bracket__round-title">
         Match {{ tournament.games[4].number }} 
-        {% if not tournament.games[4].winner %}      
+        {% if not tournament.games[4].winner and tournament.games[0].winner and tournament.games[1].winner %}      
           <a href="{{ path('app_edit_game', {gameId: tournament.games[4].id }) }}" class="pull-right">Indiquer Score</a>
         {% endif %} 
       </h3>
@@ -513,7 +513,7 @@
 
       <h3 class="tournament-bracket__round-title">
         Match {{ tournament.games[5].number }}
-        {% if not tournament.games[5].winner %}      
+        {% if not tournament.games[5].winner and tournament.games[2].winner and tournament.games[3].winner %}      
           <a href="{{ path('app_edit_game', {gameId: tournament.games[5].id }) }}" class="pull-right">Indiquer Score</a>
         {% endif %}   
       </h3>
@@ -531,8 +531,8 @@
 
       <h3 class="tournament-bracket__round-title">
         Match {{ tournament.games[6].number }} 
-        {% if not tournament.games[6].winner %}            
-        <a href="{{ path('app_edit_game', {gameId: tournament.games[6].id }) }}" class="pull-right">Indiquer Score</a>
+        {% if not tournament.games[6].winner and tournament.games[5].winner and tournament.games[4].winner %}            
+          <a href="{{ path('app_edit_game', {gameId: tournament.games[6].id }) }}" class="pull-right">Indiquer Score</a>
         {% endif %}        
       </h3>
       <ul class="tournament-bracket__code tournament-bracket__country tournament-bracket__team tournament-bracket__team--winner">
@@ -549,7 +549,7 @@
 
       <h3 class="tournament-bracket__round-title">
         Match {{ tournament.games[7].number }} 
-        {% if not tournament.games[7].winner %}            
+        {% if not tournament.games[7].winner and tournament.games[5].winner and tournament.games[4].winner %}            
           <a href="{{ path('app_edit_game', {gameId: tournament.games[7].id }) }}" class="pull-right">Indiquer Score</a>
         {% endif %}        
       </h3>
