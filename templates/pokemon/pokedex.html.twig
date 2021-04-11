@@ -1,17 +1,19 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
+
 <main id="swup" class="transition-fade">
-    <div class="section d-flex">
-        <div class="container section-inner my-auto">
+    <div class="section">
+        <div class="container px-lg-5">
+            <!-- Heading -->
+            <div class="position-relative d-flex text-center mb-5">
+                <h2 class="text-24 text-light opacity-4 text-uppercase font-weight-600 w-100 mb-0">Pokédex</h2>
+                <p class="text-9 text-dark font-weight-600 position-absolute w-100 align-self-center line-height-4 mb-0">Pokédex<span class="heading-separator-line border-bottom border-3 border-primary position-abolute d-block mx-auto"></span> </p>
+            </div>
+            <!-- Heading end-->
+            
             <div class="row">
                 <div class="col mx-auto">
-
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item active" role="navigation" aria-current="page">Pokédex</li>
-                        </ol>
-                    </nav>
 
                     {% for message in app.flashes('success') %}
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -37,7 +39,7 @@
                         data-locale="fr-FR"  
                         data-show-export="true"  
                         data-click-to-select="true"            
-                        data-buttons-class="info"
+                        data-buttons-class="primary"
                         data-show-columns="true"
                         data-show-columns-toggle-all="true"    
                         >                     

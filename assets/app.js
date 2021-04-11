@@ -4,11 +4,23 @@
  * We recommend including the built version of this JavaScript file
  * (and its CSS file) in your base layout (base.html.twig).
  */
+// bootstrap-table for pokedex page
+import 'bootstrap-table/dist/bootstrap-table.min.css';
+import 'bootstrap-table';
+import 'bootstrap-table/dist/locale/bootstrap-table-fr-FR';
+import 'bootstrap-table/dist/extensions/export/bootstrap-table-export';
+import './libs/tableExport.min.js';
+import './libs/FileSaver.min.js';
+
+// autocompletion for create tournament form
+import './styles/create_form.css';
+import 'autocomplete.js/dist/autocomplete.jquery';
 
 // any CSS you import will output into a single css file (app.css in this case)
+import './styles/tournament_bracket.less';
+import './styles/square_animation.scss';
 import './styles/app.css';
-import './styles/app.less';
-import './styles/app.scss';
+
 
 // Importing bootsrap Javascript
 const $ = require('jquery');
@@ -26,23 +38,11 @@ import SwupOverlayTheme from '@swup/overlay-theme';
 const swup = new Swup({
   plugins: [
     new SwupOverlayTheme({
-      color: '#17a2b8',    
+      color: '#343a40',    
       duration: 500,
     }),
   ]
 });
-
-// bootstrap-table for pokedex page
-import 'bootstrap-table/dist/bootstrap-table.min.css';
-import 'bootstrap-table';
-import 'bootstrap-table/dist/locale/bootstrap-table-fr-FR';
-import 'bootstrap-table/dist/extensions/export/bootstrap-table-export';
-import './libs/tableExport.min.js';
-import './libs/FileSaver.min.js';
-
-// autocompletion for create tournament form
-import './styles/create_form.css';
-import 'autocomplete.js/dist/autocomplete.jquery';
 
 
 function init(){

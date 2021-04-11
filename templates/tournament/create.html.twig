@@ -1,13 +1,20 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Grand Tournoi Pokémon{% endblock %}
+{% block title %}Créer un nouveau tournoi{% endblock %}
 
 {% block body %}
 
-    <main id="swup" class="transition-fade">
-        <div class="container section-inner">
+<main id="swup" class="transition-fade bg-light">
+    <div class="section">
+        <div class="container px-lg-5">
+        <!-- Heading -->
+        <div class="position-relative d-flex text-center mb-5">
+            <h2 class="text-24 text-light opacity-4 text-uppercase font-weight-600 w-100 mb-0">Tournoi</h2>
+            <p class="text-9 text-dark font-weight-600 position-absolute w-100 align-self-center line-height-4 mb-0">Créer un nouveau tournoi<span class="heading-separator-line border-bottom border-3 border-primary position-abolute d-block mx-auto"></span> </p>
+        </div>
+        <!-- Heading end-->
             <div class="row">
-                <div class="col-lg-10 mx-auto">
+                <div class="col-md-5 col-xl-4 text-md-left mt-5 mx-auto">
                     {{ form_errors(tournamentForm) }}
                     
                     {{ form_start(tournamentForm) }}
@@ -22,15 +29,17 @@
                         {{ form_row(tournamentForm.pokemon5) }}
                         {{ form_row(tournamentForm.pokemon6) }}
                         {{ form_row(tournamentForm.pokemon7) }}
-                        {{ form_row(tournamentForm.pokemon8) }}
+                        {{ form_row(tournamentForm.pokemon8) }}                        
                         
-                        <hr>
-                        <a class="btn btn-info" href="{{ path('app_homepage') }}">Annuler</a>
-                        <button type="submit" class="btn btn-info pull-right">Enregistrer</button>
+                        <p class="text-center mt-4 mb-0">
+                            <a class="btn btn-primary rounded-pill d-inline-flex" href="{{ path('app_homepage') }}">Annuler</a>
+                            <button type="submit" class="btn btn-primary rounded-pill d-inline-flex">Enregistrer</button>
+                        </p>
                     {{ form_end(tournamentForm) }}
                 </div>            
             </div>
         </div>
-    </main>    
+    </div>
+</main>    
 
 {% endblock %}

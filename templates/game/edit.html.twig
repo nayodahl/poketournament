@@ -4,40 +4,44 @@
 
 {% block body %}
 
-    <main id="swup" class="transition-fade">
-        <div class="container section-inner">
-            <div class="row">
-                <div class="col-lg-4 mx-auto">
-
-                    <h3 class="tournament-bracket__round-title">Match {{ game.number }} </h3>
-                    <ul class="tournament-bracket__code tournament-bracket__country tournament-bracket__team tournament-bracket__team--winner">
-                        {{ game.player1.name }} - {{ game.player2.name }}
-                    </ul>   
-                    <div class="row justify-content-center">
-                        <img src='../../images/{{ game.player1.apiId }}.png' alt="photo du pokémon 1">
-                        <img src='../../images/{{ game.player2.apiId }}.png' alt="photo du pokémon 2">    
-                    </div>
-                    <hr>
-
-                    {{ form_errors(gameForm) }}
-
-                    {{ form_start(gameForm) }}
-                        <p class="tournament-bracket__code  tournament-bracket__team">{{ game.player1.name }} :<p>
-                        {{ form_row(gameForm.scorePlayer1, {
-                            label: false,
-                        }) }}
-                        <br>
-                        <p class="tournament-bracket__code  tournament-bracket__team">{{ game.player2.name }} :<p>
-                        {{ form_row(gameForm.scorePlayer2, {
-                            label: false,
-                        }) }}
-                        <br>
-                        <a class="btn btn-info" href="{{ path('app_view') }}">Annuler</a>
-                        <button type="submit" class="btn btn-info pull-right">Valider</button>
-                    {{ form_end(gameForm) }} 
-                </div>            
-            </div>
+<main id="swup" class="transition-fade section">
+    <div class="container px-lg-5">
+        <!-- Heading -->
+        <div class="position-relative d-flex text-center mb-5">
+          <h2 class="text-24 text-light opacity-4 text-uppercase font-weight-600 w-100 mb-0">Match {{ game.number }}</h2>
+          <p class="text-9 text-dark font-weight-600 position-absolute w-100 align-self-center line-height-4 mb-0">Indiquer le score<span class="heading-separator-line border-bottom border-3 border-primary position-abolute d-block mx-auto"></span> </p>
         </div>
-    </main>    
+        <!-- Heading end-->
+        <div class="row">
+            <div class="col-md-5 col-xl-4 order-1 order-md-0 text-center text-md-left mt-5 mt-md-0 mx-auto">
+
+                <h2 class="text-7 font-weight-600 mb-3">{{ game.player1.name }} - {{ game.player2.name }}</h2>  
+                <div class="row justify-content-center">
+                    <img src='../../images/{{ game.player1.apiId }}.png' alt="photo du pokémon 1">
+                    <img src='../../images/{{ game.player2.apiId }}.png' alt="photo du pokémon 2">    
+                </div>
+                <hr>
+
+                {{ form_errors(gameForm) }}
+
+                {{ form_start(gameForm) }}
+                    <p class="text-4">{{ game.player1.name }} :<p>
+                    {{ form_row(gameForm.scorePlayer1, {
+                        label: false,
+                    }) }}
+                    <br>
+                    <p class="text-4">{{ game.player2.name }} :<p>
+                    {{ form_row(gameForm.scorePlayer2, {
+                        label: false,
+                    }) }}
+                    <p class="text-center mt-4 mb-0">
+                        <a class="btn btn-primary rounded-pill" href="{{ path('app_view') }}">Annuler</a>
+                        <button type="submit" class="btn btn-primary rounded-pill">Valider</button>
+                    </p>
+                {{ form_end(gameForm) }} 
+            </div>            
+        </div>
+    </div>
+</main>    
 
 {% endblock %}
