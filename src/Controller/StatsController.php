@@ -26,8 +26,8 @@ class StatsController extends AbstractController
             'datasets' => [
                 [
                     'label' => 'Participations',
-                    'backgroundColor' => 'rgb(23, 162, 184)',
-                    'borderColor' => 'rgb(23, 162, 184)',
+                    'backgroundColor' => 'rgb(0, 123, 255)',
+                    'borderColor' => 'rgb(0, 123, 255)',
                     'data' => $values,
                 ],
             ],
@@ -53,8 +53,8 @@ class StatsController extends AbstractController
             'datasets' => [
                 [
                     'label' => 'Victoires',
-                    'backgroundColor' => 'rgb(23, 162, 184)',
-                    'borderColor' => 'rgb(23, 162, 184)',
+                    'backgroundColor' => 'rgb(0, 123, 255)',
+                    'borderColor' => 'rgb(0, 123, 255)',
                     'data' => $values,
                 ],
             ],
@@ -80,8 +80,8 @@ class StatsController extends AbstractController
             'datasets' => [
                 [
                     'label' => 'Points',
-                    'backgroundColor' => 'rgb(159, 227, 237)',
-                    'borderColor' => 'rgb(23, 162, 184)',
+                    'backgroundColor' => 'rgb(117, 184, 255)',
+                    'borderColor' => 'rgb(0, 123, 255)',
                     'data' => $values,
                 ],
             ],

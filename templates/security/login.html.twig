@@ -4,52 +4,57 @@
 
 {% block body %}
 
-    <main id="swup" class="transition-fade">
-        <div class="container section-inner">
-            <div class="row">
-                <div class="col-lg-4 mx-auto">
-                    <form method="post">
-                        {% if error %}
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                {{ error.messageKey|trans(error.messageData, 'security') }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        {% endif %}
-
-                        {% if app.user %}
-                            <div class="mb-3">
-                                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-                            </div>
-                        {% endif %}
-
-                        <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-                        <label for="inputUsername">Utilisateur</label>
-                        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
-                        <br>
-
-                        <label for="inputPassword">Mot de passe</label>
-                        <input type="password" name="password" id="inputPassword" class="form-control" required>
-
-                        <input type="hidden" name="_csrf_token"
-                            value="{{ csrf_token('authenticate') }}"
-                        >
-                        <br>
-                        <div class="checkbox mb-3">
-                            <label>
-                                <input type="checkbox" name="_remember_me"> Se souvenir de moi
-                            </label>
-                        </div>
-
-                        <br>
-                        <button class="btn btn-info" type="submit">
-                            Se connecter
-                        </button>
-                    </form>
-                </div>            
-            </div>
+<main id="swup" class="transition-fade section">
+    <div class="container px-lg-5">
+        <!-- Heading -->
+        <div class="position-relative d-flex text-center mb-5">
+          <h2 class="text-24 text-light opacity-4 text-uppercase font-weight-600 w-100 mb-0">Connexion</h2>
+          <p class="text-9 text-dark font-weight-600 position-absolute w-100 align-self-center line-height-4 mb-0">Login<span class="heading-separator-line border-bottom border-3 border-primary position-abolute d-block mx-auto"></span> </p>
         </div>
-    </main>  
+        <!-- Heading end-->
+        <div class="row">
+            <div class="col-lg-4 mx-auto">
+                <form method="post">
+                    {% if error %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ error.messageKey|trans(error.messageData, 'security') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endif %}
+
+                    {% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                    {% endif %}
+
+                    <label for="inputUsername">Utilisateur</label>
+                    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+                    <br>
+
+                    <label for="inputPassword">Mot de passe</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+                    <input type="hidden" name="_csrf_token"
+                        value="{{ csrf_token('authenticate') }}"
+                    >
+                    <br>
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                        </label>
+                    </div>
+
+                    <br>
+                    <button class="btn btn-primary rounded-pill" type="submit">
+                        Se connecter
+                    </button>
+                </form>
+            </div>            
+        </div>
+    </div>
+</main>  
 
 {% endblock %}
