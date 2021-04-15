@@ -1823,14 +1823,29 @@ h1, h2, h3, h4, h5, h6 {
     padding: 50px 10px 0 0
 }
 
-.card-deck {
-    padding: 30px 30px 0 0;
+.card-homepage {
+  max-width: 170px;;
 }
-
 
 .card-img-top {
     max-height: 96px;
     max-width: 96px;
+}
+
+@media (max-width: 626px) {
+  .card-columns.custom-columns {
+      column-count: 1;
+  }
+}
+@media (min-width: 651px) {
+  .card-columns.custom-columns {
+      column-count: 4;
+  }
+}
+@media (min-width: 1752px) {
+  .card-columns.custom-columns {
+      column-count: 8;
+  }
 }
 
 .logo-pokemon img{
@@ -2015,9 +2030,9 @@ li a, li a:hover {
 .pokemon-navigation {
     display: block;
     padding-top: 1rem;
-    padding-right: 2rem;
+    padding-right: 1rem;
     padding-bottom: 2rem;
-    padding-left: 2rem;
+    padding-left: 1rem;
     margin-bottom: 1rem;
     list-style: none;
     background-color: #e9ecef;
