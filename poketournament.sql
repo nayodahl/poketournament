@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : ven. 09 avr. 2021 à 16:47
+-- Généré le : jeu. 15 avr. 2021 à 14:14
 -- Version du serveur :  10.3.27-MariaDB-0+deb10u1
 -- Version de PHP : 8.0.1
 
@@ -178,10 +178,18 @@ INSERT INTO `game` (`id`, `winner_id`, `loser_id`, `player1_id`, `player2_id`, `
 (106, 2521, 2523, 2523, 2521, 2, 2, 3, '2021-03-25 14:41:50', '2021-03-25 14:42:18', 26),
 (107, NULL, NULL, 2618, 2557, 3, NULL, NULL, '2021-03-25 14:41:50', NULL, 26),
 (108, NULL, NULL, 3739, 3788, 4, NULL, NULL, '2021-03-25 14:41:50', NULL, 26),
-(109, NULL, NULL, 2481, 2521, 5, NULL, NULL, '2021-03-25 14:41:50', '2021-04-09 14:51:48', 26),
+(109, NULL, NULL, 2481, 2521, 5, NULL, NULL, '2021-03-25 14:41:50', '2021-04-10 17:55:25', 26),
 (110, NULL, NULL, NULL, NULL, 6, NULL, NULL, '2021-03-25 14:41:50', NULL, 26),
 (111, NULL, NULL, NULL, NULL, 7, NULL, NULL, '2021-03-25 14:41:50', NULL, 26),
-(112, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-03-25 14:41:50', NULL, 26);
+(112, NULL, NULL, NULL, NULL, 8, NULL, NULL, '2021-03-25 14:41:50', NULL, 26),
+(113, 2483, 2715, 2483, 2715, 1, 1, 0, '2021-04-11 09:00:27', '2021-04-11 14:59:54', 27),
+(114, 3008, 3009, 3008, 3009, 2, 2, 0, '2021-04-11 09:00:27', '2021-04-11 15:00:05', 27),
+(115, 3816, 2609, 2609, 3816, 3, 2, 4, '2021-04-11 09:00:27', '2021-04-11 15:02:21', 27),
+(116, 3740, 2600, 3740, 2600, 4, 2, 1, '2021-04-11 09:00:27', '2021-04-11 15:02:27', 27),
+(117, 3008, 2483, 2483, 3008, 5, 2, 4, '2021-04-11 09:00:27', '2021-04-15 14:11:10', 27),
+(118, 3816, 3740, 3816, 3740, 6, 4, 3, '2021-04-11 09:00:27', '2021-04-15 14:11:10', 27),
+(119, 3740, 2483, 2483, 3740, 7, 0, 2, '2021-04-11 09:00:27', '2021-04-15 14:11:10', 27),
+(120, 3816, 3008, 3008, 3816, 8, 1, 2, '2021-04-11 09:00:27', '2021-04-15 14:11:10', 27);
 
 -- --------------------------------------------------------
 
@@ -1143,8 +1151,8 @@ INSERT INTO `pokemon` (`id`, `name`, `color`, `api_id`, `image`, `slug`, `tree_r
 (3820, 'Zarude', 'Vert', 893, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/893.png', 'zarude', 3820, NULL, 1, 0, 2, '2021-04-09 16:46:22', 'L’affection qu’il porte au petit être humain\nqu’il a recueilli et élevé depuis son plus\njeune âge lui confère une force particulière.', 17, 12, 8, 0, 1, 18, 700),
 (3821, 'Regieleki', 'Jaune', 894, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/894.png', 'regieleki', 3821, NULL, 1, 0, 2, '2021-04-09 16:46:22', NULL, 13, NULL, 8, 1, 0, 12, 1450),
 (3822, 'Regidrago', 'Vert', 895, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/895.png', 'regidrago', 3822, NULL, 1, 0, 2, '2021-04-09 16:46:23', NULL, 16, NULL, 8, 1, 0, 21, 2000),
-(3823, 'Blizzeval', 'Blanc', 896, NULL, 'blizzeval', 3823, NULL, 1, 0, 2, '2021-04-09 16:46:23', NULL, 15, NULL, 8, 1, 0, 22, 8000),
-(3824, 'Spectreval', 'Noir', 897, NULL, 'spectreval', 3824, NULL, 1, 0, 2, '2021-04-09 16:46:24', NULL, 8, NULL, 8, 1, 0, 20, 445),
+(3823, 'Blizzeval', 'Blanc', 896, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/896.png', 'blizzeval', 3823, NULL, 1, 0, 2, '2021-04-09 16:46:23', NULL, 15, NULL, 8, 1, 0, 22, 8000),
+(3824, 'Spectreval', 'Noir', 897, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/897.png', 'spectreval', 3824, NULL, 1, 0, 2, '2021-04-09 16:46:24', NULL, 8, NULL, 8, 1, 0, 20, 445),
 (3825, 'Sylveroy', 'Vert', 898, 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/898.png', 'sylveroy', 3825, NULL, 1, 0, 2, '2021-04-09 16:46:24', NULL, 14, 12, 8, 1, 0, 11, 77);
 
 -- --------------------------------------------------------
@@ -1181,7 +1189,8 @@ INSERT INTO `tournament` (`id`, `name`, `date`, `number_pokemons`) VALUES
 (23, 'Tournoi du mercredi', '2021-03-17 11:13:59', 8),
 (24, 'Coupe d\'Alola', '2021-03-24 13:47:59', 8),
 (25, 'Coupe d\'Alola du 25/03', '2021-03-25 10:52:44', 8),
-(26, 'Tournoi du jeudi', '2021-03-25 14:41:50', 8);
+(26, 'Tournoi du jeudi', '2021-03-25 14:41:50', 8),
+(27, 'Coupe de Galar', '2021-04-11 09:00:27', 8);
 
 -- --------------------------------------------------------
 
@@ -1294,7 +1303,15 @@ INSERT INTO `tournaments_pokemons` (`tournament_id`, `pokemon_id`) VALUES
 (26, 2557),
 (26, 2618),
 (26, 3739),
-(26, 3788);
+(26, 3788),
+(27, 2483),
+(27, 2600),
+(27, 2609),
+(27, 2715),
+(27, 3008),
+(27, 3009),
+(27, 3740),
+(27, 3816);
 
 -- --------------------------------------------------------
 
@@ -1425,7 +1442,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `game`
 --
 ALTER TABLE `game`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT pour la table `generation`
@@ -1443,7 +1460,7 @@ ALTER TABLE `pokemon`
 -- AUTO_INCREMENT pour la table `tournament`
 --
 ALTER TABLE `tournament`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `type`

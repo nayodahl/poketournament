@@ -1827,6 +1827,10 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 170px;;
 }
 
+.card-homepage img{
+  max-width: 140px;;
+}
+
 .card-img-top {
     max-height: 96px;
     max-width: 96px;
