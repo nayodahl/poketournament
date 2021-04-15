@@ -34,7 +34,7 @@
                 <div class="card-columns custom-columns mx-auto justify-content-center">
                     {% for pokemon in tournament.pokemons %}
                         <a href="{{ path('app_pokemon', {slug: pokemon.slug}) }}" class="card card-homepage">
-                            <img src='images/{{ pokemon.apiId }}.png' alt="pokemon avatar">
+                            <img src='images/artwork/{{ pokemon.apiId }}.png' alt="pokemon avatar">
                             <div class="card-body">
                             </div>
                             <div class="card-footer">
