@@ -45,7 +45,6 @@ class PokemonController extends AbstractController
             $next = $pokemonRepo->findNextByApiId($pokemon);
         }
 
-
         $options = [
             'decorate' => true,
             'rootOpen' => '<ul class="evolutionchain">',
@@ -59,6 +58,7 @@ class PokemonController extends AbstractController
                         .'</a>';
             }
         ];
+        
         $evolutionChain = $pokemonRepo->childrenHierarchy(
             $pokemon?->getRoot(),
             false,

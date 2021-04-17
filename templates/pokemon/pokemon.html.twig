@@ -149,7 +149,7 @@
                     <section>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item active" role="navigation" aria-current="page">Evolutions</li>
+                                <li class="breadcrumb-item" role="navigation" aria-current="page">Evolutions</li>
                             </ol>
                         </nav>  
                         <div class="row evolutionchain-row">
@@ -157,10 +157,30 @@
                                 {{ evolutionChain|raw }}
                             </div>
                         </div>
-                        <div class="text-center">
-                            <a class="btn btn-primary" href="{{ path('app_pokedex') }}">Plus de Pokémon</a>
+                    </section>   
+                    <br>
+                    <section>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item" role="navigation" aria-current="page">Formes</li>
+                            </ol>
+                        </nav>  
+                        <div class="row evolutionchain-row">
+                            <div class="col d-flex justify-content-center">
+                                <ul class="evolutionchain">
+                                    <li>
+                                        <a href="#">
+                                            <div class="evolutionchain-name">Shiny</div>
+                                            <img class="evolutionchain-image" src="/images/shiny/{{ pokemon.apiId }}.png" alt="pokemon avatar shiny">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </section>                    
+                    </section>       
+                    <div class="text-center">
+                        <a class="btn btn-primary" href="{{ path('app_pokedex') }}">Plus de Pokémon</a>
+                    </div>           
                 </div>
             </div>
         </div>
