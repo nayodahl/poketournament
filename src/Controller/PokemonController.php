@@ -65,12 +65,18 @@ class PokemonController extends AbstractController
             $options,
             true
         );
-       
+      
         return $this->render('pokemon/pokemon.html.twig', [
             'pokemon' => $pokemon,
             'evolutionChain' => $evolutionChain,
             'previous' => isset($previous) ? $previous : null,
-            'next' => isset($next) ? $next : null
+            'next' => isset($next) ? $next : null,
+            'isAlola' => file_exists('../public/images/' . $pokemon?->getApiId() . '-alola.png'),
+            'isGalar' => file_exists('../public/images/' . $pokemon?->getApiId() . '-galar.png'),
+            'isGmax' => file_exists('../public/images/' . $pokemon?->getApiId() . '-gmax.png'),
+            'isMega' => file_exists('../public/images/' . $pokemon?->getApiId() . '-mega.png'),
+            'isMegaX' => file_exists('../public/images/' . $pokemon?->getApiId() . '-mega-x.png'),
+            'isMegaY' => file_exists('../public/images/' . $pokemon?->getApiId() . '-mega-y.png'),
             ]);
     }
 

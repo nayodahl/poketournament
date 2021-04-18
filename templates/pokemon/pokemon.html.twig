@@ -174,6 +174,54 @@
                                             <img class="evolutionchain-image" src="/images/shiny/{{ pokemon.apiId }}.png" alt="pokemon avatar shiny">
                                         </a>
                                     </li>
+                                    {% if isAlola %}
+                                        <li>
+                                            <a href="#">
+                                                <div class="evolutionchain-name">Alola</div>
+                                                <img class="evolutionchain-image" src="/images/{{ pokemon.apiId }}-alola.png" alt="pokemon avatar alola">
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if isGalar %}
+                                        <li>
+                                            <a href="#">
+                                                <div class="evolutionchain-name">Galar</div>
+                                                <img class="evolutionchain-image" src="/images/{{ pokemon.apiId }}-galar.png" alt="pokemon avatar galar">
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if isGmax %}
+                                        <li>
+                                            <a href="#">
+                                                <div class="evolutionchain-name">Gmax</div>
+                                                <img class="evolutionchain-image" src="/images/{{ pokemon.apiId }}-gmax.png" alt="pokemon avatar gmax">
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if isMega %}
+                                        <li>
+                                            <a href="#">
+                                                <div class="evolutionchain-name">Méga</div>
+                                                <img class="evolutionchain-image" src="/images/{{ pokemon.apiId }}-mega.png" alt="pokemon avatar mega">
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if isMegaX %}
+                                        <li>
+                                            <a href="#">
+                                                <div class="evolutionchain-name">Méga X</div>
+                                                <img class="evolutionchain-image" src="/images/{{ pokemon.apiId }}-mega-x.png" alt="pokemon avatar mega-x">
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if isMegaY %}
+                                        <li>
+                                            <a href="#">
+                                                <div class="evolutionchain-name">Méga Y</div>
+                                                <img class="evolutionchain-image" src="/images/{{ pokemon.apiId }}-mega-y.png" alt="pokemon avatar mega-y">
+                                            </a>
+                                        </li>
+                                    {% endif %}                                    
                                 </ul>
                             </div>
                         </div>
