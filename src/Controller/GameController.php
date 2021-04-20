@@ -18,9 +18,11 @@ class GameController extends AbstractController
     public function gameEdit(int $gameId, Request $request, GameRepository $gameRepo): Response
     {
         $game = $gameRepo->find($gameId);
-        $form = $this->createForm(GameType::class, $game);
+        
+        // calling customer voter
+        $this->denyAccessUnlessGranted('view', $game);
 
-        // handling comment form POST request if any
+        $form = $this->createForm(GameType::class, $game);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
