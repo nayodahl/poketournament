@@ -6,10 +6,12 @@ on:
   pull_request:
     branches: [ dev ]
 
+env:
+  DATABASE_URL: mysql://root:root@127.0.0.1:3306/poketournament-test
+
 jobs:
   build:
-
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest
     services:  
       mysql:
         image: mysql:5.7
@@ -26,7 +28,7 @@ jobs:
         php-versions: ['8.0']
     steps:
     
-    # —— Setup Github actions 🐙 —————————————————————————————————————————————
+    # —— Setup GitHub actions 🐙 —————————————————————————————————————————————
     # https://github.com/actions/checkout (official)
     - name: Checkout
       uses: actions/checkout@v2
@@ -89,13 +91,7 @@ jobs:
       run: |
         php bin/console doctrine:migrations:migrate || echo "No migrations found or migration failed"
         php bin/console doctrine:fixtures:load --append -n || echo "No fixtures found or fixtures load failed"
-      env:
-        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/poketournament-test
 
     ## —— Tests ✅ ———————————————————————————————————————————————————————————
     - name: Run functionnal and unit tests
-      env:
-        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/poketournament-test
       run: php bin/phpunit -v
-
-
