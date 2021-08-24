@@ -2,21 +2,19 @@ name: CI process for Symfony 5
 
 on:
   push:
-    branches: [ dev ]
+    branches: [ dev, master ]
   pull_request:
-    branches: [ dev ]
+    branches: [ dev, master ]
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest  
-    services:  
+    runs-on: ubuntu-latest
+    services:
       mysql:
-        image: mysql:5.7
+        image: mariadb:latest
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: false
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: poketournament-test
+          MYSQL_DATABASE: symfony
         ports:
           - 3306/tcp
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3  
@@ -26,7 +24,7 @@ jobs:
         php-versions: ['8.0']
     steps:
     
-    # —— Setup Github actions 🐙 —————————————————————————————————————————————
+    # —— Setup GitHub actions 🐙 —————————————————————————————————————————————
     # https://github.com/actions/checkout (official)
     - name: Checkout
       uses: actions/checkout@v2
@@ -65,6 +63,8 @@ jobs:
         restore-keys: ${{ runner.os }}-composer-
 
     - name: Install Composer dependencies
+      env:
+        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
       run: composer install --no-progress --prefer-dist --optimize-autoloader
 
     ## —— Yarn 🐱 ————————————————————————————————————————————————————————————
@@ -82,20 +82,32 @@ jobs:
 
     ## —— PHPStan ✅ ———————————————————————————————————————————————————————————
     - name: Run static analysis with PHPStan
+      env:
+        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
       run: ./vendor/bin/phpstan analyse -c phpstan.neon
 
     ## —— Doctrine 🐱 ————————————————————————————————————————————————————————————
     - name: Run Doctrine migrations and load fixtures
+      env:
+        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
       run: |
+        php bin/console doctrine:schema:update --force || echo "No migrations found or schema update failed"
         php bin/console doctrine:migrations:migrate || echo "No migrations found or migration failed"
         php bin/console doctrine:fixtures:load --append -n || echo "No fixtures found or fixtures load failed"
-      env:
-        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/poketournament-test
 
     ## —— Tests ✅ ———————————————————————————————————————————————————————————
     - name: Run functionnal and unit tests
       env:
-        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/poketournament-test
-      run: php bin/phpunit
+        APP_ENV: test
+        APP_SECRET: ''
+        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
+      run: |
+        php bin/phpunit -v
 
 
+  deploy:
+    if: ${{ github.ref == 'master' }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "First workflow was a success on master, deploying"

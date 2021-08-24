@@ -22,7 +22,6 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 *.code-workspace
-.env
 
 ###> symfony/phpunit-bridge ###
 .phpunit
