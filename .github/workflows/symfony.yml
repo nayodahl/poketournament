@@ -6,19 +6,15 @@ on:
   pull_request:
     branches: [ dev ]
 
-env:
-  DATABASE_URL: mysql://root:root@127.0.0.1:3306/poketournament-test
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    services:  
+    services:
       mysql:
-        image: mysql:5.7
+        image: mariadb:latest
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: false
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: poketournament-test
+          MYSQL_DATABASE: symfony
         ports:
           - 3306/tcp
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3  
@@ -67,6 +63,8 @@ jobs:
         restore-keys: ${{ runner.os }}-composer-
 
     - name: Install Composer dependencies
+      env:
+        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
       run: composer install --no-progress --prefer-dist --optimize-autoloader
 
     ## —— Yarn 🐱 ————————————————————————————————————————————————————————————
@@ -94,4 +92,12 @@ jobs:
 
     ## —— Tests ✅ ———————————————————————————————————————————————————————————
     - name: Run functionnal and unit tests
-      run: php bin/phpunit -v
+      env:
+        APP_ENV: test
+        APP_SECRET: ''
+        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
+      run: |
+        echo $DATABASE_URL
+        echo $APP_ENV
+        echo $DATABASE_URL
+        php bin/phpunit -v
