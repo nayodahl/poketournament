@@ -85,7 +85,7 @@ class PokemonController extends AbstractController
      */
     public function findPokemonsApi(PokemonRepository $pokemonRepo, Request $request): Response
     {
-        $list = $pokemonRepo->findAllAlphabeticalMatching($request->query->get('query'));
+        $list = $pokemonRepo->findAllAlphabeticalMatching((string)($request->query->get('query')));
        
         return $this->json(['pokemons' => $list], 200, [], ['groups' => ['list_pokemon']]);
     }
