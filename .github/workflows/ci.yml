@@ -2,9 +2,9 @@ name: CI process for Symfony 5
 
 on:
   push:
-    branches: [ dev ]
+    branches: [ dev, master ]
   pull_request:
-    branches: [ dev ]
+    branches: [ dev, master ]
 
 jobs:
   build:
@@ -102,7 +102,12 @@ jobs:
         APP_SECRET: ''
         DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
       run: |
-        echo $DATABASE_URL
-        echo $APP_ENV
-        echo $DATABASE_URL
         php bin/phpunit -v
+
+
+  deploy:
+    if: ${{ github.ref == 'master' }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "First workflow was a success on master, deploying"
