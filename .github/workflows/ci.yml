@@ -103,8 +103,6 @@ jobs:
         DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
       run: |
         php bin/phpunit -v
-        echo 'displaying a secret';
-        echo ${{ secrets.MY_SECRET_NAME }} | sed 's/./& /g'
 
   deploy:
     name: Deploy to prod
@@ -123,5 +121,4 @@ jobs:
         with:
           private-key: ${{ secrets.PRIVATE_KEY }}
           known-hosts: ${{ secrets.KNOWN_HOSTS }}
-          ssh-config: ${{ secrets.SSH_CONFIG }}
           dep: deploy  -v
