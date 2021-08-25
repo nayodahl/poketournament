@@ -22,25 +22,69 @@ add('shared_dirs', []);
 // Writable dirs by web server 
 add('writable_dirs', []);
 
-
 // Hosts
 host('deployer@nayo.kernl.fr')
-    ->set('deploy_path', '~/{{application}}');    
+    ->set('deploy_path', '~/www')
+    ->set('bin/console', function () {
+        return parse('{{release_path}}/bin/console');
+    })
+    ->set('vendors_tasks', [
+        'cd {{release_path}} && {{bin/composer}} {{composer_options}}',
+        'cd {{release_path}} && yarn install --silent --no-progress',
+    ])
+    ->set('build_tasks', [
+        'cd {{release_path}} && yarn encore production',
+    ])
+    ->set('restart_tasks', [
+        'sudo systemctl restart php-fpm',
+    ])
+    ;
+
     
 // Tasks
 
-task('build', function () {
-    run('cd {{release_path}} && build');
+task('deploy:vendors', function () {
+    foreach (get('vendors_tasks', []) as $task) {
+        run($task);
+    }
 });
 
-task('deploy', function () {
-    $result = run('hostname -f');
-    writeln("Current host: $result");
-    $result = run('pwd');
-    writeln("Current dir: $result");
-    $result = run('whoami');
-    writeln("Current user: $result");
+task('deploy:build', function () {
+    foreach (get('build_tasks', []) as $task) {
+        run($task);
+    }
 });
+
+task('deploy:restart', function () {
+    foreach (get('restart_tasks', []) as $task) {
+        run($task);
+    }
+});
+
+task('deploy:after', function () {
+    foreach (get('after_tasks', []) as $task) {
+        run($task);
+    }
+});
+
+task('deploy', [
+    'deploy:info',
+    'deploy:prepare',
+    'deploy:lock',
+    'deploy:release',
+    'deploy:update_code',
+    'deploy:shared',
+    'deploy:vendors',
+    'deploy:build',
+    'deploy:writable',
+    'deploy:cache:clear',
+    'deploy:cache:warmup',
+    'deploy:symlink',
+    'deploy:after',
+    'deploy:restart',
+    'deploy:unlock',
+    'cleanup',
+]);
 
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
