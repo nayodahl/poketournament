@@ -116,13 +116,9 @@ jobs:
         uses: shivammathur/setup-php@master
         with:
           php-version: 7.4
-      - name: Install Composer dependencies
-        env:
-          DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
-        run: composer require deployer/deployer
       - name: Deploy
         uses: deployphp/action@master
         with:
           private-key: ${{ secrets.PRIVATE_KEY }}
           known-hosts: ${{ secrets.KNOWN_HOSTS }}
-          dep: deploy -v
+          dep: deploy -vvv -f deploy.php
