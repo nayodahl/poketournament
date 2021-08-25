@@ -111,7 +111,7 @@ jobs:
     if: github.ref == 'refs/heads/dev'
     steps:
       - run: echo "Build job was a success on master, deploying..."
-      - run: composer require deployer/deployer --dev
+      - run: composer require deployer/deployer
       - uses: actions/checkout@v1
       - name: Setup PHP
         uses: shivammathur/setup-php@master
@@ -122,4 +122,4 @@ jobs:
         with:
           private-key: ${{ secrets.PRIVATE_KEY }}
           known-hosts: ${{ secrets.KNOWN_HOSTS }}
-          dep: deploy -vvv -f deploy.php
+          dep: deploy -v
