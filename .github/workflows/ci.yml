@@ -115,10 +115,11 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@master
         with:
-          php-version: 7.4
+          php-version: 8.0
       - name: Deploy
-        uses: deployphp/action@v1.0.10
+        uses: deployphp/action@master
         with:
           private-key: ${{ secrets.PRIVATE_KEY }}
           known-hosts: ${{ secrets.KNOWN_HOSTS }}
           dep: deploy -v
+      - run: php vendor/bin/dep deploy -v
