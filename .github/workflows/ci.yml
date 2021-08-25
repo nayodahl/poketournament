@@ -67,42 +67,42 @@ jobs:
         DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
       run: composer install --no-progress --prefer-dist --optimize-autoloader
 
-    ## —— Yarn 🐱 ————————————————————————————————————————————————————————————
-    - name: Yarn setup
-      uses: actions/setup-node@v2
-      with:
-        node-version: '15'
-        registry-url: npm.fontawesome.com
-    - run: yarn install
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
-
-    - name: Yarn build
-      run: yarn run encore production
-
-    ## —— PHPStan ✅ ———————————————————————————————————————————————————————————
-    - name: Run static analysis with PHPStan
-      env:
-        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
-      run: ./vendor/bin/phpstan analyse -c phpstan.neon
-
-    ## —— Doctrine 🐱 ————————————————————————————————————————————————————————————
-    - name: Run Doctrine migrations and load fixtures
-      env:
-        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
-      run: |
-        php bin/console doctrine:schema:update --force || echo "No migrations found or schema update failed"
-        php bin/console doctrine:migrations:migrate || echo "No migrations found or migration failed"
-        php bin/console doctrine:fixtures:load --append -n || echo "No fixtures found or fixtures load failed"
-
-    ## —— Tests ✅ ———————————————————————————————————————————————————————————
-    - name: Run functionnal and unit tests
-      env:
-        APP_ENV: test
-        APP_SECRET: ''
-        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
-      run: |
-        php bin/phpunit -v
+#    ## —— Yarn 🐱 ————————————————————————————————————————————————————————————
+#    - name: Yarn setup
+#      uses: actions/setup-node@v2
+#      with:
+#        node-version: '15'
+#        registry-url: npm.fontawesome.com
+#    - run: yarn install
+#      env:
+#        NODE_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
+#
+#    - name: Yarn build
+#      run: yarn run encore production
+#
+#    ## —— PHPStan ✅ ———————————————————————————————————————————————————————————
+#    - name: Run static analysis with PHPStan
+#      env:
+#        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
+#      run: ./vendor/bin/phpstan analyse -c phpstan.neon
+#
+#    ## —— Doctrine 🐱 ————————————————————————————————————————————————————————————
+#    - name: Run Doctrine migrations and load fixtures
+#      env:
+#        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
+#      run: |
+#        php bin/console doctrine:schema:update --force || echo "No migrations found or schema update failed"
+#        php bin/console doctrine:migrations:migrate || echo "No migrations found or migration failed"
+#        php bin/console doctrine:fixtures:load --append -n || echo "No fixtures found or fixtures load failed"
+#
+#    ## —— Tests ✅ ———————————————————————————————————————————————————————————
+#    - name: Run functionnal and unit tests
+#      env:
+#        APP_ENV: test
+#        APP_SECRET: ''
+#        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
+#      run: |
+#        php bin/phpunit -v
 
   deploy:
     name: Deploy to prod
@@ -121,4 +121,4 @@ jobs:
         with:
           private-key: ${{ secrets.PRIVATE_KEY }}
           known-hosts: ${{ secrets.KNOWN_HOSTS }}
-          dep: deploy  -vvv
+          dep: deploy -vvv -f deploy.php
