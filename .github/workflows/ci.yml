@@ -108,7 +108,7 @@ jobs:
     name: Deploy to prod
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/dev'
+    if: github.ref == 'refs/heads/master'
     steps:
       - run: echo "Build job was a success on master, deploying..."
       - uses: actions/checkout@v2
