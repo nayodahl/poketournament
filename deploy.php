@@ -24,7 +24,7 @@ add('writable_dirs', []);
 
 
 // Hosts
-host('nayo.kernl.fr')
+host('deployer@nayo.kernl.fr')
     ->set('deploy_path', '~/{{application}}');    
     
 // Tasks
@@ -34,8 +34,12 @@ task('build', function () {
 });
 
 task('deploy', function () {
+    $result = run('hostname -f');
+    writeln("Current host: $result");
     $result = run('pwd');
     writeln("Current dir: $result");
+    $result = run('whoami');
+    writeln("Current user: $result");
 });
 
 // [Optional] if deploy fails automatically unlock.
