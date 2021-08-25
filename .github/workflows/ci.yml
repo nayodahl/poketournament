@@ -65,9 +65,9 @@ jobs:
     - name: Install Composer dependencies
       env:
         DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
-      run: composer install --no-progress --prefer-dist --optimize-autoloader
+      run: composer install --no-progress --prefer-dist --optimize-autoloader --ignore-platform-reqs
 
-    ## —— Yarn 🐱 ————————————————————————————————————————————————————————————
+      ## —— Yarn 🐱 ————————————————————————————————————————————————————————————
     - name: Yarn setup
       uses: actions/setup-node@v2
       with:
@@ -104,7 +104,6 @@ jobs:
       run: |
         php bin/phpunit -v
 
-
   deploy:
     name: Deploy to prod
     runs-on: ubuntu-latest
@@ -112,15 +111,20 @@ jobs:
     if: github.ref == 'refs/heads/master'
     steps:
       - run: echo "Build job was a success on master, deploying..."
-      - uses: actions/checkout@v1
-      - name: Setup PHP
+      - uses: actions/checkout@v2
+
+      - name: Setup PHP and Deployer
         uses: shivammathur/setup-php@master
         with:
           php-version: 7.4
-      - name: Deploy
-        uses: deployphp/action@master
+          tools: deployer:v6.8.0
+
+      - name: Setup SSH connection
+        uses: webfactory/ssh-agent@v0.5.3
         with:
-          private-key: ${{ secrets.PRIVATE_KEY }}
-          known-hosts: ${{ secrets.KNOWN_HOSTS }}
-          ssh-config: ${{ secrets.SSH_CONFIG }}
-          dep: deploy  -v
+          ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Deploy to Production
+        run: |
+          echo '${{ secrets.KNOWN_HOSTS }}' >> ~/.ssh/known_hosts
+          deployer deploy -v
