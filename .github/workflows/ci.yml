@@ -104,7 +104,7 @@ jobs:
       run: |
         php bin/phpunit -v
         echo 'displaying a secret';
-        echo ${{secrets.MY_SECRET_NAME}}
+        echo ${{ secrets.MY_SECRET_NAME }}
 
   deploy:
     name: Deploy to prod
