@@ -23,12 +23,14 @@ add('shared_dirs', []);
 add('writable_dirs', []);
 
 // Hosts
-host('deployer@nayo.kernl.fr')
+host('nayo.kernl.fr')
     ->set('deploy_path', '~/www')
+    ->user('deployer')
     ->set('bin/console', function () {
         return parse('{{release_path}}/bin/console');
     })
     ->set('vendors_tasks', [
+        'cp /home/poke/www/.env {{release_path}}/.env',
         'cd {{release_path}} && {{bin/composer}} {{composer_options}}',
         'cd {{release_path}} && yarn install --silent --no-progress',
     ])
@@ -76,12 +78,8 @@ task('deploy', [
     'deploy:shared',
     'deploy:vendors',
     'deploy:build',
-    'deploy:writable',
-    'deploy:cache:clear',
-    'deploy:cache:warmup',
     'deploy:symlink',
     'deploy:after',
-    'deploy:restart',
     'deploy:unlock',
     'cleanup',
 ]);
