@@ -65,7 +65,7 @@ jobs:
     - name: Install Composer dependencies
       env:
         DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
-      run: composer install --no-progress --prefer-dist --optimize-autoloader --ignore-platform-reqs
+      run: composer install --no-progress --prefer-dist --optimize-autoloader
 
       ## —— Yarn 🐱 ————————————————————————————————————————————————————————————
     - name: Yarn setup
