@@ -10,7 +10,7 @@ set('application', 'poketournament');
 set('repository', 'git@github.com:nayodahl/poketournament.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
-set('git_tty', true);
+set('git_tty', false);
 
 set('allow_anonymous_stats', false);
 set('composer_options', '{{composer_action}} --verbose --no-progress --no-interaction --no-dev --optimize-autoloader');
