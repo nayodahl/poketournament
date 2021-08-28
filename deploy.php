@@ -25,6 +25,7 @@ add('writable_dirs', []);
 // Hosts
 host('poke@nayo.kernl.fr')
     ->set('deploy_path', '~/www')
+    ->user('deployer')
     ->set('bin/console', function () {
         return parse('{{release_path}}/bin/console');
     })
@@ -77,11 +78,8 @@ task('deploy', [
     'deploy:shared',
     'deploy:vendors',
     'deploy:build',
-    'deploy:cache:clear',
-    'deploy:cache:warmup',
     'deploy:symlink',
     'deploy:after',
-    'deploy:restart',
     'deploy:unlock',
     'cleanup',
 ]);
