@@ -23,12 +23,13 @@ add('shared_dirs', []);
 add('writable_dirs', []);
 
 // Hosts
-host('deployer@nayo.kernl.fr')
+host('poke@nayo.kernl.fr')
     ->set('deploy_path', '~/www')
     ->set('bin/console', function () {
         return parse('{{release_path}}/bin/console');
     })
     ->set('vendors_tasks', [
+        'cd {{release_path}} && cp ~/wwwbackup/.env .env',
         'cd {{release_path}} && {{bin/composer}} {{composer_options}}',
         'cd {{release_path}} && yarn install --silent --no-progress',
     ])
@@ -36,7 +37,7 @@ host('deployer@nayo.kernl.fr')
         'cd {{release_path}} && yarn encore production',
     ])
     ->set('restart_tasks', [
-        'sudo systemctl restart php-fpm',
+        'sudo /etc/init.d/php8.0-fpm restart',
     ])
     ;
 
@@ -76,7 +77,6 @@ task('deploy', [
     'deploy:shared',
     'deploy:vendors',
     'deploy:build',
-    'deploy:writable',
     'deploy:cache:clear',
     'deploy:cache:warmup',
     'deploy:symlink',
