@@ -134,13 +134,13 @@
         "version": "v1.0.5"
     },
     "gedmo/doctrine-extensions": {
-        "version": "v3.0.4"
+        "version": "v3.1.0"
     },
     "laminas/laminas-code": {
         "version": "4.4.2"
     },
     "monolog/monolog": {
-        "version": "2.2.0"
+        "version": "2.3.2"
     },
     "nikic/php-parser": {
         "version": "v4.12.0"
@@ -158,13 +158,13 @@
         "version": "1.1.0"
     },
     "phpstan/phpstan": {
-        "version": "0.12.81"
+        "version": "0.12.96"
     },
     "phpstan/phpstan-doctrine": {
-        "version": "0.12.33"
+        "version": "0.12.43"
     },
     "phpstan/phpstan-symfony": {
-        "version": "0.12.21"
+        "version": "0.12.42"
     },
     "psr/cache": {
         "version": "2.0.0"
@@ -191,12 +191,12 @@
         ]
     },
     "squizlabs/php_codesniffer": {
-        "version": "3.0",
+        "version": "3.6",
         "recipe": {
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "master",
-            "version": "3.0",
-            "ref": "0dc9cceda799fd3a08b96987e176a261028a3709"
+            "version": "3.6",
+            "ref": "1019e5c08d4821cb9b77f4891f8e9c31ff20ac6f"
         },
         "files": [
             "phpcs.xml.dist"
@@ -218,7 +218,7 @@
         "version": "v5.3.4"
     },
     "symfony/browser-kit": {
-        "version": "v5.2.3"
+        "version": "v5.3.4"
     },
     "symfony/cache": {
         "version": "v5.3.4"
@@ -247,7 +247,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "4.1",
-            "ref": "f8863cbad2f2e58c4b65fa1eac892ab189971bea"
+            "ref": "0ce7a032d344fb7b661cd25d31914cd703ad445b"
         },
         "files": [
             "config/packages/dev/debug.yaml"
@@ -263,7 +263,7 @@
         "version": "v5.3.4"
     },
     "symfony/dom-crawler": {
-        "version": "v5.2.3"
+        "version": "v5.3.4"
     },
     "symfony/dotenv": {
         "version": "v5.3.6"
@@ -278,7 +278,7 @@
         "version": "v2.4.0"
     },
     "symfony/expression-language": {
-        "version": "v5.2.4"
+        "version": "v5.3.4"
     },
     "symfony/filesystem": {
         "version": "v5.3.4"
@@ -357,18 +357,18 @@
         }
     },
     "symfony/mime": {
-        "version": "v5.2.6"
+        "version": "v5.3.4"
     },
     "symfony/monolog-bridge": {
-        "version": "v5.2.5"
+        "version": "v5.3.4"
     },
     "symfony/monolog-bundle": {
-        "version": "3.3",
+        "version": "3.7",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
-            "version": "3.3",
-            "ref": "d7249f7d560f6736115eee1851d02a65826f0a56"
+            "version": "3.7",
+            "ref": "a7bace7dbc5a7ed5608dbe2165e0774c87175fe6"
         },
         "files": [
             "config/packages/dev/monolog.yaml",
@@ -380,19 +380,16 @@
     "symfony/options-resolver": {
         "version": "v5.3.4"
     },
-    "symfony/orm-pack": {
-        "version": "v2.1.0"
-    },
     "symfony/password-hasher": {
         "version": "v5.3.4"
     },
     "symfony/phpunit-bridge": {
-        "version": "5.1",
+        "version": "5.3",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
-            "version": "5.1",
-            "ref": "bf16921ef8309a81d9f046e9b6369c46bcbd031f"
+            "version": "5.3",
+            "ref": "905679249e7b10f06c572917a9022a72cbfedc04"
         },
         "files": [
             ".env.test",
@@ -408,7 +405,7 @@
         "version": "v1.23.0"
     },
     "symfony/polyfill-intl-idn": {
-        "version": "v1.22.1"
+        "version": "v1.23.0"
     },
     "symfony/polyfill-intl-normalizer": {
         "version": "v1.23.0"
@@ -525,7 +522,7 @@
         "version": "v5.3.3"
     },
     "symfony/ux-chartjs": {
-        "version": "v1.2.0"
+        "version": "v1.3.0"
     },
     "symfony/validator": {
         "version": "4.3",
@@ -566,7 +563,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "1.9",
-            "ref": "579d8de06df2ceb34d39e84e84c0c051b9b5ac68"
+            "ref": "5ff15d211e3d4a9216218f6b7f1572262efd74e2"
         },
         "files": [
             "assets/app.js",
