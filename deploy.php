@@ -37,9 +37,6 @@ host('nayo.kernl.fr')
     ->set('build_tasks', [
         'cd {{release_path}} && yarn encore production',
     ])
-    ->set('restart_tasks', [
-        'sudo /etc/init.d/php8.0-fpm restart',
-    ])
     ;
 
     
@@ -81,7 +78,6 @@ task('deploy', [
     'deploy:symlink',
     'deploy:after',
     'deploy:unlock',
-    'deploy:restart',
     'cleanup',
 ]);
 
