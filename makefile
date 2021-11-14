@@ -24,6 +24,9 @@ db-init:
 composer-install:
 	$(WEB) bash -c "composer install -n --prefer-dist --no-interaction --working-dir=/var/www/poke"
 
+composer-outdated:
+	$(WEB) bash -c "composer outdated --working-dir=/var/www/poke"
+
 composer-update:
 	$(WEB) bash -c "composer update -n --prefer-dist --no-interaction --working-dir=/var/www/poke"
 
@@ -36,7 +39,12 @@ yarn-upgrade:
 webpack-deploy: ## build assets with webpack
 	@$(WEB) bash -c "cd poke && yarn encore dev"
 
-tests:
+test-init: ## initialize test database with fixtures
+	@$(WEB) bash -c "cd poke && DB_DISCRIMINATOR=_bkp && bin/console doctrine:database:create --if-not-exists --env test"
+	@$(WEB) bash -c "cd poke && DB_DISCRIMINATOR=_bkp && bin/console doctrine:schema:drop --full-database --force --env test"
+	@$(WEB) bash -c "cd poke && DB_DISCRIMINATOR=_bkp && bin/console doctrine:schema:update -f --env test"
+
+test:
 	$(WEB) bash -c "cd poke && APP_ENV=test && php bin/console doctrine:fixtures:load -n && php bin/phpunit"
 
 phpstan:
