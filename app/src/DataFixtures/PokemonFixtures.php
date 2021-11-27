@@ -133,7 +133,7 @@ class PokemonFixtures extends Fixture
 
         $manager->flush();
 
-        // create a tournament with these 8 pokemons
+        // create a tournament with these 8 Pokémon
         $tournament = new Tournament();
         $tournament->setName('Test Tournament');
         $tournament->setDate(new DateTime());
@@ -151,7 +151,6 @@ class PokemonFixtures extends Fixture
         $this->initializor->initTournament($tournament);
 
         $manager->persist($tournament);
-
         $manager->flush();
     }
 }

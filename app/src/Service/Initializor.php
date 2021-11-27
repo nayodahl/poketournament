@@ -36,8 +36,8 @@ class Initializor
             $tournament->addGame($game);
 
             $this->entityManager->persist($game);
-            $this->entityManager->flush();
         }
+        $this->entityManager->flush();
     }
 
     // check if 2 parents games are set, then we can set the child game,

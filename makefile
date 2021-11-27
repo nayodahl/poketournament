@@ -45,7 +45,7 @@ test-init: ## initialize test database with fixtures
 	@$(WEB) bash -c "cd poke && bin/console doctrine:schema:update -f --env test"
 
 test:
-	$(WEB) bash -c "cd poke && APP_ENV=test && bin/console doctrine:fixtures:load -n && php bin/phpunit"
+	$(WEB) bash -c "cd poke && bin/console doctrine:fixtures:load -n --env test && php bin/phpunit"
 
 phpstan:
 	$(WEB) bash -c "cd poke && php vendor/bin/phpstan analyse -c phpstan.neon --memory-limit 1G"
