@@ -9,7 +9,7 @@ This is currently a Pokedex and a Pokemon cards Tournament generator for my kids
 
 It uses  : 
 - this RESTful Pokémon API https://pokeapi.co/
-- Symfony 5.2 new features (experimental Security, Login Throttling)
+- Symfony 5.3 new features (experimental Security, Login Throttling)
 - Symfony UX (ChartJS)
 - PHP 8 new features
 - CI with Github Actions (code quality with CodeSniffer, Static Analysis with PHPStan, PhpUnit)

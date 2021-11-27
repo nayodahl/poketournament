@@ -3,7 +3,6 @@
 namespace App\Command;
 
 use App\Entity\Type;
-use App\Repository\PokemonRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -20,7 +19,6 @@ class TypeImportNameCommand extends Command
     public function __construct(
         private HttpClientInterface $client,
         private EntityManagerInterface $entityManager,
-        private PokemonRepository $pokemonRepo,
     ) {
         parent::__construct();
     }

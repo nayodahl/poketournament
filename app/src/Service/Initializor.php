@@ -5,7 +5,6 @@ namespace App\Service;
 use App\Entity\Game;
 use App\Entity\Tournament;
 use App\Repository\GameRepository;
-use App\Repository\PokemonRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -13,7 +12,6 @@ class Initializor
 {
     public function __construct(
         private EntityManagerInterface $entityManager,
-        private PokemonRepository $pokemonRepo,
         private GameRepository $gameRepo
     ) {
     }

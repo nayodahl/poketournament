@@ -99,12 +99,10 @@ class Pokemon
     private Collection $children;
 
     /**
-     * @var \DateTime $updated_at
-     *
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime")
     */
-    private $updated_at;
+    private \Datetime $updated_at;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -221,27 +219,77 @@ class Pokemon
     }
 
     /**
-     * @return Collection<int, Tournament>|Tournament[]
+     * @return int
      */
-    public function getTournaments(): Collection
+    public function getLft(): int
     {
-        return $this->tournaments;
+        return $this->lft;
     }
 
-    public function addTournament(Tournament $tournament): self
+    /**
+     * @param int $lft
+     */
+    public function setLft(int $lft): void
     {
-        if (!$this->tournaments->contains($tournament)) {
-            $this->tournaments[] = $tournament;
-        }
-
-        return $this;
+        $this->lft = $lft;
     }
 
-    public function removeTournament(Tournament $tournament): self
+    /**
+     * @return int
+     */
+    public function getLvl(): int
     {
-        $this->tournaments->removeElement($tournament);
+        return $this->lvl;
+    }
 
-        return $this;
+    /**
+     * @param int $lvl
+     */
+    public function setLvl(int $lvl): void
+    {
+        $this->lvl = $lvl;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRgt(): int
+    {
+        return $this->rgt;
+    }
+
+    /**
+     * @param int $rgt
+     */
+    public function setRgt(int $rgt): void
+    {
+        $this->rgt = $rgt;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getChildren(): Collection
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param Collection $children
+     */
+    public function setChildren(Collection $children): void
+    {
+        $this->children = $children;
+    }
+
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTime $updated_at): void
+    {
+        $this->updated_at = $updated_at;
     }
 
     public function getRoot(): ?Pokemon
@@ -249,14 +297,19 @@ class Pokemon
         return $this->root;
     }
 
-    public function setParent(Pokemon $parent = null): void
+    public function setRoot(Pokemon $root = null): void
     {
-        $this->parent = $parent;
+        $this->root = $root;
     }
 
     public function getParent(): ?Pokemon
     {
         return $this->parent;
+    }
+
+    public function setParent(Pokemon $parent = null): void
+    {
+        $this->parent = $parent;
     }
 
     public function getDescription(): ?string
@@ -351,6 +404,30 @@ class Pokemon
     public function setWeight(int $weight): self
     {
         $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Tournament>|Tournament[]
+     */
+    public function getTournaments(): Collection
+    {
+        return $this->tournaments;
+    }
+
+    public function addTournament(Tournament $tournament): self
+    {
+        if (!$this->tournaments->contains($tournament)) {
+            $this->tournaments[] = $tournament;
+        }
+
+        return $this;
+    }
+
+    public function removeTournament(Tournament $tournament): self
+    {
+        $this->tournaments->removeElement($tournament);
 
         return $this;
     }

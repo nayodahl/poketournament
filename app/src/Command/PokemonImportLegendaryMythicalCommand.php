@@ -2,7 +2,6 @@
 
 namespace App\Command;
 
-use App\Repository\GenerationRepository;
 use App\Repository\PokemonRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
@@ -21,7 +20,6 @@ class PokemonImportLegendaryMythicalCommand extends Command
         private HttpClientInterface $client,
         private EntityManagerInterface $entityManager,
         private PokemonRepository $pokemonRepo,
-        private GenerationRepository $generationRepo
     ) {
         parent::__construct();
     }

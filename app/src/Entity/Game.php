@@ -205,7 +205,6 @@ class Game
 
     public function setTournament(?Tournament $tournament): self
     {
-        // @phpstan-ignore-next-line
         $this->tournament = $tournament;
 
         return $this;

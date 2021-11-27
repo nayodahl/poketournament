@@ -19,7 +19,6 @@ class PokemonRepository extends NestedTreeRepository
     {
         $manager = $registry->getManagerForClass(Pokemon::class);
         
-        /* @phpstan-ignore-next-line */
         parent::__construct($manager, $manager->getClassMetadata(Pokemon::class));
     }
 
