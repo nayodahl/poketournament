@@ -1,11 +1,11 @@
 parameters:
-    level: max
-
+    parallel:
+        processTimeout: 300.0
+    level: 4
     paths:
         - config
         - src
-        - public
-    
+        - public    
     symfony:
         container_xml_path: var/cache/dev/App_KernelDevDebugContainer.xml
 

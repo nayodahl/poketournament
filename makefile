@@ -40,12 +40,12 @@ webpack-deploy: ## build assets with webpack
 	@$(WEB) bash -c "cd poke && yarn encore dev"
 
 test-init: ## initialize test database with fixtures
-	@$(WEB) bash -c "cd poke && DB_DISCRIMINATOR=_bkp && bin/console doctrine:database:create --if-not-exists --env test"
-	@$(WEB) bash -c "cd poke && DB_DISCRIMINATOR=_bkp && bin/console doctrine:schema:drop --full-database --force --env test"
-	@$(WEB) bash -c "cd poke && DB_DISCRIMINATOR=_bkp && bin/console doctrine:schema:update -f --env test"
+	@$(WEB) bash -c "cd poke && bin/console doctrine:database:create --if-not-exists --env test"
+	@$(WEB) bash -c "cd poke && bin/console doctrine:schema:drop --full-database --force --env test"
+	@$(WEB) bash -c "cd poke && bin/console doctrine:schema:update -f --env test"
 
 test:
-	$(WEB) bash -c "cd poke && APP_ENV=test && php bin/console doctrine:fixtures:load -n && php bin/phpunit"
+	$(WEB) bash -c "cd poke && APP_ENV=test && bin/console doctrine:fixtures:load -n && php bin/phpunit"
 
 phpstan:
-	$(WEB) bash -c "cd poke && php vendor/bin/phpstan analyse -c phpstan.neon"
+	$(WEB) bash -c "cd poke && php vendor/bin/phpstan analyse -c phpstan.neon --memory-limit 1G"
