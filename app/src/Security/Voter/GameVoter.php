@@ -11,7 +11,7 @@ class GameVoter extends Voter
 {
     const VIEW = 'view';
     
-    protected function supports($attribute, $subject)
+    protected function supports($attribute, $subject): bool
     {
         // if the attribute isn't one we support, return false
         if (!in_array($attribute, [self::VIEW])) {
@@ -26,7 +26,7 @@ class GameVoter extends Voter
         return true;
     }
 
-    protected function voteOnAttribute(string $attribute, $subject, TokenInterface $token)
+    protected function voteOnAttribute(string $attribute, $subject, TokenInterface $token): bool
     {
         /** @var Game $game */
         $game = $subject;

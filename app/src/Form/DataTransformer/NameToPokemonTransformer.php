@@ -6,7 +6,6 @@ use App\Entity\Pokemon;
 use App\Repository\PokemonRepository;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class NameToPokemonTransformer implements DataTransformerInterface
 {
@@ -17,9 +16,8 @@ class NameToPokemonTransformer implements DataTransformerInterface
         $this->pokemonRepository = $pokemonRepository;
     }
     
-    public function transform($value)
+    public function transform($value): mixed
     {
-        //dd('transform', $value);
         if (null === $value) {
             return '';
         }
@@ -29,9 +27,8 @@ class NameToPokemonTransformer implements DataTransformerInterface
         return $value->getName();
     }
 
-    public function reverseTransform($value)
+    public function reverseTransform($value): mixed
     {
-        //dd('reverseTransform', $value);
         $pokemon = $this->pokemonRepository->findOneBy(['name' => $value]);
         if (!$pokemon) {
             throw new TransformationFailedException(sprintf('No pokemon found with name "%s"', $value));
