@@ -1,6 +1,6 @@
 FROM php:8.0-apache
 
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+WORKDIR /var/www/poke
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends locales apt-utils git libicu-dev g++ libpng-dev libxml2-dev libzip-dev libonig-dev libxslt-dev;
@@ -16,8 +16,12 @@ RUN docker-php-ext-configure intl
 RUN docker-php-ext-install pdo pdo_mysql gd opcache intl zip calendar dom mbstring zip gd xsl
 RUN pecl install apcu && docker-php-ext-enable apcu
 
-ADD vhost.conf /etc/apache2/sites-enabled/app.conf
-RUN rm /etc/apache2/sites-enabled/000-default.conf
+COPY vhost.conf /etc/apache2/sites-available/poke.conf
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
+    && a2enmod rewrite \
+    && a2dissite 000-default \
+    &&a2ensite poke \
+    && service apache2 restart
 
 RUN curl -sL https://deb.nodesource.com/setup_15.x | bash - \
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
@@ -27,5 +31,3 @@ RUN curl -sL https://deb.nodesource.com/setup_15.x | bash - \
         yarn \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-WORKDIR /var/www/

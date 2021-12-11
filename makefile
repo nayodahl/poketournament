@@ -31,21 +31,21 @@ composer-update:
 	$(WEB) bash -c "composer update -n --prefer-dist --no-interaction --working-dir=/var/www/poke"
 
 yarn-install: ## install yarn dependencies
-	@$(WEB) bash -c "cd poke && yarn install --frozen-lockfile"
+	@$(WEB) bash -c "yarn install --frozen-lockfile"
 
 yarn-upgrade:
-	@$(WEB) bash -c "cd poke && yarn upgrade"
+	@$(WEB) bash -c "yarn upgrade"
 
 webpack-deploy: ## build assets with webpack
-	@$(WEB) bash -c "cd poke && yarn encore dev"
+	@$(WEB) bash -c "yarn encore dev"
 
 test-init: ## initialize test database with fixtures
-	@$(WEB) bash -c "cd poke && bin/console doctrine:database:create --if-not-exists --env test"
-	@$(WEB) bash -c "cd poke && bin/console doctrine:schema:drop --full-database --force --env test"
-	@$(WEB) bash -c "cd poke && bin/console doctrine:schema:update -f --env test"
+	@$(WEB) bash -c "bin/console doctrine:database:create --if-not-exists --env test"
+	@$(WEB) bash -c "bin/console doctrine:schema:drop --full-database --force --env test"
+	@$(WEB) bash -c "bin/console doctrine:schema:update -f --env test"
 
 test:
-	$(WEB) bash -c "cd poke && bin/console doctrine:fixtures:load -n --env test && php bin/phpunit"
+	$(WEB) bash -c "bin/console doctrine:fixtures:load -n --env test && php bin/phpunit"
 
 phpstan:
-	$(WEB) bash -c "cd poke && php vendor/bin/phpstan analyse -c phpstan.neon --memory-limit 1G"
+	$(WEB) bash -c "php vendor/bin/phpstan analyse -c phpstan.neon --memory-limit 1G"
