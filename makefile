@@ -49,3 +49,9 @@ test:
 
 phpstan:
 	$(WEB) bash -c "php vendor/bin/phpstan analyse -c phpstan.neon --memory-limit 1G"
+
+phpcs:
+	$(WEB) bash -c "./vendor/bin/phpcs src/"
+
+phpcbf:
+	$(WEB) bash -c "./vendor/bin/phpcbf src/"

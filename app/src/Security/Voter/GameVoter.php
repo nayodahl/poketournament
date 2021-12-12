@@ -47,11 +47,12 @@ class GameVoter extends Voter
         $tournament = $game->getTournament();
         
         switch (true) {
-
             // Games number 1 and 2 can be viewed if following games are not played yet (game 5, 7 and 8)
             case $game->getNumber() <= 2:
                 foreach ($tournament->getGames() as $reviewedGame) {
-                    if (($reviewedGame->getNumber() > 4) && ($reviewedGame->getNumber() !== 6) && ($reviewedGame->getWinner() !== null)) {
+                    if (($reviewedGame->getNumber() > 4) &&
+                        ($reviewedGame->getNumber() !== 6) &&
+                        ($reviewedGame->getWinner() !== null)) {
                         return false;
                     }
                 }
