@@ -39,7 +39,7 @@ jobs:
         update: true
 
     - name: Start mysql service
-      run: sudo /etc/init.d/mysql start
+      run: sudo service mysql start
 
     - name: Setup problem matchers for PHPUnit
       run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
