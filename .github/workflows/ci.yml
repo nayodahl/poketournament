@@ -133,4 +133,5 @@ jobs:
       - name: Deploy to Production
         run: |
           echo '${{ secrets.KNOWN_HOSTS }}' >> ~/.ssh/known_hosts
+          cd app
           deployer deploy -v
