@@ -19,6 +19,7 @@ rm: kill
 	@$(DOCKER_COMPOSE) rm --force || true
 
 db-init:
+	$(DB) mysql -usymfony -psymfony -e 'DROP DATABASE IF EXISTS poke; CREATE DATABASE poke;'
 	$(DB) mysql -usymfony -psymfony poke < infra/import/poketournament.sql
 
 composer-install:
