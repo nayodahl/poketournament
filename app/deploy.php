@@ -27,15 +27,15 @@ host('nayo.kernl.fr')
     ->set('deploy_path', '~/www')
     ->user('poke')
     ->set('bin/console', function () {
-        return parse('{{release_path}}/bin/console');
+        return parse('{{release_path}}/app/bin/console');
     })
     ->set('vendors_tasks', [
-        'cd {{release_path}} && cp ~/wwwbackup/.env .env',
-        'cd {{release_path}} && {{bin/composer}} {{composer_options}}',
-        'cd {{release_path}} && yarn install --silent --no-progress',
+        'cd {{release_path}}/app && cp ~/wwwbackup/.env .env',
+        'cd {{release_path}}/app && {{bin/composer}} {{composer_options}}',
+        'cd {{release_path}}/app && yarn install --silent --no-progress',
     ])
     ->set('build_tasks', [
-        'cd {{release_path}} && yarn encore production',
+        'cd {{release_path}}/app && yarn encore production',
     ])
     ->set('restart_tasks', [
         'sudo /etc/init.d/php8.0-fpm restart',
