@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Game;
 use App\Form\GameType;
 use App\Repository\GameRepository;
 use DateTime;
+use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +17,7 @@ class GameController extends AbstractController
     /**
      * @Route("/game/{gameId}", name="app_edit_game", requirements={"trickId"="\d+"})
      */
-    public function gameEdit(int $gameId, Request $request, GameRepository $gameRepo): Response
+    public function gameEdit(int $gameId, Request $request, GameRepository $gameRepo, ManagerRegistry $doctrine): Response
     {
         $game = $gameRepo->find($gameId);
         
@@ -38,7 +40,7 @@ class GameController extends AbstractController
                 $game->setLoser($game->getPlayer1());
             }
 
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $doctrine->getManagerForClass(Game::class);
             $entityManager->persist($game);
             $entityManager->flush();
 
