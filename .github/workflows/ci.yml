@@ -1,4 +1,4 @@
-name: CI process for Symfony 5
+name: CI/CD process for Symfony
 
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php-versions: ['8.0']
+        php-versions: ['8.1']
     steps:
     
     # —— Setup GitHub actions 🐙 —————————————————————————————————————————————
@@ -122,7 +122,7 @@ jobs:
       - name: Setup PHP and Deployer
         uses: shivammathur/setup-php@master
         with:
-          php-version: 7.4
+          php-version: 8.1
           tools: deployer:v6.8.0
 
       - name: Setup SSH connection
