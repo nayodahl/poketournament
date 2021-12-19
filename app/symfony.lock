@@ -1,13 +1,4 @@
 {
-    "antishov/doctrine-extensions-bundle": {
-        "version": "1.4",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "1.4",
-            "ref": "6c1ceb662f8997085f739cd089bfbef67f245983"
-        }
-    },
     "behat/transliterator": {
         "version": "v1.3.0"
     },
@@ -119,7 +110,7 @@
         "version": "v1.0.5"
     },
     "gedmo/doctrine-extensions": {
-        "version": "v3.1.0"
+        "version": "v3.4.0"
     },
     "laminas/laminas-code": {
         "version": "4.4.2"
@@ -185,6 +176,18 @@
         },
         "files": [
             "phpcs.xml.dist"
+        ]
+    },
+    "stof/doctrine-extensions-bundle": {
+        "version": "1.7",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.2",
+            "ref": "6c1ceb662f8997085f739cd089bfbef67f245983"
+        },
+        "files": [
+            "config/packages/stof_doctrine_extensions.yaml"
         ]
     },
     "symfony/apache-pack": {
@@ -341,9 +344,6 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
-    "symfony/mime": {
-        "version": "v5.3.8"
-    },
     "symfony/monolog-bridge": {
         "version": "v5.3.4"
     },
@@ -389,17 +389,11 @@
     "symfony/polyfill-intl-icu": {
         "version": "v1.23.0"
     },
-    "symfony/polyfill-intl-idn": {
-        "version": "v1.23.0"
-    },
     "symfony/polyfill-intl-normalizer": {
         "version": "v1.23.0"
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.23.1"
-    },
-    "symfony/polyfill-php73": {
-        "version": "v1.23.0"
     },
     "symfony/polyfill-php80": {
         "version": "v1.23.1"
@@ -451,9 +445,6 @@
         "version": "v5.3.6"
     },
     "symfony/security-csrf": {
-        "version": "v5.3.4"
-    },
-    "symfony/security-guard": {
         "version": "v5.3.4"
     },
     "symfony/security-http": {
