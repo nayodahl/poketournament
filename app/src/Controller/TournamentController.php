@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Tournament;
 use App\Form\TournamentType;
 use App\Repository\TournamentRepository;
 use App\Service\Initializor;
 use DateTime;
+use Doctrine\Persistence\ManagerRegistry;
+use MongoDB\Driver\Manager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,7 +45,7 @@ class TournamentController extends AbstractController
     /**
      * @Route("/create", name="app_create")
      */
-    public function tournamentCreate(Request $request, Initializor $initializor): Response
+    public function tournamentCreate(Request $request, Initializor $initializor, ManagerRegistry $doctrine): Response
     {
         $form = $this->createForm(TournamentType::class);
 
@@ -88,7 +91,7 @@ class TournamentController extends AbstractController
 
             $initializor->initTournament($tournament);
 
-            $em = $this->getDoctrine()->getManager();
+            $em = $doctrine->getManagerForClass(Tournament::class);
             $em->persist($tournament);
             $em->flush();
 

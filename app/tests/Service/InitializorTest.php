@@ -29,7 +29,7 @@ class InitializorTest extends KernelTestCase
         $tournament = $this->entityManager->getRepository(Tournament::class)->findOneBy(['name' => 'Test Tournament']);
        
         // load the most recently created game
-        $gameRepository = static::$container->get(GameRepository::class);
+        $gameRepository = static::getContainer()->get(GameRepository::class);
         $game = $gameRepository->findOneBy([], ['id'=>'DESC']);
         
         // check that it is now linked to correct tournament

@@ -24,9 +24,7 @@ class PokemonController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/pokedex", name="app_pokedex")
-     */
+    #[Route('/pokedex', name: 'app_pokedex')]
     public function pokedexShow(PokemonRepository $pokemonRepo): Response
     {
         return $this->render('pokemon/pokedex.html.twig', [
@@ -34,9 +32,7 @@ class PokemonController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/pokedex/{slug}", name="app_pokemon")
-     */
+    #[Route('/pokedex/{slug}', name: 'app_pokemon')]
     public function pokemonShow(PokemonRepository $pokemonRepo, string $slug): Response
     {
         $pokemon = $pokemonRepo->findOneBy([ 'slug' => $slug ]);
@@ -80,9 +76,8 @@ class PokemonController extends AbstractController
             ]);
     }
 
-    /**
-     * @Route("/utility/pokemons", methods="GET", name="app_utility_pokemons")
-     */
+
+    #[Route('/utility/pokemons', name: 'app_utility_pokemons')]
     public function findPokemonsApi(PokemonRepository $pokemonRepo, Request $request): Response
     {
         $list = $pokemonRepo->findAllAlphabeticalMatching((string)($request->query->get('query')));
@@ -90,9 +85,8 @@ class PokemonController extends AbstractController
         return $this->json(['pokemons' => $list], 200, [], ['groups' => ['list_pokemon']]);
     }
 
-    /**
-     * @Route("/utility/pokedex", methods="GET", name="app_utility_pokedex")
-     */
+
+    #[Route('/utility/pokedex', name: 'app_utility_pokedex')]
     public function findAllPokemonsApi(PokemonRepository $pokemonRepo): Response
     {
         $list = $pokemonRepo->findAll();
