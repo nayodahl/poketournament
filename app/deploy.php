@@ -15,11 +15,11 @@ set('git_tty', false);
 set('allow_anonymous_stats', false);
 set('composer_options', '{{composer_action}} --verbose --no-progress --no-interaction --no-dev --optimize-autoloader');
 
-// Shared files/dirs between deploys 
+// Shared files/dirs between deploys
 add('shared_files', []);
 add('shared_dirs', []);
 
-// Writable dirs by web server 
+// Writable dirs by web server
 add('writable_dirs', []);
 
 // Hosts
@@ -38,11 +38,11 @@ host('nayo.kernl.fr')
         'cd {{release_path}}/app && yarn encore production',
     ])
     ->set('restart_tasks', [
-        'sudo /etc/init.d/php8.0-fpm restart',
+        'sudo /etc/init.d/php8.1-fpm restart',
     ])
     ;
 
-    
+
 // Tasks
 
 task('deploy:vendors', function () {
