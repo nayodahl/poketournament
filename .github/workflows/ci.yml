@@ -17,13 +17,13 @@ jobs:
           MYSQL_DATABASE: symfony
         ports:
           - 3306/tcp
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3  
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     strategy:
       fail-fast: true
       matrix:
         php-versions: ['8.1']
     steps:
-    
+
     # —— Setup GitHub actions 🐙 —————————————————————————————————————————————
     # https://github.com/actions/checkout (official)
     - name: Checkout
@@ -34,7 +34,7 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php-versions }}
-        extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, dom, filter, gd, iconv, json, mbstring, pdo
+        extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, dom, filter, gd, iconv, json
       env:
         update: true
 
