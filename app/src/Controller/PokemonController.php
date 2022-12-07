@@ -54,14 +54,14 @@ class PokemonController extends AbstractController
                         .'</a>';
             }
         ];
-        
+
         $evolutionChain = $pokemonRepo->childrenHierarchy(
             $pokemon?->getRoot(),
             false,
             $options,
             true
         );
-      
+
         return $this->render('pokemon/pokemon.html.twig', [
             'pokemon' => $pokemon,
             'evolutionChain' => $evolutionChain,
@@ -81,7 +81,7 @@ class PokemonController extends AbstractController
     public function findPokemonsApi(PokemonRepository $pokemonRepo, Request $request): Response
     {
         $list = $pokemonRepo->findAllAlphabeticalMatching((string)($request->query->get('query')));
-       
+
         return $this->json(['pokemons' => $list], 200, [], ['groups' => ['list_pokemon']]);
     }
 
@@ -90,7 +90,7 @@ class PokemonController extends AbstractController
     public function findAllPokemonsApi(PokemonRepository $pokemonRepo): Response
     {
         $list = $pokemonRepo->findAll();
-   
+
         $encoders = [new JsonEncoder()];
         $normalizers = [new ObjectNormalizer()];
         $serializer = new Serializer($normalizers, $encoders);
@@ -102,10 +102,9 @@ class PokemonController extends AbstractController
             'root',
             'parent',
             'children',
-            ]]);
-        $response = new Response($json, 200, ['Content-Type' => 'application/json']);
+        ]]);
 
-        return $response;
+        return new Response($json, 200, ['Content-Type' => 'application/json']);
     }
 
     /**
