@@ -40,6 +40,9 @@ yarn-upgrade:
 webpack-deploy: ## build assets with webpack
 	@$(WEB) bash -c "yarn encore dev"
 
+webpack-watch: ## hot reload
+	@$(WEB) bash -c "yarn encore dev --watch"
+
 test-init: ## initialize test database with fixtures
 	@$(WEB) bash -c "bin/console doctrine:database:create --if-not-exists --env test"
 	@$(WEB) bash -c "bin/console doctrine:schema:drop --full-database --force --env test"

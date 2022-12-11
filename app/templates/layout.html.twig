@@ -55,7 +55,7 @@
 
                                 {% if is_granted('ROLE_USER') %}
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ app.user.username }}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -71,9 +71,9 @@
                             </ul>
                         </div>
                         <ul class="social-icons social-icons-muted social-icons-sm mt-lg-auto ml-auto ml-lg-0 mb-n1 d-flex">
-                            <li class="social-icons-github"><a data-toggle="tooltip" href="https://github.com/nayodahl/poketournament" target="_blank" title="" data-original-title="GitHub"><i class="fab fa-github"></i></a></li>
+                            <li class="social-icons-github"><a data-bs-toggle="tooltip" data-bs-placement="top" href="https://github.com/nayodahl/poketournament" target="_blank" title="my GitHub profile"><i class="fab fa-github"></i></a></li>
                         </ul>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-nav"><span></span><span></span><span></span></button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#header-nav"><span></span><span></span><span></span></button>
                     </div>
                 </nav>
                 <!-- Navigation end -->

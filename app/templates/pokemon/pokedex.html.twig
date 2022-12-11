@@ -11,7 +11,7 @@
                 <p class="text-9 text-dark font-weight-600 position-absolute w-100 align-self-center line-height-4 mb-0">Pokédex<span class="heading-separator-line border-bottom border-3 border-primary position-abolute d-block mx-auto"></span> </p>
             </div>
             <!-- Heading end-->
-            
+
             <div class="row">
                 <div class="col mx-auto">
 
@@ -21,34 +21,34 @@
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                        </div>    
+                        </div>
                     {% endfor %}
                     {% for message in app.flashes('error') %}
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             {{ message }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
-                            </button>                            
-                        </div>    
+                            </button>
+                        </div>
                     {% endfor %}
-                  
-                    <table 
-                        class="table table-hover pokedex text-center" 
-                        id="table"      
-                        data-toggle="table"  
-                        data-locale="fr-FR"  
-                        data-show-export="true"  
-                        data-click-to-select="true"            
+
+                    <table
+                        class="table table-hover pokedex text-center"
+                        id="table"
+                        data-toggle="table"
+                        data-locale="fr-FR"
+                        data-show-export="true"
+                        data-click-to-select="true"
                         data-buttons-class="primary"
                         data-show-columns="true"
-                        data-show-columns-toggle-all="true"    
-                        >                     
-                    </table>                 
-                    
+                        data-show-columns-toggle-all="true"
+                        >
+                    </table>
+
                 </div>
             </div>
         </div>
-    </div>   
+    </div>
 </main>
 
 {% endblock %}
