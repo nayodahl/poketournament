@@ -1,31 +1,26 @@
 <?php
 namespace Deployer;
 
-require 'recipe/symfony.php';
+require 'recipe/symfony4.php';
 
-// Project name
 set('application', 'poketournament');
-
-// Project repository
 set('repository', 'git@github.com:nayodahl/poketournament.git');
-
-// [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', false);
-
+set('ssh_multiplexing', true);
 set('allow_anonymous_stats', false);
 set('composer_options', '{{composer_action}} --verbose --no-progress --no-interaction --no-dev --optimize-autoloader');
 
-// Shared files/dirs between deploys
 add('shared_files', []);
 add('shared_dirs', []);
-
-// Writable dirs by web server
 add('writable_dirs', []);
 
-// Hosts
 host('nayo.kernl.fr')
     ->set('deploy_path', '~/www')
-    ->user('poke')
+    ->user('root')
+    ->set('keep_releases', 5)
+    ->shellCommand('bash --login -s')
+    ->set('http_user', 'poke')
+    ->set('http_group', 'poke')
     ->set('bin/console', function () {
         return parse('{{release_path}}/app/bin/console');
     })
@@ -33,6 +28,9 @@ host('nayo.kernl.fr')
         'app/.env'
     ])
     ->set('shared_dirs', [
+        'app/var/log',
+    ])
+    ->set('writable_dirs', [
         'app/var/log',
     ])
     ->set('vendors_tasks', [
@@ -92,8 +90,8 @@ task('deploy', [
 
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
+after('deploy', 'success');
 
 // Migrate database before symlink new release.
-
 before('deploy:symlink', 'database:migrate');
 
