@@ -29,8 +29,13 @@ host('nayo.kernl.fr')
     ->set('bin/console', function () {
         return parse('{{release_path}}/app/bin/console');
     })
+    ->set('shared_files', [
+        'app/.env'
+    ])
+    ->set('shared_dirs', [
+        'app/var/log',
+    ])
     ->set('vendors_tasks', [
-        'cd {{release_path}}/app && cp ~/wwwbackup/.env .env',
         'cd {{release_path}}/app && {{bin/composer}} {{composer_options}}',
         'cd {{release_path}}/app && yarn install --silent --no-progress',
     ])
