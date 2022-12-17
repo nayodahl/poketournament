@@ -45,7 +45,7 @@ class PokemonImportWeightHeightlCommand extends Command
 
             for ($i = 1; $i < 4; $i++) {
                 $pokemon = $this->pokemonRepo->findOneBy(['apiId' => $i]);
-                $response = $this->client->request(
+                $response = $this->pokeApiClient->request(
                     'GET',
                     'https://pokeapi.co/api/v2/pokemon/'.$i
                 );
@@ -69,7 +69,7 @@ class PokemonImportWeightHeightlCommand extends Command
             $progressBar = new ProgressBar($output, $numberOfPokemon);
 
             foreach ($pokemons as $pokemon) {
-                $response = $this->client->request(
+                $response = $this->pokeApiClient->request(
                     'GET',
                     'https://pokeapi.co/api/v2/pokemon/'.$pokemon->getApiId()
                 );

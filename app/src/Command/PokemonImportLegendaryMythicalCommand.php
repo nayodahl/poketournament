@@ -45,7 +45,7 @@ class PokemonImportLegendaryMythicalCommand extends Command
 
             for ($i = 893; $i < 895; $i++) {
                 $pokemon = $this->pokemonRepo->findOneBy(['apiId' => $i]);
-                $response = $this->client->request(
+                $response = $this->pokeApiClient->request(
                     'GET',
                     'https://pokeapi.co/api/v2/pokemon-species/'.$i
                 );
@@ -69,7 +69,7 @@ class PokemonImportLegendaryMythicalCommand extends Command
             $progressBar = new ProgressBar($output, $numberOfPokemon);
 
             foreach ($pokemons as $pokemon) {
-                $response = $this->client->request(
+                $response = $this->pokeApiClient->request(
                     'GET',
                     'https://pokeapi.co/api/v2/pokemon-species/'.$pokemon->getApiId()
                 );

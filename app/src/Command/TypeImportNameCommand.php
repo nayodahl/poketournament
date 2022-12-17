@@ -42,7 +42,7 @@ class TypeImportNameCommand extends Command
             $progressBar = new ProgressBar($output, $numberOfType);
            
             for ($i = 1; $i <= $numberOfType; $i++) {
-                $response = $this->client->request(
+                $response = $this->pokeApiClient->request(
                     'GET',
                     'https://pokeapi.co/api/v2/type/'.$i
                 );
@@ -65,7 +65,7 @@ class TypeImportNameCommand extends Command
             $progressBar = new ProgressBar($output, $numberOfType);
            
             for ($i = 1; $i <= $numberOfType; $i++) {
-                $response = $this->client->request(
+                $response = $this->pokeApiClient->request(
                     'GET',
                     'https://pokeapi.co/api/v2/type/'.$i
                 );

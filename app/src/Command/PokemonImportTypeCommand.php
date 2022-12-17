@@ -47,7 +47,7 @@ class PokemonImportTypeCommand extends Command
 
             for ($i = 4; $i < 10; $i++) {
                 $pokemon = $this->pokemonRepo->findOneBy(['apiId' => $i]);
-                $response = $this->client->request(
+                $response = $this->pokeApiClient->request(
                     'GET',
                     'https://pokeapi.co/api/v2/pokemon/'.$i
                 );
@@ -57,7 +57,7 @@ class PokemonImportTypeCommand extends Command
                 //slot 1 on API, will be stored as type1 property
                 if (isset($array['types'][0])) {
                     $type1Url = $array['types'][0]['type']['url'];
-                    $response = $this->client->request(
+                    $response = $this->pokeApiClient->request(
                         'GET',
                         $type1Url
                     );
@@ -72,7 +72,7 @@ class PokemonImportTypeCommand extends Command
                 //slot 2 on API, will be stored as type2 property
                 if (isset($array['types'][1])) {
                     $type2Url = $array['types'][1]['type']['url'];
-                    $response = $this->client->request(
+                    $response = $this->pokeApiClient->request(
                         'GET',
                         $type2Url
                     );
@@ -90,7 +90,7 @@ class PokemonImportTypeCommand extends Command
             $progressBar = new ProgressBar($output, $numberOfPokemon);
 
             foreach ($pokemons as $pokemon) {
-                $response = $this->client->request(
+                $response = $this->pokeApiClient->request(
                     'GET',
                     'https://pokeapi.co/api/v2/pokemon/'.$pokemon->getApiId()
                 );
@@ -100,7 +100,7 @@ class PokemonImportTypeCommand extends Command
                 //slot 1 on API, will be stored as type1 property
                 if (isset($array['types'][0])) {
                     $type1Url = $array['types'][0]['type']['url'];
-                    $response = $this->client->request(
+                    $response = $this->pokeApiClient->request(
                         'GET',
                         $type1Url
                     );
@@ -115,7 +115,7 @@ class PokemonImportTypeCommand extends Command
                 //slot 2 on API, will be stored as type2 property
                 if (isset($array['types'][1])) {
                     $type2Url = $array['types'][1]['type']['url'];
-                    $response = $this->client->request(
+                    $response = $this->pokeApiClient->request(
                         'GET',
                         $type2Url
                     );

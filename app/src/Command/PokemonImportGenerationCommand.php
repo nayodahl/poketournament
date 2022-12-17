@@ -47,7 +47,7 @@ class PokemonImportGenerationCommand extends Command
 
             for ($i = 1; $i < 10; $i++) {
                 $pokemon = $this->pokemonRepo->findOneBy(['apiId' => $i]);
-                $response = $this->client->request(
+                $response = $this->pokeApiClient->request(
                     'GET',
                     'https://pokeapi.co/api/v2/pokemon-species/'.$i
                 );
@@ -56,7 +56,7 @@ class PokemonImportGenerationCommand extends Command
 
                 if (isset($array['generation']['url'])) {
                     $generationUrl = $array['generation']['url'];
-                    $response = $this->client->request(
+                    $response = $this->pokeApiClient->request(
                         'GET',
                         $generationUrl
                     );
@@ -73,7 +73,7 @@ class PokemonImportGenerationCommand extends Command
             $progressBar = new ProgressBar($output, $numberOfPokemon);
 
             foreach ($pokemons as $pokemon) {
-                $response = $this->client->request(
+                $response = $this->pokeApiClient->request(
                     'GET',
                     'https://pokeapi.co/api/v2/pokemon-species/'.$pokemon->getApiId()
                 );
@@ -82,7 +82,7 @@ class PokemonImportGenerationCommand extends Command
 
                 if (isset($array['generation']['url'])) {
                     $generationUrl = $array['generation']['url'];
-                    $response = $this->client->request(
+                    $response = $this->pokeApiClient->request(
                         'GET',
                         $generationUrl
                     );

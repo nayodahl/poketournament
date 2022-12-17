@@ -47,7 +47,7 @@ class PokemonImportEvolutionCommand extends Command
 
             for ($i = 1; $i < 10; $i++) {
                 $pokemon = $this->pokemonRepo->findOneBy(['apiId' => $i]);
-                $response = $this->client->request(
+                $response = $this->pokeApiClient->request(
                     'GET',
                     'https://pokeapi.co/api/v2/pokemon-species/'.$i
                 );
@@ -66,7 +66,7 @@ class PokemonImportEvolutionCommand extends Command
             $progressBar = new ProgressBar($output, $numberOfPokemon);
 
             foreach ($pokemons as $pokemon) {
-                $response = $this->client->request(
+                $response = $this->pokeApiClient->request(
                     'GET',
                     'https://pokeapi.co/api/v2/pokemon-species/'.$pokemon->getApiId()
                 );
@@ -76,7 +76,7 @@ class PokemonImportEvolutionCommand extends Command
                 // if evolves_from_species is not null, then it shows its parent
                 if (isset($array['evolves_from_species'])) {
                     $parentUrl = $array['evolves_from_species']['url'];
-                    $response = $this->client->request(
+                    $response = $this->pokeApiClient->request(
                         'GET',
                         $parentUrl
                     );
