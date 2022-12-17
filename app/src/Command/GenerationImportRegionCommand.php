@@ -29,7 +29,7 @@ class GenerationImportRegionCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $numberOfUpdate=0;
 
-        $generations = $this->client->get( 'api/v2/generation');
+        $generations = $this->client->get('api/v2/generation');
         $numberOfGeneration = $generations['count'] ?? 8;
         $progressBar = new ProgressBar($output, $numberOfGeneration);
 
@@ -41,12 +41,11 @@ class GenerationImportRegionCommand extends Command
                 $generation->setRegion($response['main_region']['name']);
                 $generation->setApiId($response['id']);
 
-                if (null === ($this->entityManager->getRepository(Generation::class)->findOneBy(['apiId' => $generation->getApiId()]))){
+                if (null === ($this->entityManager->getRepository(Generation::class)->findOneBy(['apiId' => $generation->getApiId()]))) {
                     $this->entityManager->persist($generation);
                     $this->entityManager->flush();
                     $numberOfUpdate++;
                 }
-
             }
             $progressBar->advance();
         }
