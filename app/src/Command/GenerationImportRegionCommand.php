@@ -19,8 +19,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class GenerationImportRegionCommand extends Command
 {
     public function __construct(
-        private Client $client,
-        private EntityManagerInterface $entityManager,
+        private readonly Client                 $client,
+        private readonly EntityManagerInterface $entityManager,
     ) {
         parent::__construct();
     }
@@ -50,7 +50,6 @@ class GenerationImportRegionCommand extends Command
             $progressBar->advance();
         }
         $progressBar->finish();
-
         $io->success(sprintf('Imported %d region names and apiId for %d generation.', $numberOfUpdate, $numberOfGeneration));
 
         return Command::SUCCESS;

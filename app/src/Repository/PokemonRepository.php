@@ -18,7 +18,7 @@ class PokemonRepository extends NestedTreeRepository
     public function __construct(ManagerRegistry $registry)
     {
         $manager = $registry->getManagerForClass(Pokemon::class);
-        
+
         parent::__construct($manager, $manager->getClassMetadata(Pokemon::class));
     }
 
@@ -40,7 +40,7 @@ class PokemonRepository extends NestedTreeRepository
     public function findPreviousByApiId(Pokemon $pokemon): ?Pokemon
     {
         $apiId = $pokemon->getApiId();
-        
+
         // previous of number one should be the last one of all pokemons
         if ($apiId === 1) {
             $totalNumberOfPokemon = count($this->findAll());
@@ -96,7 +96,7 @@ class PokemonRepository extends NestedTreeRepository
             ->setParameter('color', $color)
             ->select('COUNT(p.id)')
             ->getQuery()
-            ->getSingleScalarResult();
-        ;
+            ->getSingleScalarResult()
+            ;
     }
 }
