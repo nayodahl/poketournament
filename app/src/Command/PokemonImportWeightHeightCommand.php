@@ -3,7 +3,7 @@
 namespace App\Command;
 
 use App\Repository\PokemonRepository;
-use App\Service\Slugger;
+use App\Service\Client;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -13,15 +13,17 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 #[AsCommand(
-    name: 'app:pokemon:refresh-slug',
-    description: 'refresh slug property of Pokemons and store them.',
+    name: 'app:pokemon:import-height',
+    description: 'import weight and height property of Pokemon from API pokeAPI and store them.',
 )]
-class PokemonRefreshSlugCommand extends Command
+class PokemonImportWeightHeightCommand extends Command
 {
+    protected static $defaultName = 'app:pokemon:importWeightHeight';
+
     public function __construct(
-        private readonly PokemonRepository $pokemonRepo,
+        private readonly Client $client,
         private readonly EntityManagerInterface $entityManager,
-        private readonly Slugger $slugger
+        private readonly PokemonRepository $pokemonRepo,
     ) {
         parent::__construct();
     }
@@ -29,27 +31,33 @@ class PokemonRefreshSlugCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
-
         $pokemons = $this->pokemonRepo->findAll();
         $numberOfPokemon = count($pokemons);
         $numberOfUpdate = 0;
 
+
         $progressBar = new ProgressBar($output, $numberOfPokemon);
 
         foreach ($pokemons as $pokemon) {
-            $previousSlug = $pokemon->getSlug();
-            $newSlug = $this->slugger->slugIt($pokemon->getName());
-
-            if ($newSlug !== $previousSlug) {
-                $pokemon->setSlug($newSlug);
-                $this->entityManager->flush();
+            $pokemonResponse = $this->client->get('api/v2/pokemon/'.$pokemon->getApiId());
+            if (isset($pokemonResponse['height'])) {
+                $height = $pokemonResponse['height'];
+                $pokemon->setHeight($height);
                 $numberOfUpdate++;
             }
+            if (isset($pokemonResponse['weight'])) {
+                $weight = $pokemonResponse['weight'];
+                $pokemon->setWeight($weight);
+                $numberOfUpdate++;
+            }
+
+            $this->entityManager->flush();
             $progressBar->advance();
         }
         $progressBar->finish();
 
-        $io->success(sprintf('Updated %d slugs from %d pokemons.', $numberOfUpdate, $numberOfPokemon));
+
+        $io->success(sprintf('Imported %d weight and height for %d pokemons.', $numberOfUpdate, $numberOfPokemon));
 
         return Command::SUCCESS;
     }

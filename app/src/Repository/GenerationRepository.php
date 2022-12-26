@@ -11,7 +11,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Generation|null findOneBy(array $criteria, array $orderBy = null)
  * @method Generation[]    findAll()
  * @method Generation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- * @extends \Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository<Generation>
+ * @extends ServiceEntityRepository<Generation>
  */
 class GenerationRepository extends ServiceEntityRepository
 {
@@ -20,32 +20,21 @@ class GenerationRepository extends ServiceEntityRepository
         parent::__construct($registry, Generation::class);
     }
 
-    // /**
-    //  * @return Generation[] Returns an array of Generation objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function save(Generation $entity, bool $flush = false): void
     {
-        return $this->createQueryBuilder('g')
-            ->andWhere('g.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('g.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $this->getEntityManager()->persist($entity);
 
-    /*
-    public function findOneBySomeField($value): ?Generation
-    {
-        return $this->createQueryBuilder('g')
-            ->andWhere('g.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
     }
-    */
+
+    public function remove(Generation $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
 }

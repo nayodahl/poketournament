@@ -10,7 +10,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class Populator
 {
     public function __construct(
-        private HttpClientInterface $client,
+        private Client $client,
         private EntityManagerInterface $em,
         private PokemonRepository $pokemonRepo,
         private Slugger $slugger
@@ -22,7 +22,7 @@ class Populator
         for ($i = 800; $i <= 800; $i++) {
             $pokemonObject = new Pokemon();
             $pokemonObject->setApiId($i);
-            
+
             // Image
             $response = $this->client->request(
                 'GET',
@@ -73,7 +73,7 @@ class Populator
     {
         for ($i = 808; $i <= 898; $i++) {
             $pokemonObject = $this->pokemonRepo->findOneBy(['apiId' => $i]);
-            
+
             // Image
             $response = $this->client->request(
                 'GET',

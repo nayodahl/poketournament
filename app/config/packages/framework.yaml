@@ -16,3 +16,8 @@ framework:
     #fragments: true
     php_errors:
         log: true
+
+    http_client:
+        scoped_clients:
+            poke.api.client:
+                base_uri: 'https://pokeapi.co/'
