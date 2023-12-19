@@ -6,6 +6,7 @@ use App\Entity\Game;
 use App\Form\GameType;
 use App\Repository\GameRepository;
 use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +18,7 @@ class GameController extends AbstractController
     /**
      * @Route("/game/{gameId}", name="app_edit_game", requirements={"trickId"="\d+"})
      */
-    public function gameEdit(int $gameId, Request $request, GameRepository $gameRepo, ManagerRegistry $doctrine): Response
+    public function gameEdit(int $gameId, Request $request, GameRepository $gameRepo, EntityManagerInterface $entityManager): Response
     {
         $game = $gameRepo->find($gameId);
         
@@ -40,7 +41,6 @@ class GameController extends AbstractController
                 $game->setLoser($game->getPlayer1());
             }
 
-            $entityManager = $doctrine->getManagerForClass(Game::class);
             $entityManager->persist($game);
             $entityManager->flush();
 
