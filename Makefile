@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-DOCKER_COMPOSE = docker-compose -p poke
+DOCKER_COMPOSE = docker compose -p poke
 WEB = docker exec -i web
 DB = docker exec -i database
 

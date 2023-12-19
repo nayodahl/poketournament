@@ -26,7 +26,7 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
     &&a2ensite poke \
     && service apache2 restart
 
-RUN curl -sL https://deb.nodesource.com/setup_15.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
     && apt-get update  && apt-get install -y --no-install-recommends \
