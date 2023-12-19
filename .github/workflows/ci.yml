@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       mysql:
-        image: mariadb:latest
+        image: mariadb:10.3
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: symfony
