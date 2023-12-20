@@ -136,4 +136,5 @@ jobs:
         with:
           dep: deploy
           private-key: ${{ secrets.PRIVATE_KEY }}
-          verbosity: -vv
+          deployer-binary: "bin/dep"
+          verbosity: -vvv
