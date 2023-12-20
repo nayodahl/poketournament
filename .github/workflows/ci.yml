@@ -96,9 +96,9 @@ jobs:
         DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
       run: |
         cd app
-        php bin/console doctrine:schema:update --force || echo "No migrations found or schema update failed"
-        php bin/console doctrine:migrations:migrate || echo "No migrations found or migration failed"
-        php bin/console doctrine:fixtures:load --append -n || echo "No fixtures found or fixtures load failed"
+        php bin/console doctrine:schema:update --force || echo "No migration found or schema update failed"
+        php bin/console doctrine:migrations:migrate || echo "No migration found or migration failed"
+        php bin/console doctrine:fixtures:load --append -n || echo "No fixture found or fixtures load failed"
 
     ## —— Tests ✅ ———————————————————————————————————————————————————————————
     - name: Run tests
