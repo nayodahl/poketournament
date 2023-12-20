@@ -4,7 +4,6 @@ namespace Deployer;
 require 'recipe/symfony.php';
 
 // Config
-
 set('repository', 'git@github.com:nayodahl/poketournament.git');
 set('application', 'poketournament');
 set('composer_options', '{{composer_action}} --verbose --no-progress --no-interaction --no-dev --optimize-autoloader');
@@ -14,7 +13,6 @@ add('shared_dirs', []);
 add('writable_dirs', []);
 
 // Hosts
-
 host('nayo.kernl.fr')
     ->set('remote_user', 'poke')
     ->set('deploy_path', '~/www')
@@ -36,8 +34,6 @@ host('nayo.kernl.fr')
     ->set('vendors_tasks', [
         'cd {{release_path}}/app && {{bin/composer}} {{composer_options}}',
         'cd {{release_path}}/app && yarn install --silent --no-progress',
-    ])
-    ->set('build_tasks', [
         'cd {{release_path}}/app && yarn encore production',
     ])
     ->set('restart_tasks', [
@@ -45,9 +41,33 @@ host('nayo.kernl.fr')
     ])
 ;
 
+// Tasks
+task('deploy:vendors', function () {
+    foreach (get('vendors_tasks', []) as $task) {
+        run($task);
+    }
+});
+task('deploy:restart', function () {
+    foreach (get('restart_tasks', []) as $task) {
+        run($task);
+    }
+});
+task('deploy:after', function () {
+    foreach (get('after_tasks', []) as $task) {
+        run($task);
+    }
+});
+
+task('deploy', [
+    'deploy:prepare',
+    'deploy:vendors',
+    'deploy:cache:clear',
+    'deploy:publish',
+    'deploy:after',
+    'deploy:restart',
+]);
 
 // Hooks
-
 after('deploy:failed', 'deploy:unlock');
 
 // Migrate database before symlink new release.
