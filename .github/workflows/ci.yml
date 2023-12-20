@@ -134,6 +134,6 @@ jobs:
       - name: Deploy
         uses: deployphp/action@v1
         with:
-          dep: deploy -o release_name=43
+          dep: deploy
           private-key: ${{ secrets.PRIVATE_KEY }}
           verbosity: -vv
