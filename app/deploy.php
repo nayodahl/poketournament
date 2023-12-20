@@ -16,7 +16,7 @@ add('writable_dirs', []);
 
 host('nayo.kernl.fr')
     ->set('deploy_path', '~/www')
-    ->user('root')
+    ->user('poke')
     ->set('keep_releases', 5)
     ->shellCommand('bash --login -s')
     ->set('http_user', 'poke')
