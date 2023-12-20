@@ -116,16 +116,8 @@ jobs:
     needs: build
     if: github.ref == 'refs/heads/master'
     steps:
-      - run: echo "Build job was a success on master, deploying..."
+      - run: echo "Build job and tests ok on master, deploying to production server..."
       - uses: actions/checkout@v2
-
-      - name: Setup PHP and Deployer
-        uses: shivammathur/setup-php@master
-        with:
-          php-version: 8.1
-
-      - name: Install dependencies
-        run: composer install
 
       - name: Deploy
         uses: deployphp/action@v1
