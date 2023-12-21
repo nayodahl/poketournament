@@ -9,11 +9,8 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
 
 class NameToPokemonTransformer implements DataTransformerInterface
 {
-    private PokemonRepository $pokemonRepository;
-
-    public function __construct(PokemonRepository $pokemonRepository)
+    public function __construct(private readonly PokemonRepository $pokemonRepository)
     {
-        $this->pokemonRepository = $pokemonRepository;
     }
     
     public function transform($value): mixed

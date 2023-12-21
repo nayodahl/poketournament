@@ -31,6 +31,9 @@ composer-outdated:
 composer-update:
 	$(WEB) bash -c "composer update -n --prefer-dist --no-interaction --working-dir=/var/www/poke"
 
+composer-bump:
+	$(WEB) bash -c "composer bump --working-dir=/var/www/poke"
+
 yarn-install: ## install yarn dependencies
 	@$(WEB) bash -c "yarn install --frozen-lockfile"
 
@@ -73,3 +76,6 @@ init-tls: ## install mkcert and generate certificates for local https
 	@cp "$$(mkcert -CAROOT)/rootCA.pem" ./infra/certs/localCA.crt
 
 install: init-filesystem init-tls build start yarn-install webpack-deploy composer-install ## setup a new dev environment from scratch
+
+rector:
+	$(WEB) bash -c "php vendor/bin/rector process"

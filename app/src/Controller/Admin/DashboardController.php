@@ -15,17 +15,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DashboardController extends AbstractDashboardController
 {
-    /**
-     * @Route("/admin", name="app_admin")
-     */
+    #[Route(path: '/admin', name: 'app_admin')]
     public function index(): Response
     {
         // redirect to some CRUD controller
         $routeBuilder = $this->container->get(AdminUrlGenerator::class);
 
         return $this->redirect($routeBuilder->setController(TournamentCrudController::class)->generateUrl());
-        
-        //return parent::index();
     }
 
     public function configureDashboard(): Dashboard

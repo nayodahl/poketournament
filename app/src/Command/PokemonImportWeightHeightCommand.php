@@ -18,8 +18,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 )]
 class PokemonImportWeightHeightCommand extends Command
 {
-    protected static $defaultName = 'app:pokemon:importWeightHeight';
-
     public function __construct(
         private readonly Client $client,
         private readonly EntityManagerInterface $entityManager,

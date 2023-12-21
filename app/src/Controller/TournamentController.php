@@ -16,9 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TournamentController extends AbstractController
 {
-    /**
-     * @Route("/", name="app_homepage")
-     */
+    #[Route('/', name: 'app_homepage')]
     public function homepage(TournamentRepository $tournamentRepo): Response
     {
         $response = $this->render('tournament/homepage.html.twig', [
@@ -28,9 +26,8 @@ class TournamentController extends AbstractController
         return $response;
     }
     
-    /**
-     * @Route("/show", name="app_view")
-     */
+
+    #[Route('/show', name: 'app_view')]
     public function tournamentShow(TournamentRepository $tournamentRepo, Initializor $initializor): Response
     {
         $latest = $tournamentRepo->findLatest();
@@ -42,9 +39,8 @@ class TournamentController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/create", name="app_create")
-     */
+
+    #[Route('/create', name: 'app_create')]
     public function tournamentCreate(Request $request, Initializor $initializor, ManagerRegistry $doctrine): Response
     {
         $form = $this->createForm(TournamentType::class);

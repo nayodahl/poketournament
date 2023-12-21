@@ -11,8 +11,8 @@ use Doctrine\ORM\EntityManagerInterface;
 class Initializor
 {
     public function __construct(
-        private EntityManagerInterface $entityManager,
-        private GameRepository $gameRepo
+        private readonly EntityManagerInterface $entityManager,
+        private readonly GameRepository $gameRepo
     ) {
     }
 

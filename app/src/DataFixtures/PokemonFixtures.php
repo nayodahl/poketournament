@@ -15,8 +15,8 @@ use Doctrine\Persistence\ObjectManager;
 class PokemonFixtures extends Fixture
 {
     public function __construct(
-        private Initializor $initializor,
-        private Slugger $slugger
+        private readonly Initializor $initializor,
+        private readonly Slugger $slugger
     ) {
     }
     

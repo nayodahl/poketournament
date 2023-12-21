@@ -10,10 +10,10 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class Populator
 {
     public function __construct(
-        private Client $client,
-        private EntityManagerInterface $em,
-        private PokemonRepository $pokemonRepo,
-        private Slugger $slugger
+        private readonly Client $client,
+        private readonly EntityManagerInterface $em,
+        private readonly PokemonRepository $pokemonRepo,
+        private readonly Slugger $slugger
     ) {
     }
 
