@@ -13,138 +13,110 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @Gedmo\Tree(type="nested")
- * @ORM\Entity(repositoryClass=PokemonRepository::class)
- * @UniqueEntity("apiId")
- * @UniqueEntity("slug")
  */
+#[ORM\Entity(repositoryClass: PokemonRepository::class)]
+#[UniqueEntity('apiId')]
+#[UniqueEntity('slug')]
 class Pokemon
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private int $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private readonly int $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotNull(message="Merci d'entrer un nom")
-     * @Groups({"list_pokemon"})
-     */
+    #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotNull(message: "Merci d'entrer un nom")]
+    #[Groups(['list_pokemon'])]
     private string $name;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private ?string $color;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $color = null;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Column(type: 'integer')]
     private int $apiId;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private ?string $image;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $image = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private string $slug;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Tournament::class, mappedBy="pokemons")
      * @var Collection<int, Tournament>
      */
+    #[ORM\ManyToMany(targetEntity: Tournament::class, mappedBy: 'pokemons')]
     private Collection $tournaments;
 
     /**
      * @Gedmo\TreeLeft
-     * @ORM\Column(name="lft", type="integer")
      */
+    #[ORM\Column(name: 'lft', type: 'integer')]
     private int $lft;
 
     /**
      * @Gedmo\TreeLevel
-     * @ORM\Column(name="lvl", type="integer")
      */
+    #[ORM\Column(name: 'lvl', type: 'integer')]
     private int $lvl;
 
     /**
      * @Gedmo\TreeRight
-     * @ORM\Column(name="rgt", type="integer")
      */
+    #[ORM\Column(name: 'rgt', type: 'integer')]
     private int $rgt;
 
     /**
      * @Gedmo\TreeRoot
-     * @ORM\ManyToOne(targetEntity="Pokemon")
-     * @ORM\JoinColumn(name="tree_root", referencedColumnName="id", onDelete="CASCADE")
      */
-    private ?Pokemon $root;
+    #[ORM\ManyToOne(targetEntity: 'Pokemon')]
+    #[ORM\JoinColumn(name: 'tree_root', referencedColumnName: 'id', onDelete: 'CASCADE')]
+    private ?Pokemon $root = null;
 
     /**
      * @Gedmo\TreeParent
-     * @ORM\ManyToOne(targetEntity="Pokemon", inversedBy="children")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private ?Pokemon $parent;
+    #[ORM\ManyToOne(targetEntity: 'Pokemon', inversedBy: 'children')]
+    #[ORM\JoinColumn(name: 'parent_id', referencedColumnName: 'id', onDelete: 'CASCADE')]
+    private ?Pokemon $parent = null;
 
     /**
-     * @ORM\OneToMany(targetEntity="Pokemon", mappedBy="parent")
-     * @ORM\OrderBy({"lft" = "ASC"})
      * @var Collection<int, Pokemon>
      */
+    #[ORM\OneToMany(targetEntity: 'Pokemon', mappedBy: 'parent')]
+    #[ORM\OrderBy(['lft' => 'ASC'])]
     private Collection $children;
 
     /**
      * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(type="datetime")
-    */
+     */
+    #[ORM\Column(type: 'datetime')]
     private \Datetime $updated_at;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private ?string $description;
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $description = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Type::class, fetch="EAGER")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private ?Type $type1;
+    #[ORM\ManyToOne(targetEntity: Type::class, fetch: 'EAGER')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Type $type1 = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Type::class, fetch="EAGER")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private ?Type $type2;
+    #[ORM\ManyToOne(targetEntity: Type::class, fetch: 'EAGER')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Type $type2 = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Generation::class, fetch="EAGER")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private ?Generation $generation;
+    #[ORM\ManyToOne(targetEntity: Generation::class, fetch: 'EAGER')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Generation $generation = null;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+    #[ORM\Column(type: 'boolean')]
     private bool $isLegendary;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+    #[ORM\Column(type: 'boolean')]
     private bool $isMythical;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Column(type: 'integer')]
     private int $height;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Column(type: 'integer')]
     private int $weight;
 
 
@@ -226,9 +198,6 @@ class Pokemon
         return $this->lft;
     }
 
-    /**
-     * @param int $lft
-     */
     public function setLft(int $lft): void
     {
         $this->lft = $lft;
@@ -242,9 +211,6 @@ class Pokemon
         return $this->lvl;
     }
 
-    /**
-     * @param int $lvl
-     */
     public function setLvl(int $lvl): void
     {
         $this->lvl = $lvl;
@@ -258,9 +224,6 @@ class Pokemon
         return $this->rgt;
     }
 
-    /**
-     * @param int $rgt
-     */
     public function setRgt(int $rgt): void
     {
         $this->rgt = $rgt;
@@ -274,9 +237,6 @@ class Pokemon
         return $this->children;
     }
 
-    /**
-     * @param Collection $children
-     */
     public function setChildren(Collection $children): void
     {
         $this->children = $children;

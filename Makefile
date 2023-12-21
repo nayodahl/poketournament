@@ -76,3 +76,6 @@ init-tls: ## install mkcert and generate certificates for local https
 	@cp "$$(mkcert -CAROOT)/rootCA.pem" ./infra/certs/localCA.crt
 
 install: init-filesystem init-tls build start yarn-install webpack-deploy composer-install ## setup a new dev environment from scratch
+
+rector:
+	$(WEB) bash -c "php vendor/bin/rector process"

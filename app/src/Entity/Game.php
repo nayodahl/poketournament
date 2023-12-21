@@ -9,75 +9,48 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=GameRepository::class)
- * @Assert\Expression(
- *     "this.getScorePlayer1() !== this.getScorePlayer2()",
- *     message="There can not be a draw ! One player must win"
- * )
- */
+#[ORM\Entity(repositoryClass: GameRepository::class)]
+#[Assert\Expression('this.getScorePlayer1() !== this.getScorePlayer2()', message: 'There can not be a draw ! One player must win')]
 class Game
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private int $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private readonly int $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Column(type: 'integer')]
     private int $number;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Pokemon::class)
-     */
-    private ?Pokemon $winner;
+    #[ORM\ManyToOne(targetEntity: Pokemon::class)]
+    private ?Pokemon $winner = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Pokemon::class)
-     */
-    private ?Pokemon $loser;
+    #[ORM\ManyToOne(targetEntity: Pokemon::class)]
+    private ?Pokemon $loser = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Pokemon::class, fetch="EAGER")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private ?Pokemon $player1;
+    #[ORM\ManyToOne(targetEntity: Pokemon::class, fetch: 'EAGER')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Pokemon $player1 = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Pokemon::class, fetch="EAGER")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private ?Pokemon $player2;
+    #[ORM\ManyToOne(targetEntity: Pokemon::class, fetch: 'EAGER')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Pokemon $player2 = null;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     * @Assert\PositiveOrZero
-     */
-    private ?int $scorePlayer1;
+    #[ORM\Column(type: 'integer', nullable: true)]
+    #[Assert\PositiveOrZero]
+    private ?int $scorePlayer1 = null;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     * @Assert\PositiveOrZero
-     */
-    private ?int $scorePlayer2;
+    #[ORM\Column(type: 'integer', nullable: true)]
+    #[Assert\PositiveOrZero]
+    private ?int $scorePlayer2 = null;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
+    #[ORM\Column(type: 'datetime')]
     private DateTimeInterface $createdAt;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private ?DateTimeInterface $updatedAt;
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private ?DateTimeInterface $updatedAt = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Tournament::class, inversedBy="games", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
+    #[ORM\ManyToOne(targetEntity: Tournament::class, inversedBy: 'games', cascade: ['persist'])]
+    #[ORM\JoinColumn(nullable: false)]
     private Tournament $tournament;
 
     public function __construct()

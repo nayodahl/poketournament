@@ -12,13 +12,8 @@ use Symfony\Component\Routing\RouterInterface;
 
 class PokemonSelectTextType extends AbstractType
 {
-    private PokemonRepository $pokemonRepository;
-    private RouterInterface $router;
-
-    public function __construct(PokemonRepository $pokemonRepository, RouterInterface $router)
+    public function __construct(private readonly PokemonRepository $pokemonRepository, private readonly RouterInterface $router)
     {
-        $this->pokemonRepository = $pokemonRepository;
-        $this->router = $router;
     }
     
     public function buildForm(FormBuilderInterface $builder, array $options): void

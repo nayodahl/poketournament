@@ -47,12 +47,10 @@ class PokemonController extends AbstractController
             'rootClose' => '</ul>',
             'childOpen' => '<li>',
             'childClose' => '</li>',
-            'nodeDecorator' => function ($node) {
-                return '<a href="/pokedex/'.$node['slug'].'">'
-                        .'<div class="evolutionchain-name">'.$node['name'].' #'.$node['apiId'].'</div>'
-                        .'<img class="evolutionchain-image" src="/images/'.$node['apiId'].'.png"></img>'
-                        .'</a>';
-            }
+            'nodeDecorator' => fn($node) => '<a href="/pokedex/'.$node['slug'].'">'
+                    .'<div class="evolutionchain-name">'.$node['name'].' #'.$node['apiId'].'</div>'
+                    .'<img class="evolutionchain-image" src="/images/'.$node['apiId'].'.png"></img>'
+                    .'</a>'
         ];
 
         $evolutionChain = $pokemonRepo->childrenHierarchy(
@@ -65,8 +63,8 @@ class PokemonController extends AbstractController
         return $this->render('pokemon/pokemon.html.twig', [
             'pokemon' => $pokemon,
             'evolutionChain' => $evolutionChain,
-            'previous' => isset($previous) ? $previous : null,
-            'next' => isset($next) ? $next : null,
+            'previous' => $previous ?? null,
+            'next' => $next ?? null,
             'isAlola' => file_exists('../public/images/' . $pokemon?->getApiId() . '-alola.png'),
             'isGalar' => file_exists('../public/images/' . $pokemon?->getApiId() . '-galar.png'),
             'isGmax' => file_exists('../public/images/' . $pokemon?->getApiId() . '-gmax.png'),

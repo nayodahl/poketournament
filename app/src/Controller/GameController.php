@@ -15,9 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class GameController extends AbstractController
 {
-    /**
-     * @Route("/game/{gameId}", name="app_edit_game", requirements={"trickId"="\d+"})
-     */
+
+    #[Route('/game/{gameId}', name: 'app_edit_game', requirements: ["trickId" => "\d+"])]
     public function gameEdit(int $gameId, Request $request, GameRepository $gameRepo, EntityManagerInterface $entityManager): Response
     {
         $game = $gameRepo->find($gameId);

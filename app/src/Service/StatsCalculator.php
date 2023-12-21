@@ -9,9 +9,9 @@ use App\Repository\TournamentRepository;
 class StatsCalculator
 {
     public function __construct(
-        private GameRepository $gameRepository,
-        private PokemonRepository $pokemonRepository,
-        private TournamentRepository $tournamentRepository,
+        private readonly GameRepository $gameRepository,
+        private readonly PokemonRepository $pokemonRepository,
+        private readonly TournamentRepository $tournamentRepository,
     ) {
     }
 

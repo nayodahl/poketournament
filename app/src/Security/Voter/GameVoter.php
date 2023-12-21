@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class GameVoter extends Voter
 {
-    const VIEW = 'view';
+    final public const VIEW = 'view';
     
     protected function supports($attribute, $subject): bool
     {
@@ -30,16 +30,11 @@ class GameVoter extends Voter
     {
         /** @var Game $game */
         $game = $subject;
-        
         // ... (check conditions and return true to grant permission) ...
-        switch ($attribute) {
-            case self::VIEW:
-                // logic to determine if the user can EDIT
-                // return true or false
-                return $this->canView($game);
-        }
-
-        return false;
+        return match ($attribute) {
+            self::VIEW => $this->canView($game),
+            default => false,
+        };
     }
 
     private function canView(Game $game): bool

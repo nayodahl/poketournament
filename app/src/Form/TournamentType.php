@@ -12,11 +12,8 @@ use Symfony\Component\Routing\RouterInterface;
 
 class TournamentType extends AbstractType
 {
-    private RouterInterface $router;
-
-    public function __construct(RouterInterface $router)
+    public function __construct(private readonly RouterInterface $router)
     {
-        $this->router = $router;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void

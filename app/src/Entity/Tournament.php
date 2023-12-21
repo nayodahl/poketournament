@@ -8,44 +8,34 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=TournamentRepository::class)
- */
+#[ORM\Entity(repositoryClass: TournamentRepository::class)]
 class Tournament
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private int $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private readonly int $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private string $name;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private ?DateTimeInterface $date;
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private ?DateTimeInterface $date = null;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Column(type: 'integer')]
     private int $numberPokemons;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Pokemon::class, inversedBy="tournaments")
-     * @ORM\JoinTable(name="tournaments_pokemons")
      * @var Collection<int, Pokemon>
      */
+    #[ORM\JoinTable(name: 'tournaments_pokemons')]
+    #[ORM\ManyToMany(targetEntity: Pokemon::class, inversedBy: 'tournaments')]
     private Collection $pokemons;
 
     /**
-     * @ORM\OneToMany(targetEntity=Game::class, mappedBy="tournament", orphanRemoval=true)
      * @var Collection<int, Game>
      */
+    #[ORM\OneToMany(targetEntity: Game::class, mappedBy: 'tournament', orphanRemoval: true)]
     private Collection $games;
 
     public function __construct()

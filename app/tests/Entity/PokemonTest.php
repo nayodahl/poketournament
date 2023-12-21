@@ -13,7 +13,6 @@ class PokemonTest extends WebTestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
         self::bootKernel();
         $this->repository = static::getContainer()->get('app.repository.pokemonrepository');
     }
