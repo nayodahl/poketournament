@@ -31,6 +31,9 @@ composer-outdated:
 composer-update:
 	$(WEB) bash -c "composer update -n --prefer-dist --no-interaction --working-dir=/var/www/poke"
 
+composer-bump:
+	$(WEB) bash -c "composer bump --working-dir=/var/www/poke"
+
 yarn-install: ## install yarn dependencies
 	@$(WEB) bash -c "yarn install --frozen-lockfile"
 
