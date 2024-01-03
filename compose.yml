@@ -6,7 +6,7 @@ services:
     container_name: web
     volumes:
       - ./app:/var/www/poke
-    restart: always
+    restart: no
     depends_on:
       - database
     ports:
@@ -15,8 +15,8 @@ services:
       - backend
 
   database:
-    image: mariadb:10.3
-    restart: always
+    image: mysql:8.0-debian
+    restart: no
     container_name: database
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -24,7 +24,7 @@ services:
       MYSQL_USER: symfony
       MYSQL_PASSWORD: symfony
     volumes:
-      - ./infra/data/mariadb:/var/lib/mysql
+      - ./infra/data/mysql:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:

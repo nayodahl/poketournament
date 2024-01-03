@@ -2,5 +2,5 @@
 .idea/
 *.code-workspace
 
-/infra/data/mariadb/*
+/infra/data/mysql/*
 /infra/certs/*

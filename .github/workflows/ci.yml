@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       mysql:
-        image: mariadb:10.3
+        image: mysql:8-debian
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: symfony
@@ -105,7 +105,7 @@ jobs:
       env:
         APP_ENV: test
         APP_SECRET: ''
-        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.5.12
+        DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=8.0
       run: |
         cd app
         php bin/phpunit -v
